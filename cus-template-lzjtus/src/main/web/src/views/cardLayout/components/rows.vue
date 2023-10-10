@@ -1,0 +1,162 @@
+<template>
+  <div class="gateway-rows">
+    <we-row v-for="(item, index) in rowsData" :key="index" :gutter="36">
+      <we-col
+        :class="[
+          'p-lr-18',
+          el.card && el.card.cardId === 'SYS_CARD_SERVICEITEMCOUNT'
+            ? 'Count'
+            : 'Col',
+        ]"
+        v-for="(el, colIndex) in item.columns"
+        :key="colIndex"
+        :span="el.width"
+      >
+        <template v-for="(value, key) in el">
+          <component
+            v-if="type.includes(key)"
+            :is="key"
+            :key="`${key}-${value.cardWid || pageCode}`"
+            :cardData="value"
+            :cardsData="value.cards"
+            :rowsData="value"
+            :colWidth="el.width"
+            :containerMargin="pageMargin"
+            :isServiceItemCount="isServiceItemCount(el.card, index)"
+            :isLastItem="isGetLastCard(el.card, index)"
+          ></component>
+        </template>
+      </we-col>
+    </we-row>
+  </div>
+</template>
+<script>
+/* eslint-disable no-debugger */
+import card from "./card";
+import cards from "./cards";
+export default {
+  name: "rows",
+  components: { card, cards },
+  props: {
+    rowsData: Array,
+    containerMargin: String,
+  },
+  data() {
+    return {
+      type: ["card", "cards", "rows"],
+      pageCode: window.shell.getRoute(),
+    };
+  },
+  watch: {
+    rowsData() {
+      // this.changeStyle();
+      this.pageCode = window.shell.getRoute();
+    },
+  },
+  computed: {
+    pageMargin() {
+      const num = this.containerMargin || "12";
+      return num;
+      // if (isNaN(num)) {
+      //   return 24
+      // } else {
+      //   return num >= 10 && num <= 30 ? num : 24
+      // }
+    },
+  },
+  methods: {
+    // 如果事项统计要去掉下边距
+    isServiceItemCount(card, index) {
+      return (
+        card &&
+        card.cardId === "SYS_CARD_SERVICEITEMCOUNT" &&
+        index === this.rowsData.length - 1
+      );
+    },
+
+    //判断是否是最后一张卡片
+    isGetLastCard(card, index) {
+      return card && index === this.rowsData.length - 1;
+    },
+    changeStyle() {
+      let timer = setInterval(() => {
+        const pageCardList = document.querySelectorAll(".Count"); // 事项统计dom
+        const body = document.querySelector(".gateway-rows");
+        const conEle = document.querySelectorAll(".tempalteConWrap"); // 模板主容器dom
+        const conWidth =
+          (conEle && conEle.length && conEle[0] && conEle[0].offsetWidth) ||
+          document.body.offsetWidth;
+        const clientWidth = conWidth < 1280 ? 1280 : conWidth;
+        const offsetWidth = body.offsetWidth;
+        const colList = document.querySelectorAll(".Col");
+        colList.forEach((pageCard) => {
+          if (pageCard) {
+            pageCard.setAttribute(
+              "style",
+              "padding-left: 18px; padding-right: 18px;"
+            );
+          }
+        });
+        // 如果有事项统计设置style，否则清空定时器
+        if (pageCardList.length) {
+          pageCardList.forEach((pageCard) => {
+            if (pageCard) {
+              // we-row左右间距20
+              if (clientWidth - offsetWidth >= 40) {
+                pageCard.style.marginBottom = `${-4}px`;
+                pageCard.style.padding = 0;
+                pageCard.style.marginLeft = `-${
+                  (clientWidth - offsetWidth) / 2 - 20
+                }px`;
+                pageCard.style.width = clientWidth + "px";
+              } else {
+                const newLeft = 20 - (clientWidth - offsetWidth) / 2;
+                pageCard.style.marginLeft = `${newLeft > 20 ? 20 : newLeft}px`;
+              }
+              clearInterval(timer);
+              timer = null;
+            }
+          });
+        } else {
+          clearInterval(timer);
+          timer = null;
+        }
+      }, 100);
+    },
+  },
+  mounted() {
+    // this.changeStyle();
+    // let _this = this;
+    // window.addEventListener('resize', () => {
+    //   _this.changeStyle()
+    // }, false)
+  },
+  created() {
+      console.log('rowsData',this.rowsData)
+       console.log('containerMargin',this.containerMargin)
+  }
+};
+</script>
+<style scoped>
+.gateway-rows {
+  width: 100%;
+  /* overflow-y: auto; */
+}
+.position-relateive {
+  position: relative;
+  /* overflow: hidden; */
+}
+.mr-tb-12 {
+  margin: 12px 0;
+}
+.p-lr-20 {
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+}
+.col-gutter {
+  padding-left: 36px;
+}
+/deep/ .we-card {
+  width: 100%;
+}
+</style>

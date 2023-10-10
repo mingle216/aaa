@@ -1,0 +1,4 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number
+"47","SYS_CARD_DUTYLIST","责任清单","/SYS_CARD_DUTYLIST/pc/img/display.png","0",0,1,"责任清单",0,"",0,0,"1.0.0"
+"48","SYS_CARD_SERVICELIST","服务清单","/SYS_CARD_SERVICELIST/pc/img/display.png","0",0,1,"服务清单",0,"",0,0,"1.0.0"
+"49","SYS_CARD_APPROVALLIST","审批清单","/SYS_CARD_APPROVALLIST/pc/img/display.png","0",0,1,"审批清单",0,"",0,0,"1.0.0"

@@ -1,0 +1,33 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_attach_info-1.0.0">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_attach_info"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_attach_info" remarks="附件信息表">
+            <column name="wid" type="VARCHAR(64)" remarks="业务主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="file_name" type="VARCHAR(256)" remarks="文件名称"/>
+
+            <column name="file_url" type="VARCHAR(256)" remarks="文件地址全路径" />
+            <column name="file_location" type="VARCHAR(256)" remarks="文件地址路径" />
+            <column name="file_suffix" type="VARCHAR(16)" remarks="文件后缀名" />
+            <column name="is_deleted" type="VARCHAR(2)" remarks="是否删除 1：正常 0：删除" />
+            <column name="operate_wid" type="VARCHAR(64)" remarks="操作人的wid" />
+            <column name="operate_name" type="VARCHAR(128)" remarks="操作人的名称" />
+            <column name="create_time" type="TIMESTAMP" remarks="创建时间" />
+            <column name="update_time" type="TIMESTAMP" remarks="更新时间" />
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

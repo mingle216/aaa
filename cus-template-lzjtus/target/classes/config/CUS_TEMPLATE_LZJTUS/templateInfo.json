@@ -1,0 +1,34 @@
+[
+  {
+    "code":"home",
+    "name":"首页",
+    "iconUrl":"/cus_template_lzjtus/home/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=信息服务门户\nheader.title.en=Information Service Portal\nheader.imgUrl=/cus_template_lzjtus/common/image/banner.png\ncontainer.upDownMargin=12\ncontainer.leftRightMargin=24\nsearch.display=Y\nsearch.history.display=Y\nsearch.placeholder=搜索\nheaderImgUrl.size=1920*740\ntitle.imgUrl=",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【容器上下间距】container.upDownMargin=**(此处填写具体数字，示例：12)\n【容器左右间距】container.leftRightMargin=**(此处填写具体数字，示例：24，容器间距配置区间为：12-36)\n【搜索模块】search.display=Y/N(Y表示展示搜索模块，N表示不展示)\n【搜索历史】search.history.display=Y/N(Y表示展示搜索历史，N表示不展示)\n【默认搜索词】 search.placeholder=***(\nrandomServiceMatter：随机服务事项名称；其他任意文本：固定搜索词)",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"common",
+    "name":"通用页",
+    "iconUrl":"/cus_template_lzjtus/common/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=\nheader.title.en=\nheader.subTitle.zh_CN=\nheader.subTitle.en=\nheader.imgUrl=/cus_template_lzjtus/common/image/banner.png\ncontainer.upDownMargin=12\ncontainer.leftRightMargin=24\nbreadcrumb.show=Y\nheaderImgUrl.size=1920*740\ntitle.imgUrl=",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【副标题】header.subTitle.zh_CN=***(此处填写任意文本)\n       header.subTitle.en=***(此处填写英文标题，格式以此类推)\n【容器上下间距】container.upDownMargin=***(此处填写具体数字，示例：12)\n【容器左右间距】container.leftRightMargin=***(此处填写具体数字，示例：24，容器间距配置区间为：12-36)\n【面包屑】breadcrumb.show=Y/N(Y表示展示面包屑，N表示不展示，通用页为一级时，该配置不生效)",
+    "isDefaultTemplate":true
+  },
+  {
+    "code":"detail",
+    "name":"详情页",
+    "iconUrl":"/cus_template_lzjtus/detail/image/demo.png",
+    "defaultPageConfig":"header.imgUrl=/cus_template_lzjtus/common/image/banner.png\nheaderImgUrl.size=1920*740\ntitle.imgUrl=",
+    "defaultPageConfigDesc":"",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"search",
+    "name":"搜索页",
+    "iconUrl":"/cus_template_lzjtus/search/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=搜索结果页\nheader.title.en=Search Result Page\nheader.imgUrl=/cus_template_lzjtus/common/image/banner.png\nsearch.history.display=Y\nheaderImgUrl.size=1920*740\ntitle.imgUrl=",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【搜索历史】search.history.display=Y/N(Y表示展示搜索历史，N表示不展示)",
+    "isDefaultTemplate":false
+  }
+]

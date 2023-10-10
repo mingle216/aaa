@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>${pageTitle}</title>
+    <meta name="description" content="${pageTitle}">
+
+    <!-- css引入文件 -->
+    <%
+    include("/common/cssPart.html"){}
+    %>
+    <!-- JS引入文件 -->
+    <%
+    include("/common/jsPart.html"){}
+    %>
+    <script type="text/javascript">
+        (function(){
+            var globalPageParam = ${globalPageParam};
+            var pageConfigMap = {};
+            var contextPath = "${ctxPath}";
+            try {
+            <% for(pageConfig in pageConfigMap){ %>
+                pageConfigMap['${pageConfig.key}'] = "${pageConfig.value}";
+            <%}%>
+            }catch (e) {
+                console.error(e)
+            }
+
+            Object.defineProperty(window, 'contextPath', {
+                value: contextPath,
+                writable: false
+            });
+
+            Object.defineProperty(window, 'globalPageParam', {
+                value: globalPageParam,
+                writable: false
+            });
+
+            Object.defineProperty(window, 'pageConfigMap', {
+                value: pageConfigMap,
+                writable: false
+            });
+        }(window))
+    </script>
+</head>
+
+<body>
+${templateHtml}
+
+
+<script type="text/javascript">
+    window.onload = initEnableTheme;
+
+    function initEnableTheme() {
+        //改变主题色
+        var themeStyleStr = '';
+        var defaultPrimary = {
+            themePrimary: "#205af2",
+            themeHover: "#e8eefd"
+        };
+        var customPrimary = {
+            themePrimary: pageConfigMap['theme_color_primary'],
+            themeHover: pageConfigMap['theme_color_hover']
+        };
+
+        var url = "${ctxPath}/css/theme.css?_=" + new Date().getTime();
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                themeStyleStr = getStyleTemplate(
+                    xhr.responseText,
+                    defaultPrimary
+                );
+                setNewStyle(
+                    themeStyleStr,
+                    customPrimary
+                );
+            }
+        };
+        xhr.open("GET", url);
+        xhr.send();
+    }
+
+    // 获取样式模板：将颜色值替换为关键词。
+    function getStyleTemplate(data, defaultP) {
+        var color = defaultP;
+        var customMap = {};
+
+        $.each(color, function(key, value) {
+            customMap[value] = key;
+        });
+        $.each(customMap, function(key, value) {
+            data = data.replace(new RegExp(key, "ig"), value);
+        });
+
+        return data;
+    }
+
+    // 根据选择的主题颜色，把关键词换成相应的主题颜色，并在页面上添加 style 标签
+    function setNewStyle(originalStyle, customPri) {
+        var oldEl = document.getElementById("theme-style");
+        var cssText = originalStyle;
+
+        $.each(customPri, function(key, value) {
+            cssText = cssText.replace(new RegExp(key, "ig"), value);
+        });
+
+        var style = document.createElement("style");
+        style.innerHTML = cssText;
+        style.id = "theme-style";
+        oldEl
+            ?
+            document.head.replaceChild(style, oldEl) :
+            document.head.appendChild(style);
+    }
+</script>
+</body>
+
+</html>

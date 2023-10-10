@@ -1,0 +1,640 @@
+<style type="text/css">
+
+	.role-${cardWid}{
+		height: 100%;
+	}
+
+	.title-${cardWid}{
+		height: 100%;
+		font-family: PingFangSC-Semibold;
+		font-size: 24px;
+		color: #102645;
+		letter-spacing: 0;
+		border-bottom: 2px solid #E7EDF1;
+		padding-top: 13.5px;
+		padding-bottom: 13.5px;
+		font-weight:bold;
+	}
+
+	/* 分类 */
+	.category-${cardWid}{
+		width:  100%;
+		padding-top: 26px;
+	}
+
+	/* 分隔线 */
+	.split-line-${cardWid}{
+		height: 17px;
+		padding-left: 15.5px;
+		border-right: 1.5px solid #CDD8EC;
+		display: inline;
+	}
+
+	.category-item-${cardWid}{
+		width: 90px ;
+		height: 25px;
+		font-family: PingFangSC-Medium;
+		font-size: 18px;
+		color: #707D8F;
+		letter-spacing: 0;
+		display: inline;
+		padding-left: 15.5px;
+		cursor:pointer
+	}
+
+	.selected-category-${cardWid}{
+		font-weight:bold;
+		font-family: PingFangSC-Medium;
+		font-size: 18px;
+		color: #102645;
+		letter-spacing: 0;
+	}
+
+	/* app展示 */
+	.single-app-container-${cardWid}{
+		width: 1200px;
+		height: 211px;
+		background: #FFFFFF;
+		border: 2px dotted #E7EDF1;
+		border-radius: 4px;
+		margin-top: 24px;
+		margin-bottom: 15px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		cursor:pointer;
+		vertical-align:middle;
+	}
+
+
+	.single-app-${cardWid}{
+		height: 111px;
+	}
+
+	.double-app-container-${cardWid}{
+		width: 585px;
+		height: 211px;
+		background: #FFFFFF;
+		border: 2px dotted #E7EDF1;
+		border-radius: 4px;
+		margin-top: 24px;
+		margin-bottom: 15px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		cursor:pointer;
+		vertical-align:middle;
+	}
+
+	.double-app-${cardWid}{
+		height: 111px;
+	}
+
+	.triple-app-container-${cardWid}{
+		width: 380px;
+		height: 211px;
+		background: #FFFFFF;
+		border: 2px dotted #E7EDF1;
+		border-radius: 4px;
+		margin-top: 24px;
+		margin-bottom: 15px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		cursor:pointer;
+		vertical-align:middle;
+	}
+
+	.triple-app-${cardWid}{
+		height: 111px;
+	}
+
+	.four-app-container-${cardWid}{
+		width: 278px;
+		height: 211px;
+		background: #FFFFFF;
+		border: 2px dotted #E7EDF1;
+		border-radius: 4px;
+		margin-top: 24px;
+		margin-bottom: 15px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		cursor:pointer;
+		vertical-align:middle;
+	}
+
+	/* app图标 */
+	.app-icon-${cardWid}{
+		text-align: center;
+		height: 50px;
+	}
+
+	.app-name-${cardWid}{
+		font-weight:bold;
+		max-width: 180px;
+		padding-top: 12px;
+		font-family: PingFangSC-Medium;
+		font-size: 18px;
+		color: #102645;
+		letter-spacing: 0;
+		text-align: center;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+	}
+
+	.app-service-item-${cardWid}{
+		max-width: 180px;
+		padding-top: 4px;
+		opacity: 0.6;
+		font-family: PingFangSC-Regular;
+		font-size: 14px;
+		color: #102645;
+		letter-spacing: 0;
+		text-align: center;
+		overflow:hidden;           /* 内容超出宽度时隐藏超出部分的内容 */
+		text-overflow:ellipsis;
+		display:-webkit-box;
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:1;
+	}
+
+	.app-service-item-secondCategory-${cardWid}{
+		max-width: 180px;
+		padding-top: 4px;
+		opacity: 0.6;
+		font-family: PingFangSC-Regular;
+		font-size: 14px;
+		color: #102645;
+		letter-spacing: 0;
+		text-align: center;
+		overflow:hidden;           /* 内容超出宽度时隐藏超出部分的内容 */
+		text-overflow:ellipsis;
+		display:-webkit-box;
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:2;
+	}
+
+	/**
+	 * 鼠标停留样式
+	 */
+
+	.single-app-container-${cardWid}:hover{
+		background: rgba(63,131,251,0.10);
+	}
+
+	.double-app-container-${cardWid}:hover{
+		background: rgba(63,131,251,0.10);
+	}
+
+	.triple-app-container-${cardWid}:hover{
+		background: rgba(63,131,251,0.10);
+	}
+
+	.four-app-container-${cardWid}:hover{
+		background: rgba(63,131,251,0.10);
+	}
+
+	.tooltip-inner{
+	    background:#102645;
+	 }
+
+	 .no-data-${cardWid}{
+	 	font-weight: bold;
+	 	font-family: MicrosoftYaHei, 微软雅黑;
+	 	font-size: 14px;
+	 	letter-spacing: 0;
+	 	height: 300px;
+	 	width: 100%;
+	 	text-align: center;
+	 	padding-top: 150px;
+	 }
+
+	 .icon-${cardWid}{
+		 display: inline-block;
+		 width: 50px;
+		 height: 50px;
+		 font-size: 50px;
+		 line-height: 50px;
+</style>
+
+<!-- 平铺展示页面 -->
+<div class="serviceitem-container-${cardWid}">
+	<!-- Tab -->
+	<% if(isEmpty(serviceItemInfo)){%>
+	<div class="no-data-${cardWid}">
+		暂无事项分类
+	</div>
+	<%}else{%>
+		<%#ajax list :{%>
+	<%for(serviceItem in serviceItemInfo!){%>
+	<div class="role-${cardWid}">
+		<!-- 标题 -->
+		<div class="title-${cardWid}" id="${serviceItem.roleWid}" data-toggle="tooltip"
+			 title="${serviceItem.roleName,xss}">${serviceItem.roleName,xss}</div>
+		<!-- 分类Tab -->
+		<div class="category-${cardWid}">
+			<%for (cItem in categoryItemInfo){%>
+			<div class="category-item-${cardWid}" id="${cItem.categoryWid}" data-toggle="tooltip"  title="${cItem.categoryName,xss}">${cItem.showCategoryName,xss}</div>
+			<div class="split-line-${cardWid}"></div>
+			<%}%>
+		</div>
+		<!-- 应用展示 -->
+		<div class="app-list-${cardWid}">
+				 <%  for(item in serviceItem.itemModelList!){%>
+				 <%if(columns == 1){%>
+			<!-- 单列展示 -->
+				<div class="single-app-container-${cardWid} portal-primary-backgroundcolor-hover-lv5">
+					<div class="single-app-${cardWid} portal-primary-color-lv1">
+						<div class="app-icon-${cardWid}">
+						<%if(item.picLink==null && item.iconLink!=null){%>
+							<!-- <img src="${item.iconLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px"> -->
+							<i class="${item.iconLink} icon-${cardWid} portal-font-color-lv1"></i>
+						<%}else{%>
+							<img src="${item.picLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px">
+						<%}%>
+						</div>
+						<div class="app-name-${cardWid}" data-wid="${item.subjectWid}" data-toggle="tooltip"  title="${item.subjectName,xss}">
+							${item.subjectName,xss}
+						</div>
+						<%if (content == "2"){%>
+							<%if(item.itemList == null){%>
+						<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无事项">
+							${item.subjectName != "查看更多"?"暂无事项":""}
+						</div>
+							<%}else{%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="${item.itemList[0].itemName,xss}等${item.itemList.~size}个事项">
+								${strutil.length(item.itemList[0].itemName) > 6?
+								strutil.subStringTo(item.itemList[0].itemName,0,6):item.itemList[0].itemName}
+								${strutil.length(item.itemList[0].itemName) > 6?"...":""}等${item.itemList.~size}个事项
+							</div>
+							<%}}else{%>
+							<%if(item.secondCategory == null){%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无二级分类">
+								暂无二级分类
+								</div>
+							<%}else{%>
+							<div class="app-service-item-secondCategory-${cardWid}" data-toggle="tooltip"  title="${item.secondCategory,xss}">
+								${item.secondCategory,xss}
+								</div>
+							<%}}%>
+					</div>
+				</div>
+				<%}else if (columns == 2){%>
+				<!-- 双列展示 -->
+				<div class="double-app-container-${cardWid} portal-primary-backgroundcolor-hover-lv5">
+					<div class="double-app-${cardWid} portal-primary-color-lv1">
+						<div class="app-icon-${cardWid}">
+							<%if(item.picLink==null && item.iconLink!=null){%>
+								<!-- <img src="${item.iconLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px"> -->
+								<i class="${item.iconLink} icon-${cardWid} portal-font-color-lv1"></i>
+							<%}else{%>
+								<img src="${item.picLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px">
+							<%}%>
+						</div>
+						<div class="app-name-${cardWid}" data-wid="${item.subjectWid}" data-toggle="tooltip"  title="${item.subjectName,xss}">
+							${item.subjectName,xss}
+						</div>
+						<%if (content == "2"){%>
+							<%if(item.itemList == null){%>
+						<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无事项">
+							${item.subjectName != "查看更多"?"暂无事项":""}
+						</div>
+							<%}else{%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="${item.itemList[0].itemName,xss}等${item.itemList.~size}个事项">
+								${strutil.length(item.itemList[0].itemName) > 6?
+								strutil.subStringTo(item.itemList[0].itemName,0,6):item.itemList[0].itemName}
+								${strutil.length(item.itemList[0].itemName) > 6?"...":""}等${item.itemList.~size}个事项
+							</div>
+							<%}}else{%>
+							<%if(item.secondCategory == null){%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无二级分类">
+								暂无二级分类
+								</div>
+							<%}else{%>
+							<div class="app-service-item-secondCategory-${cardWid}" data-toggle="tooltip"  title="${item.secondCategory,xss}">
+								${item.secondCategory,xss}
+								</div>
+							<%}}%>
+					</div>
+				</div>
+				<%}else if(columns ==3){%>
+				<!-- 三列展示 -->
+				<div class="triple-app-container-${cardWid} portal-primary-backgroundcolor-hover-lv5">
+					<div class="triple-app-${cardWid} portal-primary-color-lv1">
+						<div class="app-icon-${cardWid}">
+							<%if(item.picLink==null && item.iconLink!=null){%>
+								<!-- <img src="${item.iconLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px"> -->
+								<i class="${item.iconLink} icon-${cardWid} portal-font-color-lv1"></i>
+							<%}else{%>
+								<img src="${item.picLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px">
+							<%}%>
+						</div>
+						<div class="app-name-${cardWid}" data-wid="${item.subjectWid}" data-toggle="tooltip"
+							 title="${item.subjectName,xss}">
+							${item.subjectName,xss}
+						</div>
+						<%if (content == "2"){%>
+							<%if(item.itemList == null){%>
+						<div class="app-service-item-${cardWid}"  title="暂无事项">
+							${item.subjectName != "查看更多"?"暂无事项":""}
+						</div>
+							<%}else{%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip" title="${item.itemList[0].itemName,xss}等${item.itemList.~size}个事项">
+								${strutil.length(item.itemList[0].itemName) > 6?
+								strutil.subStringTo(item.itemList[0].itemName,0,6):item.itemList[0].itemName}
+								${strutil.length(item.itemList[0].itemName) > 6?"...":""}等${item.itemList.~size}个事项
+							</div>
+							<%}}else{%>
+							<%if(item.secondCategory == null){%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无二级分类">
+								暂无二级分类
+								</div>
+							<%}else{%>
+							<div class="app-service-item-secondCategory-${cardWid}" data-toggle="tooltip"  title="${item.secondCategory,xss}">
+								${item.secondCategory,xss}
+								</div>
+							<%}}%>
+					</div>
+				</div>
+				<%}else{%>
+				<!-- 四列展示 -->
+				<div class="four-app-container-${cardWid} portal-primary-backgroundcolor-hover-lv5">
+					<div class="four-app-${cardWid} portal-primary-color-lv1">
+						<div class="app-icon-${cardWid}">
+							<%if(item.picLink==null && item.iconLink!=null){%>
+								<!-- <img src="${item.iconLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px"> -->
+								<i class="${item.iconLink} icon-${cardWid} portal-font-color-lv1"></i>
+							<%}else{%>
+								<img src="${item.picLink}" onerror="imageError_${cardWid}(this)" width="50px" height="50px">
+							<%}%>
+						</div>
+						<div class="app-name-${cardWid}" data-wid="${item.subjectWid}" data-toggle="tooltip"  title="${item.subjectName,xss}">
+							${item.subjectName,xss}
+						</div>
+						<%if (content == "2"){%>
+							<%if(item.itemList == null){%>
+						<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无事项">
+							${item.subjectName != "查看更多"?"暂无事项":""}
+						</div>
+							<%}else{%>
+							<div class="app-service-item-${cardWid}"  data-toggle="tooltip" title="${item.itemList[0].itemName,xss}等${item.itemList.~size}个事项">
+								${strutil.length(item.itemList[0].itemName) > 6?
+								strutil.subStringTo(item.itemList[0].itemName,0,6):item.itemList[0].itemName}
+								${strutil.length(item.itemList[0].itemName) > 6?"...":""}等${item.itemList.~size}个事项
+							</div>
+							<%}}else{%>
+							<%if(item.secondCategory == null){%>
+							<div class="app-service-item-${cardWid}" data-toggle="tooltip"  title="暂无二级分类">
+								暂无二级分类
+								</div>
+							<%}else{%>
+							<div class="app-service-item-secondCategory-${cardWid}" data-toggle="tooltip"  title="${item.secondCategory,xss}">
+								${item.secondCategory,xss}
+								</div>
+							<%}}%>
+					</div>
+				</div>
+				<%}}%>
+		</div>
+	</div>
+	<%}}}%>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		init_${cardWid}();
+		initCategoryItem_${cardWid}();
+	});
+
+	//分类标签点击事件
+	$(document).on('click','.category-${cardWid}',function(e){
+		$(this).addClass('selected-category-${cardWid}').siblings().removeClass('selected-category-${cardWid}');
+		//导航栏下方border滚动特效
+		var categoryWid = $(e.target).attr("id");
+		var roleWid = $(e.target).parent().prev().attr("id");
+		//滑动条位置
+		e.stopPropagation();
+		var paramArr = new Array();
+		var selectedObj = new Object();
+		selectedObj.roleWid = roleWid;
+		selectedObj.categoryWid = categoryWid;
+		paramArr.push(selectedObj);
+		//将除当前选中的服务对象对应的一级分类传到后台
+		$(".role-${cardWid}").each(function(){
+			 var leftObj =  new Object();
+			 var id1 = $(this).find(".title-${cardWid}").attr("id");
+			 if(id1 != roleWid){
+				 var id2 = $(this).find(".category-${cardWid} .selected-category-${cardWid}").attr("id");
+				 leftObj.roleWid = id1;
+				 leftObj.categoryWid = id2;
+				 paramArr.push(leftObj);
+			 }
+		});
+
+		var tileParams = {};
+		tileParams['tileParams'] = paramArr;
+		execCardMethod('${cardId}','${cardWid}','list','render',{'tileParams':JSON.stringify(tileParams)},function(data){
+		    if (200 === data.errcode|| '0'=== data.errcode) {
+		       $(".serviceitem-container-${cardWid}").html(data.data);
+				 init_${cardWid}();
+				 initCategoryItemAjax_${cardWid}(paramArr);
+		    }
+		});
+	});
+
+	//初始化页面
+	function init_${cardWid}(){
+		$(".app-name-${cardWid}").mouseenter(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+		$(".role-${cardWid}").mouseenter(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+		$(".category-item-${cardWid}").mouseenter(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+		initApp_${cardWid}();
+		themeColor_${cardWid}();
+	}
+
+	//初始化app容器
+	function initApp_${cardWid}(){
+		//app内容展示
+		var columns = "${columns}";
+		var cardWidth = $("#card-${cardWid}").width();
+		switch (columns){
+			case "2":
+			//点击事项跳转
+			$(".double-app-container-${cardWid}").click(function(){
+				var roleWid = $(this).parents(".app-list-${cardWid}").prev().prev().attr("id");
+				var oneCategoryWid = $(this).parents(".app-list-${cardWid}").prev().find(".category-item-${cardWid}.selected-category-${cardWid}").attr("id");
+				var categoryWid = $(this).find(".app-name-${cardWid}").attr("data-wid");
+				openPage("${ctxPath}/portal/itemCategoryDetail?roleWid="+roleWid+"&oneCategoryWid="+oneCategoryWid+"&categoryWid="+categoryWid,0,{});
+			});
+			$(".role-${cardWid}").each(function(){
+				var $doubleApp = $(this).find(".double-app-container-${cardWid}:odd");
+				$($doubleApp).css("margin-left","30px");
+			});
+			//第二行之后的容器margin-top设置为15px
+			$(".double-app-container-${cardWid}").each(function(index,element){
+				if(index > 1){
+					$(this).css("margin-top","15px");
+				}
+			});
+			//设置容器宽度
+			var appWidth = (cardWidth-30-8)/2;
+			$(".double-app-container-${cardWid}").css("width",appWidth+"px");
+			break;
+			case "3":
+			$(".triple-app-container-${cardWid}").click(function(){
+				var roleWid = $(this).parents(".app-list-${cardWid}").prev().prev().attr("id");
+				var oneCategoryWid = $(this).parents(".app-list-${cardWid}").prev().find(".category-item-${cardWid}.selected-category-${cardWid}").attr("id");
+				var categoryWid = $(this).find(".app-name-${cardWid}").attr("data-wid");
+				openPage("${ctxPath}/portal/itemCategoryDetail?roleWid="+roleWid+"&oneCategoryWid="+oneCategoryWid+"&categoryWid="+categoryWid,0,{});
+			});
+			$(".role-${cardWid}").each(function(){
+				var $tripleApp = $(this).find(".triple-app-container-${cardWid}");
+				$tripleApp.each(function(index,element){
+					if(index > 0){
+					$tripleApp.eq(((index-1)*3)+1).css("margin-left","30px");
+					$tripleApp.eq(((index-1)*3)+1).css("margin-right","30px");
+					}
+					 if(index > 2){
+						$(this).css("margin-top","15px");
+					}
+				});
+			});
+			//设置容器宽度
+			var appWidth = (cardWidth-60-12)/3;
+			$(".triple-app-container-${cardWid}").css("width",appWidth+"px");
+			break;
+			case "4":
+			$(".role-${cardWid}").find(".four-app-container-${cardWid}").click(function(){
+				var roleWid = $(this).parents(".app-list-${cardWid}").prev().prev().attr("id");
+				var oneCategoryWid = $(this).parents(".app-list-${cardWid}").prev().find(".category-item-${cardWid}.selected-category-${cardWid}").attr("id");
+				var categoryWid = $(this).find(".app-name-${cardWid}").attr("data-wid");
+				openPage("${ctxPath}/portal/itemCategoryDetail?roleWid="+roleWid+"&oneCategoryWid="+oneCategoryWid+"&categoryWid="+categoryWid,0,{});
+			});
+			$(".role-${cardWid}").each(function(){
+				var $app = $(this).find(".four-app-container-${cardWid}");
+				$app.each(function(index,element){
+					if(index > 0){
+					$app.eq(((index-1)*4)+1).css("margin-left","30px");
+					$app.eq(((index-1)*4)+1).css("margin-right","30px");
+					$app.eq(((index-1)*4)+2).css("margin-right","30px");
+					}
+					if(index > 3){
+						$(this).css("margin-top","15px");
+					}
+				});
+			});
+			//设置容器宽度
+			var appWidth = (cardWidth-90-16)/4;
+			$(".four-app-container-${cardWid}").css("width",appWidth+"px");
+			break;
+			default:
+			//点击事项跳转
+			$(".single-app-container-${cardWid}").click(function(){
+				var roleWid = $(this).parents(".app-list-${cardWid}").prev().prev().prev().find(".role-${cardWid}.selected-tab-${cardWid}").attr("id");
+				var oneCategoryWid = $(this).parents(".app-list-${cardWid}").prev().find(".category-item-${cardWid}.selected-category-${cardWid}").attr("id");
+				var categoryWid = $(this).find(".app-name-${cardWid}").attr("data-wid");
+				openPage("${ctxPath}/portal/itemCategoryDetail?roleWid="+roleWid+"&oneCategoryWid="+oneCategoryWid+"&categoryWid="+categoryWid,0,{});
+			});
+			//设置容器宽度
+			$(".single-app-container-${cardWid}").css("width",cardWidth-4+"px");
+			$(".single-app-container-${cardWid}").each(function(index,element){
+				if(index > 0){
+					$(this).css("margin-top","15px");
+				}
+			});
+		}
+		$("div[data-wid='']").next().css('padding-top','24px');
+		$("div[data-wid='']").next().text("");
+		$("div[data-wid='']").next().attr("title","");
+	}
+
+	//初始化分类标签
+	function initCategoryItem_${cardWid}(){
+		var $item = $(".category-${cardWid}");
+		$item.each(function(index,element){
+			var $next = $(this).children();
+			$next.slice(1).removeClass('selected-category-${cardWid}');
+			$next.first().addClass("selected-category-${cardWid}");
+			$next.first().css("padding-left","0");
+			if($next.length == 2){
+				$(".split-line-${cardWid}").hide();
+			}else{
+				$next.last().hide();
+			}
+		});
+	}
+
+	//局部渲染后重新渲染分类标签
+	function initCategoryItemAjax_${cardWid}(paramArr){
+		var $item = $(".category-${cardWid}");
+		$item.each(function(index,element){
+			var $next = $(this).children();
+			$next.first().css("padding-left","0");
+			if($next.length == 2){
+				$(".split-line-${cardWid}").hide();
+			}else{
+				$next.last().hide();
+			}
+		});
+		for(var i = 0; i < paramArr.length;i++){
+			var cId = paramArr[i].categoryWid;
+			var rId = paramArr[i].roleWid;
+			$("#"+rId).next().find("#"+cId).addClass("selected-category-${cardWid}");
+		}
+	}
+
+	//图片加载失败加载默认图片
+	function imageError_${cardWid}(e) {
+		e.src='${ctxPath}/${cardId}/images/example.png';
+		e.onerror=null; //控制不要一直跳动
+		$("div[data-wid='']").prev().find('img').attr('src','${ctxPath}/${cardId}/images/more.png');
+	}
+
+	//主题色
+	function themeColor_${cardWid}(){
+		var columns = "${columns}";
+		if(columns==1){
+			var obj = $(".single-app-container-${cardWid}");
+			this.mouseChange_${cardWid}(obj);
+		}else if(columns==2){
+			var obj = $(".double-app-container-${cardWid}");
+			this.mouseChange_${cardWid}(obj);
+		}else if(columns==3){
+			var obj = $(".triple-app-container-${cardWid}");
+			this.mouseChange_${cardWid}(obj);
+		}else{
+			var obj = $(".four-app-container-${cardWid}");
+			this.mouseChange_${cardWid}(obj);
+		}
+	}
+
+	//鼠标移入移出事件
+	function mouseChange_${cardWid}(obj){
+		var themeColor = $(".portal-primary-color-lv1").css("color");
+		var fontColor = $(".portal-font-color-lv1").css("color");
+		if(themeColor == undefined){
+			themeColor = '#3F83FB';
+		}
+		if(fontColor == undefined){
+			themeColor = '#3F83FB';
+		}
+		$(obj).mouseenter(function(e){
+			//鼠标移入
+			$(this).find(".app-name-${cardWid}").css("color",themeColor);
+			$(this).find(".app-service-item-${cardWid}").css("color",themeColor);
+			$(this).find(".app-service-item-secondCategory-${cardWid}").css("color",themeColor);
+		}).mouseleave(function(e){
+			//鼠标移出
+			$(this).find(".app-name-${cardWid}").css("color",fontColor);
+			$(this).find(".app-service-item-${cardWid}").css("color",fontColor);
+			$(this).find(".app-service-item-secondCategory-${cardWid}").css("color",fontColor);
+		});
+	}
+</script>

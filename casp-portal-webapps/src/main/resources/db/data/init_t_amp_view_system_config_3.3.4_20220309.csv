@@ -1,0 +1,5 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+"ce2ec4a5-c888-4720-8bf0-2b683031b65d","config.agent.dingTalk","",".*dingtalk.*","判断钉钉UA的正则表达式",0,0
+"383b4dae-65dc-472a-a9e2-2aaee26d52f9","config.agent.wxwork","",".*wxwork.*","判断企业微信UA的正则表达式",0,0
+"686275bf-737e-4f58-aef2-82b3a510fdac","config.agent.weLink","",".*welink.*|.*cloudlink.*","判断WeLink的UA的正则表达式",0,0
+"18d89b5c-9223-4422-baa0-f872b6d7e466","config.agent.wechat.client","",".*micromessenger/.*","判断微信客户端的UA的正则表达式",0,0

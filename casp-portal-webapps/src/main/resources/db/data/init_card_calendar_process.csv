@@ -1,0 +1,4 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number
+"39","SYS_CARD_PROCESSINGPROGRESS","我的办理进度","/SYS_CARD_PROCESSINGPROGRESS/pc/img/display.png","0",0,1,"我的办理进度",0,"",0,0,"1.0.0"
+"42","SYS_CARD_NEWSLISTANNOUNCEMENT","新闻列表","/SYS_CARD_NEWSLISTANNOUNCEMENT/pc/img/display.png","0",0,1,"新闻列表",0,"",0,0,"1.0.0"
+"43","SYS_CARD_PRODUCTSCHOOLCALENDAR","校历","/SYS_CARD_PRODUCTSCHOOLCALENDAR/pc/img/display.png","0",0,1,"校历",0,"",0,0,"1.0.0"

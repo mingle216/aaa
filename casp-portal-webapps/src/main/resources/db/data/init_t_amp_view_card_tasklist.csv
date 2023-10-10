@@ -1,0 +1,4 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number
+"44","SYS_CARD_TODOTASKLIST","待办任务列表","/SYS_CARD_TODOTASKLIST/pc/img/display.png","0",0,1,"待办任务列表",0,"",0,0,"1.0.0"
+"45","SYS_CARD_DONETASKLIST","已办任务列表","/SYS_CARD_DONETASKLIST/pc/img/display.png","0",0,1,"已办任务列表",0,"",0,0,"1.0.0"
+"46","SYS_CARD_MYTASKLIST","我的申请列表","/SYS_CARD_MYTASKLIST/pc/img/display.png","0",0,1,"我的申请列表",0,"",0,0,"1.0.0"

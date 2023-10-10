@@ -1,0 +1,13 @@
+com\wisedu\casp\portal\template\sys\lzjtu\model\TemplateBasicPage.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\TaskTodoAndDoneResponse.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\TemplateConfigure.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\MyProcessCountResponse.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\UserIdRequest.class
+com\wisedu\casp\portal\template\sys\lzjtu\service\ServiceApi.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\TaskTodoAndDoneDataBean.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\MyProcessCountDataBean.class
+com\wisedu\casp\portal\template\sys\lzjtu\plugin\TemplatePlugin.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\AmpBaseResponse.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\ColorBiz.class
+com\wisedu\casp\portal\template\sys\lzjtu\model\MyTaskCountResponse.class
+com\wisedu\casp\portal\template\sys\lzjtu\plugin\TemplateVariable.class

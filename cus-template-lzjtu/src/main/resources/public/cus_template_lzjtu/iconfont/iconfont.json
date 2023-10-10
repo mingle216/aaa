@@ -1,0 +1,990 @@
+{
+  "id": "2131494",
+  "name": "AMP-一网通办official模版图标库-模版引擎",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "供研发人员使用
+其中图标库包括菜单类、事项类（服务分类/服务部门）、卡片类（链接导航）、通用类图标。",
+  "glyphs": [
+    {
+      "icon_id": "18494748",
+      "name": "单选-选中",
+      "font_class": "Singlechoice-Selected",
+      "unicode": "e767",
+      "unicode_decimal": 59239
+    },
+    {
+      "icon_id": "18375826",
+      "name": "失败",
+      "font_class": "toastfailure",
+      "unicode": "e765",
+      "unicode_decimal": 59237
+    },
+    {
+      "icon_id": "18375827",
+      "name": "成功",
+      "font_class": "toastsuccess",
+      "unicode": "e766",
+      "unicode_decimal": 59238
+    },
+    {
+      "icon_id": "12362084",
+      "name": "地点-详情页",
+      "font_class": "place",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "13901223",
+      "name": "人工服务",
+      "font_class": "ArtificialService",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "13901224",
+      "name": "自助服务",
+      "font_class": "SelfService",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "18238140",
+      "name": "链接",
+      "font_class": "lianjie",
+      "unicode": "e764",
+      "unicode_decimal": 59236
+    },
+    {
+      "icon_id": "18055196",
+      "name": "默认图标",
+      "font_class": "default",
+      "unicode": "e763",
+      "unicode_decimal": 59235
+    },
+    {
+      "icon_id": "18005693",
+      "name": "评价",
+      "font_class": "Evaluation",
+      "unicode": "e761",
+      "unicode_decimal": 59233
+    },
+    {
+      "icon_id": "17894888",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
+      "icon_id": "17828759",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "17780031",
+      "name": "重新上传",
+      "font_class": "reupload",
+      "unicode": "e60f1",
+      "unicode_decimal": 942321
+    },
+    {
+      "icon_id": "17777296",
+      "name": "收起",
+      "font_class": "menu-PutAway",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "17777297",
+      "name": "展开全部",
+      "font_class": "menu-Unfold",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "17279697",
+      "name": "更多",
+      "font_class": "More",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "17279698",
+      "name": "下拉",
+      "font_class": "Down",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "17279699",
+      "name": "向右",
+      "font_class": "Right",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "17279707",
+      "name": "垃圾桶",
+      "font_class": "Ashcan",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "17280582",
+      "name": "上传",
+      "font_class": "Upload",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "11134685",
+      "name": "多选-选中",
+      "font_class": "MultipleSelection",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "17625466",
+      "name": "多选-未选中",
+      "font_class": "MultipleSelectUnselected",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "13508903",
+      "name": "垃圾桶",
+      "font_class": "Ashcan01",
+      "unicode": "e926",
+      "unicode_decimal": 59686
+    },
+    {
+      "icon_id": "14385763",
+      "name": "用户名",
+      "font_class": "UserName",
+      "unicode": "e925",
+      "unicode_decimal": 59685
+    },
+    {
+      "icon_id": "16680549",
+      "name": "任务中心",
+      "font_class": "taskCenter",
+      "unicode": "e924",
+      "unicode_decimal": 59684
+    },
+    {
+      "icon_id": "16680615",
+      "name": "收藏/未收藏",
+      "font_class": "favorites",
+      "unicode": "e923",
+      "unicode_decimal": 59683
+    },
+    {
+      "icon_id": "16681285",
+      "name": "流程",
+      "font_class": "flowChart",
+      "unicode": "e922",
+      "unicode_decimal": 59682
+    },
+    {
+      "icon_id": "16689188",
+      "name": "紧急",
+      "font_class": "urgent",
+      "unicode": "e921",
+      "unicode_decimal": 59681
+    },
+    {
+      "icon_id": "16689803",
+      "name": "最新",
+      "font_class": "newest",
+      "unicode": "e920",
+      "unicode_decimal": 59680
+    },
+    {
+      "icon_id": "16732695",
+      "name": "icon-地点",
+      "font_class": "location",
+      "unicode": "e919",
+      "unicode_decimal": 59673
+    },
+    {
+      "icon_id": "16732696",
+      "name": "icon-持续时间",
+      "font_class": "duration",
+      "unicode": "e918",
+      "unicode_decimal": 59672
+    },
+    {
+      "icon_id": "16732697",
+      "name": "icon-上线时间",
+      "font_class": "timeOnline",
+      "unicode": "e917",
+      "unicode_decimal": 59671
+    },
+    {
+      "icon_id": "16732698",
+      "name": "icon-任课教师",
+      "font_class": "theTeacher",
+      "unicode": "e916",
+      "unicode_decimal": 59670
+    },
+    {
+      "icon_id": "16732699",
+      "name": "icon-服务主题",
+      "font_class": "serviceSubject",
+      "unicode": "e915",
+      "unicode_decimal": 59669
+    },
+    {
+      "icon_id": "16732700",
+      "name": "icon-课程编号",
+      "font_class": "courseNo",
+      "unicode": "e914",
+      "unicode_decimal": 59668
+    },
+    {
+      "icon_id": "16732701",
+      "name": "icon-访问量",
+      "font_class": "views",
+      "unicode": "e913",
+      "unicode_decimal": 59667
+    },
+    {
+      "icon_id": "16732702",
+      "name": "icon-责任部门",
+      "font_class": "responsibleDepartment",
+      "unicode": "e912",
+      "unicode_decimal": 59666
+    },
+    {
+      "icon_id": "16732703",
+      "name": "icon-节次",
+      "font_class": "session",
+      "unicode": "e911",
+      "unicode_decimal": 59665
+    },
+    {
+      "icon_id": "16734572",
+      "name": "应用服务-默认图标",
+      "font_class": "applicationServiceDefault",
+      "unicode": "e910",
+      "unicode_decimal": 59664
+    },
+    {
+      "icon_id": "16997670",
+      "name": "锁定",
+      "font_class": "Locking",
+      "unicode": "e909",
+      "unicode_decimal": 59657
+    },
+    {
+      "icon_id": "16997723",
+      "name": "全部服务",
+      "font_class": "AllServices",
+      "unicode": "e908",
+      "unicode_decimal": 59656
+    },
+    {
+      "icon_id": "17178602",
+      "name": "展开",
+      "font_class": "Unfold",
+      "unicode": "e907",
+      "unicode_decimal": 59655
+    },
+    {
+      "icon_id": "17178607",
+      "name": "收起",
+      "font_class": "PutAway",
+      "unicode": "e906",
+      "unicode_decimal": 59654
+    },
+    {
+      "icon_id": "17327090",
+      "name": "通用图标",
+      "font_class": "Common",
+      "unicode": "e905",
+      "unicode_decimal": 59653
+    },
+    {
+      "icon_id": "17327233",
+      "name": "询问警示",
+      "font_class": "Warning",
+      "unicode": "e904",
+      "unicode_decimal": 59652
+    },
+    {
+      "icon_id": "17327234",
+      "name": "失败",
+      "font_class": "Failure",
+      "unicode": "e903",
+      "unicode_decimal": 59651
+    },
+    {
+      "icon_id": "17327243",
+      "name": "等待",
+      "font_class": "Waiting",
+      "unicode": "e902",
+      "unicode_decimal": 59650
+    },
+    {
+      "icon_id": "17633018",
+      "name": "选中",
+      "font_class": "Selection",
+      "unicode": "e901",
+      "unicode_decimal": 59649
+    },
+    {
+      "icon_id": "17643636",
+      "name": "语言",
+      "font_class": "Language",
+      "unicode": "e900",
+      "unicode_decimal": 59648
+    },
+    {
+      "icon_id": "17660535",
+      "name": "安全退出",
+      "font_class": "logout",
+      "unicode": "e930",
+      "unicode_decimal": 59696
+    },
+    {
+      "icon_id": "17660536",
+      "name": "后台管理",
+      "font_class": "backstageManage",
+      "unicode": "e929",
+      "unicode_decimal": 59689
+    },
+    {
+      "icon_id": "17660537",
+      "name": "个人中心",
+      "font_class": "personCenter",
+      "unicode": "e928",
+      "unicode_decimal": 59688
+    },
+    {
+      "icon_id": "17660538",
+      "name": "账号管理",
+      "font_class": "accountManage",
+      "unicode": "e927",
+      "unicode_decimal": 59687
+    },
+    {
+      "icon_id": "13415576",
+      "name": "党员",
+      "font_class": "linknav-PartyMember",
+      "unicode": "e700",
+      "unicode_decimal": 59136
+    },
+    {
+      "icon_id": "13415577",
+      "name": "创新",
+      "font_class": "linknav-Innovation",
+      "unicode": "e701",
+      "unicode_decimal": 59137
+    },
+    {
+      "icon_id": "13415578",
+      "name": "检索系统",
+      "font_class": "linknav-RetrievalSystem",
+      "unicode": "e702",
+      "unicode_decimal": 59138
+    },
+    {
+      "icon_id": "13415579",
+      "name": "人事系统",
+      "font_class": "linknav-PersonnelSystem",
+      "unicode": "e703",
+      "unicode_decimal": 59139
+    },
+    {
+      "icon_id": "13415580",
+      "name": "新闻",
+      "font_class": "linknav-News",
+      "unicode": "e704",
+      "unicode_decimal": 59140
+    },
+    {
+      "icon_id": "13415581",
+      "name": "校历",
+      "font_class": "linknav-SchoolCalendar",
+      "unicode": "e705",
+      "unicode_decimal": 59141
+    },
+    {
+      "icon_id": "13415582",
+      "name": "通用",
+      "font_class": "linknav-Universal",
+      "unicode": "e706",
+      "unicode_decimal": 59142
+    },
+    {
+      "icon_id": "13415583",
+      "name": "系统",
+      "font_class": "linknav-System",
+      "unicode": "e707",
+      "unicode_decimal": 59143
+    },
+    {
+      "icon_id": "13415584",
+      "name": "正版软件",
+      "font_class": "linknav-GenuineSoftware",
+      "unicode": "e708",
+      "unicode_decimal": 59144
+    },
+    {
+      "icon_id": "13415585",
+      "name": "文件夹",
+      "font_class": "linknav-Folder",
+      "unicode": "e709",
+      "unicode_decimal": 59145
+    },
+    {
+      "icon_id": "13415586",
+      "name": "学工系统",
+      "font_class": "linknav-AcademicSystem",
+      "unicode": "e710",
+      "unicode_decimal": 59152
+    },
+    {
+      "icon_id": "13415587",
+      "name": "VPN",
+      "font_class": "linknav-VPN",
+      "unicode": "e711",
+      "unicode_decimal": 59153
+    },
+    {
+      "icon_id": "13415588",
+      "name": "招标采购",
+      "font_class": "linknav-Bidding",
+      "unicode": "e712",
+      "unicode_decimal": 59154
+    },
+    {
+      "icon_id": "13415589",
+      "name": "OA",
+      "font_class": "linknav-OASystem",
+      "unicode": "e713",
+      "unicode_decimal": 59155
+    },
+    {
+      "icon_id": "15195084",
+      "name": "固话",
+      "font_class": "linknav-FixedTelephone",
+      "unicode": "e714",
+      "unicode_decimal": 59156
+    },
+    {
+      "icon_id": "15195085",
+      "name": "手机",
+      "font_class": "linknav-MobilePhone",
+      "unicode": "e715",
+      "unicode_decimal": 59157
+    },
+    {
+      "icon_id": "15195086",
+      "name": "客服",
+      "font_class": "linknav-CustomerService",
+      "unicode": "e716",
+      "unicode_decimal": 59158
+    },
+    {
+      "icon_id": "17677512",
+      "name": "校长办公室",
+      "font_class": "dep-PrincipalOffice",
+      "unicode": "ea28",
+      "unicode_decimal": 59944
+    },
+    {
+      "icon_id": "17677513",
+      "name": "校医院",
+      "font_class": "dep-SchoolClinic",
+      "unicode": "ea29",
+      "unicode_decimal": 59945
+    },
+    {
+      "icon_id": "17677514",
+      "name": "心理健康教育与研究中心",
+      "font_class": "dep-HealthCenter",
+      "unicode": "ea30",
+      "unicode_decimal": 59952
+    },
+    {
+      "icon_id": "17677515",
+      "name": "学工处",
+      "font_class": "dep-AcademicOffice",
+      "unicode": "ea31",
+      "unicode_decimal": 59953
+    },
+    {
+      "icon_id": "17677516",
+      "name": "研究生院",
+      "font_class": "dep-GraduateSchool",
+      "unicode": "ea32",
+      "unicode_decimal": 59954
+    },
+    {
+      "icon_id": "17677517",
+      "name": "招标办公室",
+      "font_class": "dep-BiddingOffice",
+      "unicode": "ea33",
+      "unicode_decimal": 59955
+    },
+    {
+      "icon_id": "17677518",
+      "name": "中国社会科学研究评价中心",
+      "font_class": "dep-ChineseSocialSciences",
+      "unicode": "ea34",
+      "unicode_decimal": 59956
+    },
+    {
+      "icon_id": "17677519",
+      "name": "资产处",
+      "font_class": "dep-AssetsDepartment",
+      "unicode": "ea35",
+      "unicode_decimal": 59957
+    },
+    {
+      "icon_id": "17677520",
+      "name": "信息中心",
+      "font_class": "dep-InformationCenter",
+      "unicode": "ea36",
+      "unicode_decimal": 59958
+    },
+    {
+      "icon_id": "17677485",
+      "name": "保卫处",
+      "font_class": "dep-SecurityOffice",
+      "unicode": "ea01",
+      "unicode_decimal": 59905
+    },
+    {
+      "icon_id": "17677486",
+      "name": "财务处",
+      "font_class": "dep-FinanceOffice",
+      "unicode": "ea02",
+      "unicode_decimal": 59906
+    },
+    {
+      "icon_id": "17677487",
+      "name": "党委办公室",
+      "font_class": "dep-PartyCommitteeOffice",
+      "unicode": "ea03",
+      "unicode_decimal": 59907
+    },
+    {
+      "icon_id": "17677488",
+      "name": "创新创业中心",
+      "font_class": "dep-EntrepreneurshipCenter",
+      "unicode": "ea04",
+      "unicode_decimal": 59908
+    },
+    {
+      "icon_id": "17677489",
+      "name": "党委宣传部",
+      "font_class": "dep-P-PropagandaDepartment",
+      "unicode": "ea05",
+      "unicode_decimal": 59909
+    },
+    {
+      "icon_id": "17677490",
+      "name": "党委组织部",
+      "font_class": "dep-P-OrganizationDepartment",
+      "unicode": "ea06",
+      "unicode_decimal": 59910
+    },
+    {
+      "icon_id": "17677491",
+      "name": "档案馆",
+      "font_class": "dep-Archives",
+      "unicode": "ea07",
+      "unicode_decimal": 59911
+    },
+    {
+      "icon_id": "17677492",
+      "name": "共青团委员会",
+      "font_class": "dep-YouthLeagueCommittee",
+      "unicode": "ea08",
+      "unicode_decimal": 59912
+    },
+    {
+      "icon_id": "17677493",
+      "name": "发展委员会",
+      "font_class": "dep-DevelopmentCommittee",
+      "unicode": "ea09",
+      "unicode_decimal": 59913
+    },
+    {
+      "icon_id": "17677494",
+      "name": "鼓楼校区管理办公室",
+      "font_class": "dep-G-ManagementOffice",
+      "unicode": "ea10",
+      "unicode_decimal": 59920
+    },
+    {
+      "icon_id": "17677495",
+      "name": "法制办公室",
+      "font_class": "dep-LegalOffice",
+      "unicode": "ea11",
+      "unicode_decimal": 59921
+    },
+    {
+      "icon_id": "17677496",
+      "name": "国际合作与交流处",
+      "font_class": "dep-InternationalCooperation",
+      "unicode": "ea12",
+      "unicode_decimal": 59922
+    },
+    {
+      "icon_id": "17677497",
+      "name": "后勤处",
+      "font_class": "dep-LogisticsOffice",
+      "unicode": "ea13",
+      "unicode_decimal": 59923
+    },
+    {
+      "icon_id": "17677498",
+      "name": "纪委办公室",
+      "font_class": "dep-DisciplinaryCommitteeOffice",
+      "unicode": "ea14",
+      "unicode_decimal": 59924
+    },
+    {
+      "icon_id": "17677499",
+      "name": "基本建设处",
+      "font_class": "dep-CapitalConstruction",
+      "unicode": "ea15",
+      "unicode_decimal": 59925
+    },
+    {
+      "icon_id": "17677500",
+      "name": "继续教育学院",
+      "font_class": "dep-ContinuingEducation",
+      "unicode": "ea16",
+      "unicode_decimal": 59926
+    },
+    {
+      "icon_id": "17677501",
+      "name": "教务处",
+      "font_class": "dep-AcademicAffairsOffice",
+      "unicode": "ea17",
+      "unicode_decimal": 59927
+    },
+    {
+      "icon_id": "17677502",
+      "name": "教师教学发展中心",
+      "font_class": "dep-TeachingDevelopmentCenter",
+      "unicode": "ea18",
+      "unicode_decimal": 59928
+    },
+    {
+      "icon_id": "17677503",
+      "name": "就业指导中心",
+      "font_class": "dep-CareerCenter",
+      "unicode": "ea19",
+      "unicode_decimal": 59929
+    },
+    {
+      "icon_id": "17677504",
+      "name": "离退休工作处",
+      "font_class": "dep-RetirementOffice",
+      "unicode": "ea20",
+      "unicode_decimal": 59936
+    },
+    {
+      "icon_id": "17677506",
+      "name": "南京大学博物馆",
+      "font_class": "dep-NJUmuseum",
+      "unicode": "ea22",
+      "unicode_decimal": 59938
+    },
+    {
+      "icon_id": "17677507",
+      "name": "科学技术处",
+      "font_class": "dep-ScienceTechnologyOffice",
+      "unicode": "ea23",
+      "unicode_decimal": 59939
+    },
+    {
+      "icon_id": "17677508",
+      "name": "人事处",
+      "font_class": "dep-PersonnelOffice",
+      "unicode": "ea24",
+      "unicode_decimal": 59940
+    },
+    {
+      "icon_id": "17677509",
+      "name": "图书馆",
+      "font_class": "dep-Library",
+      "unicode": "ea25",
+      "unicode_decimal": 59941
+    },
+    {
+      "icon_id": "17677510",
+      "name": "实验室与设备管理处",
+      "font_class": "dep-EquipmentManagementOffice",
+      "unicode": "e76d",
+      "unicode_decimal": 59245
+    },
+    {
+      "icon_id": "17677511",
+      "name": "现代分析中心",
+      "font_class": "dep-ModernAnalysisCenter",
+      "unicode": "e76e",
+      "unicode_decimal": 59246
+    },
+    {
+      "icon_id": "17667457",
+      "name": "毕业生服务",
+      "font_class": "Clf-GraduateService",
+      "unicode": "e800",
+      "unicode_decimal": 59392
+    },
+    {
+      "icon_id": "17667458",
+      "name": "财务服务",
+      "font_class": "Clf-FinancialServices",
+      "unicode": "e801",
+      "unicode_decimal": 59393
+    },
+    {
+      "icon_id": "17667459",
+      "name": "公共服务",
+      "font_class": "Clf-PublicService",
+      "unicode": "e802",
+      "unicode_decimal": 59394
+    },
+    {
+      "icon_id": "17667460",
+      "name": "党政服务",
+      "font_class": "Clf-PartyAffairs",
+      "unicode": "e803",
+      "unicode_decimal": 59395
+    },
+    {
+      "icon_id": "17667461",
+      "name": "合作交流",
+      "font_class": "Clf-Cooperation",
+      "unicode": "e804",
+      "unicode_decimal": 59396
+    },
+    {
+      "icon_id": "17667462",
+      "name": "教育教学",
+      "font_class": "Clf-Education",
+      "unicode": "e805",
+      "unicode_decimal": 59397
+    },
+    {
+      "icon_id": "17667463",
+      "name": "就业服务",
+      "font_class": "Clf-EmploymentServices",
+      "unicode": "e806",
+      "unicode_decimal": 59398
+    },
+    {
+      "icon_id": "17667464",
+      "name": "后勤保障",
+      "font_class": "Clf-LogisticsSupport",
+      "unicode": "e807",
+      "unicode_decimal": 59399
+    },
+    {
+      "icon_id": "17667465",
+      "name": "其他",
+      "font_class": "dep-Clf-Other",
+      "unicode": "e808",
+      "unicode_decimal": 59400
+    },
+    {
+      "icon_id": "17667466",
+      "name": "设备资产",
+      "font_class": "Clf-EquipmentAssets",
+      "unicode": "e809",
+      "unicode_decimal": 59401
+    },
+    {
+      "icon_id": "17667467",
+      "name": "人事服务",
+      "font_class": "Clf-PersonnelService",
+      "unicode": "e810",
+      "unicode_decimal": 59408
+    },
+    {
+      "icon_id": "17667468",
+      "name": "活动申请",
+      "font_class": "Clf-ActivityApplication",
+      "unicode": "e811",
+      "unicode_decimal": 59409
+    },
+    {
+      "icon_id": "17667469",
+      "name": "网络账号",
+      "font_class": "Clf-NetworkAccount",
+      "unicode": "e812",
+      "unicode_decimal": 59410
+    },
+    {
+      "icon_id": "17667470",
+      "name": "校园卡服务",
+      "font_class": "Clf-CampusCardService",
+      "unicode": "e75d",
+      "unicode_decimal": 59229
+    },
+    {
+      "icon_id": "17667471",
+      "name": "科研服务",
+      "font_class": "Clf-ResearchService",
+      "unicode": "e814",
+      "unicode_decimal": 59412
+    },
+    {
+      "icon_id": "17667472",
+      "name": "学工服务",
+      "font_class": "Clf-AcademicService",
+      "unicode": "e815",
+      "unicode_decimal": 59413
+    },
+    {
+      "icon_id": "17667473",
+      "name": "IT服务",
+      "font_class": "Clf-ITService",
+      "unicode": "e816",
+      "unicode_decimal": 59414
+    },
+    {
+      "icon_id": "17667474",
+      "name": "医疗健康",
+      "font_class": "Clf-MedicalHealth",
+      "unicode": "e817",
+      "unicode_decimal": 59415
+    },
+    {
+      "icon_id": "17667475",
+      "name": "行政办公",
+      "font_class": "Clf-Administration",
+      "unicode": "e818",
+      "unicode_decimal": 59416
+    },
+    {
+      "icon_id": "17667476",
+      "name": "社团活动",
+      "font_class": "Clf-SocialActivity",
+      "unicode": "e819",
+      "unicode_decimal": 59417
+    },
+    {
+      "icon_id": "17667477",
+      "name": "研究生事务",
+      "font_class": "Clf-GraduateAffairs",
+      "unicode": "e820",
+      "unicode_decimal": 59424
+    },
+    {
+      "icon_id": "17667478",
+      "name": "校园生活",
+      "font_class": "Clf-SchoolLife",
+      "unicode": "e821",
+      "unicode_decimal": 59425
+    },
+    {
+      "icon_id": "17667479",
+      "name": "招聘事物",
+      "font_class": "Clf-RecruitmentAffairs",
+      "unicode": "e822",
+      "unicode_decimal": 59426
+    },
+    {
+      "icon_id": "17667480",
+      "name": "助学金",
+      "font_class": "Clf-Bursary",
+      "unicode": "e823",
+      "unicode_decimal": 59427
+    },
+    {
+      "icon_id": "17650870",
+      "name": "工作台",
+      "font_class": "menu-Workbench",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "17650886",
+      "name": "办事大厅",
+      "font_class": "menu-BusinessLobby",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "17651160",
+      "name": "通用",
+      "font_class": "menu-Universal",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "17651162",
+      "name": "三张清单",
+      "font_class": "menu-ThreeLists",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "14003183",
+      "name": "我的大学",
+      "font_class": "menu-MyUniversity",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "12261683",
+      "name": "回到顶部",
+      "font_class": "menu-BackTop",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "12261766",
+      "name": "我的收藏",
+      "font_class": "menu-MyCollection",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "12261767",
+      "name": "我的办件",
+      "font_class": "menu-MyOffice",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "15704791",
+      "name": "教师办事",
+      "font_class": "menu-TeacherWork",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "15704793",
+      "name": "学生办事",
+      "font_class": "menu-StudentAffairs",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "17651383",
+      "name": "我的消息",
+      "font_class": "menu-MyMessage",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "17651406",
+      "name": "智能问答",
+      "font_class": "menu-SmartQ-A",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    }
+  ]
+}

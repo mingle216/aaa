@@ -1,0 +1,1165 @@
+<style>
+        .logo-${programmeId}{
+            display: flex;
+            align-content: flex-start;
+        }
+
+        .left-${programmeId}{
+            margin-left: 30px;
+            width: 75px;
+            height: 110px;
+        }
+
+        .right-one-${programmeId}{
+            display: flex;
+            align-content: flex-start;
+        }
+
+        .right-one-img-${programmeId}{
+
+            position: relative;
+            width: 288px;
+            height: 96px;
+            background: #fafafa;
+            border: 1px dashed #dcdee2;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: border-color .2s ease;
+        }
+
+        .tip-text-img-${programmeId}{
+            width: 288px;
+            font-size: 10px;
+            color: darkgray;
+        }
+
+        /* 主题色css Start */
+        .themeColor-${programmeId}{
+            display: flex;
+            align-content: flex-start;
+        }
+
+        .item-content-${programmeId} {
+            display: flex;
+            flex-wrap: wrap;
+            width: 750px;
+        }
+
+        .item-${programmeId} {
+            width: 230px;
+            display: flex;
+            align-content: center;
+            margin-bottom: 10px;
+            margin-right: 20px;
+        }
+
+        .img-content-${programmeId} {
+            width: 78px;
+            height: 45px;
+            border: 1px solid #dcdee2;
+            border-radius: 4px;
+        }
+
+        .img-${programmeId} {
+            width: 72px;
+            height: 38px;
+
+            margin: 3px 2px 2px 2px;
+        }
+
+        .text-content-${programmeId} {
+            margin-left: 10px;
+        }
+
+        /* 主题色css End */
+
+        .input-${programmeId} {
+            /*font-family:Tahoma, Arial, 宋体;*/
+            font-size: 8pt;
+            line-height:15px;
+            COLOR: #000000;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: solid;
+            border-left-style: none;
+            border-bottom-color: #000000;
+            border-top-width: 0px;
+            border-right-width: 0px;
+            border-bottom-width: 1px;
+            border-left-width: 0px;
+
+            width: 66px;
+        }
+
+        .left-name-${programmeId} {
+            font-size: 10px;
+            color: darkgray;
+        }
+
+        /* 网站标题 Start */
+        .eTitle-${programmeId} {
+            display: flex;
+            align-content: flex-start;
+        }
+
+        /* 网站标题 End */
+
+
+        /* footer Start */
+        .footer-${programmeId} {
+            display: flex;
+            align-content: flex-start;
+        }
+
+        .textarea-content-${programmeId}{
+            width: 1024px;
+            height: 500px;
+            background: #fafafa;
+            border: 1px solid #dcdee2;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* footer End */
+
+        .confirm-content-content-${programmeId} {
+            height: 125px;
+            position: relative;
+
+        }
+
+        .confirm-content-${programmeId} {
+            display: flex;
+            align-content: flex-start;
+            border-top: 1px solid #ddd;
+            width:100%;
+            height:75px;
+            text-align: center;
+            position: absolute;
+            bottom:0px;
+        }
+
+        .ivu-input-word-count-${programmeId} {
+            text-align: center;
+            position: absolute;
+            right: 10px;
+            top: 2px;
+            bottom: 2px;
+            padding-left: 7px;
+            background: #fff;
+            z-index: 10;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            color: #808695;
+            font-size: 12px;
+        }
+
+        .input-group{
+            width: 100%;
+            position: relative;
+            vertical-align: middle;
+            line-height: normal;
+        }
+
+
+		.img-container-${programmeId} {
+            position: relative;
+            width: inherit;
+            height: 96px;
+            display: none;
+		}
+
+		.mask-layer-${programmeId} {
+            display:none;
+            border-radius: 4px;
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(78, 78, 78, 0.5);
+        }
+
+        .ivu-input-word-count2-${programmeId} {
+            color: red;
+            text-align: center;
+            position: absolute;
+            right: -72px;
+            top: 10px;
+            bottom: 2px;
+            padding-left: 7px;
+            background: rgb(255, 255, 255);
+            z-index: 10;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 12px;
+
+            display: none;
+        }
+
+        .input-group-sty-${programmeId}{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .i-picture-${programmeId}{
+            text-align: center;
+            position: absolute;
+            right: -21px;
+            top: 4px;
+            bottom: 2px;
+            z-index: 10;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 14px;
+            width: 14px;
+            background-color: rgba(255, 255, 255, 1);
+            vertical-align: top;
+            box-sizing:border-box;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(153, 153, 153, 1);
+            border-radius: 7px;
+            box-shadow: none;
+            /*font-family: 'Times-Roman', 'Times';*/
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            color: #999999;
+            margin-top:8px;
+        }
+        .i-picture-${programmeId}-content{
+            display: block;
+            /*font-family: 'Times-Roman', 'Times';*/
+            color: #999999;
+            height: 12px;
+            line-height: 12px;
+            text-align: center;
+            cursor:pointer;
+        }
+
+        .tooltip-inner{
+            background: #ffffff !important;
+            text-align: left !important;
+            color: darkgray;
+            min-width: 450px !important;
+            box-shadow: 0 0.125rem 0.9375rem 0.25rem rgba(22, 29, 51, .05);
+        }
+
+        .i-picture-${programmeId}-content:focus{
+            outline:none
+        }
+
+        .tooltip.bs-tooltip-right .arrow:before {
+            right: 0;
+            border-width: 0.4rem 0.4rem 0.4rem 0;
+            border-right-color: white !important;
+        }
+
+
+    </style>
+
+
+    <div>
+        <div style="height: 40px;"></div>
+        <!-- Logo  Start-->
+        <div class="logo-${programmeId}">
+            <div class="left-${programmeId}">
+                <span class="left-name-${programmeId}">LOGO:</span>
+            </div>
+            <div class="right">
+                <div class="right-one-${programmeId}" >
+                    <div class="right-one-img-${programmeId}">
+                        <input type="file" accept="image/*" name="uploader-input-one" class="uploader-file" id="upload-one" style="display: none;">
+                        <div style="padding: 20px 0px;" class="update-text-one" onclick="upload('upload-one')">
+                            <div class="input-group-sty-${programmeId}" >
+                                <i class="iconfont icon-Upload" style="font-size: 1.5rem;color:#2E8CF0;"></i>
+                                <p style="margin-top: 10px;font-size: 12px; color: #2E8CF0" >上传白色LOGO</p>
+                            </div>
+                        </div>
+                        <div class="img-container-${programmeId}" id="img-container-one">
+							<img class="updateimg-one" src="${imgSrcMap.bColor!}" style="width: inherit;height: 96px;" />
+							<div class="mask-layer-${programmeId}" id="mask-layer-one">
+								<i class="iconfont icon-reupload" style="position:absolute;left:40%;top: 50%;transform: translateY(-50%);color: white;" onclick="reUpload('one')">
+                                </i>
+								<i class="iconfont icon-Ashcan01" style="position:absolute;right:40%;top: 50%;transform: translateY(-50%);color: white;" onclick="cancelUpload('one')">
+                                </i>
+							</div>
+						</div>
+                        <!-- <img class="updateimg-one img-responsive" src="" style="width: inherit;height: 96px;display: none;"/> -->
+                    </div>
+                    <div class="tip-text-img-${programmeId}">
+                        <span style="margin-top: 60px;margin-left: 10px;display: inherit;">
+                            用于home/detail/search/common模板文件<br>建议上传702*180px的.png格式图片，不超过500KB
+                        </span>
+                    </div>
+                </div>
+                <div style="height: 10px;"></div>
+                <div class="right-one-${programmeId}">
+                    <div class="right-one-img-${programmeId}">
+                        <input type="file" accept="image/*" name="uploader-input-two" class="uploader-file" id="upload-two" style="display: none;">
+                        <div style="padding: 20px 0px;" class="update-text-two" onclick="upload('upload-two')">
+                            <div class="input-group-sty-${programmeId}">
+                                <i class="iconfont icon-Upload" style="font-size: 1.5rem;color:#2E8CF0;"></i>
+                                <p style="margin-top: 10px;font-size: 12px; color: #2E8CF0;">上传彩色LOGO</p>
+                            </div>
+                        </div>
+                        <div class="img-container-${programmeId}" id="img-container-two">
+							<img class="updateimg-two" src="${imgSrcMap.sColor!}" style="width: inherit;height: 96px;" />
+							<div class="mask-layer-${programmeId}" id="mask-layer-two">
+                                <i class="iconfont icon-reupload" style="position:absolute;left:40%;top: 50%;transform: translateY(-50%);color: white;" onclick="reUpload('two')">
+                                </i>
+                                <i class="iconfont icon-Ashcan01" style="position:absolute;right:40%;top: 50%;transform: translateY(-50%);color: white;" onclick="cancelUpload('two')">
+                                </i>
+							</div>
+						</div>
+                        <!-- <img class="updateimg-two img-responsive" src="" style="width: inherit;height: 96px;display: none;"/> -->
+                    </div>
+                    <div class="tip-text-img-${programmeId}">
+                        <span style="margin-top: 60px;margin-left: 10px;display: inherit;">
+                            用于blank模板文件<br>建议上传702*180px的.png格式图片，不超过500KB
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Logo End-->
+        <div style="height: 35px;"></div>
+        <!-- 主题色 Start -->
+        <div class="themeColor-${programmeId}">
+            <div class="left-${programmeId}">
+                <span class="left-name-${programmeId}">主题色：</span>
+            </div>
+            <div class="right">
+                <div>
+                    <div>
+                        <span><b>Primary</b></span><a style="cursor: pointer;font-size: 10px;color: #2E8CF0;margin-left: 10px;" onclick="resetting('portal-primary-color-lv','#307AFB')">重置</a>
+                        <br>
+                        <span style="width: 288px;font-size: 10px;color: darkgray;">为呈现网站主要风格的颜色，一般为主题色。</span>
+                    </div>
+                    <div class="item-content-${programmeId}" id="primary-item-content">
+                        <% if( !isEmpty(primaryColorList) ){ %>
+                            <% for( primaryColor in primaryColorList ){ %>
+                                <div class="item-${programmeId}">
+                                    <div class="img-content-${programmeId}">
+                                        <div class="img-${programmeId}" id="img-${primaryColorLP.index}"></div>
+                                    </div>
+                                    <div class="text-content-${programmeId}">
+                                        <div>
+                                            <span style="width: 288px;font-size: 10px;color: darkgray;">${primaryColor.pName}</span>
+                                        </div>
+                                        <div>
+                                            <input id="${primaryColor.pName}" class="input-${programmeId}" type="text" autocomplete="off" value="${primaryColor.pColor!}" data-index="${primaryColorLP.index}">
+                                            <% if( primaryColorLP.index == 1 ){ %>
+                                                <a style="cursor: pointer;font-size: 10px;color: #2E8CF0;" onclick="generateColor('portal-primary-color-lv')">生成配色</a>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } else { %>
+
+
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-1"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-primary-color-lv1</span>
+                                </div>
+                                <div id="pColorpicker1">
+                                    <input id="portal-primary-color-lv1" class="input-${programmeId}" type="text" autocomplete="off" value="#307AFB" data-index="1">
+                                    <a style="cursor: pointer;font-size: 10px;color: #2E8CF0;" onclick="generateColor('portal-primary-color-lv')">生成配色</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-2"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-primary-color-lv2</span>
+                                </div>
+                                <div id="pColorpicker2">
+                                    <input id="portal-primary-color-lv2" class="input-${programmeId}" type="text" autocomplete="off" value="#6ea1fc" data-index="2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-3"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-primary-color-lv3</span>
+                                </div>
+                                <div id="pColorpicker3">
+                                    <input id="portal-primary-color-lv3" class="input-${programmeId}" type="text" autocomplete="off" value="#accafd" data-index="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-4"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-primary-color-lv4</span>
+                                </div>
+                                <div id="pColorpicker4">
+                                    <input id="portal-primary-color-lv4" class="input-${programmeId}" type="text" autocomplete="off" value="#d6e4fe" data-index="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-5"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-primary-color-lv5</span>
+                                </div>
+                                <div id="pColorpicker5">
+                                    <input id="portal-primary-color-lv5" class="input-${programmeId}" type="text" autocomplete="off" value="#eaf1fe" data-index="5">
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span><b>中性色</b></span><a style="cursor: pointer;font-size: 10px;color: #2E8CF0;margin-left: 10px;" onclick="resetting('portal-font-color-lv','#102645')">重置</a>
+                        <br>
+                        <span style="width: 288px;font-size: 10px;color: darkgray;">中性色用于文本颜色。需分不同层级供卡片或模板开发时使用。</span>
+                    </div>
+                    <div class="item-content-${programmeId}">
+                        <% if( !isEmpty(fontColorList) ){ %>
+                            <% for( fontColor in fontColorList ){ %>
+                                <div class="item-${programmeId}">
+                                    <div class="img-content-${programmeId}">
+                                        <div class="img-${programmeId}" id="img-zxs-${fontColorLP.index}"></div>
+                                    </div>
+                                    <div class="text-content-${programmeId}">
+                                        <div>
+                                            <span style="width: 288px;font-size: 10px;color: darkgray;">${fontColor.pName}</span>
+                                        </div>
+                                        <div>
+                                            <input id="${fontColor.pName}" class="input-${programmeId}" type="text" autocomplete="off" value="${fontColor.pColor!}" data-index="${fontColorLP.index+5}">
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } else { %>
+
+
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-zxs-1"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-font-color-lv1</span>
+                                </div>
+                                <div>
+                                    <input id="portal-font-color-lv1" class="input-${programmeId}" type="text" autocomplete="off" value="#102645" data-index="6">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-zxs-2"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-font-color-lv2</span>
+                                </div>
+                                <div>
+                                    <input id="portal-font-color-lv2" class="input-${programmeId}" type="text" autocomplete="off" value="#707d8f" data-index="7">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-zxs-3"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-font-color-lv3</span>
+                                </div>
+                                <div id="inputColorpicker">
+                                    <input id="portal-font-color-lv3" class="input-${programmeId}" type="text" autocomplete="off" value="#9fa8b5" data-index="8">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-zxs-4"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-font-color-lv4</span>
+                                </div>
+                                <div>
+                                    <input id="portal-font-color-lv4" class="input-${programmeId}" type="text" autocomplete="off" value="#c1cbd4" data-index="9">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-${programmeId}">
+                            <div class="img-content-${programmeId}">
+                                <div class="img-${programmeId}" id="img-zxs-5"></div>
+                            </div>
+                            <div class="text-content-${programmeId}">
+                                <div>
+                                    <span style="width: 288px;font-size: 10px;color: darkgray;">portal-font-color-lv5</span>
+                                </div>
+                                <div>
+                                    <input id="portal-font-color-lv5" class="input-${programmeId}" type="text" autocomplete="off" value="#dfe6ec" data-index="10">
+                                </div>
+                            </div>
+                        </div>
+
+                        <% } %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 主题色 End -->
+        <div style="height: 35px;"></div>
+        <!-- 网站标题 Start -->
+        <div class="eTitle-${programmeId}">
+            <div class="left-${programmeId}">
+                <span class="left-name-${programmeId}">导航栏信息：</span>
+            </div>
+            <div class="right">
+                <% if( 1 == languageBizList.~size!){ %>
+                    <div class="input-group" style="margin-bottom: 10px">
+                        <input type="hidden" id="lang-one-hidden" data-langname="${(languageBizList[0].name!), xss}" data-langkey="${languageBizList[0].key!}" />
+                        <input id="lang-one" type="text" value="${(languageBizList[0].value!), xss}" class="form-control" placeholder="请输入" aria-label="Input group example" autocomplete="off" maxlength="30" oninput="inputChange('one')" style="width: 552px;">
+                        <span id="title-span-one" class="ivu-input-word-count-${programmeId}">${strutil.length(languageBizList[0].value!)}/30</span>
+                        <span class="i-picture-${programmeId} d-inline-block">
+                                              <span class="i-picture-${programmeId}-content" tabindex="0" data-placement="right" data-toggle="tooltip" data-html="true" title="<div style='width:500px;height:45px;'><div>用于网站顶部的辅助信息</div><div><img width='400px' height='60px' src='${ctxInternalPath}/CUS_TEMPLATE_LZJTU/tip/image/tip.png'></div></div>">i</span>
+                                        </span>
+                    </div>
+                <% } else { %>
+                    <% for(lang in languageBizList!){ %>
+                        <div class="input-group" style="margin-bottom: 10px">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" id="btnGroupAddon-${langLP.index}" data-langname="${lang.name!}" data-langkey="${lang.key!}" style="width: 90px">
+                                    ${lang.name!}
+                                    <!--                                <%if( 1 == langLP.index ){ %>-->
+                                    <!--                                    <span style="color: red">*</span>-->
+                                    <!--                                <% } %>-->
+                                </div>
+                            </div>
+                            <input id="lang-${langLP.index}" type="text" value="${(lang.value!), xss}" class="form-control" placeholder="请输入" aria-label="Input group example" autocomplete="off" aria-describedby="btnGroupAddon-${langLP.index}" maxlength="30" oninput="inputChange('${langLP.index}')" style="width: 552px;">
+                            <span id="title-span-${langLP.index}" class="ivu-input-word-count-${programmeId}">${strutil.length(lang.value!)}/30</span>
+                            <%if( 1 == langLP.index ){ %>
+                            <span class="i-picture-${programmeId} d-inline-block">
+                                          <span class="i-picture-${programmeId}-content" tabindex="0" data-placement="right" data-toggle="tooltip" data-html="true" title="<div style='width:500px;height:45px;'><div>用于网站顶部的辅助信息</div><div><img width='400px' height='60px' src='${ctxInternalPath}/CUS_TEMPLATE_LZJTU/tip/image/tip.png'></div></div>">i</span>
+                                    </span>
+                            <% } %>
+                        </div>
+                    <% } %>
+                <% } %>
+
+
+            </div>
+        </div>
+        <!-- 网站标题 End -->
+        <div style="height: 35px;"></div>
+        <!-- footer Start -->
+        <div class="footer-${programmeId}">
+            <div class="left-${programmeId}">
+                <span class="left-name-${programmeId}">footer：</span>
+            </div>
+            <div class="right">
+                <div style="margin-bottom: 10px;">
+
+                </div>
+                <div>
+                    <textarea class="textarea-content-${programmeId}" id="textarea-content" style="overflow-y:auto"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- footer End -->
+
+        <!-- 保存 button -->
+        <div class="confirm-content-content-${programmeId}">
+            <div class="confirm-content-${programmeId}">
+                <div style="margin:20px">
+                    <button type="button" class="btn btn-info" onclick="OK()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--    是否重置提示框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="tip-modal" aria-hidden="true">
+        <input type="hidden" id="themeId" name="themeId" value="" />
+        <input type="hidden" id="themeColor" name="themeColor" value="" />
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom: 0px solid #dee2e6 !important; padding-top: 25px;">
+                    <div style="display: flex;">
+                        <i class="we-icon-warning" style="margin-right: 8px; margin-left: 10px; margin-top: 2px; color: orange; font-size: 21px;"></i>
+                        <h5 class="modal-title" style="font-weight: bold; font-size: 18px;">确认重置该主题色？</h5>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 0px">
+                    <p style="margin-left: 56px; font-size: 15px; color: #808080;">主题色重置后不可撤销，请谨慎操作</p>
+                </div>
+                <div class="modal-footer" style="border-top: 0px solid #dee2e6 !important;">
+                    <button type="button" class="btn btn-light" data-dismiss="modal" style="border: 1px solid #bfbfbf; background-color: #fff; width: 75px;">取消</button>
+                    <button type="button" class="btn btn-primary" style="width: 75px;" onclick="resettingOK()">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    document.getElementById('upload-one').addEventListener('change', function (event) {
+
+        var file_max_size = 500;
+        var $file = event.currentTarget;
+        var formdata = new FormData();
+        var file = $file.files;
+        //console.log(file);
+        if( 0 === file.length ){
+            return
+        }
+        var fileSize = file[0].size
+        if( undefined !== fileSize && ( fileSize / 1024) > file_max_size ){
+            popupTips("请上传小于500kb的图片!",'40%')
+            return
+        }
+        var namePrefix = file[0].name.split('.')[0]
+        namePrefix = encodeURI(namePrefix);
+        var nameSuffix = file[0].name.split('.')[1]
+        if( 'png' !== nameSuffix ){
+            popupTips("请上传png格式的图片!",'40%')
+            return
+        }
+        formdata.append('files', file[0], namePrefix + guid() + '.' + nameSuffix);
+        $.ajax({
+            url: '${ctxPath}/fileTodo/uploadLocalServer/0',//路径
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            multiple: true,
+            processData: false,
+            success: function (data) {
+                //console.log("upload-one")
+                //console.log(data)
+                if (data.errcode === "0") {
+                    imageUrl = data.data;
+                    imageUrl = encodeURI(imageUrl)
+                    //console.log("url:" + imageUrl);
+                    $(".updateimg-one").attr('src',imageUrl);
+                    $("#upload-one").hide();
+                    $(".update-text-one").hide();
+                    $("#img-container-one").show();
+                } else {
+                    popupTips("系统错误，图片上传失败!",'40%')
+                    $(".updateimg-one").attr('src',' ');
+                }
+            },
+            error: function (error) {
+                popupTips("系统错误，图片上传失败!",'40%')
+                $(".updateimg-one").attr('src',' ');
+                // $('#upload-one').val("");
+                // $(".update-text-one").show();
+                // $("#img-container-one").hide();
+            }
+        });
+    })
+
+    document.getElementById('upload-two').addEventListener('change', function (event) {
+
+        var file_max_size = 500;
+        var $file = event.currentTarget;
+        var formdata = new FormData();
+        var file = $file.files;
+        //console.log(file);
+        if( 0 === file.length ){
+            return
+        }
+        var fileSize = file[0].size
+        if( undefined !== fileSize && ( fileSize / 1024) > file_max_size ){
+            popupTips("请上传小于500kb的图片!",'40%')
+            return
+        }
+        var namePrefix = file[0].name.split('.')[0]
+        namePrefix = encodeURI(namePrefix);
+        var nameSuffix = file[0].name.split('.')[1]
+        if( 'png' !== nameSuffix ){
+            popupTips("请上传png格式的图片!",'40%')
+            return
+        }
+        formdata.append('files', file[0], namePrefix + guid() + '.' + nameSuffix);
+        $.ajax({
+            url: '${ctxPath}/fileTodo/uploadLocalServer/0',//路径
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            multiple: true,
+            processData: false,
+            success: function (data) {
+                //console.log("upload-two")
+                //console.log(data)
+                if (data.errcode === "0") {
+                    imageUrl = data.data;
+                    imageUrl = encodeURI(imageUrl)
+                    //console.log("url:" + imageUrl);
+                    $(".updateimg-two").attr('src',imageUrl);
+                    $("#upload-two").hide();
+                    $(".update-text-two").hide();
+                    $("#img-container-two").show();
+                } else {
+                    popupTips("系统错误，图片上传失败!",'40%')
+                    $(".updateimg-two").attr('src',' ');
+                }
+            },
+            error: function (error) {
+                popupTips("系统错误，图片上传失败!",'40%')
+                $(".updateimg-two").attr('src',' ');
+                // $('#upload-two').val("");
+                // $(".update-text-two").show();
+                // $("#img-container-two").hide();
+            }
+        });
+    })
+
+    function guid() {
+        function S4() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    }
+
+    function upload(id){
+        $('#'+id).click();
+    }
+
+    function reUpload(id){
+        $('#upload-'+id).click();
+    }
+
+    function cancelUpload(id){
+        $('.updateimg-'+id).attr("src","  ")
+        $('#upload-'+id).val("");
+        $(".update-text-"+id).show();
+        $("#img-container-"+id).hide();
+    }
+
+    function inputChange(id){
+        var length =  $('#lang-'+id).val().length;
+        $('#title-span-'+id).html(length+'/30');
+    }
+
+    function inputCheck() {
+        var length =  $('#lang-1').val().length;
+        if( 0 == length ){
+            $("#zhcheck").css("display","block");
+        }else{
+            $("#zhcheck").css("display","none");
+        }
+    }
+
+    //提示弹窗
+    function popupTips(text,mg) {
+        if(null == mg){
+            mg = 0+'px';
+        }
+        $(".logo-${programmeId}").prepend(
+            "<div id='alert' style='position: fixed;z-index: 999999;margin-left:"+ mg +";top: 0'>"+
+            "<div class=\"alert alert-danger fade show \" role=\"alert\">\n" +
+            "    <span> "+ text +"</span>\n" +
+            "</div>"+
+            "</div>"
+        );
+        window.setTimeout(function () {
+            $('#alert').remove();
+        },1000);
+    }
+
+    function previewfoot(){
+       var id;
+       try {
+           id = location.search.substring(1).split('&').filter(item => item.startsWith('id='))[0].substring(3).trim()
+       }catch (e) {
+           var split = window.location.pathname.split('/')
+           id = split[split.length - 1]
+       }
+        if('' === id || id === undefined){
+            popupTips("展示方案id不能为空!","40%")
+            return
+        }
+        window.open("${ctxPath}/common/preview-footer/"+id)
+
+    }
+
+    // 颜色选择器
+    $(function () {
+
+        if( null !== "${imgSrcMap.bColor!}" && "" !== "${imgSrcMap.bColor!}".replace("\r\n","").trim()){
+            $(".update-text-one").hide();
+            $("#upload-one").hide();
+            $("#img-container-one").show();
+        }
+        if( null !== "${imgSrcMap.sColor!}" && "" !== "${imgSrcMap.sColor!}".replace("\r\n","").trim()){
+            $(".update-text-two").hide();
+            $("#upload-two").hide();
+            $("#img-container-two").show();
+        }
+
+        for(var i=1;i<=5;i++){
+            var prColor = $("#portal-primary-color-lv"+i).val()
+            $('#img-'+i).css("background-color",prColor);
+        }
+
+        for(var i=1;i<=5;i++){
+            var fColor = $("#portal-font-color-lv"+i).val()
+            $('#img-zxs-'+i).css("background-color",fColor);
+        }
+
+        $(".i-picture-${programmeId}").mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        //footer
+        if( "" != "${footerFlag!}".trim() ){
+            $('#textarea-content').val(`${footer!}`);
+        }else{
+            $('#textarea-content').val(
+                `<div class="top" style="background: #F6F6F8">
+                    <div class="official-footer">
+                        <div class="left">
+<!--                            <label class="label" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #6F7D8F;">线下服务大厅：</label>-->
+                            <label class="label" style="font-size:14px;color: #6F7D8F;">线下服务大厅：</label>
+                            <ul class="info">
+                                <li class="info-item" style="width: 270px;height: 86px;">
+                                    <i class="iconfont icon-place" style="font-size:20px;margin-right: 8px;margin-top: -1px;"></i>
+                                    <div style="margin-top: 3px">
+<!--                                        <p class="text" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #6F7D8F;">天元西路银城INC中心22号</p>-->
+                                        <p class="text" style="font-size:14px;color: #6F7D8F;">天元西路银城INC中心22号</p>
+                                        <p class="text"></p>
+                                    </div>
+                                </li>
+                                <li class="info-item" style="width: 270px;height: 86px;">
+                                    <i class="iconfont icon-ArtificialService" style="font-size:24px;margin-right: 8px;margin-top: -4px;"></i>
+                                    <div style="margin-top: 3px">
+<!--                                        <p class="text" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #6F7D8F;">人工服务区</p>-->
+                                        <p class="text" style="font-size:14px;color: #6F7D8F;">人工服务区</p>
+<!--                                        <p class="text" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #6F7D8F;">工作日9:00-12:00 13:00-17:00</p>-->
+                                        <p class="text" style="font-size:14px;color: #6F7D8F;">工作日9:00-12:00 13:00-17:00</p>
+                                    </div>
+                                </li>
+                                <li class="info-item" style="width: 270px;height: 86px;">
+                                    <i class="iconfont icon-SelfService" style="font-size:24px;margin-right: 8px;margin-top: -4px;"></i>
+                                    <div style="margin-top: 3px">
+<!--                                        <p class="text" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #6F7D8F;">自助服务区</p>-->
+                                        <p class="text" style="font-size:14px;color: #6F7D8F;">自助服务区</p>
+<!--                                        <p class="text" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #6F7D8F;">工作日9:00-17:00</p>-->
+                                        <p class="text" style="font-size:14px;color: #6F7D8F;">工作日9:00-17:00</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <div class="wx" style="margin-right: 20px;">
+<!--                                <p class="title" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #777779;">微信企业号</p>-->
+                                <p class="title" style="font-size:14px;color: #777779;">微信企业号</p>
+                                <img class="img" style="width:100px;height:100px;" src="/CUS_TEMPLATE_LZJTU/base/image/wx.png">
+                            </div>
+                            <div class="app" style="margin-right: 10px;">
+<!--                                <p class="title" style="font-size:14px;font-family: PingFangSC-Regular,Helvetica Neue,微软雅黑;color: #777779;">移动APP下载</p>-->
+                                 <p class="title" style="font-size:14px;color: #777779;">移动APP下载</p>
+                                <img class="img" style="width:100px;height:100px;" src="/CUS_TEMPLATE_LZJTU/base/image/app.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widewrapper copyright">
+                    版权信息©2020江苏金智教育信息股份有限公司
+                </div>`
+            );
+        }
+
+        // Basic instantiation:
+        $('.input-${programmeId}').colorpicker({format:"hex", autoInputFallback: false});
+
+        // Example using an event, to change the color of the #demo div background:
+        $('.input-${programmeId}').on('colorpickerChange', function(event) {
+            var index = $(this).attr("data-index");
+            if( 5 >= index ){
+                $('#img-'+index).css('background-color', event.color.toString());
+            }else {
+                $('#img-zxs-'+(index-5)).css('background-color', event.color.toString());
+            }
+
+        });
+    })
+
+    //生成配色
+    function generateColor(id){
+        var cor = $('#'+id+'1').val();
+        for(var i=2;i<=5;i++){
+            var sRgbColor = colorRgb(cor);
+            var rgb = changeTBD(i,sRgbColor);
+            var rgba = "rgba" + rgb.substr(3,sRgbColor.lastIndexOf("")) + ")"
+            var hex = hexify(rgba)
+            $('#img-'+i).css("background-color",hex);
+            $('#'+id+i).val(hex);
+        }
+    }
+    function generateFontColor(id){
+        var cor = $('#'+id+'1').val();
+        for(var i=2;i<=5;i++){
+            var sRgbColor = colorRgb(cor);
+            var rgb = changeTBD(i,sRgbColor);
+            var rgba = "rgba" + rgb.substr(3,sRgbColor.lastIndexOf("")) + ")"
+            var hex = hexify(rgba)
+            $('#img-zxs-'+i).css("background-color",hex);
+            $('#'+id+i).val(hex);
+        }
+    }
+
+    //重置
+    function resetting(id, color) {
+        // //console.log("重置")
+        $('#tip-modal').modal("show");
+        $('#themeId').val(id)
+        $('#themeColor').val(color)
+    }
+
+    function resettingOK() {
+        var id = $('#themeId').val()
+        var color = $('#themeColor').val()
+        var zxs = ""
+
+        $('#tip-modal').modal("hide");
+
+        if( "#102645" === color ){
+            zxs = "zxs-"
+            //重置字体颜色
+            $('#img-zxs-1').css("background-color","#102645");
+            $('#portal-font-color-lv1').val("#102645");
+            $('#img-zxs-2').css("background-color","#707d8f");
+            $('#portal-font-color-lv2').val("#707d8f");
+            $('#img-zxs-3').css("background-color","#9fa8b5");
+            $('#portal-font-color-lv3').val("#9fa8b5");
+            $('#img-zxs-4').css("background-color","#c1cbd4");
+            $('#portal-font-color-lv4').val("#c1cbd4");
+            $('#img-zxs-5').css("background-color","#dfe6ec");
+            $('#portal-font-color-lv5').val("#dfe6ec");
+        } else {
+            //重置主题色
+            $('#img-1').css("background-color","#307AFB");
+            $('#portal-primary-color-lv1').val("#307AFB");
+            $('#img-2').css("background-color","#6ea1fc");
+            $('#portal-primary-color-lv2').val("#6ea1fc");
+            $('#img-3').css("background-color","#accafd");
+            $('#portal-primary-color-lv3').val("#accafd");
+            $('#img-4').css("background-color","#d6e4fe");
+            $('#portal-primary-color-lv4').val("#d6e4fe");
+            $('#img-5').css("background-color","#eaf1fe");
+            $('#portal-primary-color-lv5').val("#eaf1fe");
+        }
+        //默认的颜色值16进制
+        // var cor = color
+        // for(var i=1;i<=5;i++){
+        //     var sRgbColor = colorRgb(cor);
+        //     var rgb = changeTBD(i,sRgbColor);
+        //     var rgba = "rgba" + rgb.substr(3,sRgbColor.lastIndexOf("")) + ")"
+        //     var hex = hexify(rgba)
+        //     $('#img-'+zxs+i).css("background-color",hex);
+        //     $('#'+id+i).val(hex);
+        // }
+    }
+
+    function changeTBD(i,sRgbColor){
+        switch(i){
+            case 1:
+                return sRgbColor.substr(0,sRgbColor.lastIndexOf(")")) + ",1)"
+            case 2:
+                return sRgbColor.substr(0,sRgbColor.lastIndexOf(")")) + ",0.7)"
+            case 3:
+                return sRgbColor.substr(0,sRgbColor.lastIndexOf(")")) + ",0.4)"
+            case 4:
+                return sRgbColor.substr(0,sRgbColor.lastIndexOf(")")) + ",0.2)"
+            case 5:
+                return sRgbColor.substr(0,sRgbColor.lastIndexOf(")")) + ",0.1)"
+        }
+    }
+
+    //将rgba转成16进制
+    function hexify(color) {
+        var values = color
+            .replace(/rgba?\(/, '')
+            .replace(/\)/, '')
+            .replace(/[\s+]/g, '')
+            .split(',');
+        var a = parseFloat(values[3] || 1),
+            r = Math.floor(a * parseInt(values[0]) + (1 - a) * 255),
+            g = Math.floor(a * parseInt(values[1]) + (1 - a) * 255),
+            b = Math.floor(a * parseInt(values[2]) + (1 - a) * 255);
+        return "#" +
+            ("0" + r.toString(16)).slice(-2) +
+            ("0" + g.toString(16)).slice(-2) +
+            ("0" + b.toString(16)).slice(-2);
+    }
+
+    //十六进制颜色值域RGB格式颜色值之间的相互转换
+
+    //-------------------------------------
+    //-------------------------------------------------
+
+    /*16进制颜色转为RGB格式*/
+    function colorRgb(e){
+        var sColor = e.toLowerCase();
+        //十六进制颜色值的正则表达式
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        if(sColor && reg.test(sColor)){
+            if(sColor.length === 4){
+                var sColorNew = "#";
+                for(var i=1; i<4; i+=1){
+                    sColorNew += sColor.slice(i,i+1).concat(sColor.slice(i,i+1));
+                }
+                sColor = sColorNew;
+            }
+            //处理六位的颜色值
+            var sColorChange = [];
+            for(var i=1; i<7; i+=2){
+                sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));
+            }
+            return "RGB(" + sColorChange.join(",") + ")";
+        }else{
+            return sColor;
+        }
+    };
+
+
+    $('#img-container-one').mouseover(function(){
+		$('#mask-layer-one').show()
+	})
+	$('#img-container-one').mouseout(function(){
+		$('#mask-layer-one').hide()
+	})
+
+    $('#img-container-two').mouseover(function(){
+		$('#mask-layer-two').show()
+	})
+	$('#img-container-two').mouseout(function(){
+		$('#mask-layer-two').hide()
+	})
+
+
+    function OK(){
+        var flag = true
+        data = {};
+        primaryColor = []
+        fontColor = []
+
+        //调用方法保存上传的图片
+        var bColor = $('.updateimg-one').attr("src").trim()
+        var sColor = $('.updateimg-two').attr("src").trim()
+
+        var logoImgSrc = {
+            bColor : bColor,
+            sColor : sColor
+        }
+
+        // logoImgSrc.push(bColor.replace("\r\n",""));
+        // logoImgSrc.push(sColor.replace("\r\n",""));
+
+        for(var i=1; i <= 5; i++){
+            var obj1 = {
+                pName : 'portal-primary-color-lv' + i,
+                pColor : $("#portal-primary-color-lv"+i).val()
+            }
+            primaryColor.push(obj1);
+
+
+            var obj2 = {
+                pName : 'portal-font-color-lv' + i,
+                pColor : $("#portal-font-color-lv"+i).val()
+            }
+            fontColor.push(obj2);
+        }
+
+        //语言
+        var language = []
+        var length = document.getElementsByClassName("input-group").length;
+        if(1 === length){
+            var obj3 = {
+                key : $('#lang-one-hidden').data("langkey"),
+                value : $("#lang-one").val(),
+                name : $('#lang-one-hidden').data("langname")
+            }
+            language.push(obj3);
+        }else{
+            for(var i=1; i<=length; i++){
+                // if( 1 == i && undefined === $("#lang-1").val().trim() || '' === $("#lang-1").val().trim()){
+                //     popupTips("请填写中文!",'50%')
+                //     flag = false
+                // }
+                var obj3 = {
+                    key : $('#btnGroupAddon-'+i).data("langkey"),
+                    value : $("#lang-"+i).val(),
+                    name : $('#btnGroupAddon-'+i).data("langname")
+                }
+                language.push(obj3);
+            }
+        }
+
+
+        var textarea = $('#textarea-content').val();
+
+        data['logoImgSrc'] = logoImgSrc
+        data['primaryColor'] = primaryColor
+        data['fontColor'] = fontColor
+        data['navbarTitle'] = language
+        data['footer'] = textarea
+
+        //console.log(data)
+        if(flag){
+            preserveTemplateConfig(data);
+        }
+
+
+    }
+
+</script>

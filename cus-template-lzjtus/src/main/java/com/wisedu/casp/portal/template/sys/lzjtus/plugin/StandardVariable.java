@@ -1,0 +1,8 @@
+package com.wisedu.casp.portal.template.sys.lzjtus.plugin;
+
+public class StandardVariable {
+
+    public static final String TEMPLATE_ID="CUS_TEMPLATE_LZJTUS";
+
+    public static final String DEFAULT_STANDARD_TEMPLATE_CONFIG="\"{\\\"configLogo\\\":{\\\"whiteLogoUrl\\\":\\\"/CUS_TEMPLATE_LZJTUS/common/image/logo_white.png\\\",\\\"logoUrl\\\":\\\"/CUS_TEMPLATE_LZJTUS/common/image/logo_colour.png\\\"},\\\"themeColorSetting\\\":{\\\"portal-font-color-lv5\\\":\\\"#F5F5F5\\\",\\\"portal-font-color-lv4\\\":\\\"#BFBFBF\\\",\\\"portal-font-color-lv3\\\":\\\"#8C8C8C\\\",\\\"portal-font-color-lv2\\\":\\\"#595959\\\",\\\"portal-font-color-lv1\\\":\\\"#262626\\\",\\\"portal-primary-color-lv3\\\":\\\"#BADAFF\\\",\\\"portal-primary-color-lv2\\\":\\\"#69A5FF\\\",\\\"portal-primary-color-lv1\\\":\\\"#3F83F8\\\",\\\"portal-primary-color-lv5\\\":\\\"#F0F8FF\\\",\\\"portal-primary-color-lv4\\\":\\\"#2A63D4\\\"},\\\"isShowMsgCount\\\":\\\"0\\\",\\\"messageListUrl\\\":\\\"\\\",\\\"footerConfig\\\":[{\\\"langKey\\\":\\\"zh_CN\\\",\\\"langValue\\\":\\\"<div class=\\\\\\\"footer-box\\\\\\\">\\\\n<div class=\\\\\\\"widewrapper copyright\\\\\\\">\\\\n  <div class=\\\\\\\"copyright-content\\\\\\\">\\\\n   版权信息©2020江苏金智教育信息股份有限公司\\\\n  </div>\\\\n  </div>\\\\n  </div>\\\"},{\\\"langKey\\\":\\\"ru_RU\\\",\\\"langValue\\\":\\\"\\\"},{\\\"langKey\\\":\\\"en\\\",\\\"langValue\\\":\\\"<div class=\\\\\\\"footer-box\\\\\\\">\\\\n<div class=\\\\\\\"widewrapper copyright\\\\\\\">\\\\n  <div class=\\\\\\\"copyright-content\\\\\\\">\\\\n   Copyright Information©2020JiangSu Wisedu System Co.,Ltd\\\\n  </div>\\\\n  </div>\\\\n  </div>\\\"}]}\"";
+}

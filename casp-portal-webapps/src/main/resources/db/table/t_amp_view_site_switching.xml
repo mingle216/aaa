@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_site_switching-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_view_site_switching"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_view_site_switching" remarks="站点切换记录表">
+            <column name="wid" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_account" type="VARCHAR(500)" remarks="用户账号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="site_wid" type="VARCHAR(128)" remarks="站点id">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

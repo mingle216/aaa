@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_sys_icon-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_SYS_ICON"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_SYS_ICON" remarks="系统图标库">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ICON_NAME" type="VARCHAR(64)" remarks="图标名称"/>
+            <column name="ICON_TYPE" type="NUMBER(2)" remarks="图标类型  0 字体图标  1 png图标" defaultValue="1"/>
+            <column name="ICON_DESC" type="VARCHAR(128)" remarks="图标描述"/>
+            <column name="ICON_URL" type="VARCHAR(255)" remarks="图标地址"/>
+            <column name="ICON_ITEM" type="NUMBER(5)" remarks="类型：0、通用1、链接导航2、服务部门3、服务分类4、菜单"/>
+            <column name="ORDER_NUMBER" type="NUMBER(5)" remarks="排序序号"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

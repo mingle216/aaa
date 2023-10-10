@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+976506354085994496,service_access_check,0,0,在服务跳转之前是否要做可访问的校验,2,0

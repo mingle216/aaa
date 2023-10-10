@@ -1,0 +1,24 @@
+[
+    {
+      "label":"服务事项列表图标",
+      "component":"radio",
+      "key":"hasIcon",
+      "defaultValue": 1,
+      "value": 1,
+      "datas": [
+        {
+          "label": "显示",
+          "value": 1
+        },
+        {
+          "label": "隐藏",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "label":"服务事项列表展示信息",
+      "component":"checkbox",
+      "key":"displayInfo"
+    }
+  ]

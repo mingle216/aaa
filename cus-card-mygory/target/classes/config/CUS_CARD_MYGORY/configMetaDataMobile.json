@@ -1,0 +1,107 @@
+[
+  {
+    "component": "radio",
+    "key": "notLogin",
+    "label": "登录前",
+    "required": 0,
+    "defaultValue": 0,
+    "datas": [
+      {
+        "label": "显示全部分类",
+        "value": 0
+      },
+      {
+        "label": "只显示游客访问的分类",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "logged",
+    "label": "登录后",
+    "required": 0,
+    "defaultValue": 0,
+    "datas": [
+      {
+        "label": "显示全部分类",
+        "value": 0
+      },
+      {
+        "label": "只显示与我相关的分类",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "label": "分类维度选择",
+    "key": "resultItem",
+    "component": "checkbox",
+    "defaultValue": ["dept-subject"],
+    "value": "",
+    "required": 1,
+    "min": 0,
+    "max": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "datas": [
+      {
+        "label": "按部门分类",
+        "value": "dept-subject"
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "departClassIcon",
+    "label": "按“部门”分类列表图标展示方式",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 1,
+    "value": "",
+    "datas": [
+      {
+        "label": "字体图标",
+        "value": 1
+      },
+      {
+        "label": "PNG图标",
+        "value": 2
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "otherClassIcon",
+    "label": "其他分类列表图标展示方式",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 1,
+    "value": "",
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "serviceItemHotDisplay",
+    "key": "resultWay",
+    "defaultValue": [0, 0],
+    "value": ""
+  }
+]

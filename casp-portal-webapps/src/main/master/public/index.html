@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh" id="html-content">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="format-detection" content="telephone=yes" />
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles/wed.css">
+  <link rel="stylesheet" href="/styles/message.css">
+  <title></title>
+  <script >
+    document.title = '\u200E'
+    if(navigator.userAgent.match(/(iPhone|iPod|Android)/i)){
+      var setRootFontSize=function(){
+        var w_width=window.screen.availWidth;
+        document.getElementById('html-content').style.fontSize =  (w_width/375)*16+'px';
+      }
+      window.onresize=setRootFontSize;
+      setRootFontSize();
+    }
+  </script>
+</head>
+
+<body >
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <script type="text/javascript" src="/js/buryPoint.fcf38c19767a4d884eed.js"></script>
+  <script src="/js/vue.min.js"></script>
+  <!-- <script src="/js/wed.js"></script> -->
+  <script src="/js/vue-router.min.js"></script>
+  <script src="/js/polyfill.min.js"></script>
+  <script src="/js/fetch.min.js"></script>
+  <script src="/js/message.min.js"></script>
+  <!-- <script src="/js/wed.js"></script> -->
+  <!-- <script src="/js/vuescroll-native.min.js"></script> -->
+  <!-- <script src="http://res.wisedu.com/bower_components/vue2/vue.js"></script>
+    <script src="http://res.wisedu.com/bower_components/vue2/vue-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script> -->
+  <!-- <script src="http://res.wisedu.com/fe_components/wed/0.9.0/index.js"></script> -->
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

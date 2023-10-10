@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="guoyuan" id="T_PORTAL_PLUGIN_INSTALL-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_PORTAL_PLUGIN_INSTALL"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_PORTAL_PLUGIN_INSTALL" remarks="当前系统中注册的插件列表">
+            <column name="wid" type="VARCHAR(64)" remarks="业务主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="plugin_id" type="varchar(64)" remarks="插件ID"/>
+            <column name="ip_address" type="varchar(64)" remarks="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_time" type="timestamp" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

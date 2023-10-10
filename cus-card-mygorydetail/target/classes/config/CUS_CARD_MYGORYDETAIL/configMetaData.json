@@ -1,0 +1,135 @@
+[
+  {
+    "component": "radio",
+    "key": "notLogin",
+    "label": "登录前",
+    "required": 0,
+    "defaultValue": 0,
+    "datas": [
+      {
+        "label": "显示全部分类",
+        "value": 0
+      },
+      {
+        "label": "只显示游客访问的分类",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "logined",
+    "label": "登录后",
+    "required": 0,
+    "defaultValue": 0,
+    "datas": [
+      {
+        "label": "显示全部分类",
+        "value": 0
+      },
+      {
+        "label": "只显示与我相关的分类",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "label":"分类维度选择",
+    "component":"checkbox",
+    "key":"tabConfigure",
+    "required": 1
+  },
+  {
+    "label":"服务事项列表排序",
+    "component":"checkbox",
+    "key":"sortType",
+    "defaultValue": [0, 1],
+    "value": [0,1],
+    "datas": [
+      {
+        "label": "默认排序",
+        "value": 0
+      },
+      {
+        "label": "按访问量排序",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "label":"服务事项列表图标",
+    "component":"radio",
+    "key":"hasIcon",
+    "defaultValue": 1,
+    "value": 1,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "departClassIcon",
+    "label": "按“部门”分类列表图标展示方式",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 1,
+    "value": "",
+    "datas": [
+      {
+        "label": "字体图标",
+        "value": 1
+      },
+      {
+        "label": "PNG图标",
+        "value": 2
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "otherClassIcon",
+    "label": "其他分类列表图标展示方式",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 1,
+    "value": "",
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "label":"快捷配置",
+    "component":"checkbox",
+    "key":"quickConfig",
+    "defaultValue": [],
+    "value": [],
+    "datas": [
+      {
+        "label": "支持仅移动端办理",
+        "value": "onlyForMobile"
+      }
+    ]
+  }
+]

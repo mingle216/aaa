@@ -1,0 +1,4 @@
+wid,menu_name,icon_url,order_number,auth_type,is_enabled,open_type,link_url,parent_id,programme_id,menu_type,page_id,icon_type,menu_name_lang_key,is_deleted
+e92ab9b46d1e4731bfd5c865db6b58e2,我的大学,icon-menu-MyUniversity,204,1,1,0,/portal/home,0,ee14716ab72148f4abb0ba99d441fe14,1,22cc521bfa344109bed91844189643af,1,953607364329332736,0
+6ce1da5fd9604a55a3a922ec69dc57e9,办事大厅,icon-menu-BusinessLobby,205,1,1,0,/portal/hall,0,ee14716ab72148f4abb0ba99d441fe14,1,ba3bdecbb265416691f5d9457f6b5760,1,953607418716872704,0
+6c164902c289472f81f41671e3337e9c,工作台,icon-menu-Workbench,206,1,1,0,/portal/work,0,ee14716ab72148f4abb0ba99d441fe14,1,1d350c6b838745a0bfac26f3536cae45,1,953607446877429760,0
