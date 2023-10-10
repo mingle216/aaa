@@ -1,0 +1,36 @@
+[
+  {
+    "component":"select",
+    "key":"linkDisplayNumSelect",
+    "label": "单行列表展示个数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": "2",
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "component":"addLinkList",
+    "key":"linkList",
+    "min": 0,
+    "max": 0,
+    "defaultValue": [],
+    "value": null,
+    "datas": []
+  }
+]

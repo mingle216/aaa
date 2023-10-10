@@ -1,0 +1,59 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_user_email-1.0.0">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_USER_EMAIL"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_USER_EMAIL" remarks="用户邮箱关系表">
+            <column name="WID" type="VARCHAR(64)" remarks="业务主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR2(125)" remarks="邮箱账号"/>
+            <column name="USER_WID" type="VARCHAR2(64)" remarks="用户id" />
+        </createTable>
+
+    </changeSet>
+    <changeSet author="jcx" id="t_amp_user_email-1.0.0-002">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="T_AMP_USER_EMAIL" columnName="is_delete"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="T_AMP_USER_EMAIL">
+            <column name="is_delete" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+        </addColumn>
+
+    </changeSet>
+
+    <changeSet author="shx" id="t_amp_user_email-1.0.1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="T_AMP_USER_EMAIL" columnName="ORDER_NUMBER" />
+            </not>
+        </preConditions>
+        <addColumn tableName="T_AMP_USER_EMAIL">
+            <column name="ORDER_NUMBER" remarks="字段排序" type="NUMBER(6)" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="hlchen02" id="t_amp_user_email-3.5.2.Beta2-01">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="t_amp_user_email" columnName="source_type" />
+            </not>
+        </preConditions>
+        <addColumn tableName="t_amp_user_email">
+            <column name="source_type" remarks="邮箱来源" type="varchar2(128)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

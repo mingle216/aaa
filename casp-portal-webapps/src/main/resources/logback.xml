@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<configuration scan="true" scanPeriod="60 seconds">
+
+	<property name="LOG_HOME" value="/opt/logs/casp/casp-portal" />
+	<property name="systerm" value="CASP"/>
+	<property name="APP_NAME" value="casp-portal" />
+	<property name="CONSOLE_LOG_PATTERN" value="%red(%d{yyyy-MM-dd HH:mm:ss}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger) - %cyan(%msg%n)" />
+	<property name="outPattern" value="[%date{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%t] [%c] %msg %n"/>
+	<!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="outFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/${APP_NAME}.log</file>
+		<encoder>
+			<pattern>^A[%date{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [${systerm}] [${APP_NAME}]
+				[%X{requestId}] [%t] [%c] [%M:%L] %msg %n
+			</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!--日志文件输出的文件名,%i用来标记分割日志的序号 -->
+			<fileNamePattern>${LOG_HOME}/%d{yyyy-MM,aux}/${APP_NAME}-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+			<!-- 单个日志文件最大100MB, 保存90天的日志-->
+			<maxHistory>90</maxHistory>
+			<maxFileSize>100MB</maxFileSize>
+			<totalSizeCap>20GB</totalSizeCap>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+
+		<!-- 过滤掉所有低于INFO级别的日志 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+
+	<appender name="sift" class="ch.qos.logback.classic.sift.SiftingAppender">
+
+		<!--discriminator鉴别器，根据taskId这个key对应的value鉴别日志事件，然后委托给具体appender写日志-->
+		<discriminator>
+			<key>type</key>
+			<defaultValue>${APP_NAME}</defaultValue>
+		</discriminator>
+		<sift>
+			<!--具体的写日志appender，每一个type创建一个文件-->
+			<appender name="rollingFileAppender${type}" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<File>${LOG_HOME}/${type}.log</File>
+				<!-- 100个日志文件做切换 -->
+				<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+					<fileNamePattern>${LOG_HOME}/${type}.%i.log.zip</fileNamePattern>
+					<minIndex>1</minIndex>
+					<maxIndex>10</maxIndex>
+				</rollingPolicy>
+				<!-- 每一个30MB -->
+				<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+					<maxFileSize>30MB</maxFileSize>
+				</triggeringPolicy>
+				<encoder>
+					<Pattern>${outPattern}</Pattern>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+	<logger name="com.wisedu" level="INFO" />
+
+	<!-- 日志级别 -->
+	<root>
+		<!-- 需要详细日志请设为debug -->
+		<level value="INFO" />
+		<appender-ref ref="console" />
+		<appender-ref ref="outFile" />
+		<appender-ref ref="sift" />
+	</root>
+
+</configuration>   

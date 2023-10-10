@@ -1,0 +1,2175 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!-- 系统模板表初始化 一次性执行，后续增加请新增版本文件进行添加-->
+    <changeSet author="jdwan" id="init_t_amp_view_template-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_template.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_template">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 系统卡片表初始化 一次性执行，后续增加请新增版本文件进行添加-->
+    <changeSet author="jdwan" id="init_t_amp_view_card-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 系统配置表初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_view_system_config-0.0.1">
+        <validCheckSum>ANY</validCheckSum>
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_system_config.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 系统图标数据初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_sys_icon-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_sys_icon.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_sys_icon">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 版本管理表数据初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_view_version_management-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_version_management.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_version_management">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 初始化默认方案系列表 -->
+    <!-- 默认方案初始化-方案表初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_view_show_programme-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_show_programme.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 默认方案初始化-目录表初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_view_menu-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_menu.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+     <!--默认方案初始化-页面表初始化-->
+    <changeSet author="jdwan" id="init_t_amp_view_page_info-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_page_info.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 默认方案初始化-侧边栏表初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_view_sidebar-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_sidebar.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_sidebar">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 默认方案初始化-权限表初始化(暂时初始化不加权限) -->
+    <!-- 默认方案初始化-国际化表初始化 -->
+    <changeSet author="jdwan" id="init_t_amp_view_international-0.0.1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_international.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+     <!--默认方案初始化-卡片配置表初始化-->
+    <changeSet id="init_t_amp_view_page_card_config-1.0.1" author="jdwan">
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">78cd878e3186f5aace37d33595a4548f</column>
+            <column name="card_wid">7338074102455276</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a83</column>
+            <column name="card_id">SYS_CARD_RECOMMENDSERVICEITEMS</column>
+            <column name="card_config">"{\"configure\":\"1;2\",\"heightFlag\":\"1\",\"appInfoBizList\":[]}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">469e0628056501e15e29c630ac4424c6</column>
+            <column name="card_wid">28415637132112215</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a83</column>
+            <column name="card_id">SYS_CARD_LINK</column>
+            <column name="card_config">"{\"heightFlag\":\"1\",\"layoutFlag\":\"2\",\"linkData\":null}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">c6924dd91ef0b41c5963ba9ae27fb1e0</column>
+            <column name="card_wid">7987237170221491</column>
+            <column name="page_wid">b9e2940e7a26e349118b6ed04a1b0a86</column>
+            <column name="card_id">SYS_CARD_TODOTASK</column>
+            <column name="card_config">"{\"sourceVal\":\"1\",\"inputNum\":\"5\",\"configure\":\"1;2;4;5\",\"heightFlag\":\"1\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">3955bfe29ed8c6945b3db2dc9a7f87fe</column>
+            <column name="card_wid">739145292511505</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a83</column>
+            <column name="card_id">SYS_CARD_CAROUSEL</column>
+            <column name="card_config">"{\"carouselList\":\"[]\",\"CARD_HEIGHT_TYPE\":\"3\",\"MAX_HEIGHT\":\"400\",\"FIXED_HEIGHT\":1,\"CARD_SHOW_TITLE\":\"1\",\"CARD_SHOW_SUMMARY\":\"1\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">4432c37e88b5354b98043eaf357738a2</column>
+            <column name="card_wid">44257405533399474</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a83</column>
+            <column name="card_id">SYS_CARD_NEWSANNOUNCEMENT</column>
+            <column name="card_config">"{\"height\":\"466\",\"heightFlag\":\"1\",\"showType\":\"2\",\"pageSize\":\"10\",\"columns\":\"2\",\"source\":null,\"newDisplay\":\"1\",\"timeDisplay\":\"3\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">aead9ea8c0add4ab69c7397585f0798d</column>
+            <column name="card_wid">052770469461529634</column>
+            <column name="page_wid">b9e2940e7a26e349118b6ed04a1b0a86</column>
+            <column name="card_id">SYS_CARD_DONETASK</column>
+            <column name="card_config">"{\"sourceVal\":\"1\",\"inputNum\":\"5\",\"configure\":\"1;2;4;5\",\"heightFlag\":\"1\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <!--默认展示的展示方案 -->
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">78cd878e3186f5aace37d33595a4548e</column>
+            <column name="card_wid">7338074102455275</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a81</column>
+            <column name="card_id">SYS_CARD_RECOMMENDSERVICEITEMS</column>
+            <column name="card_config">"{\"configure\":\"1;2\",\"heightFlag\":\"1\",\"appInfoBizList\":[]}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">469e0628056501e15e29c630ac4424c5</column>
+            <column name="card_wid">28415637132112214</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a81</column>
+            <column name="card_id">SYS_CARD_LINK</column>
+            <column name="card_config">"{\"heightFlag\":\"1\",\"layoutFlag\":\"2\",\"linkData\":null}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">c6924dd91ef0b41c5963ba9ae27fb1e1</column>
+            <column name="card_wid">7987237170221490</column>
+            <column name="page_wid">b9e2940e7a26e349118b6ed04a1b0a85</column>
+            <column name="card_id">SYS_CARD_TODOTASK</column>
+            <column name="card_config">"{\"sourceVal\":\"1\",\"inputNum\":\"5\",\"configure\":\"1;2;4;5\",\"heightFlag\":\"1\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">3955bfe29ed8c6945b3db2dc9a7f87fd</column>
+            <column name="card_wid">739145292511504</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a81</column>
+            <column name="card_id">SYS_CARD_CAROUSEL</column>
+            <column name="card_config">"{\"carouselList\":\"[]\",\"CARD_HEIGHT_TYPE\":\"3\",\"MAX_HEIGHT\":\"400\",\"FIXED_HEIGHT\":1,\"CARD_SHOW_TITLE\":\"1\",\"CARD_SHOW_SUMMARY\":\"1\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">4432c37e88b5354b98043eaf357738a1</column>
+            <column name="card_wid">44257405533399473</column>
+            <column name="page_wid">2cacb4498be0fcc01c27291749c69a81</column>
+            <column name="card_id">SYS_CARD_NEWSANNOUNCEMENT</column>
+            <column name="card_config">"{\"height\":\"466\",\"heightFlag\":\"1\",\"showType\":\"2\",\"pageSize\":\"10\",\"columns\":\"2\",\"source\":null,\"newDisplay\":\"1\",\"timeDisplay\":\"3\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">aead9ea8c0add4ab69c7397585f0798e</column>
+            <column name="card_wid">052770469461529633</column>
+            <column name="page_wid">b9e2940e7a26e349118b6ed04a1b0a85</column>
+            <column name="card_id">SYS_CARD_DONETASK</column>
+            <column name="card_config">"{\"sourceVal\":\"1\",\"inputNum\":\"5\",\"configure\":\"1;2;4;5\",\"heightFlag\":\"1\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+<!--    3.1.3版本展示方案增加移动端展示方案-->
+    <changeSet author="jcx" id="init_t_amp_view_show_programme-3.1.3" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_show_programme_3.1.3_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="jcx" id="init_t_amp_view_page_info_3.1.3_mobile" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_page_info_3.1.3_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="jcx" id="init_t_amp_view_menu_3.1.3_mobile" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_menu_3.1.3_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="jcx" id="init_t_amp_view_international_3.1.3_mobile" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_international_3.1.3_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+<!--    &lt;!&ndash; design模板&ndash;&gt;-->
+<!--    <changeSet author="jcx" id="init_t_amp_view_template-1.0.2.10286.01" runOnChange="false">-->
+<!--        <loadUpdateData encoding="UTF-8"-->
+<!--                        file="classpath:db/data/init_t_amp_view_template_design.csv"-->
+<!--                        primaryKey="wid"-->
+<!--                        quotchar="&quot;"-->
+<!--                        separator=","-->
+<!--                        tableName="t_amp_view_template">-->
+<!--        </loadUpdateData>-->
+<!--    </changeSet>-->
+
+    <!--  新增图标-->
+    <changeSet author="jcx" id="init_t_amp_sys_icon_1.0.2.10286.01.csv" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_sys_icon_1.0.2.10286.01.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_sys_icon">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--  design模板默认展示方案-->
+<!--    <changeSet author="jcx" id="init_show_programme_3.1.3_design" runOnChange="false">-->
+<!--        <loadUpdateData encoding="UTF-8"-->
+<!--                        file="classpath:db/data/init_t_amp_view_show_programme_3.1.3_design.csv"-->
+<!--                        primaryKey="wid"-->
+<!--                        quotchar="&quot;"-->
+<!--                        separator=","-->
+<!--                        tableName="t_amp_view_show_programme">-->
+<!--        </loadUpdateData>-->
+<!--    </changeSet>-->
+
+    <!--  design模板默认页面-->
+<!--    <changeSet author="jcx" id="init_page_info_3.1.3_design" runOnChange="false">-->
+<!--        <loadUpdateData encoding="UTF-8"-->
+<!--                        file="classpath:db/data/init_page_info_3.1.3_design.csv"-->
+<!--                        primaryKey="wid"-->
+<!--                        quotchar="&quot;"-->
+<!--                        separator=","-->
+<!--                        tableName="t_amp_view_page_info">-->
+<!--        </loadUpdateData>-->
+<!--    </changeSet>-->
+
+    <!--   design模板默认菜单-->
+<!--    <changeSet author="jcx" id="init_menu_3.1.3_design" runOnChange="false">-->
+<!--        <loadUpdateData encoding="UTF-8"-->
+<!--                        file="classpath:db/data/init_menu_3.1.3_design.csv"-->
+<!--                        primaryKey="wid"-->
+<!--                        quotchar="&quot;"-->
+<!--                        separator=","-->
+<!--                        tableName="t_amp_view_menu">-->
+<!--        </loadUpdateData>-->
+<!--    </changeSet>-->
+
+<!--    &lt;!&ndash;  默认国际化&ndash;&gt;-->
+<!--    <changeSet author="jcx" id="init_international-3.1.3_design" runOnChange="false">-->
+<!--        <loadUpdateData encoding="UTF-8"-->
+<!--                        file="classpath:db/data/init_international-3.1.3_design.csv"-->
+<!--                        primaryKey="wid"-->
+<!--                        quotchar="&quot;"-->
+<!--                        separator=","-->
+<!--                        tableName="t_amp_view_international">-->
+<!--        </loadUpdateData>-->
+<!--    </changeSet>-->
+
+    <!--  增加待办卡片-->
+    <changeSet author="jcx" id="init_t_amp_view_card_3.1.3" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_3.1.3.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+
+
+    <!--  official模板初始化移动端展示方案-->
+    <changeSet author="jcx" id="init_show_programme_3.1.3_mobile_hide" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_show_programme_3.1.3_mobile_hide.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--  official模板初始化移动端页面-->
+    <changeSet author="jcx" id="init_page_info_3.1.3_mobile_hide" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_3.1.3_mobile_hide.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--   official模板初始化移动端菜单-->
+    <changeSet author="jcx" id="init_menu_3.1.3_mobile_hide" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_menu_3.1.3_mobile_hide.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--  official模板初始化移动端国际化-->
+    <changeSet author="jcx" id="init_international_3.1.3_mobile_hide" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international_3.1.3_mobile_hide.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 增加插件发布表-->
+    <include file="classpath:db/table/t_amp_view_plugins.xml"/>
+    <!-- 插件发布表初始化-->
+    <changeSet author="jcx" id="init_t_amp_view_plugins" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 新增Maple模板-->
+    <changeSet author="jcx" id="init_t_amp_view_template_maple" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_template_maple.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_template">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增校历和我的办理进度卡片-->
+    <changeSet author="jcx" id="init_card_calendar_process" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_card_calendar_process.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- PC初始化展示方案 切换成maple模板-->
+    <changeSet id="updte_init_programme_from_maple" author="jcx">
+        <sql dbms="oracle,dm">
+            update t_amp_view_show_programme t set t.template_id='3',t.page_amount='9',t.template_config='' where t.wid='2d8296b6d3bc49ec977af23029b3d718';
+            update t_amp_view_page_info t set t.is_deleted='1' where t.programme_id='2d8296b6d3bc49ec977af23029b3d718';
+            update t_amp_view_menu t set t.is_deleted='1' where t.programme_id='2d8296b6d3bc49ec977af23029b3d718';
+        </sql>
+
+        <sql dbms="mysql">
+            update t_amp_view_show_programme t set t.template_id='3',t.page_amount='9',t.template_config='' where t.wid='2d8296b6d3bc49ec977af23029b3d718';
+            update t_amp_view_page_info t set t.is_deleted='1' where t.programme_id='2d8296b6d3bc49ec977af23029b3d718';
+            update t_amp_view_menu t set t.is_deleted='1' where t.programme_id='2d8296b6d3bc49ec977af23029b3d718';
+        </sql>
+
+        <sql dbms="postgresql">
+            update t_amp_view_show_programme  set template_id='3',page_amount='9',template_config='' where wid='2d8296b6d3bc49ec977af23029b3d718';
+            update t_amp_view_page_info  set is_deleted='1' where programme_id='2d8296b6d3bc49ec977af23029b3d718';
+            update t_amp_view_menu  set is_deleted='1' where programme_id='2d8296b6d3bc49ec977af23029b3d718';
+        </sql>
+    </changeSet>
+    <!-- 预置Maple模板展示方案-->
+    <changeSet author="jcx" id="init_t_amp_view_show_programme_maple" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_show_programme_maple.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 预置Maple模板页面-->
+    <changeSet author="jcx" id="init_page_info_maple" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_maple.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 预置Maple模板页面布局-->
+    <changeSet id="init_page_info_maple_home" author="jcx">
+        <sql dbms="oracle,dm">
+            <!--首页布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"rows":[{"columns":[{"width":24,"card":{"wid":"2","cardId":"SYS_CARD_CAROUSEL","cardName":"轮播图","cardDesc":"轮播图","imageUrl":"/SYS_CARD_CAROUSEL/pc/img/display.png","imageUrlMobile":"/SYS_CARD_CAROUSEL/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"10169451327745005","showTitle":false,"layoutCardTitle":{"cardTitle":"轮播图"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9341453282267085","showTitle":true,"layoutCardTitle":{"cardTitle":"通知公告","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"通知公告"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"32521114266771356","showTitle":true,"layoutCardTitle":{"cardTitle":"不一样的精彩","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"不一样的精彩"},'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            update t_amp_view_page_info
+            set card_layout = card_layout ||
+            '{"langCode":"en_US","langName":""}]},"enabled":true}}]}]},{"width":10,"rows":[{"columns":[{"width":24,"card":{"wid":"43","cardId":"SYS_CARD_PRODUCTSCHOOLCALENDAR","cardName":"校历","cardDesc":"校历","imageUrl":"/SYS_CARD_PRODUCTSCHOOLCALENDAR/pc/img/display.png","imageUrlMobile":"","updateTime":"2021-06-08 10:02:28","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"405116206295594","showTitle":false,"layoutCardTitle":{"cardTitle":"校历"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"39","cardId":"SYS_CARD_PROCESSINGPROGRESS","cardName":"我的办理进度","cardDesc":"我的办理进度","imageUrl":"/SYS_CARD_PROCESSINGPROGRESS/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-04 13:23:52","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8683449131633156","showTitle":false,"layoutCardTitle":{"cardTitle":"我的办理进度"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"5","cardId":"SYS_CARD_FAVORITEAPP","cardName":"我收藏的服务","cardDesc":"我收藏的服务","imageUrl":"/SYS_CARD_FAVORITEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_FAVORITEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"29047488839510227","showTitle":true,"layoutCardTitle":{"cardTitle":"服务收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"服务收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            update t_amp_view_page_info
+            set card_layout = card_layout ||
+            '/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5235992537477572","showTitle":true,"layoutCardTitle":{"cardTitle":"校园资讯","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"校园资讯"},{"langCode":"en_US","langName":""}]},"enabled":true}}]}]}]}]'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            <!--办事大厅布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"card":{"wid":"12","cardId":"SYS_CARD_MYFAVORITESSERVICEITEM","cardName":"我收藏的事项","cardDesc":"我收藏的事项","imageUrl":"/SYS_CARD_MYFAVORITESSERVICEITEM/pc/img/display.png","imageUrlMobile":"/SYS_CARD_MYFAVORITESSERVICEITEM/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"19282773027234734","showTitle":true,"layoutCardTitle":{"cardTitle":"事项收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"事项收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}},{"width":10,"card":{"wid":"31","cardId":"SYS_CARD_RICHTEXT","cardName":"富文本","cardDesc":"富文本","imageUrl":"/SYS_CARD_RICHTEXT/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-02-22 10:42:13","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"2701383187766908","showTitle":true,"layoutCardTitle":{"cardTitle":"办事说明","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"办事说明"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"7","cardId":"SYS_CARD_HOTSERVICEITEMS","cardName":"热门事项","cardDesc":"热门事项","imageUrl":"/SYS_CARD_HOTSERVICEITEMS/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-02-22 10:41:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"29250931862765084","showTitle":true,"layoutCardTitle":{"cardTitle":"热门事项"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"24","cardId":"SYS_CARD_SERVICEITEMCATEGORY","cardName":"事项分类","cardDesc":"事项分类","imageUrl":"/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-1.png;/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCATEGORY/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"35656742502136773","showTitle":false,"layoutCardTitle":{"cardTitle":"事项分类"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"25","cardId":"SYS_CARD_SERVICEITEMCOUNT","cardName":"事项统计","cardDesc":"事项统计","imageUrl":"/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-1.png;/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCOUNT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"658546995024426","showTitle":false,"layoutCardTitle":{"cardTitle":"事项统计"},"enabled":true}}]}]'
+            where wid in ( '8f9b0d36310c4ea8aa2139fedbb5550f','4a19c1d368a14e63abb35bb9eeb23124');
+
+            <!--工作台布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"rows":[{"columns":[{"width":24,"card":{"wid":"32","cardId":"SYS_CARD_RECUSEAPP","cardName":"最近使用服务","cardDesc":"最近使用服务","imageUrl":"/SYS_CARD_RECUSEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_RECUSEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:42:13","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8519864209905268","showTitle":true,"layoutCardTitle":{"cardTitle":"最近使用服务"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"5","cardId":"SYS_CARD_FAVORITEAPP","cardName":"我收藏的服务","cardDesc":"我收藏的服务","imageUrl":"/SYS_CARD_FAVORITEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_FAVORITEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8671592412655538","showTitle":true,"layoutCardTitle":{"cardTitle":"服务收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"服务收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"47503438910437557","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true}}]}]},{"width":10,"rows":[{"columns":[{"width":24,"card":{"wid":"37","cardId":"SYS_CARD_PERSONALDATA","cardName":"个人数据","cardDesc":"个人数据","imageUrl":"/SYS_CARD_PERSONALDATA/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-04-11 13:39:26","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5855274170455966","showTitle":false,"layoutCardTitle":{"cardTitle":"个人数据"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"36","cardId":"SYS_CARD_UNDONE","cardName":"待办","cardDesc":"待办","imageUrl":"/SYS_CARD_UNDONE/pc/img/display.png","imageUrlMobile":"''","updateTime":"2021-04-10 17:14:26","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9950396036016269","showTitle":true,"layoutCardTitle":{"cardTitle":"待办"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5176236709248501","showTitle":true,"layoutCardTitle":{"cardTitle":"通知公告","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"通知公告"},{"langCode":"en_US","langName":""}]},"enabled":true}}]}]}]}]'
+            where wid in ( '394f5e26be37438aa4024e2d97639d41','77dcba2a609d458f8a0f64d60b797a30');
+
+            <!--事项分类布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"29","cardId":"SYS_CARD_SERVICEITEMCATEGORYDETAIL","cardName":"事项分类详情","cardDesc":"事项分类详情","imageUrl":"/SYS_CARD_SERVICEITEMCATEGORYDETAIL/pc/img/display.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCATEGORYDETAIL/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"20789616579024384","showTitle":false,"layoutCardTitle":{"cardTitle":"事项分类详情"},"enabled":true}}]}]'
+            where wid in ( '6cf219b7726b4002a9773c1f4f2a57a3','c105c9fd2fbb453eaa9c270871608ded');
+            <!--全部服务布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"23","cardId":"SYS_CARD_ALLSERVICE","cardName":"全部服务","cardDesc":"全部服务","imageUrl":"/SYS_CARD_ALLSERVICE/pc/img/display.png","imageUrlMobile":"/SYS_CARD_ALLSERVICE/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5529883343546955","showTitle":false,"layoutCardTitle":{"cardTitle":"全部服务"},"enabled":true}}]}]'
+            where wid in ( 'e28174d89df94311931584de14259e14','6d99b4d958824ff189da3e4800a60a1f');
+            <!--搜索结果布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"27","cardId":"SYS_CARD_SEARCHRESULTS","cardName":"搜索结果","cardDesc":"搜索结果","imageUrl":"/SYS_CARD_SEARCHRESULTS/pc/img/display.png","imageUrlMobile":"/SYS_CARD_SEARCHRESULTS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9785816465052992","showTitle":false,"layoutCardTitle":{"cardTitle":"搜索结果"},"enabled":true}}]}]'
+            where wid in ( '43f70998d2f14e94889eda6fa0cc7f75','8606c43eae78478dacee47ae3b819b20');
+            <!--事项详情布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"26","cardId":"SYS_CARD_DETAILSOFSERVICEITEMS","cardName":"事项详情","cardDesc":"事项详情","imageUrl":"/SYS_CARD_DETAILSOFSERVICEITEMS/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DETAILSOFSERVICEITEMS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"1347139893057796","showTitle":false,"layoutCardTitle":{"cardTitle":"事项详情"},"enabled":true}}]}]'
+            where wid in ( '8c803f7722ca427b9079425fea52b2db','474f5ebae3fa4f5197b79c38ed62cbbf');
+            <!--新闻列表布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"42","cardId":"SYS_CARD_NEWSLISTANNOUNCEMENT","cardName":"新闻列表","cardDesc":"新闻列表","imageUrl":"/SYS_CARD_NEWSLISTANNOUNCEMENT/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-15 13:44:24","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"2898514881806984","showTitle":false,"layoutCardTitle":{"cardTitle":"新闻列表"},"enabled":true}}]}]'
+            where wid in ( '32967a7d107a4900b993424507631161','b3c82772dcd347258ec33c4c8800dbbe');
+            <!--任务列表布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"cards":{"cards":[{"wid":"44","cardId":"SYS_CARD_TODOTASKLIST","cardName":"待办任务列表","cardDesc":"待办任务列表","imageUrl":"/SYS_CARD_TODOTASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8692941790287065","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务列表"},"enabled":true},{"wid":"45","cardId":"SYS_CARD_DONETASKLIST","cardName":"已办任务列表","cardDesc":"已办任务列表","imageUrl":"/SYS_CARD_DONETASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"44145752944169114","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务列表"},"enabled":true},{"wid":"46","cardId":"SYS_CARD_MYTASKLIST","cardName":"我的申请列表","cardDesc":"我的申请列表","imageUrl":"/SYS_CARD_MYTASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"123366080278976","showTitle":true,"layoutCardTitle":{"cardTitle":"我的申请列表"},"enabled":true}]}}]}]'
+            where wid in ( '7c7b4f925b7f45e4bf36dafb01001c89','5fa0ff8c02a541d1aa5c16a8dd9bcb23');
+        </sql>
+        <sql dbms="mysql">
+            <!--首页布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"rows":[{"columns":[{"width":24,"card":{"wid":"2","cardId":"SYS_CARD_CAROUSEL","cardName":"轮播图","cardDesc":"轮播图","imageUrl":"/SYS_CARD_CAROUSEL/pc/img/display.png","imageUrlMobile":"/SYS_CARD_CAROUSEL/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"10169451327745005","showTitle":false,"layoutCardTitle":{"cardTitle":"轮播图"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9341453282267085","showTitle":true,"layoutCardTitle":{"cardTitle":"通知公告","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"通知公告"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"32521114266771356","showTitle":true,"layoutCardTitle":{"cardTitle":"不一样的精彩","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"不一样的精彩"},'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            update t_amp_view_page_info
+            set card_layout = CONCAT(card_layout,
+            '{"langCode":"en_US","langName":""}]},"enabled":true}}]}]},{"width":10,"rows":[{"columns":[{"width":24,"card":{"wid":"43","cardId":"SYS_CARD_PRODUCTSCHOOLCALENDAR","cardName":"校历","cardDesc":"校历","imageUrl":"/SYS_CARD_PRODUCTSCHOOLCALENDAR/pc/img/display.png","imageUrlMobile":"","updateTime":"2021-06-08 10:02:28","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"405116206295594","showTitle":false,"layoutCardTitle":{"cardTitle":"校历"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"39","cardId":"SYS_CARD_PROCESSINGPROGRESS","cardName":"我的办理进度","cardDesc":"我的办理进度","imageUrl":"/SYS_CARD_PROCESSINGPROGRESS/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-04 13:23:52","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8683449131633156","showTitle":false,"layoutCardTitle":{"cardTitle":"我的办理进度"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"5","cardId":"SYS_CARD_FAVORITEAPP","cardName":"我收藏的服务","cardDesc":"我收藏的服务","imageUrl":"/SYS_CARD_FAVORITEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_FAVORITEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"29047488839510227","showTitle":true,"layoutCardTitle":{"cardTitle":"服务收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"服务收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile')
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            update t_amp_view_page_info
+            set card_layout = CONCAT(card_layout ,
+            '/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5235992537477572","showTitle":true,"layoutCardTitle":{"cardTitle":"校园资讯","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"校园资讯"},{"langCode":"en_US","langName":""}]},"enabled":true}}]}]}]}]')
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            <!--办事大厅布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"card":{"wid":"12","cardId":"SYS_CARD_MYFAVORITESSERVICEITEM","cardName":"我收藏的事项","cardDesc":"我收藏的事项","imageUrl":"/SYS_CARD_MYFAVORITESSERVICEITEM/pc/img/display.png","imageUrlMobile":"/SYS_CARD_MYFAVORITESSERVICEITEM/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"19282773027234734","showTitle":true,"layoutCardTitle":{"cardTitle":"事项收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"事项收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}},{"width":10,"card":{"wid":"31","cardId":"SYS_CARD_RICHTEXT","cardName":"富文本","cardDesc":"富文本","imageUrl":"/SYS_CARD_RICHTEXT/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-02-22 10:42:13","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"2701383187766908","showTitle":true,"layoutCardTitle":{"cardTitle":"办事说明","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"办事说明"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"7","cardId":"SYS_CARD_HOTSERVICEITEMS","cardName":"热门事项","cardDesc":"热门事项","imageUrl":"/SYS_CARD_HOTSERVICEITEMS/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-02-22 10:41:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"29250931862765084","showTitle":true,"layoutCardTitle":{"cardTitle":"热门事项"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"24","cardId":"SYS_CARD_SERVICEITEMCATEGORY","cardName":"事项分类","cardDesc":"事项分类","imageUrl":"/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-1.png;/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCATEGORY/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"35656742502136773","showTitle":false,"layoutCardTitle":{"cardTitle":"事项分类"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"25","cardId":"SYS_CARD_SERVICEITEMCOUNT","cardName":"事项统计","cardDesc":"事项统计","imageUrl":"/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-1.png;/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCOUNT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"658546995024426","showTitle":false,"layoutCardTitle":{"cardTitle":"事项统计"},"enabled":true}}]}]'
+            where wid in ( '8f9b0d36310c4ea8aa2139fedbb5550f','4a19c1d368a14e63abb35bb9eeb23124');
+
+            <!--工作台布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"rows":[{"columns":[{"width":24,"card":{"wid":"32","cardId":"SYS_CARD_RECUSEAPP","cardName":"最近使用服务","cardDesc":"最近使用服务","imageUrl":"/SYS_CARD_RECUSEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_RECUSEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:42:13","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8519864209905268","showTitle":true,"layoutCardTitle":{"cardTitle":"最近使用服务"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"5","cardId":"SYS_CARD_FAVORITEAPP","cardName":"我收藏的服务","cardDesc":"我收藏的服务","imageUrl":"/SYS_CARD_FAVORITEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_FAVORITEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8671592412655538","showTitle":true,"layoutCardTitle":{"cardTitle":"服务收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"服务收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"47503438910437557","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true}}]}]},{"width":10,"rows":[{"columns":[{"width":24,"card":{"wid":"37","cardId":"SYS_CARD_PERSONALDATA","cardName":"个人数据","cardDesc":"个人数据","imageUrl":"/SYS_CARD_PERSONALDATA/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-04-11 13:39:26","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5855274170455966","showTitle":false,"layoutCardTitle":{"cardTitle":"个人数据"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"36","cardId":"SYS_CARD_UNDONE","cardName":"待办","cardDesc":"待办","imageUrl":"/SYS_CARD_UNDONE/pc/img/display.png","imageUrlMobile":"''","updateTime":"2021-04-10 17:14:26","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9950396036016269","showTitle":true,"layoutCardTitle":{"cardTitle":"待办"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5176236709248501","showTitle":true,"layoutCardTitle":{"cardTitle":"通知公告","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"通知公告"},{"langCode":"en_US","langName":""}]},"enabled":true}}]}]}]}]'
+            where wid in ( '394f5e26be37438aa4024e2d97639d41','77dcba2a609d458f8a0f64d60b797a30');
+
+            <!--事项分类布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"29","cardId":"SYS_CARD_SERVICEITEMCATEGORYDETAIL","cardName":"事项分类详情","cardDesc":"事项分类详情","imageUrl":"/SYS_CARD_SERVICEITEMCATEGORYDETAIL/pc/img/display.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCATEGORYDETAIL/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"20789616579024384","showTitle":false,"layoutCardTitle":{"cardTitle":"事项分类详情"},"enabled":true}}]}]'
+            where wid in ( '6cf219b7726b4002a9773c1f4f2a57a3','c105c9fd2fbb453eaa9c270871608ded');
+            <!--全部服务布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"23","cardId":"SYS_CARD_ALLSERVICE","cardName":"全部服务","cardDesc":"全部服务","imageUrl":"/SYS_CARD_ALLSERVICE/pc/img/display.png","imageUrlMobile":"/SYS_CARD_ALLSERVICE/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5529883343546955","showTitle":false,"layoutCardTitle":{"cardTitle":"全部服务"},"enabled":true}}]}]'
+            where wid in ( 'e28174d89df94311931584de14259e14','6d99b4d958824ff189da3e4800a60a1f');
+            <!--搜索结果布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"27","cardId":"SYS_CARD_SEARCHRESULTS","cardName":"搜索结果","cardDesc":"搜索结果","imageUrl":"/SYS_CARD_SEARCHRESULTS/pc/img/display.png","imageUrlMobile":"/SYS_CARD_SEARCHRESULTS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9785816465052992","showTitle":false,"layoutCardTitle":{"cardTitle":"搜索结果"},"enabled":true}}]}]'
+            where wid in ( '43f70998d2f14e94889eda6fa0cc7f75','8606c43eae78478dacee47ae3b819b20');
+            <!--事项详情布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"26","cardId":"SYS_CARD_DETAILSOFSERVICEITEMS","cardName":"事项详情","cardDesc":"事项详情","imageUrl":"/SYS_CARD_DETAILSOFSERVICEITEMS/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DETAILSOFSERVICEITEMS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"1347139893057796","showTitle":false,"layoutCardTitle":{"cardTitle":"事项详情"},"enabled":true}}]}]'
+            where wid in ( '8c803f7722ca427b9079425fea52b2db','474f5ebae3fa4f5197b79c38ed62cbbf');
+            <!--新闻列表布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"42","cardId":"SYS_CARD_NEWSLISTANNOUNCEMENT","cardName":"新闻列表","cardDesc":"新闻列表","imageUrl":"/SYS_CARD_NEWSLISTANNOUNCEMENT/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-15 13:44:24","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"2898514881806984","showTitle":false,"layoutCardTitle":{"cardTitle":"新闻列表"},"enabled":true}}]}]'
+            where wid in ( '32967a7d107a4900b993424507631161','b3c82772dcd347258ec33c4c8800dbbe');
+            <!--任务列表布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"cards":{"cards":[{"wid":"44","cardId":"SYS_CARD_TODOTASKLIST","cardName":"待办任务列表","cardDesc":"待办任务列表","imageUrl":"/SYS_CARD_TODOTASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8692941790287065","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务列表"},"enabled":true},{"wid":"45","cardId":"SYS_CARD_DONETASKLIST","cardName":"已办任务列表","cardDesc":"已办任务列表","imageUrl":"/SYS_CARD_DONETASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"44145752944169114","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务列表"},"enabled":true},{"wid":"46","cardId":"SYS_CARD_MYTASKLIST","cardName":"我的申请列表","cardDesc":"我的申请列表","imageUrl":"/SYS_CARD_MYTASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"123366080278976","showTitle":true,"layoutCardTitle":{"cardTitle":"我的申请列表"},"enabled":true}]}}]}]'
+            where wid in ( '7c7b4f925b7f45e4bf36dafb01001c89','5fa0ff8c02a541d1aa5c16a8dd9bcb23');
+        </sql>
+
+        <sql dbms="postgresql">
+            <!--首页布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"rows":[{"columns":[{"width":24,"card":{"wid":"2","cardId":"SYS_CARD_CAROUSEL","cardName":"轮播图","cardDesc":"轮播图","imageUrl":"/SYS_CARD_CAROUSEL/pc/img/display.png","imageUrlMobile":"/SYS_CARD_CAROUSEL/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"10169451327745005","showTitle":false,"layoutCardTitle":{"cardTitle":"轮播图"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9341453282267085","showTitle":true,"layoutCardTitle":{"cardTitle":"通知公告","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"通知公告"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"32521114266771356","showTitle":true,"layoutCardTitle":{"cardTitle":"不一样的精彩","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"不一样的精彩"},'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            update t_amp_view_page_info
+            set card_layout = card_layout ||
+            '{"langCode":"en_US","langName":""}]},"enabled":true}}]}]},{"width":10,"rows":[{"columns":[{"width":24,"card":{"wid":"43","cardId":"SYS_CARD_PRODUCTSCHOOLCALENDAR","cardName":"校历","cardDesc":"校历","imageUrl":"/SYS_CARD_PRODUCTSCHOOLCALENDAR/pc/img/display.png","imageUrlMobile":"","updateTime":"2021-06-08 10:02:28","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"405116206295594","showTitle":false,"layoutCardTitle":{"cardTitle":"校历"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"39","cardId":"SYS_CARD_PROCESSINGPROGRESS","cardName":"我的办理进度","cardDesc":"我的办理进度","imageUrl":"/SYS_CARD_PROCESSINGPROGRESS/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-04 13:23:52","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8683449131633156","showTitle":false,"layoutCardTitle":{"cardTitle":"我的办理进度"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"5","cardId":"SYS_CARD_FAVORITEAPP","cardName":"我收藏的服务","cardDesc":"我收藏的服务","imageUrl":"/SYS_CARD_FAVORITEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_FAVORITEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"29047488839510227","showTitle":true,"layoutCardTitle":{"cardTitle":"服务收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"服务收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            update t_amp_view_page_info
+            set card_layout = card_layout ||
+            '/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5235992537477572","showTitle":true,"layoutCardTitle":{"cardTitle":"校园资讯","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"校园资讯"},{"langCode":"en_US","langName":""}]},"enabled":true}}]}]}]}]'
+            where wid in ( '7fd49e3790d04c8499f0757958321fa1','053407a35a094f1a849c60ef221c6a7a');
+            <!--办事大厅布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"card":{"wid":"12","cardId":"SYS_CARD_MYFAVORITESSERVICEITEM","cardName":"我收藏的事项","cardDesc":"我收藏的事项","imageUrl":"/SYS_CARD_MYFAVORITESSERVICEITEM/pc/img/display.png","imageUrlMobile":"/SYS_CARD_MYFAVORITESSERVICEITEM/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"19282773027234734","showTitle":true,"layoutCardTitle":{"cardTitle":"事项收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"事项收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}},{"width":10,"card":{"wid":"31","cardId":"SYS_CARD_RICHTEXT","cardName":"富文本","cardDesc":"富文本","imageUrl":"/SYS_CARD_RICHTEXT/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-02-22 10:42:13","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"2701383187766908","showTitle":true,"layoutCardTitle":{"cardTitle":"办事说明","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"办事说明"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"7","cardId":"SYS_CARD_HOTSERVICEITEMS","cardName":"热门事项","cardDesc":"热门事项","imageUrl":"/SYS_CARD_HOTSERVICEITEMS/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-02-22 10:41:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"29250931862765084","showTitle":true,"layoutCardTitle":{"cardTitle":"热门事项"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"24","cardId":"SYS_CARD_SERVICEITEMCATEGORY","cardName":"事项分类","cardDesc":"事项分类","imageUrl":"/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-1.png;/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCATEGORY/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"35656742502136773","showTitle":false,"layoutCardTitle":{"cardTitle":"事项分类"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"25","cardId":"SYS_CARD_SERVICEITEMCOUNT","cardName":"事项统计","cardDesc":"事项统计","imageUrl":"/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-1.png;/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCOUNT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"658546995024426","showTitle":false,"layoutCardTitle":{"cardTitle":"事项统计"},"enabled":true}}]}]'
+            where wid in ( '8f9b0d36310c4ea8aa2139fedbb5550f','4a19c1d368a14e63abb35bb9eeb23124');
+
+            <!--工作台布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":14,"rows":[{"columns":[{"width":24,"card":{"wid":"32","cardId":"SYS_CARD_RECUSEAPP","cardName":"最近使用服务","cardDesc":"最近使用服务","imageUrl":"/SYS_CARD_RECUSEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_RECUSEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:42:13","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8519864209905268","showTitle":true,"layoutCardTitle":{"cardTitle":"最近使用服务"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"5","cardId":"SYS_CARD_FAVORITEAPP","cardName":"我收藏的服务","cardDesc":"我收藏的服务","imageUrl":"/SYS_CARD_FAVORITEAPP/pc/img/display.png","imageUrlMobile":"/SYS_CARD_FAVORITEAPP/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8671592412655538","showTitle":true,"layoutCardTitle":{"cardTitle":"服务收藏","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"服务收藏"},{"langCode":"en_US","langName":""}]},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"47503438910437557","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true}}]}]},{"width":10,"rows":[{"columns":[{"width":24,"card":{"wid":"37","cardId":"SYS_CARD_PERSONALDATA","cardName":"个人数据","cardDesc":"个人数据","imageUrl":"/SYS_CARD_PERSONALDATA/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-04-11 13:39:26","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5855274170455966","showTitle":false,"layoutCardTitle":{"cardTitle":"个人数据"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"36","cardId":"SYS_CARD_UNDONE","cardName":"待办","cardDesc":"待办","imageUrl":"/SYS_CARD_UNDONE/pc/img/display.png","imageUrlMobile":"''","updateTime":"2021-04-10 17:14:26","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9950396036016269","showTitle":true,"layoutCardTitle":{"cardTitle":"待办"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-4.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-2.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-3.png","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5176236709248501","showTitle":true,"layoutCardTitle":{"cardTitle":"通知公告","layoutCardLink":[],"cardTitleLang":[{"langCode":"zh_CN","langName":"通知公告"},{"langCode":"en_US","langName":""}]},"enabled":true}}]}]}]}]'
+            where wid in ( '394f5e26be37438aa4024e2d97639d41','77dcba2a609d458f8a0f64d60b797a30');
+
+            <!--事项分类布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"29","cardId":"SYS_CARD_SERVICEITEMCATEGORYDETAIL","cardName":"事项分类详情","cardDesc":"事项分类详情","imageUrl":"/SYS_CARD_SERVICEITEMCATEGORYDETAIL/pc/img/display.png","imageUrlMobile":"/SYS_CARD_SERVICEITEMCATEGORYDETAIL/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"20789616579024384","showTitle":false,"layoutCardTitle":{"cardTitle":"事项分类详情"},"enabled":true}}]}]'
+            where wid in ( '6cf219b7726b4002a9773c1f4f2a57a3','c105c9fd2fbb453eaa9c270871608ded');
+            <!--全部服务布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"23","cardId":"SYS_CARD_ALLSERVICE","cardName":"全部服务","cardDesc":"全部服务","imageUrl":"/SYS_CARD_ALLSERVICE/pc/img/display.png","imageUrlMobile":"/SYS_CARD_ALLSERVICE/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"5529883343546955","showTitle":false,"layoutCardTitle":{"cardTitle":"全部服务"},"enabled":true}}]}]'
+            where wid in ( 'e28174d89df94311931584de14259e14','6d99b4d958824ff189da3e4800a60a1f');
+            <!--搜索结果布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"27","cardId":"SYS_CARD_SEARCHRESULTS","cardName":"搜索结果","cardDesc":"搜索结果","imageUrl":"/SYS_CARD_SEARCHRESULTS/pc/img/display.png","imageUrlMobile":"/SYS_CARD_SEARCHRESULTS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9785816465052992","showTitle":false,"layoutCardTitle":{"cardTitle":"搜索结果"},"enabled":true}}]}]'
+            where wid in ( '43f70998d2f14e94889eda6fa0cc7f75','8606c43eae78478dacee47ae3b819b20');
+            <!--事项详情布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"26","cardId":"SYS_CARD_DETAILSOFSERVICEITEMS","cardName":"事项详情","cardDesc":"事项详情","imageUrl":"/SYS_CARD_DETAILSOFSERVICEITEMS/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DETAILSOFSERVICEITEMS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"1347139893057796","showTitle":false,"layoutCardTitle":{"cardTitle":"事项详情"},"enabled":true}}]}]'
+            where wid in ( '8c803f7722ca427b9079425fea52b2db','474f5ebae3fa4f5197b79c38ed62cbbf');
+            <!--新闻列表布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"card":{"wid":"42","cardId":"SYS_CARD_NEWSLISTANNOUNCEMENT","cardName":"新闻列表","cardDesc":"新闻列表","imageUrl":"/SYS_CARD_NEWSLISTANNOUNCEMENT/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-15 13:44:24","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"2898514881806984","showTitle":false,"layoutCardTitle":{"cardTitle":"新闻列表"},"enabled":true}}]}]'
+            where wid in ( '32967a7d107a4900b993424507631161','b3c82772dcd347258ec33c4c8800dbbe');
+            <!--任务列表布局-->
+            update t_amp_view_page_info
+            set card_layout = '[{"columns":[{"width":24,"cards":{"cards":[{"wid":"44","cardId":"SYS_CARD_TODOTASKLIST","cardName":"待办任务列表","cardDesc":"待办任务列表","imageUrl":"/SYS_CARD_TODOTASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"8692941790287065","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务列表"},"enabled":true},{"wid":"45","cardId":"SYS_CARD_DONETASKLIST","cardName":"已办任务列表","cardDesc":"已办任务列表","imageUrl":"/SYS_CARD_DONETASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"44145752944169114","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务列表"},"enabled":true},{"wid":"46","cardId":"SYS_CARD_MYTASKLIST","cardName":"我的申请列表","cardDesc":"我的申请列表","imageUrl":"/SYS_CARD_MYTASKLIST/pc/img/display.png","imageUrlMobile":null,"updateTime":"2021-06-21 14:09:50","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"123366080278976","showTitle":true,"layoutCardTitle":{"cardTitle":"我的申请列表"},"enabled":true}]}}]}]'
+            where wid in ( '7c7b4f925b7f45e4bf36dafb01001c89','5fa0ff8c02a541d1aa5c16a8dd9bcb23');
+        </sql>
+
+    </changeSet>
+
+    <!-- 预置Maple模板菜单-->
+    <changeSet author="jcx" id="init_menu_maple" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_menu_maple.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 预置Maple模板国际化-->
+    <changeSet author="jcx" id="init_international_maple" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international_maple.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增 待办任务列表、已办任务列表、我的申请列表卡片-->
+    <changeSet author="jcx" id="init_t_amp_view_card_tasklist" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_tasklist.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 新增 待办任务列表、已办任务列表、我的申请列表卡片到发布表-->
+    <changeSet author="jcx" id="init_t_amp_view_plugins_tasklist" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_tasklist.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增 待办任务列表、已办任务列表、我的申请列表卡片到发布表-->
+    <changeSet author="yyu" id="init_t_amp_view_system_config_0.0.2" runOnChange="false">
+        <insert tableName="t_amp_view_system_config">
+            <column name="wid">63</column>
+            <column name="config_key">taskSource</column>
+            <column name="config_value"></column>
+            <column name="default_value">1</column>
+            <column name="config_desc">任务来源(1.任务中心，2.待办中心)</column>
+            <column name="config_model">0</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+    <!-- 新增 Standard 和 Violet 模板-->
+    <changeSet author="jcx" id="init_template_standard_violet" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_template_standard_violet.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_template">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 新增 Standard 和 Violet 模板到发布表-->
+    <changeSet author="jcx" id="init_plugins_standard_violet" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugins_standard_violet.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 移动端初始化方案 新增 新闻列表、任务列表页面-->
+    <changeSet author="jcx" id="init_page_mobile_news_tasks" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_mobile_news_tasks.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 移动端初始化方案 新增 新闻列表、任务列表页面的国际化-->
+    <changeSet author="jcx" id="init_international_news_tasks" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international_news_tasks.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+    <!--  增加我的日程-->
+    <changeSet author="jszhang" id="init_t_amp_view_card_3.2.1.beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_3.2.1.beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="jszhang" id="init_t_amp_view_plugins_3.2.1.beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_3.2.1.beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 3.2.1.Beta1 我发起的卡片更名为我的申请-->
+    <changeSet id="SYS_CARD_MYTASK_Rename" author="jcx">
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="CARD_NAME">我的申请</column>
+            <column name="CARD_DESC">我的申请</column>
+            <where>wid='13'</where>
+        </update>
+    </changeSet>
+    <!-- 3.2.1.Beta1 更改我的办件不为移动端卡片，去除我的办件、意见反馈、个人数据IMAGE_URL_MOBILE地址，更改热门服务PLATFORM_TYPE-->
+    <changeSet id="MYOFFICE_FEEDBACK_PERSON_Rename" author="jcx">
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE"></column>
+            <column name="PLATFORM_TYPE">0</column>
+            <where>wid='40'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE"></column>
+            <where>wid='41'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE"></column>
+            <where>wid='37'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="PLATFORM_TYPE">0</column>
+            <where>wid='6'</where>
+        </update>
+    </changeSet>
+
+    <!-- 新聞列表、待办任务、已办任务、我的申请列表、待办卡片支持移动端-->
+    <changeSet id="cards_to_mobile" author="jcx">
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_NEWSLISTANNOUNCEMENT/mobile/img/display.png</column>
+            <column name="PLATFORM_TYPE">0;1</column>
+            <where>wid='42'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_TODOTASKLIST/mobile/img/display.png</column>
+            <column name="PLATFORM_TYPE">0;1</column>
+            <where>wid='44'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_DONETASKLIST/mobile/img/display.png</column>
+            <column name="PLATFORM_TYPE">0;1</column>
+            <where>wid='45'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_MYTASKLIST/mobile/img/display.png</column>
+            <column name="PLATFORM_TYPE">0;1</column>
+            <where>wid='46'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_UNDONE/mobile/img/display.png</column>
+            <column name="PLATFORM_TYPE">0;1</column>
+            <where>wid='36'</where>
+        </update>
+    </changeSet>
+    <!-- 热门服务更改platformType-->
+    <changeSet id="edit_card_hotapp_platformType" author="jcx">
+        <update tableName="T_AMP_VIEW_CARD" >
+            <column name="PLATFORM_TYPE">0</column>
+            <where>wid='6'</where>
+        </update>
+    </changeSet>
+
+    <!-- 运营中心域名，用作门户访问的时候调用js统计访问量，把数据发往运营中心-->
+    <changeSet id="add_casp_ioc_domin" author="jcx">
+        <insert tableName="T_AMP_VIEW_SYSTEM_CONFIG">
+            <column name="wid">46e9250177e3403e9d68ce61b4f2c3ff</column>
+            <column name="config_key">casp_ioc_domin</column>
+            <column name="config_value"></column>
+            <column name="default_value"></column>
+            <column name="config_desc">运营中心域名，用作门户访问的时候调用js统计访问量，把数据发往运营中心</column>
+            <column name="config_model">0</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+
+    <!-- 修改移动端初始化展示方案布局-->
+    <changeSet id="init_0809_mobile_programme" author="jcx">
+        <sql dbms="oracle,dm">
+            <!--首页布局-->
+            update T_AMP_VIEW_PAGE_INFO t set t.card_layout='[{"columns":[{"width":24,"cards":{"cards":[{"wid":"21","cardId":"SYS_CARD_TODOTASK","cardName":"待办任务","cardDesc":"待办任务","imageUrl":"/SYS_CARD_TODOTASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_TODOTASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"5050010743497069","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务"},"enabled":true},{"wid":"4","cardId":"SYS_CARD_DONETASK","cardName":"已办任务","cardDesc":"已办任务","imageUrl":"/SYS_CARD_DONETASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DONETASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"4191570720358846","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务"},"enabled":true}],"platformtype":"1"}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"47490745393041855","showTitle":true,"layoutCardTitle":{"cardTitle":"新闻通知公告"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"2535989843290072","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true}}]}]'
+            where t.wid='86e44929032f457f9fc5862c67503dba';
+        </sql>
+        <sql dbms="mysql">
+            <!--首页布局-->
+            update T_AMP_VIEW_PAGE_INFO t set t.card_layout='[{"columns":[{"width":24,"cards":{"cards":[{"wid":"21","cardId":"SYS_CARD_TODOTASK","cardName":"待办任务","cardDesc":"待办任务","imageUrl":"/SYS_CARD_TODOTASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_TODOTASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"5050010743497069","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务"},"enabled":true},{"wid":"4","cardId":"SYS_CARD_DONETASK","cardName":"已办任务","cardDesc":"已办任务","imageUrl":"/SYS_CARD_DONETASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DONETASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"4191570720358846","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务"},"enabled":true}],"platformtype":"1"}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"47490745393041855","showTitle":true,"layoutCardTitle":{"cardTitle":"新闻通知公告"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"2535989843290072","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true}}]}]'
+            where t.wid='86e44929032f457f9fc5862c67503dba';
+        </sql>
+
+        <sql dbms="postgresql">
+            <!--首页布局-->
+            update t_amp_view_page_info  set card_layout='[{"columns":[{"width":24,"cards":{"cards":[{"wid":"21","cardId":"SYS_CARD_TODOTASK","cardName":"待办任务","cardDesc":"待办任务","imageUrl":"/SYS_CARD_TODOTASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_TODOTASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"5050010743497069","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务"},"enabled":true},{"wid":"4","cardId":"SYS_CARD_DONETASK","cardName":"已办任务","cardDesc":"已办任务","imageUrl":"/SYS_CARD_DONETASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DONETASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"4191570720358846","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务"},"enabled":true}],"platformtype":"1"}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"47490745393041855","showTitle":true,"layoutCardTitle":{"cardTitle":"新闻通知公告"},"enabled":true}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"2535989843290072","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true}}]}]'
+            where wid='86e44929032f457f9fc5862c67503dba';
+        </sql>
+
+    </changeSet>
+
+    <!-- 低版本的腾讯邮箱插件-->
+    <changeSet author="hlchen02" id="init_plugins_tencentmaillowversion" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugins_tencentmaillowversion.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--pc卡片预览图调整-->
+    <changeSet id="t_amp_view_card_3.3.1.Beta2_2021122102" author="jcx">
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_RICHTEXT/pc/img/display.png;/SYS_CARD_RICHTEXT/pc/img/display-1.png</column>
+            <where>wid='31'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_LINK/pc/img/display-1.png</column>
+            <where>wid='10'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_NEWSANNOUNCEMENT/pc/img/display-1.png</column>
+            <where>wid='14'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_SERVICEBUS/pc/img/display-1.png</column>
+            <where>wid='20'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_SERVICEITEMCATEGORY/pc/img/display-1.png</column>
+            <where>wid='24'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_SERVICEITEMCOUNT/pc/img/display-1.png</column>
+            <where>wid='25'</where>
+        </update>
+
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_TODOTASK/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_TODOTASK/mobile/img/display.png</column>
+            <where>wid='21'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_DONETASK/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_DONETASK/mobile/img/display.png</column>
+            <where>wid='4'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_MYTASK/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_MYTASK/mobile/img/display.png</column>
+            <where>wid='13'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_MYFAVORITESSERVICEITEM/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_MYFAVORITESSERVICEITEM/mobile/img/display.png</column>
+            <where>wid='12'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_RECOMMENDSERVICEITEMS/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_RECOMMENDSERVICEITEMS/mobile/img/display.png</column>
+            <where>wid='18'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_RECOMMENDAPP/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_RECOMMENDAPP/mobile/img/display.png</column>
+            <where>wid='17'</where>
+        </update>
+
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_FAVORITEAPP/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_FAVORITEAPP/mobile/img/display.png</column>
+            <where>wid='5'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_STATISTICS/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_STATISTICS/mobile/img/display.png</column>
+            <where>wid='30'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_CAROUSEL/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_CAROUSEL/mobile/img/display.png</column>
+            <where>wid='2'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_RECUSEAPP/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_RECUSEAPP/mobile/img/display.png</column>
+            <where>wid='32'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_ALLSERVICE/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_ALLSERVICE/mobile/img/display.png</column>
+            <where>wid='23'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_SEARCHRESULTS/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_SEARCHRESULTS/mobile/img/display.png</column>
+            <where>wid='27'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_SERVICEITEMCATEGORYDETAIL/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_SERVICEITEMCATEGORYDETAIL/mobile/img/display.png</column>
+            <where>wid='29'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_DETAILSOFSERVICEITEMS/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_DETAILSOFSERVICEITEMS/mobile/img/display.png</column>
+            <where>wid='26'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL">/SYS_CARD_UNDONE/pc/img/display.png</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_UNDONE/mobile/img/display.png</column>
+            <where>wid='36'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_MYOFFICE/pc/img/display.png</column>
+            <where>wid='40'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_FEEDBACK/pc/img/display.png</column>
+            <where>wid='41'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_ALLSERVICEITEM/pc/img/display.png</column>
+            <where>wid='1'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_HOTAPP/pc/img/display.png</column>
+            <where>wid='6'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_HOTSERVICEITEMS/pc/img/display.png</column>
+            <where>wid='7'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_LASTESTAPP/pc/img/display.png</column>
+            <where>wid='8'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_LATESTSERVICEITEMS/pc/img/display.png</column>
+            <where>wid='9'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_MESSAGECENTER/pc/img/display.png</column>
+            <where>wid='11'</where>
+        </update>
+        <update tableName="T_AMP_VIEW_CARD">
+            <column name="PLATFORM_TYPE">0</column>
+            <column name="IMAGE_URL">/SYS_CARD_PERSONALDATA/pc/img/display.png</column>
+            <where>wid='37'</where>
+        </update>
+
+    </changeSet>
+
+    <!-- EYYOUMAIL、NETEASEMAIL、QUARKMAIL邮箱插件列表初始化-->
+    <changeSet author="jcx" id="t_amp_view_plugins_3.2.1.Beta3_202109030946_01" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_3.2.1.beta3.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 门户系统中注册的插件列表初始化-->
+    <changeSet author="jcx" id="t_portal_plugin_publish_3.2.1.Beta3_202109031028_03" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugin_publish.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_portal_plugin_publish">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增 三张清单卡片 -->
+    <changeSet author="hlchen02" id="init_t_amp_view_card_threelist_3.2.1.SP4" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_threelist.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 新增 三张清单卡片到发布表 -->
+    <changeSet author="hlchen02" id="init_t_amp_view_plugins_threelist_3.2.1.SP4" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_threelist.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- pc端初始化方案 日程详情页面-->
+    <changeSet author="hfw" id="init_page_pc_schedule_page" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_pc_schedule_page.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- pc端初始化方案 新增 日程详情页面的国际化-->
+    <changeSet author="hfw" id="init_international_schedule_page" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international_schedule_page.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="hfw" id="init_t_amp_view_plugins_3.3.1.beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_3.3.1.beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--  增加日程详情-->
+    <changeSet author="hfw" id="init_t_amp_view_card_3.3.1.beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_3.3.1.beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="init_page_pc_schedule_page_3.3.1.beta2_001" author="hfw">
+        <update tableName="t_amp_view_page_info">
+            <column name="CARD_LAYOUT">[{"columns":[{"width":24,"card":{"wid":"8a7731381e4b4b6c8740fdc920282f4b","cardId":"SYS_CARD_CALENDAR_DETAIL","cardName":"日程详情页","cardDesc":"日程详情页","imageUrl":"/SYS_CARD_CALENDAR_DETAIL/pc/img/display.png","imageUrlMobile":"","updateTime":"2021-12-01 10:06:01","platformType":"0","configurableFlag":0,"configurableRuntimeFlag":0,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0_20210830100523","cardStatus":0,"refPage":true,"cardWid":"9910388719441163","showTitle":false,"layoutCardTitle":{"cardTitle":"日程详情页"},"enabled":true}}]}]</column>
+            <where>wid='8df9aff8525311ecb4000a80ff2603de'</where>
+        </update>
+    </changeSet>
+
+    <!-- 修改配置表的configValue字段的长度 -->
+    <changeSet author="jcx" id="t_amp_view_system_config_3.3.1.Beta2_202201041400_01">
+        <modifyDataType tableName="T_AMP_VIEW_SYSTEM_CONFIG" columnName="CONFIG_VALUE" newDataType="VARCHAR2(4000)" />
+    </changeSet>
+
+    <!--  增加新闻详情-->
+    <changeSet author="hxshen" id="init_t_amp_view_card_3.4.1.beta2_20220303" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_3.4.1.beta2_20220303.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="hxshen" id="init_t_amp_view_plugins_3.4.1.beta2_20220303" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_3.4.1.beta2_20220303.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+
+    <!-- 新增Work模板-->
+    <changeSet author="wr" id="init_t_amp_view_template_work" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_template_work.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_template">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 预置Work模板展示方案-->
+    <changeSet author="wr" id="init_t_amp_view_show_programme_work" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_show_programme_work.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--  新增work模板图标-->
+    <changeSet author="wr" id="init_t_amp_sys_icon_3.4.1.Beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_sys_icon_3.4.1.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_sys_icon">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增 Work 模板到发布表-->
+    <changeSet author="wr" id="init_plugins_work" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugins_work.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+<!--     预置Work模板菜单-->
+    <changeSet author="wr" id="init_menu_work" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_menu_3.4.1.Beta2_work.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--     预置Work模板移动端菜单-->
+    <changeSet author="wr" id="init_menu_work_mobile" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_menu_3.4.1.Beta2_work_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+
+<!--         预置Work模板pc页面表数据-->
+        <changeSet author="wr" id="init_page_info_work" runOnChange="true">
+            <loadUpdateData encoding="UTF-8"
+                            file="classpath:db/data/init_page_info_work.csv"
+                            primaryKey="wid"
+                            quotchar="&quot;"
+                            separator=","
+                            tableName="t_amp_view_page_info">
+            </loadUpdateData>
+        </changeSet>
+
+    <!--         预置Work模板mobile页面表数据-->
+    <changeSet author="wr" id="init_page_info_work_mobile" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_work_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--         预置Work模板pc端事项收藏卡片配置项-->
+    <changeSet author="wr" id="init_page_card_config_work_0401" runOnChange="true">
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">32ab76692c8357b17b71b159feff1441</column>
+            <column name="card_wid">3721707225531298</column>
+            <column name="page_wid">ba3bdecbb265416691f5d9457f6b5760</column>
+            <column name="card_id">SYS_CARD_MYFAVORITESSERVICEITEM</column>
+            <column name="card_config">"{\"containerType\":{\"type\":2,\"value\":256},\"showItem\":[\"icon\",\"service\",\"dept\"],\"columns\":\"5\",\"showManage\":1,\"showDealOnline\":\"0\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+            <column name="platform_type">0</column>
+        </insert>
+
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">4834a8fb32bd11d9b953072568ba845e</column>
+            <column name="card_wid">9744180687170438</column>
+            <column name="page_wid">ba3bdecbb265416691f5d9457f6b5760</column>
+            <column name="card_id">SYS_CARD_RICHTEXT</column>
+            <column name="card_config">"{\"containerType\":{\"type\":2,\"value\":254},\"display\":[{\"langKey\":\"zh_CN\",\"langValue\":\"<![CDATA[<p>办事说明示例</p>]]>\"},{\"langKey\":\"en\",\"langValue\":\"\"},{\"langKey\":\"ru\",\"langValue\":\"\"}]}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+            <column name="platform_type">0</column>
+        </insert>
+    </changeSet>
+
+    <!--         预置Work模板pc端热门事项卡片配置项-->
+    <changeSet author="wr" id="init_page_card_config_work_0405" runOnChange="true">
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">94029d2ad1b1d4cf08d688a7ce7161b6</column>
+            <column name="card_wid">03275551845041469</column>
+            <column name="page_wid">ba3bdecbb265416691f5d9457f6b5760</column>
+            <column name="card_id">SYS_CARD_HOTSERVICEITEMS</column>
+            <column name="card_config">"{\"containerType\":{\"type\":2,\"value\":322},\"showItem\":[\"icon\",\"service\",\"dept\"],\"rows\":12,\"columns\":\"6\",\"hotServiceItemTime\":\"0\"}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+            <column name="platform_type">0</column>
+        </insert>
+
+        <insert tableName="t_amp_view_page_card_config">
+            <column name="wid">fd670359d6385d24879c24bac6b339ba</column>
+            <column name="card_wid">37487937589620934</column>
+            <column name="page_wid">ba3bdecbb265416691f5d9457f6b5760</column>
+            <column name="card_id">SYS_CARD_SERVICEITEMCATEGORY</column>
+            <column name="card_config">"{\"notLogin\":0,\"logged\":0,\"resultItem\":[\"dept-subject\"],\"roleTab\":0,\"rows\":2,\"columns\":4,\"departClassIcon\":1,\"otherClassIcon\":1,\"resultWay\":[0,0]}"</column>
+            <column name="enabled_flag">1</column>
+            <column name="is_deleted">0</column>
+            <column name="platform_type">0</column>
+        </insert>
+    </changeSet>
+
+    <!--         预置Work模板国际化表数据-->
+    <changeSet author="wr" id="init_international_work_3.4.1.Beta2" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international-3.4.1.Beta2_work.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+<!--         预置一条个人信息数据-->
+        <changeSet author="wr" id="init_amp_personal_data" runOnChange="true">
+            <loadUpdateData encoding="UTF-8"
+                            file="classpath:db/data/init_t_amp_personal_data.csv"
+                            primaryKey="wid"
+                            quotchar="&quot;"
+                            separator=","
+                            tableName="t_amp_personal_data">
+            </loadUpdateData>
+        </changeSet>
+
+    <!--         新增个人数据移动端卡片-->
+    <changeSet id="update_t_amp_view_card_3.3.1.beta2_0311" author="wr">
+        <update tableName="t_amp_view_card">
+            <column name="PLATFORM_TYPE">0;1</column>
+            <column name="IMAGE_URL_MOBILE">/SYS_CARD_PERSONALDATA/mobile/img/display.png</column>
+            <where>wid='37'</where>
+        </update>
+    </changeSet>
+
+    <!-- 新增最近使用的事项和最新事项-->
+    <changeSet id="update_t_amp_view_card_3.4.1.beta2_2022031701" author="wr">
+        <update tableName="t_amp_view_card">
+            <column name="is_deleted">0</column>
+            <where>wid='9'</where>
+        </update>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">ff9bbac4a0d74a59b4327331729abc61</column>
+            <column name="card_id">SYS_CARD_RECENTSERVICEITEMS</column>
+            <column name="card_name">最近使用的事项</column>
+            <column name="image_url">/SYS_CARD_RECENTSERVICEITEMS/pc/img/display.png</column>
+            <column name="platform_type">0</column>
+            <column name="CONFIGURABLE_FLAG">0</column>
+            <column name="CONFIGURABLE_RUNTIME_FLAG">1</column>
+            <column name="CARD_DESC">最近使用的事项</column>
+            <column name="CARD_SYSTEM_TYPE">0</column>
+            <column name="IS_DELETED">0</column>
+            <column name="CARD_STATUS">0</column>
+            <column name="VERSION_NUMBER">1.0.0</column>
+        </insert>
+    </changeSet>
+
+    <!-- 新增最近使用的事项和最新事项到插件表-->
+    <changeSet author="wr" id="init_plugins_item_3.4.1.Beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugins_item_3.4.1.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 增加配置企业微信等正则 -->
+    <changeSet author="hxshen" id="init_t_amp_view_system_config_3.3.4_20220309" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_system_config_3.3.4_20220309.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增concise模板 start -->
+    <!-- 初始化模板表数据 -->
+    <changeSet author="tpeng" id="init_t_amp_view_template_concise" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_template_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_template">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 初始化展示方案表数据 -->
+    <changeSet author="tpeng" id="init_t_amp_view_show_programme_concise" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_show_programme_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 初始化插件表数据 -->
+    <changeSet author="tpeng" id="init_plugins_concise" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugins_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 初始化菜单表数据 -->
+    <changeSet author="tpeng" id="init_menu_concise" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_menu_3.4.3_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 初始化页面表数据 -->
+    <changeSet author="tpeng" id="init_page_info_concise" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 国际化表数据 -->
+    <changeSet author="tpeng" id="init_international_concise_3.4.3" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international-3.4.3_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+    <!--  新增concise模板图标-->
+    <changeSet author="tpeng" id="init_t_amp_sys_icon_concise" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_sys_icon_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_sys_icon">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 新增concise模板 end -->
+
+    <!-- 初始化我的服务卡片 -->
+    <changeSet id="update_t_amp_view_card_myapp_3.4.3" author="tpeng">
+        <insert tableName="t_amp_view_card">
+            <column name="wid">7yz5kxa6cvmoagh10sxl17tj128bbodh</column>
+            <column name="card_id">SYS_CARD_MYAPP</column>
+            <column name="card_name">我的服务</column>
+            <column name="image_url">/SYS_CARD_MYAPP/pc/img/display.png</column>
+            <column name="platform_type">0</column>
+            <column name="CONFIGURABLE_FLAG">0</column>
+            <column name="CONFIGURABLE_RUNTIME_FLAG">1</column>
+            <column name="CARD_DESC">我的服务</column>
+            <column name="CARD_SYSTEM_TYPE">0</column>
+            <column name="IS_DELETED">0</column>
+            <column name="CARD_STATUS">0</column>
+            <column name="VERSION_NUMBER">1.0.0</column>
+        </insert>
+    </changeSet>
+    <!-- 初始化iframe卡片 -->
+    <changeSet id="update_t_amp_view_card_iframe_3.4.3" author="tpeng">
+        <insert tableName="t_amp_view_card">
+            <column name="wid">xi2di5a7oo4x1zfxl6hxi72n8mrt6w3r</column>
+            <column name="card_id">SYS_CARD_IFRAME</column>
+            <column name="card_name">iframe</column>
+            <column name="image_url">/SYS_CARD_IFRAME/pc/img/display.png</column>
+            <column name="platform_type">0</column>
+            <column name="CONFIGURABLE_FLAG">0</column>
+            <column name="CONFIGURABLE_RUNTIME_FLAG">1</column>
+            <column name="CARD_DESC">iframe</column>
+            <column name="CARD_SYSTEM_TYPE">0</column>
+            <column name="IS_DELETED">1</column>
+            <column name="CARD_STATUS">0</column>
+            <column name="VERSION_NUMBER">1.0.0</column>
+        </insert>
+    </changeSet>
+    <!-- 在插件标准初始化iframe卡片和我的服务卡片 -->
+    <changeSet author="tpeng" id="init_plugins_card_3.4.3" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_plugins_card_3.4.3.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 预置数据 在服务跳转之前是否要做可访问的校验 -->
+    <changeSet author="jszhang" id="init_t_amp_view_system_config_3.4.3_20220518" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/t_amp_view_system_config_3.4.3.csv"
+                        primaryKey="config_key"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 预置数据 增加coreMail邮箱未读数量获取方式 -->
+    <changeSet author="hxshen" id="t_amp_view_system_config_3.5.1.Beta1_20220525" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/t_amp_view_system_config_3.5.1.Beta1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 新增concise模板移动端 start -->
+    <!-- 设置concise模板可用并支持移动端 -->
+    <changeSet id="update_t_amp_view_template_3.5.1.Beta1" author="tpeng">
+        <update tableName="t_amp_view_template" >
+            <column name="is_deleted">0</column>
+            <column name="platform_type">0;1</column>
+            <column name="template_img_mobile_url">/sys_template_concise/base/image/mobile_display.png</column>
+            <where>wid='5hf7jua6l5ld7qogppywds1xeflwohou'</where>
+        </update>
+    </changeSet>
+
+    <!-- 上个版本初始化的concise模板pc端默认展示方案设置为可用 -->
+    <changeSet id="update_t_amp_view_show_programme_3.5.1.Beta1" author="tpeng">
+        <update tableName="t_amp_view_show_programme" >
+            <column name="is_deleted">0</column>
+            <where>wid='ycmdp9wbpfng7kxvibjtgaau82ss8rbp'</where>
+        </update>
+    </changeSet>
+
+    <!-- 初始化concise移动端展示方案数据 -->
+    <changeSet author="tpeng" id="init_show_programme_concise_mobile" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_show_programme_concise_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_show_programme">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 初始化菜单表数据 -->
+    <changeSet author="tpeng" id="init_menu_concise_mobile" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_menu_3.5.1_concise_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_menu">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 初始化页面表数据 -->
+    <changeSet author="tpeng" id="init_page_info_concise_mobile" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_concise_mobile.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 国际化表数据 -->
+    <changeSet author="tpeng" id="init_international_concise_3.5.1.Beta1" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international-3.5.1.Beta1_concise.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 设置初始化移动模板首页使用home模板 -->
+    <changeSet id="update_page_info_mobile_default_home_3.5.1.Beta1" author="tpeng">
+        <update tableName="t_amp_view_page_info" >
+            <column name="template_code">home</column>
+            <where>wid='86e44929032f457f9fc5862c67503dba'</where>
+        </update>
+    </changeSet>
+    <!-- 新增concise模板移动端 end -->
+
+    <!-- 修改移动端concise模板菜单的默认图标 -->
+    <changeSet id="update_concise_menu_mobile_icon_3.5.1" author="tpeng">
+        <update tableName="t_amp_view_menu" >
+            <column name="icon_url">icon-a-shouye1</column>
+            <where>wid='c9c75adbcd244846866d5870b9b9fc02'</where>
+        </update>
+        <update tableName="t_amp_view_menu" >
+            <column name="icon_url">icon-fuwuweixuanzhong</column>
+            <where>wid='1076b3b1ed9147c3af685f5ff021313e'</where>
+        </update>
+    </changeSet>
+    <!-- 修改移动端concise模板搜索结果页面模板配置项 -->
+    <changeSet id="update_page_info_mobile_search_setting_3.5.1" author="tpeng">
+        <update tableName="t_amp_view_page_info" >
+            <column name="page_config">bottom.isShowMenu=Y</column>
+            <where>wid='aa4749b45deb46519ff36ee8e68eea37'</where>
+        </update>
+    </changeSet>
+    <!-- pc端concise模板增加4个初始化页面 -->
+    <changeSet author="tpeng" id="add_concise_4_page_3.5.1" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_4_concise_3.5.1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <!-- pc端concise模板增加4个初始化页面相关的国际化资源 -->
+    <changeSet author="tpeng" id="add_concise_4_international_3.5.1" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international_4_concise_3.5.1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 设置日程详情卡片移动端可用 -->
+    <changeSet id="update_card_calendar_detail_mobile_3.5.2.Beta1" author="tpeng">
+        <update tableName="t_amp_view_card" >
+            <column name="platform_type">0;1</column>
+            <column name="image_url_mobile">/SYS_CARD_CALENDAR_DETAIL/mobile/img/display.png</column>
+            <where>card_id='SYS_CARD_CALENDAR_DETAIL'</where>
+        </update>
+    </changeSet>
+
+    <!-- 默认移动模板页面表增加日程详情页数据 -->
+    <changeSet author="tpeng" id="init_page_info_mobile_calendar_3.5.2.Beta1" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_mobile_calendar.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 默认移动模板页面表增加日程详情页对应国际化数据 -->
+    <changeSet author="tpeng" id="init_international_mobile_calendar_3.5.2.Beta1" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international_mobile_calendar.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+    <!-- 默认移动模板页面表首页增加日程详情卡片 -->
+    <changeSet id="update_page_info_add_calendar_card_3.5.2.Beta1" author="tpeng">
+        <update tableName="t_amp_view_page_info" >
+            <column name="card_layout">[{"columns":[{"width":24,"cards":{"cards":[{"wid":"21","cardId":"SYS_CARD_TODOTASK","cardName":"待办任务","cardDesc":"待办任务","imageUrl":"/SYS_CARD_TODOTASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_TODOTASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"6144463668448233","showTitle":true,"layoutCardTitle":{"cardTitle":"待办任务"},"enabled":true,"platformtype":"1"},{"wid":"4","cardId":"SYS_CARD_DONETASK","cardName":"已办任务","cardDesc":"已办任务","imageUrl":"/SYS_CARD_DONETASK/pc/img/display.png","imageUrlMobile":"/SYS_CARD_DONETASK/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"7556370474786517","showTitle":true,"layoutCardTitle":{"cardTitle":"已办任务"},"enabled":true,"platformtype":"1"}],"platformtype":"1"}}]},{"columns":[{"width":24,"card":{"wid":"14","cardId":"SYS_CARD_NEWSANNOUNCEMENT","cardName":"新闻通知公告","cardDesc":"新闻通知公告","imageUrl":"/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display-1.png;/SYS_CARD_NEWSANNOUNCEMENT/pc/image/display","imageUrlMobile":"/SYS_CARD_NEWSANNOUNCEMENT/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"07487236040260714","showTitle":true,"layoutCardTitle":{"cardTitle":"新闻通知公告"},"enabled":true,"platformtype":"1"}}]},{"columns":[{"width":24,"card":{"wid":"20","cardId":"SYS_CARD_SERVICEBUS","cardName":"业务直通车","cardDesc":"业务直通车","imageUrl":"/SYS_CARD_SERVICEBUS/pc/img/display-1.png;/SYS_CARD_SERVICEBUS/pc/img/display-2.png","imageUrlMobile":"/SYS_CARD_SERVICEBUS/mobile/img/display.png","updateTime":"2021-02-22 10:41:50","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"cardWid":"39075111556226294","showTitle":true,"layoutCardTitle":{"cardTitle":"业务直通车"},"enabled":true,"platformtype":"1"}}]},{"columns":[{"width":24,"card":{"wid":"8a7731381e4b4b6c8740fdc920282f4b","cardId":"SYS_CARD_CALENDAR_DETAIL","cardName":"日程详情","cardDesc":"日程详情","imageUrl":"/SYS_CARD_CALENDAR_DETAIL/pc/img/display.png","imageUrlMobile":null,"updateTime":"2022-01-04 18:53:41","platformType":"0;1","configurableFlag":0,"configurableRuntimeFlag":1,"cardSystemType":0,"configureContent":null,"versionNumber":"1.0.0","cardStatus":0,"refPage":true,"cardWid":"9935452630410322","showTitle":true,"layoutCardTitle":{"cardTitle":"日程详情"},"enabled":true}}]}]</column>
+            <where>wid='86e44929032f457f9fc5862c67503dba'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="t_amp_view_system_config-20220626-001" author="wyl" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <dbms type="mysql"/>
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_system_config where config_key = 'compensationCheck'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_system_config">
+            <column name="wid">88888888</column>
+            <column name="config_key">compensationCheck</column>
+            <column name="config_value">0</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="t_amp_view_system_config-20220626-002" author="wyl" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <dbms type="mysql"/>
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_system_config where config_key = 'official_default_pro_flag'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_system_config">
+            <column name="wid">88888889</column>
+            <column name="config_key">official_default_pro_flag</column>
+            <column name="config_value">0</column>
+        </insert>
+    </changeSet>
+
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220629215001" runOnChange="false">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_card where wid = '40'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">40</column>
+            <column name="card_id">SYS_CARD_MYOFFICE</column>
+            <column name="card_name">我的办件</column>
+            <column name="image_url">/SYS_CARD_MYOFFICE/pc/img/display.png</column>
+            <column name="platform_type">0</column>
+            <column name="configurable_flag">0</column>
+            <column name="configurable_runtime_flag">1</column>
+            <column name="card_desc">我的办件</column>
+            <column name="card_system_type">0</column>
+            <column name="is_deleted">0</column>
+            <column name="card_status">0</column>
+            <column name="version_number">1.0.0</column>
+            <column name="image_url_mobile"></column>
+        </insert>
+    </changeSet>
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220629215002" runOnChange="false">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_card where wid = '41'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">41</column>
+            <column name="card_id">SYS_CARD_FEEDBACK</column>
+            <column name="card_name">意见反馈</column>
+            <column name="image_url">/SYS_CARD_FEEDBACK/pc/img/display.png</column>
+            <column name="platform_type">0</column>
+            <column name="configurable_flag">0</column>
+            <column name="configurable_runtime_flag">1</column>
+            <column name="card_desc">意见反馈</column>
+            <column name="card_system_type">0</column>
+            <column name="is_deleted">0</column>
+            <column name="card_status">0</column>
+            <column name="version_number">1.0.0</column>
+            <column name="image_url_mobile"></column>
+        </insert>
+    </changeSet>
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220629215003" runOnChange="false">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_card where wid = '30'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">30</column>
+            <column name="card_id">SYS_CARD_STATISTICS</column>
+            <column name="card_name">办理统计</column>
+            <column name="image_url">/SYS_CARD_STATISTICS/pc/img/display.png</column>
+            <column name="platform_type">0;1</column>
+            <column name="configurable_flag">0</column>
+            <column name="configurable_runtime_flag">1</column>
+            <column name="card_desc">办理统计</column>
+            <column name="card_system_type">0</column>
+            <column name="is_deleted">0</column>
+            <column name="card_status">0</column>
+            <column name="version_number">1.0.0</column>
+            <column name="image_url_mobile">/SYS_CARD_STATISTICS/mobile/img/display.png</column>
+        </insert>
+    </changeSet>
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220629215004" runOnChange="false">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_card where wid = '31'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">31</column>
+            <column name="card_id">SYS_CARD_RICHTEXT</column>
+            <column name="card_name">富文本</column>
+            <column name="image_url">/SYS_CARD_RICHTEXT/pc/img/display.png;/SYS_CARD_RICHTEXT/pc/img/display-1.png</column>
+            <column name="platform_type">0</column>
+            <column name="configurable_flag">0</column>
+            <column name="configurable_runtime_flag">1</column>
+            <column name="card_desc">富文本</column>
+            <column name="card_system_type">0</column>
+            <column name="is_deleted">0</column>
+            <column name="card_status">0</column>
+            <column name="version_number">1.0.0</column>
+            <column name="image_url_mobile"></column>
+        </insert>
+    </changeSet>
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220629215005" runOnChange="false">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_card where wid = '32'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">32</column>
+            <column name="card_id">SYS_CARD_RECUSEAPP</column>
+            <column name="card_name">最近使用服务</column>
+            <column name="image_url">/SYS_CARD_RECUSEAPP/pc/img/display.png</column>
+            <column name="platform_type">0;1</column>
+            <column name="configurable_flag">0</column>
+            <column name="configurable_runtime_flag">1</column>
+            <column name="card_desc">最近使用服务</column>
+            <column name="card_system_type">0</column>
+            <column name="is_deleted">0</column>
+            <column name="card_status">0</column>
+            <column name="version_number">1.0.0</column>
+            <column name="image_url_mobile">/SYS_CARD_RECUSEAPP/mobile/img/display.png</column>
+        </insert>
+    </changeSet>
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220629215006" runOnChange="false">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(1) from t_amp_view_card where wid = '37'</sqlCheck>
+        </preConditions>
+        <insert tableName="t_amp_view_card">
+            <column name="wid">37</column>
+            <column name="card_id">SYS_CARD_PERSONALDATA</column>
+            <column name="card_name">个人数据</column>
+            <column name="image_url">/SYS_CARD_PERSONALDATA/pc/img/display.png</column>
+            <column name="platform_type">0;1</column>
+            <column name="configurable_flag">0</column>
+            <column name="configurable_runtime_flag">1</column>
+            <column name="card_desc">个人数据</column>
+            <column name="card_system_type">0</column>
+            <column name="is_deleted">0</column>
+            <column name="card_status">0</column>
+            <column name="version_number">1.0.0</column>
+            <column name="image_url_mobile">/SYS_CARD_PERSONALDATA/mobile/img/display.png</column>
+        </insert>
+    </changeSet>
+
+    <changeSet author="jcx" id="t_amp_view_card_3.5.1_20220628210002" runOnChange="true">
+        <update tableName="t_amp_view_card">
+            <column name="is_deleted">1</column>
+            `       <where>wid='3'</where>
+        </update>
+    </changeSet>
+
+    <!-- 初始化卡片 -->
+    <changeSet author="zjchen" id="init_t_amp_view_card_3.5.2.beta2" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_card_3.5.2.beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="zjchen" id="init_t_amp_view_plugins_3.5.2.beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_t_amp_view_plugins_3.5.2.beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="zjchen" id="init_page_info_3.5.2.beta2" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_3.5.2.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="wr" id="init_international-3.5.2.Beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international-3.5.2.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="delete_page_3.5.2.beta2" author="jcx">
+        <delete tableName="t_amp_view_page_info">
+            <where>
+                wid in ('20220726001', '20220726002')
+            </where>
+        </delete>
+    </changeSet>
+
+    <changeSet author="hxshen" id="t_amp_view_system_config_3.5.2.Beta1.10300.01" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/t_amp_view_system_config_3.5.2.Beta1.10300.01.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="t_amp_view_system_config-3.5.2.Beta2_20220809" author="hxshen" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/t_amp_view_system_config_3.5.2.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="zjchen" id="init_page_info_3.5.3.beta1" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_3.5.3.Beta1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="zjchen" id="init_international-3.5.3.Beta1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international-3.5.3.Beta1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 添加站点规则-->
+    <changeSet author="jszhang" id="amp_view_system_config_add_site-rule-config-3.5.3.Beta1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/t_amp_view_system_config_3.5.3.Beta1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="hxshen" id="init_t_amp_view_card_3.5.3.beta1_recomendOneThing" runOnChange="true">
+        <loadUpdateData tableName="t_amp_view_card"
+                        primaryKey="wid"
+                        file="classpath:db/data/init_t_amp_view_card_3.5.3.beta1_recomendOneThing.csv"
+                        encoding="UTF-8"
+                        quotchar="&quot;"
+                        separator=",">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="hxshen" id="init_t_amp_view_plugins_3.5.3.beta1_recommendOneThing" runOnChange="true">
+        <loadUpdateData tableName="t_amp_view_plugins"
+                        primaryKey="wid"
+                        file="classpath:db/data/init_t_amp_view_plugins_3.5.3.beta1_recommendOneThing.csv"
+                        encoding="UTF-8"
+                        quotchar="&quot;"
+                        separator=",">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="jszhang" id="init_t_amp_view_plugins_3.5.3.beta1" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.3.beta1/init_t_amp_view_plugins_3.5.3.beta1.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+    <!--  增加待办卡片-->
+    <changeSet author="jszhang" id="init_t_amp_view_card_onethingfavourite" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.3.beta1/init_t_amp_view_card_onethingfavourite.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 最新服务卡片增加移动端 -->
+    <changeSet author="hlchen02" id="init_t_amp_view_card_lastestapp_20220905" runOnChange="false">
+        <update tableName="t_amp_view_card">
+            <column name="platform_type">0;1</column>
+            <column name="image_url_mobile">/SYS_CARD_LASTESTAPP/mobile/img/display.png</column>
+            <where>wid='8'</where>
+        </update>
+    </changeSet>
+
+    <!-- 配置改为系统配置 -->
+    <changeSet author="jcx" id="init_t_amp_view_system_config_20220915" >
+        <update tableName="t_amp_view_system_config">
+            <column name="config_model">0</column>
+            <where>wid in('4','1006621102316015616','1003684775299678208','1012019978975903744','56','57','58','59','60','61','62','979083623895728128')</where>
+        </update>
+    </changeSet>
+
+
+    <!-- 3.5.3.Beta2 全部事项增加移动端 PLATFORM_TYPE-->
+    <changeSet id="sys_card_allserviceitem_addmobile" author="hlchen02">
+        <update tableName="t_amp_view_card" >
+            <column name="platform_type">0;1</column>
+            <where>wid='1'</where>
+        </update>
+    </changeSet>
+
+    <!--  邮箱增加移动端地址配置-->
+    <changeSet author="hxshen" id="init_t_amp_view_system_config_3.5.3.Beta2" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/t_amp_view_system_config_3.5.3.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <!--  增加新图标-->
+    <changeSet author="jcx" id="init_t_amp_sys_icon_3.5.3.Beta2" >
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.3.Beta2/init_t_amp_sys_icon_3.5.3.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_sys_icon">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="hlchen02" id="init_page_info_3.5.3.beta2" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_page_info_3.5.3.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_page_info">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="hlchen02" id="init_international-3.5.3.Beta2" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/init_international-3.5.3.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="t_amp_sys_icon_202210121927_01" author="jcx">
+        <update tableName="t_amp_sys_icon" >
+            <column name="icon_url">icon-shixiangguanli</column>
+            <where>wid='162'</where>
+        </update>
+    </changeSet>
+
+    <!-- 3.5.3.Beta2 全部事项去掉移动端 PLATFORM_TYPE-->
+    <!-- 3.5.3 全部事项新增移动端 -->
+    <changeSet id="sys_card_allserviceitem_addmobile_02" author="hlchen02">
+        <update tableName="t_amp_view_card" >
+            <column name="platform_type">0;1</column>
+            <where>wid='1'</where>
+        </update>
+    </changeSet>
+
+    <!-- 3.5.3.Beta2 全部事项去掉移动端预置页面 -->
+    <!-- 3.5.3 全部事项新增移动端预置页面 -->
+    <changeSet id="sys_card_allserviceitem_pageInfo_02" author="hlchen02">
+        <update tableName="t_amp_view_page_info" >
+            <column name="is_deleted">0</column>
+            <where>wid='1028988185094455296'</where>
+        </update>
+    </changeSet>
+    <changeSet id="sys_card_allserviceitem_card_03" author="jcx">
+        <update tableName="t_amp_view_card" >
+            <column name="image_url_mobile">/SYS_CARD_ALLSERVICEITEM/mobile/img/display.png</column>
+            <where>wid='1'</where>
+        </update>
+    </changeSet>
+
+    <!--    coreMail 邮箱初始化参数-->
+    <changeSet id="sys_mail_coreMail_coreMail_urlScheme" author="hxshen">
+    <preConditions onFail="MARK_RAN">
+        <sqlCheck expectedResult="0">select count(1) from t_amp_view_system_config where config_key = 'coreMail_urlScheme'</sqlCheck>
+    </preConditions>
+    <insert tableName="t_amp_view_system_config">
+        <column name="wid">1039927041160712192</column>
+        <column name="config_key">coreMail_urlScheme</column>
+        <column name="config_value">http</column>
+        <column name="default_value">http</column>
+        <column name="config_desc">coremail接口协议</column>
+        <column name="config_model">0</column>
+        <column name="is_deleted">0</column>
+    </insert>
+</changeSet>
+
+    <changeSet author="jcx" id="init_system_config_3.5.4.Beta2_20221114_01">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta2/system_config_3.5.4_20221114.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="jcx" id="init_system_config_3.5.4.Beta2_20221115_01">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta2/system_config_3.5.4_20221115.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="jcx" id="init_international-3.5.4.Beta2_02" >
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta2/init_international-3.5.4.Beta2.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_international">
+        </loadUpdateData>
+    </changeSet>
+
+<!--    系统参数配置设置是否在页面展示-->
+    <changeSet author="hxshen" id="init_system_config_page_show_3.5.4_20221124" runOnChange="true">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta2/system_config_page_show_3.5.4_20221124.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        onlyUpdate="true"
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+
+    <changeSet id="sys_card_config_20221202_01" author="jcx">
+        <update tableName="t_amp_view_system_config" >
+            <column name="config_value">0,1,2,3,4,5</column>
+            <column name="default_value"/>
+            <where>wid='1041670901324406784'</where>
+        </update>
+    </changeSet>
+
+<!--    新增我收藏的消息、任务-->
+    <changeSet author="hxshen" id="init_t_amp_view_card_3.5.4.Beta3_20221228" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta3/init_t_amp_view_card_3.5.4.Beta3.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_card">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="hxshen" id="init_t_amp_view_plugins_3.5.4.beta3_20221228" runOnChange="false">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta3/init_t_amp_view_plugins_3.5.4.beta3.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_plugins">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="jcx" id="init_system_config_3.5.4_20221228">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta3/system_config_3.5.4_20221228.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+
+    <!-- 消息中心卡片增加移动端 -->
+    <changeSet author="hxshen" id="init_t_amp_view_card_message_center_mobile_20221229" runOnChange="false">
+        <update tableName="t_amp_view_card">
+            <column name="platform_type">0;1</column>
+            <column name="image_url_mobile">/SYS_CARD_MESSAGECENTER/mobile/img/display.png</column>
+            <where>wid='11'</where>
+        </update>
+    </changeSet>
+
+    <!-- 富文本卡片增加移动端 -->
+    <changeSet author="jcx" id="init_card_richtext_mobile_20230103" >
+        <update tableName="t_amp_view_card">
+            <column name="platform_type">0;1</column>
+            <column name="image_url_mobile">/SYS_CARD_RICHTEXT/mobile/img/display.png</column>
+            <where>wid='31'</where>
+        </update>
+    </changeSet>
+
+    <!--此配置用于修改门户登录，service参数中门户域名后的跳转地址，慎重修改 -->
+    <changeSet author="jcx" id="init_system_config_3.5.4_20230202">
+        <loadUpdateData encoding="UTF-8"
+                        file="classpath:db/data/3.5.4.Beta3/system_config_3.5.4_20230202.csv"
+                        primaryKey="wid"
+                        quotchar="&quot;"
+                        separator=","
+                        tableName="t_amp_view_system_config">
+        </loadUpdateData>
+    </changeSet>
+    <changeSet author="jcx" id="init_card_config_2023042101" >
+        <update tableName="t_amp_view_system_config">
+            <column name="config_model">1</column>
+            <where>config_key ='mobile_service_visits'</where>
+        </update>
+    </changeSet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!-- 这个脚本放最后 -->
+    <!--删除卡片模板安装表，使得现场不需要手动执行sql以安装最新的卡片模板包-->
+    <changeSet id="plugin_install_3.5.4.SP4" author="jcx">
+        <delete tableName="T_AMP_VIEW_PLUGIN_INSTALL">
+            <where>
+                plugin_wid in (select wid from t_amp_view_plugins where plugin_id like '%SYS_%' and plugin_id not like '%DESIGN%' )
+            </where>
+        </delete>
+    </changeSet>
+</databaseChangeLog>

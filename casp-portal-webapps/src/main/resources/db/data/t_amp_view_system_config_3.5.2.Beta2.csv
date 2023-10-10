@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+1006621102316015616,amp_hot_service_type,0,0,AMP兼容接口热门应用排序方式（0：访问量 1：评分）,1,0

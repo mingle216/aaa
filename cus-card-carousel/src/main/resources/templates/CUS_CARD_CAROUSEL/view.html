@@ -1,0 +1,547 @@
+<!--
+ * @Author: 杨芯悦 xyyang01@wisedu.com
+ * @Date: 2023-06-12 13:16:03
+ * @LastEditors: 杨芯悦 xyyang01@wisedu.com
+ * @LastEditTime: 2023-07-24 10:04:00
+-->
+<style>
+
+
+    .m-h-${cardWid}{
+        min-height:300px;
+    }
+    .flag-parent-${cardWid} {
+        position: absolute;
+        float: left;
+        bottom: 0px;
+        left: 20px;
+        z-index: 10;
+        font-family: "PingFangSC-Medium","Microsoft YaHei",微软雅黑;;
+        font-size: 20px;
+        color: #FFFFFF;
+        height: 90px !important;
+        padding-top: 20px;
+        left: 0;
+        padding-left: 20px;
+        margin: 0;
+        background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.75) 66%, #000000 100%);
+    }
+
+    .flag-parent2-${cardWid}{
+        position: absolute;
+        float: left;
+        bottom: 0px;
+        padding-bottom: 31px;
+        padding-top: 20px;
+        left: 0;
+        z-index: 10;
+        font-size: 20px;
+        color: #ffffff;
+        padding-left: 20px;
+        margin: 0;
+        background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.75) 66%, #000000 100%);
+
+    }
+
+    .flag-parent3-${cardWid}{
+        position: absolute;
+        float: left;
+        bottom: 0px;
+        padding-bottom: 6px;
+        padding-top: 20px;
+        left: 0;
+        z-index: 10;
+        font-size: 20px;
+        color: #ffffff;
+        padding-left: 20px;
+        margin: 0;
+        background-image: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.75) 66%, #000000 100%);
+
+    }
+
+
+    .swiper-btn-group-${cardWid} {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%
+    }
+
+    .carousel-control-prev-${cardWid},
+    .carousel-control-next-${cardWid} {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        margin: 20px;
+        border-radius: 50%;
+        transition: background-color .2s;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+
+    .carousel-control-prev-${cardWid}:hover,
+    .carousel-control-next-${cardWid}:hover {
+        background-color: rgba(0, 0, 0, .2)
+    }
+
+
+    .carousel-control-prev-${cardWid}::before {
+        border-width: 0 0 2px 2px
+    }
+
+    .carousel-indicators-${cardWid} li {
+        box-sizing: content-box;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        width: 0px !important;
+        height: 0px !important;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: transparent;
+        background-clip: padding-box;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        opacity: .5;
+        transition: opacity .6s ease;
+        border-radius: 50%;
+
+    }
+
+
+    .item-circle-${cardWid} i:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 50%;
+        -webkit-transition: border .2s ease;
+        -o-transition: border .2s ease;
+        transition: border .2s ease;
+        border: 2px solid hsla(0, 0%, 100%, .3);
+    }
+
+
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} {
+        display: inline-block;
+        margin: 0 5px;
+        line-height: 12px;
+        padding-left: 8px;
+        padding-right: 0px;
+        position: relative;
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid}:hover b {
+        opacity: .5
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid}.active b {
+        opacity: 0
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid}.active i {
+        opacity: 1
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid}.active i svg circle {
+        /*stroke-dashoffset: 0;
+        -webkit-transition: stroke-dashoffset 3s linear;
+        -moz-animation:  stroke-dashoffset 3s linear;
+        -ms-animation:  stroke-dashoffset 3s linear;
+        -o-transition: stroke-dashoffset 3s linear;
+        transition: stroke-dashoffset 3s linear*/
+    }
+
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} b {
+        width: 8px;
+        height: 8px;
+        overflow: hidden;
+        margin: -5px 0 0 -5px;
+        border-radius: 50%;
+        -webkit-transition: opacity .3s ease, border .2s ease, background .2s ease;
+        -o-transition: opacity .3s ease, border .2s ease, background .2s ease;
+        transition: opacity .3s ease, border .2s ease, background .2s ease;
+        background-color: hsla(0, 0%, 100%, .5)
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} b,
+    .carousel-items-${cardWid} .item-circle-${cardWid} i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} i {
+        width: 12px;
+        height: 12px;
+        margin: -7px 0 0 -7px;
+        opacity: 0;
+        -webkit-transition: opacity .3s ease;
+        -o-transition: opacity .3s ease;
+        transition: opacity .3s ease
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} i:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 50%;
+        -webkit-transition: border .2s ease;
+        -o-transition: border .2s ease;
+        transition: border .2s ease;
+        border: 2px solid hsla(0, 0%, 100%, .3)
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} i svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        -webkit-transform: rotate(-90deg) translateZ(0);
+        transform: rotate(-90deg) translateZ(0)
+    }
+
+    .carousel-items-${cardWid} .item-circle-${cardWid} i svg circle {
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 37 37;
+        stroke-dashoffset: 37;
+        stroke: #fff
+    }
+
+    .carousel-indicators-${cardWid} {
+        position: absolute !important;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        margin-right: 12px;
+        list-style: none;
+        z-index: 16;
+        bottom: 16px;
+        right: 0 !important;
+        width: 105px;
+        margin-left: calc(100% - 110px);
+    }
+
+    .title-${cardWid}{
+        width: fit-content;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 20px;
+        height: 28px;
+        font-family: PingFang SC;
+        color: #FFFFFF;
+        margin-bottom: 4px;
+    }
+    .flag-parent3-${cardWid} > .summary-${cardWid}{
+        max-width:99% !important;
+    }
+
+    .summary-${cardWid}{
+        display: inline-block;
+        max-width:calc(100% - 105px);
+        font-size: 12px;
+        max-height: 38px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 20px;
+        margin-bottom: 18.5px;
+    }
+
+    .empty-contain-${cardWid} {
+        -webkit-display:flex;
+        display:flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+        height: 100%;
+        min-height: 300px;
+    }
+
+    .empty-content-${cardWid} {
+        width: 250px;
+        height: 82px;
+        -webkit-display:flex;
+        display:flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+    }
+
+    .empty-text-${cardWid} {
+        min-width: 120px;
+        min-height: 20px;
+        font-weight: bold;
+        font-family: "PingFangSC-Medium","Microsoft YaHei",微软雅黑;;
+        font-size: 14px;
+        color: #102645;
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    .hand-hover-carousel{
+        cursor:pointer;
+    }
+
+</style>
+
+
+
+<div class="card-container-${cardWid}" style="${style}">
+    <% if(isNotEmpty(carouselList)){ %>
+
+    <div id="carouselExampleCaptions-${cardWid}" class="carousel slide carousel-container-${cardWid} " data-ride="carousel">
+        <div class="carousel-items carousel-indicators carousel-items-${cardWid} carousel-indicators-${cardWid}" style="">
+
+            <% if(carouselList.~size > 1){
+            for(carouse in carouselList){ %>
+            <li class="item-circle item-circle-${cardWid} ${carouse.defaultActive}" data-target="#carouselExampleCaptions-${cardWid}"
+                data-slide-to="${carouse.SORT_VALUE}"><b></b><i>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"
+                     preserveAspectRatio="none">
+                    <circle name="circle-${cardWid}" cx="7" cy="7" r="6"></circle>
+                </svg>
+            </i></li>
+
+            <% }} %>
+
+        </div>
+        <div class="carousel-inner">
+            <% for(item in carouselList){
+            if(config.CARD_HEIGHT_TYPE == "1"){%>
+            <!-- 自适应高度 -->
+            <div class="carousel-item ${item.defaultActive} ${isEmpty(item.URL)?"":"hand-hover-carousel"}"  onclick="openUrl${cardWid}('${item.URL}')" style="pointer-events: auto;${style}">
+            <img src="${item.IMAGE}" onerror="imgerrorfun${cardWid}()" class="d-block w-100 m-h-${cardWid}" alt="" style=${style}>
+            <!-- 标题、摘要都显示，且都有值 -->
+            <% if(CARD_SHOW_TITLE && CARD_SHOW_SUMMARY && !isEmpty(item.TITLE) && !isEmpty(item.SUMMARY)){ %>
+            <div class="flag-parent-${cardWid}  d-md-block row col-12">
+                <div class="title-${cardWid}" data-toggle="tooltip" title="${item.TITLE,xss}" style=" ">${item.TITLE,xss}  </div>
+                <div class="summary-${cardWid}" data-toggle="tooltip" title="${item.SUMMARY,xss}" style=" ">${item.SUMMARY,xss}</div>
+            </div>
+            <% } else %>
+            <!-- 标题显示且有值，摘要不显示或者显示却无值 -->
+            <% if( (CARD_SHOW_TITLE && !isEmpty(item.TITLE) && !CARD_SHOW_SUMMARY ) ||   (CARD_SHOW_TITLE && !isEmpty(item.TITLE) &&  (CARD_SHOW_SUMMARY && isEmpty(item.SUMMARY)) )){ %>
+            <div class="flag-parent2-${cardWid}  d-md-block row col-12">
+                <div title="${item.TITLE,xss}" class="title-${cardWid}" data-toggle="tooltip" style=" ">${item.TITLE,xss}</div>
+            </div>
+            <% }  else%>
+            <!-- 摘要显示且有值，标题不显示或者显示却无值 -->
+            <% if( (CARD_SHOW_SUMMARY && !isEmpty(item.SUMMARY) && !CARD_SHOW_TITLE ) ||   (CARD_SHOW_SUMMARY && !isEmpty(item.SUMMARY) &&  (CARD_SHOW_TITLE && isEmpty(item.TITLE)) )){ %>
+
+            <div class="flag-parent3-${cardWid}  d-md-block row col-12">
+                <div title="${item.SUMMARY,xss}" class="summary-${cardWid}" data-toggle="tooltip" style=" ">${item.SUMMARY,xss}</div>
+            </div>
+            <% }  else{}%>
+
+        </div>
+        <% } else if(config.CARD_HEIGHT_TYPE == "2"){%>
+        <!-- 最大高度 (有滚动条)-->
+        <div class="carousel-item ${item.defaultActive}" ${isEmpty(item.URL)?"":"hand-hover-carousel"}" onclick="openUrl${cardWid}('${item.URL}')"  style="pointer-events: auto;">
+        <img src="${item.IMAGE}" onerror="imgerrorfun${cardWid}()" class="d-block w-100 m-h-${cardWid}" alt=""  >
+        <!-- 标题、摘要都显示，且都有值 -->
+        <% if(CARD_SHOW_TITLE && CARD_SHOW_SUMMARY && !isEmpty(item.TITLE) && !isEmpty(item.SUMMARY)){ %>
+        <div class="flag-parent-${cardWid}  d-md-block row col-12">
+            <div class="title-${cardWid}" data-toggle="tooltip" title="${item.TITLE,xss}" style=" ">${item.TITLE,xss}  </div>
+            <div class="summary-${cardWid}" data-toggle="tooltip" title="${item.SUMMARY,xss}" style=" ">${item.SUMMARY,xss}</div>
+        </div>
+        <% } else %>
+        <!-- 标题显示且有值，摘要不显示或者显示却无值 -->
+        <% if( (CARD_SHOW_TITLE && !isEmpty(item.TITLE) && !CARD_SHOW_SUMMARY ) ||   (CARD_SHOW_TITLE && !isEmpty(item.TITLE) &&  (CARD_SHOW_SUMMARY && isEmpty(item.SUMMARY)) )){ %>
+        <div class="flag-parent2-${cardWid}  d-md-block row col-12">
+            <div title="${item.TITLE,xss}" class="title-${cardWid}" data-toggle="tooltip" style=" ">${item.TITLE,xss}</div>
+        </div>
+        <% }  else%>
+        <!-- 摘要显示且有值，标题不显示或者显示却无值 -->
+        <% if( (CARD_SHOW_SUMMARY && !isEmpty(item.SUMMARY) && !CARD_SHOW_TITLE ) ||   (CARD_SHOW_SUMMARY && !isEmpty(item.SUMMARY) &&  (CARD_SHOW_TITLE && isEmpty(item.TITLE)) )){ %>
+
+        <div class="flag-parent3-${cardWid}  d-md-block row col-12">
+            <div title="${item.SUMMARY,xss}" class="summary-${cardWid}" data-toggle="tooltip" style=" ">${item.SUMMARY,xss}</div>
+        </div>
+        <% }  else{}%>
+    </div>
+    <!-- 固定高度 -->
+    <% } else if(config.CARD_HEIGHT_TYPE == "3"){%>
+    <div class="carousel-item ${item.defaultActive}" ${isEmpty(item.URL)?"":"hand-hover-carousel"}" onclick="openUrl${cardWid}('${item.URL}')" style="pointer-events: auto;${style}">
+    <img src="${item.IMAGE}" onerror="imgerrorfun${cardWid}()" class="d-block w-100 m-h-${cardWid} fit-img-${cardWid}" data-object-fit="cover" alt="" style="object-fit: cover;${style}" >
+    <!-- 标题、摘要都显示，且都有值 -->
+    <% if(CARD_SHOW_TITLE && CARD_SHOW_SUMMARY && !isEmpty(item.TITLE) && !isEmpty(item.SUMMARY)){ %>
+    <div class="flag-parent-${cardWid}  d-md-block row col-12">
+        <div class="title-${cardWid}" data-toggle="tooltip" title="${item.TITLE,xss}" style=" ">${item.TITLE,xss}  </div>
+        <div class="summary-${cardWid}" data-toggle="tooltip" title="${item.SUMMARY,xss}" style=" ">${item.SUMMARY,xss}</div>
+    </div>
+    <% } else %>
+    <!-- 标题显示且有值，摘要不显示或者显示却无值 -->
+    <% if( (CARD_SHOW_TITLE && !isEmpty(item.TITLE) && !CARD_SHOW_SUMMARY ) ||   (CARD_SHOW_TITLE && !isEmpty(item.TITLE) &&  (CARD_SHOW_SUMMARY && isEmpty(item.SUMMARY)) )){ %>
+    <div class="flag-parent2-${cardWid}  d-md-block row col-12">
+        <div title="${item.TITLE,xss}" class="title-${cardWid}" data-toggle="tooltip" style=" ">${item.TITLE,xss}</div>
+    </div>
+    <% }  else%>
+    <!-- 摘要显示且有值，标题不显示或者显示却无值 -->
+    <% if( (CARD_SHOW_SUMMARY && !isEmpty(item.SUMMARY) && !CARD_SHOW_TITLE ) ||   (CARD_SHOW_SUMMARY && !isEmpty(item.SUMMARY) &&  (CARD_SHOW_TITLE && isEmpty(item.TITLE)) )){ %>
+
+    <div class="flag-parent3-${cardWid}  d-md-block row col-12">
+        <div title="${item.SUMMARY,xss}" class="summary-${cardWid}" data-toggle="tooltip" style=" ">${item.SUMMARY,xss}</div>
+    </div>
+    <% }  else{}%>
+</div>
+<%} } %>
+
+</div>
+<% if(carouselList.~size > 1){ %>
+<div class="swiper-btn-group-${cardWid}" style="z-index:16;pointer-events: none;">
+
+    <a style="pointer-events: auto;" class="carousel-control-prev-${cardWid} carousel-control-prev" href="#carouselExampleCaptions-${cardWid}" role="button" data-slide="prev">
+        <span style="pointer-events: auto;" class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a style="pointer-events: auto;" class="carousel-control-next-${cardWid} carousel-control-next" href="#carouselExampleCaptions-${cardWid}" role="button" data-slide="next">
+        <span style="pointer-events: auto;" class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+<% }  %>
+</div>
+<% } else { %>
+<div class="empty-contain-${cardWid}">
+    <div class="empty-content-${cardWid}">
+        <span class="empty-text-${cardWid} portal-font-color-lv1">暂无轮播图</span>
+    </div>
+</div>
+<% } %>
+
+</div>
+<script type="text/javascript">
+
+
+    $(function() {
+        //tooltip事件
+        $('[data-toggle="tooltip"]').mouseenter(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        //判断：如果宽度不足高度的3倍，则需要重新缩放大小[最小300px]
+        var width = Math.ceil($('.card-container-${cardWid}').width()/3);
+        var height = Math.ceil($('.card-container-${cardWid}').height());
+        if(  Math.abs(width-height) > 1){
+            //3:1 长宽比失调 ，重新计算图片样式[一般为宽度小于1200px，高度最小固定为300px导致的]
+            $('.card-container-CUS_CARD_CAROUSEL').find('img').attr('data-object-fit','cover');
+            $('.card-container-CUS_CARD_CAROUSEL').find('img').css('object-fit','cover');
+        }
+    });
+
+
+    /* IE 动画不兼容:更新为js动画，定时执行 */
+    setInterval(function(){
+        //将非激活状态的circle重置，下次触发时重新画圆
+        var elements${cardWid} = $('.carousel-items-${cardWid} .item-circle-${cardWid} i svg circle');
+        for(var i =0;i < elements${cardWid}.length ;i++){
+            if(!$(elements${cardWid}[i]).parent("svg").parent("i").parent(".item-circle-${cardWid}.active").length == 1){
+                $(elements${cardWid}[i]).attr("data-length",38);
+            }
+        }
+    },10);
+
+    var userAgent = navigator.userAgent;
+    var raoteNum${cardWid} = 0.127;
+    if(userAgent.indexOf("Firefox") > -1){
+        raoteNum${cardWid} = 0.2;
+    }
+
+    //初始化第一个,设置为37
+    var element${cardWid} = $('.carousel-items-${cardWid} .item-circle-${cardWid}.active i svg circle');
+    element${cardWid}.attr("data-length",37);
+    element${cardWid}.css("stroke-dashoffset",37);
+
+    //0>-37
+    function animateRoute${cardWid}(len) {
+        element${cardWid} = $('.carousel-items-${cardWid} .item-circle-${cardWid}.active i svg circle');
+        var currentLength  = element${cardWid}.attr("data-length");
+        if(currentLength == undefined || currentLength == 38 || currentLength == null || currentLength == ""){
+            len = 37;
+        }
+
+        len = len-raoteNum${cardWid};
+        if (len <=  0) {
+            len = 0;
+        }
+        //设置元素偏移
+        //console.log(len);
+        element${cardWid}.attr("data-length",len);
+        element${cardWid}.css("stroke-dashoffset",len);
+        //10毫秒执行一次,300次 185-0 6.3
+        setTimeout(function () {
+            animateRoute${cardWid}( len);
+        }, 10);
+
+    }
+    animateRoute${cardWid}( 37);
+    /**
+     * 3s切换一次
+     */
+    $('.carousel-container-${cardWid}').carousel({
+        interval: 3000
+    });
+
+    var height_type =${config.CARD_HEIGHT_TYPE} || 1;
+    if(height_type == "2"){
+        $(".card-container-${cardWid}").niceScroll(".carousel-container-${cardWid}",{
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+            cursorborder: "0"
+        });
+
+        setInterval(function () {
+            $(".card-container-${cardWid}").getNiceScroll().resize();
+        },100);
+    }
+
+
+    function openUrl${cardWid}(url){
+        console.log(url);
+        if (url != '' && url != null && url != undefined && url !="http://" && url !="https://") {
+            openPage(url,1);
+        }
+    }
+
+    function imgerrorfun${cardWid}(){
+        var img= event.srcElement;
+        img.src="${ctxInternalPath}/CUS_CARD_CAROUSEL/img/default.png";
+        img.onerror=null;
+    }
+</script>
+<script type="text/javascript" src="${ctxPath}/CUS_CARD_CAROUSEL/js/polyfill.object-fit.min.js" />

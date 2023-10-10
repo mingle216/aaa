@@ -1,0 +1,2 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number,image_url_mobile
+"20220203","SYS_CARD_NEWSDETAIL","新闻详情","/SYS_CARD_NEWSDETAIL/pc/img/display.png","0;1",0,1,"新闻详情",0,"",0,0,"1.0.0","/SYS_CARD_NEWSDETAIL/mobile/img/display.png"

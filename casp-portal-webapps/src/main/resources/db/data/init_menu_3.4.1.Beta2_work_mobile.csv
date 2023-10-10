@@ -1,0 +1,4 @@
+wid,menu_name,icon_url,order_number,auth_type,is_enabled,open_type,link_url,parent_id,programme_id,menu_type,page_id,icon_type,menu_name_lang_key,is_deleted
+954029667869511680,首页,icon-a-shouye1,207,2,1,0,/portal/home,0,b5cb4b5c805045b4ac89779e8e7dd42c,1,953613682888925184,1,954032541441708032,0
+954029593475141632,办事,icon-fuwuweixuanzhong,208,2,1,0,/portal/hall,0,b5cb4b5c805045b4ac89779e8e7dd42c,1,953613709719887872,1,954032515961311232,0
+954029543990743040,我的,icon-wodeweixuanzhong,209,2,1,0,/portal/personal,0,b5cb4b5c805045b4ac89779e8e7dd42c,1,953613863302717440,1,954032492154441728,0

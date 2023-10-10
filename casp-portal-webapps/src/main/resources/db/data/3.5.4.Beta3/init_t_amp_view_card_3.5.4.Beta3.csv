@@ -1,0 +1,4 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number,image_url_mobile
+"SYS_CARD_MYFAVORITEMESSAGE","SYS_CARD_MYFAVORITEMESSAGE","我收藏的消息","/SYS_CARD_MYFAVORITEMESSAGE/pc/img/display.png","0;1",0,1,"我收藏的消息",0,"",0,0,"1.0.0","/SYS_CARD_MYFAVORITEMESSAGE/mobile/img/display.png"
+"SYS_CARD_MYFAVORITE_TASK","SYS_CARD_MYFAVORITE_TASK","我收藏的任务","/SYS_CARD_MYFAVORITE_TASK/pc/img/display.png","0;1",0,1,"我收藏的任务",0,"",0,0,"1.0.0","/SYS_CARD_MYFAVORITE_TASK/mobile/img/display.png"
+"SYS_CARD_MYFAVORITENEWS","SYS_CARD_MYFAVORITENEWS","我收藏的新闻","/SYS_CARD_MYFAVORITENEWS/pc/img/display.png","0;1",0,1,"我收藏的新闻",0,"",0,0,"1.0.0","/SYS_CARD_MYFAVORITENEWS/mobile/img/display.png"

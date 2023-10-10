@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_version_management-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_VERSION_MANAGEMENT"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_VERSION_MANAGEMENT" remarks="版本管理表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION_NUMBER" type="VARCHAR(200)" remarks="版本号"/>
+            <column name="VERSION_TYPE" type="NUMBER(2)" remarks="类型0：模板1：卡片"/>
+            <column name="VERSION_NAME" type="VARCHAR(200)" remarks="名称"/>
+            <column name="VERSION_STATUS" type="NUMBER(2)" remarks="状态0：停用1：在用" defaultValue="1"/>
+            <column name="FOREIGN_KEY" type="VARCHAR(64)" remarks="模板/卡片id"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

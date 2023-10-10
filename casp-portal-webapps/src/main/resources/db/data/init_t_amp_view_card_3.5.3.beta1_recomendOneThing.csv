@@ -1,0 +1,2 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number,image_url_mobile
+"1014925712944287744","SYS_CARD_RECOMMENDONETHING","推荐一件事","/SYS_CARD_RECOMMENDONETHING/pc/img/display.png","0;1",0,1,"推荐一件事",0,"",0,0,"1.0.0","/SYS_CARD_RECOMMENDONETHING/mobile/img/display.png"

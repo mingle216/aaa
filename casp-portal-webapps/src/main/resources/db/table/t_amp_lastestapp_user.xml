@@ -1,0 +1,42 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="hlchen02" id="t_amp_lastestapp_use-1.0.1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_lastestapp_use"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_lastestapp_use" remarks="最新服务使用记录表">
+            <column name="wid" remarks="主键" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_t_amp_lastestapp_use"/>
+            </column>
+            <column name="user_wid" type="VARCHAR(64)" remarks="用户wid">
+                <constraints nullable="false" />
+            </column>
+            <column name="service_wid" type="varchar(200)" remarks="服务wid">
+                <constraints nullable="false" />
+            </column>
+            <column name="pc_read" type="TINYINT(2)" remarks="pc是否使用(0 否)" defaultValueNumeric="0" />
+            <column name="mobile_read" type="TINYINT(2)" remarks="mobile是否使用(0 否)" defaultValueNumeric="0" />
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="create_time" remarks="创建时间" type="TIMESTAMP"/>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="update_time" remarks="修改时间" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="hlchen02" id="t_amp_lastestapp_use-1.0.1-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="t_amp_lastestapp_use" indexName="index_userwid"/>
+            </not>
+        </preConditions>
+        <createIndex tableName="t_amp_lastestapp_use" indexName="index_userwid">
+            <column name="user_wid"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

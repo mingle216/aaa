@@ -1,0 +1,96 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "min": 150,
+    "max": 900
+  },
+  {
+    "label":"列表展示总数",
+    "key": "rows",
+    "component": "inputNumber",
+    "defaultValue":8,
+    "value":null,
+    "placeholder":null,
+    "required": 1,
+    "min":1,
+    "max":100,
+    "step":1,
+    "stepStrictly":0,
+    "precision":0,
+    "tips":null
+
+  },
+  {
+    "label":"单行列表展示个数",
+    "component": "select",
+    "key": "columns",
+    "datas": [
+      {
+        "label": 1,
+        "value": 1
+      },
+      {
+        "label": 2,
+        "value": 2
+      },
+      {
+        "label": 3,
+        "value": 3
+      },
+      {
+        "label": 4,
+        "value": 4
+      },
+      {
+        "label": 5,
+        "value": 5
+      },
+      {
+        "label": 6,
+        "value": 6
+      }
+    ],
+    "defaultValue":5,
+    "min":1,
+    "max":1
+  },
+  {
+    "label":"热门服务时间段",
+    "component": "radio",
+    "key": "hotServiceTimeRadio",
+    "labelAlias": "name",
+    "datas": [
+      {"name":"近一周","value":0},
+      {"name":"近一个月","value":1},
+      {"name":"近三个月","value":2},
+      {"name":"近半年","value":3}
+    ],
+    "defaultValue":0
+  },
+  {
+    "component":"radio",
+    "key":"serviceAppraise",
+    "label": "是否展示服务评价",
+    "required": 0,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "是",
+        "value": "1"
+      },
+      {
+        "label": "否",
+        "value": "0"
+      }
+    ]
+  }
+]

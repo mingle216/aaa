@@ -1,0 +1,4 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted,value_lang_key
+"1041670259830759424","is_browser_compatible","","0","浏览器兼容提示是否开启 1:是  0:否",0,0,""
+"1041670901324406784","compatible_browser","","0,1,2,3,4,5","兼容浏览器 0：360极速模式、1：Safari、2：Chrome、3：Firefox、4：IE11及以上、5：Edge     英文逗号分隔",0,0,""
+"1041670937575792640","compatible_browser_info","","建议使用以下浏览器进行访问：360极速模式、Safari、Chrome、Firefox、IE11及以上、Edge。","兼容提示文案",0,0,"1041701997898465280"

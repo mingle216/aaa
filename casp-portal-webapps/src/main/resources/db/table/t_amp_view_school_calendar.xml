@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="zkpu" id="t_amp_view_school_calendar-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_SCHOOL_CALENDAR"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_SCHOOL_CALENDAR" remarks="校历表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CALENDAR_TYPE" type="NUMBER(2)" remarks="校历类型，0：本科，1：研究生"/>
+            <column name="SCHOOL_YEAR" type="NUMBER(8)" remarks="学年。例如：2021"/>
+            <column name="TERM_CODE" type="NUMBER(2)" remarks="学期。1：上学期，2：下学期。"/>
+            <column name="START_DATE" type="TIMESTAMP" remarks="开学时间" />
+            <column name="END_DATE" type="TIMESTAMP" remarks="截止时间"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

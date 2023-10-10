@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--用于打包模式-->
+    <parent>
+        <groupId>com.wisedu.minos</groupId>
+        <artifactId>minos-component-parent</artifactId>
+        <version>3.5.4.SP4-SNAPSHOT</version>
+        <relativePath />
+    </parent>
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>com.wisedu.casp</groupId>
+<artifactId>cus-card-link</artifactId>
+<version>${portal.version}</version>
+<packaging>jar</packaging>
+<properties>
+    <java.version>1.8</java.version>
+</properties>
+
+<dependencies>
+    <dependency>
+        <groupId>com.wisedu.casp.core</groupId>
+        <artifactId>casp-portal-core</artifactId>
+        <version>${portal.version}</version>
+    </dependency>
+</dependencies>
+
+<build>
+    <finalName>cus-card-link</finalName>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+            <excludes>
+                <exclude>static/**</exclude>
+                <exclude>public/**</exclude>
+                <exclude>template/**</exclude>
+                <exclude>config/**</exclude>
+            </excludes>
+        </resource>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>false</filtering>
+            <includes>
+                <include>static/**</include>
+                <include>public/**</include>
+                <include>template/**</include>
+                <include>config/**</include>
+            </includes>
+        </resource>
+    </resources>
+</build>
+</project>

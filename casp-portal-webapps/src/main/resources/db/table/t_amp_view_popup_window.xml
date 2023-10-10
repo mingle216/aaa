@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="zkpu" id="t_amp_view_popup_window-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_POPUP_WINDOW"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_POPUP_WINDOW" remarks="系统弹窗">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="POP_TITLE" type="VARCHAR(200)" remarks="弹窗主题" />
+            <column name="TITLE_LANG_KEY" type="VARCHAR(64)" remarks="主题多语言id" />
+            <column name="PAGE_WID" type="VARCHAR(64)" remarks="展示方案id" />
+            <column name="POP_CONTENTS" type="CLOB" remarks="弹窗内容" />
+            <column name="BEG_TIME" type="TIMESTAMP" remarks="开始时间" />
+            <column name="END_TIME" type="TIMESTAMP" remarks="结束时间" />
+            <column name="POP_TYPE" type="NUMBER(2)" remarks="展示方式 0:每次登录时提醒 1:仅提醒一次 " defaultValue="0"/>
+            <column name="IS_ENABLED" type="NUMBER(2)" remarks="是否启用 0:否 1:是" defaultValue="1"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="t_amp_view_popup_window-3.2.1" author="zkpu">
+        <addColumn tableName="T_AMP_VIEW_POPUP_WINDOW">
+            <column name="CONTENTS_LANG_KEY" type="VARCHAR(64)" remarks="内容多语言key"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

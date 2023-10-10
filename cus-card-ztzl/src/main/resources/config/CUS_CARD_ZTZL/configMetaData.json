@@ -1,0 +1,21 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "linkHeight",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "value": null
+  },
+  {
+    "component":"addLinkListPC",
+    "key":"linkList",
+    "min": 0,
+    "max": 0,
+    "defaultValue": [],
+    "value": null,
+    "datas": []
+  }
+
+]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览展示方案基本信息配置</title>
+    <% include("/CUS_TEMPLATE_OFFICIAL/preview/preview-header.html"){} %>
+</head>
+<body>
+
+${programmeConfigContent!}
+</body>
+<script type="text/javascript">
+    /**
+     * 保存展示方案模板配置
+     */
+    function preserveTemplateConfig(data) {
+        var split = window.location.pathname.split('/')
+        var programmeId = split[split.length - 1]
+        execTemplateMethod("saveProgrammeConfig", {
+            "wid": programmeId,
+            "templateConfig": JSON.stringify(data)
+        },function(data){
+            alert(JSON.stringify(data))
+        });
+    }
+</script>
+</html>

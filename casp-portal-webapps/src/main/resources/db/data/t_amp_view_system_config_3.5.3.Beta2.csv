@@ -1,0 +1,4 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+1024334575720235008,coreMail_loginUrl_prefix_mobile,,,coremail移动端登录地址前缀,0,0
+1024334575720235009,tencent_lowVersion_loginUrl_mobile,,,腾讯企业邮（低版本）移动端登录地址前缀,0,0
+1024334575720235010,eyou.v5.loginUrlPrefix.mobile,,,亿邮移动端登录地址前缀,0,0

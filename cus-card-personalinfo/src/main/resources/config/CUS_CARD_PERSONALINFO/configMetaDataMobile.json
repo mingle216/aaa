@@ -1,0 +1,65 @@
+[
+  {
+    "component": "personalDataSource",
+    "key": "personalInfo",
+    "defaultValue": {
+      "isDisplay":0,
+      "infoList":[0,1,2],
+      "dataSource":""
+    },
+    "value": {
+      "isDisplay":0,
+      "infoList":[0,1,2],
+      "dataSource":""
+    },
+    "datas":[]
+  },
+  {
+    "component": "radio",
+    "key": "isHiddenPrivacy",
+    "label": "是否开启隐私模式",
+    "required": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": 0,
+    "value": null,
+    "datas": [
+      {
+        "label": "开启",
+        "value": 1
+      },
+      {
+        "label": "关闭",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "showBindMail",
+    "label": "邮箱绑定、解绑功能",
+    "required": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+  "component": "checkbox",
+  "key": "personalDatas",
+  "label": "选择数据项",
+  "value": [],
+  "defaultValue": [],
+  "datas": []
+}
+]

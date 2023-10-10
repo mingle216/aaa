@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted,page_show
+"1070650300434288644","get_login_href_key","",/login,此配置用于修改门户登录，service参数中门户域名后的跳转地址，慎重修改,2,0,1

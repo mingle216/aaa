@@ -1,0 +1,1 @@
+cd .\src\main\web && yarn && yarn build && cd ..\..\.. && cd .\src\main\mobile && yarn && yarn build && cd ..\..\.. &&  mvn clean install && copy /Y .\target\cus-card-xi-dian-my-todo.jar

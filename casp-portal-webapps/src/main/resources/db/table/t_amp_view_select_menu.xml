@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_select_menu-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_view_select_menu"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_view_select_menu" remarks="下拉菜单表">
+            <column name="wid" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="programme_id" type="varchar(64)" remarks="展示方案Id">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="menu_name" type="varchar(64)" remarks="菜单名称"/>
+            <column name="icon_path" type="varchar(500)" remarks="图标路径"/>
+            <column name="icon_name" type="varchar(500)" remarks="图标名称"/>
+            <column name="order_number" type="number(10)" remarks="排序"/>
+            <column name="auth_type" type="number(2)" remarks="0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见 4:可用即可见"  defaultValue="1"/>
+            <column name="is_system_menu" type="number(2)" remarks="是否预置菜单 0:否 1:是" defaultValue="0"/>
+            <column name="is_enabled" type="number(2)" remarks="是否启用 0:停用 1:启用" defaultValue="0"/>
+            <column name="open_type" type="number(2)" remarks="打开方式  0:当前页 1:新开窗口" defaultValue='0'/>
+            <column name="link_url" type="varchar(2048)" remarks="菜单链接"/>
+            <column name="menu_type" type="number(2)" remarks="菜单类型0：无链接1：内部页面2：第三方链接"/>
+            <column name="page_id" type="varchar(64)" remarks="对应页面"/>
+            <column name="icon_type" type="number(2)" remarks="图标类型  0 字体图标  1 png图标 2不使用图标" defaultValue="2"/>
+            <column name="menu_name_lang_key" type="varchar(200)" remarks="菜单名称国际化id"/>
+            <column name="is_deleted" type="number(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="update_time" type="timestamp" remarks="更新时间" defaultValueComputed="current_timestamp"/>
+            <column name="create_time" type="timestamp" remarks="创建时间" defaultValueComputed="current_timestamp"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

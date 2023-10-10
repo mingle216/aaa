@@ -1,0 +1,287 @@
+<!--@formatter:off-->
+<style>
+    .form-check-input {
+        cursor: pointer;
+    }
+    .card-config-container-${cardWid}{
+        width: 324px;
+        /*height: 716px;*/
+    }
+
+    .padding-${cardWid}{
+        padding: 5px 17px;
+    }
+    .save-config-btn-${cardWid}{
+        padding: 10px 5px;
+        border-top: 1px solid #ddd;
+        width: 324px;
+        text-align: center;
+        bottom: 0px;
+        position: absolute;
+    }
+
+    .title-font-${cardWid}{
+        font-family: MicrosoftYaHei, 微软雅黑;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        color: rgb(119, 119, 119);
+    }
+    .content-font-${cardWid}{
+        font-family: 'MicrosoftYaHei', '微软雅黑';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 14px;
+        cursor: pointer;
+    }
+
+    .inline-${cardWid}{
+        display: inline-block;
+    }
+
+    .col-4-${cardWid}{
+        -ms-flex: 0 0 32%;
+        flex: 0 0 32%;
+        max-width: 32%;
+        margin-right: 25px;
+    }
+
+</style>
+<!--@formatter:off-->
+
+<div class="card-config-container-${cardWid}" id="carousel-config-container-${cardWid}">
+    <%
+    SERVICE_ITEM_SEARCH_BOX = config.SERVICE_ITEM_SEARCH_BOX;
+    FILTER_ITEM_DISPLAY_INFO = config.FILTER_ITEM_DISPLAY_INFO;
+    SINGLE_ITEM_DISPLAY_INFO = config.SINGLE_ITEM_DISPLAY_INFO;
+    SERVICE_ORG_RULES = config.SERVICE_ORG_RULES;
+    BEFORE_LOGIN = config.BEFORE_LOGIN;
+    AFTER_LOGIN = config.AFTER_LOGIN;
+    %>
+
+
+    <div id="card-config-info-${cardWid}" style="width: 324px;  overflow: hidden; "  >
+        <div class="alert-warning-${cardWid}"></div>
+
+        <!-- 登录前 单选-->
+<!--        <div class="row padding-${cardWid}">-->
+<!--            <legend class="col-form-label col-12  title-font-${cardWid}" >登录前</legend>-->
+<!--            <div class="col-12 pt-1">-->
+<!--                <div class="form-check col-5 inline-${cardWid}">-->
+<!--                    <input class="form-check-input" type="radio" name="beforeRadios${cardWid}"-->
+<!--                           id="beforeRadios${cardWid}1" value="1" ${BEFORE_LOGIN=="1"?"checked":""}>-->
+<!--                    <label class="form-check-label content-font-${cardWid}" for="rulesRadios${cardWid}1">-->
+<!--                        显示全部-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div class="form-check col-6 inline-${cardWid}">-->
+<!--                    <input class="form-check-input" type="radio" name="beforeRadios${cardWid}"-->
+<!--                           id="beforeRadios${cardWid}2" value="0" ${BEFORE_LOGIN=="0"?"checked":""}>-->
+<!--                    <label class="form-check-label content-font-${cardWid}" for="rulesRadios${cardWid}2">-->
+<!--                        只显示游客访问-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <!-- 登录后 单选-->
+<!--        <div class="row padding-${cardWid}">-->
+<!--            <legend class="col-form-label col-12  title-font-${cardWid}" >登录后</legend>-->
+<!--            <div class="col-12 pt-1">-->
+<!--                <div class="form-check col-5 inline-${cardWid}">-->
+<!--                    <input class="form-check-input" type="radio" name="afterRadios${cardWid}"-->
+<!--                           id="afterRadios${cardWid}1" value="1" ${AFTER_LOGIN=="1"?"checked":""}>-->
+<!--                    <label class="form-check-label content-font-${cardWid}" for="rulesRadios${cardWid}1">-->
+<!--                        显示全部-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div class="form-check col-6 inline-${cardWid}">-->
+<!--                    <input class="form-check-input" type="radio" name="afterRadios${cardWid}"-->
+<!--                           id="afterRadios${cardWid}2" value="0" ${AFTER_LOGIN=="0"?"checked":""}>-->
+<!--                    <label class="form-check-label content-font-${cardWid}" for="rulesRadios${cardWid}2">-->
+<!--                        只显示与我相关-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <!-- 服务事项搜索框 单选-->
+        <div class="row padding-${cardWid}">
+            <legend class="col-form-label col-4 pt-0 pr-0 title-font-${cardWid}" >服务事项搜索框</legend>
+            <div class="col-8">
+                <div class="form-check col-5 pl-2 inline-${cardWid}">
+                    <input class="form-check-input" type="radio" name="searchRadios${cardWid}"
+                           id="searchRadios${cardWid}1" value="1" ${SERVICE_ITEM_SEARCH_BOX=="1"?"checked":""}>
+                    <label class="form-check-label content-font-${cardWid}" for="searchRadios${cardWid}1">
+                       显示
+                    </label>
+                </div>
+                <div class="form-check col-5 pl-2 inline-${cardWid}">
+                    <input class="form-check-input" type="radio" name="searchRadios${cardWid}"
+                           id="searchRadios${cardWid}2" value="0" ${SERVICE_ITEM_SEARCH_BOX=="0"?"checked":""}>
+                    <label class="form-check-label content-font-${cardWid}" for="searchRadios${cardWid}2">
+                        隐藏
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- 筛选项展示信息 多选-->
+        <div class="row padding-${cardWid}">
+            <div class="col-12 title-font-${cardWid}">筛选项展示信息</div>
+            <label class="col-12 ">
+                <label class="form-check inline-${cardWid} col-4-${cardWid} pt-2">
+                    <input class="form-check-input" name="conditionCheckbox${cardWid}" type="checkbox" value="001" ${strutil.contain(FILTER_ITEM_DISPLAY_INFO,"001")?"checked":""}>
+                    <span class="form-check-label" style="cursor: pointer">
+                        服务主题
+                    </span>
+                </label>
+                <label class="form-check inline-${cardWid} col-4-${cardWid} pt-2">
+                    <input class="form-check-input" name="conditionCheckbox${cardWid}" type="checkbox" value="002" ${strutil.contain(FILTER_ITEM_DISPLAY_INFO,"002")?"checked":""}>
+                    <span class="form-check-label content-font-${cardWid}" >
+                        责任部门
+                    </span>
+                </label>
+                <label class="form-check inline-${cardWid} col-4-${cardWid} pt-2">
+                    <input class="form-check-input" name="conditionCheckbox${cardWid}" type="checkbox" value="003" ${strutil.contain(FILTER_ITEM_DISPLAY_INFO,"003")?"checked":""}>
+                    <span class="form-check-label content-font-${cardWid}" >
+                        服务对象
+                    </span>
+                </label>
+                <!--20201119版本暂时去除 -->
+<!--                <div class="form-check inline-${cardWid} col-4-${cardWid} pt-2">-->
+<!--                    <input class="form-check-input" name="conditionCheckbox${cardWid}" type="checkbox" value="004" ${strutil.contain(FILTER_ITEM_DISPLAY_INFO,"004")?"checked":""}>-->
+<!--                    <label class="form-check-label content-font-${cardWid}" >-->
+<!--                        事项类型-->
+<!--                    </label>-->
+<!--                </div>-->
+            </div>
+        </div>
+
+        <!-- 单条服务事项展示信息 多选-->
+        <div class="row padding-${cardWid}">
+            <div class="col-12 title-font-${cardWid}">单条服务事项展示信息</div>
+            <div class="col-12  ">
+                <label class="form-check inline-${cardWid} col-4-${cardWid} pt-2">
+                    <input class="form-check-input" name="singleItemCheckbox${cardWid}" type="checkbox" value="001" ${strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"001")?"checked":""}>
+                    <span class="form-check-label content-font-${cardWid}" >
+                        服务主题
+                    </span>
+                </label>
+                <label class="form-check inline-${cardWid} col-4-${cardWid} pt-2">
+                    <input class="form-check-input" name="singleItemCheckbox${cardWid}" type="checkbox" value="002" ${strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"002")?"checked":""}>
+                    <span class="form-check-label content-font-${cardWid}" >
+                        责任部门
+                    </span>
+                </label>
+                <label class="form-check inline-${cardWid} col-6-${cardWid} pt-2">
+                    <input class="form-check-input" name="singleItemCheckbox${cardWid}" type="checkbox" value="003" ${strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"003")?"checked":""}>
+                    <span class="form-check-label content-font-${cardWid}" >
+                        服务事项图标
+                    </span>
+                </label>
+
+            </div>
+        </div>
+        <!-- 服务组织规则 单选-->
+        <div class="row padding-${cardWid}">
+            <legend class="col-form-label col-12  title-font-${cardWid}" >服务组织规则</legend>
+            <div class="col-12 pt-1">
+                <div class="form-check col-6 inline-${cardWid}">
+                    <input class="form-check-input" type="radio" name="rulesRadios${cardWid}"
+                           id="rulesRadios${cardWid}1" value="1" ${SERVICE_ORG_RULES=="1"?"checked":""}>
+                    <label class="form-check-label content-font-${cardWid}" for="rulesRadios${cardWid}1">
+                        按首字母排序
+                    </label>
+                </div>
+                <div class="form-check col-5 inline-${cardWid}">
+                    <input class="form-check-input" type="radio" name="rulesRadios${cardWid}"
+                           id="rulesRadios${cardWid}2" value="2" ${SERVICE_ORG_RULES=="2"?"checked":""}>
+                    <label class="form-check-label content-font-${cardWid}" for="rulesRadios${cardWid}2">
+                        按访问量排序
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- 保存按钮 -->
+<div class="show-grid save-config-btn-${cardWid}" style="position: absolute">
+    <button type="button" class="btn btn-primary btn-lg btn-block configCardBtn${cardWid}"
+            onclick="saveConfig${cardWid}()" style="background-color: rgba(24, 144, 255, 1)">保存
+    </button>
+</div>
+
+<!--@formatter:off-->
+<script>
+
+    $(document).ready(function () {
+        //监听登录后选择
+        // $("input[name='afterRadios${cardWid}']").unbind('change').on('change',function(){
+        //     var AFTER_LOGIN = $("input[name='afterRadios${cardWid}']:checked").val();
+        //     if(AFTER_LOGIN == 0){
+        //         //显示与我相关；禁用下方事项类型的勾选
+        //
+        //         $("input[name='conditionCheckbox${cardWid}']").each(function(){
+        //             if($(this).attr('value') == '004'){
+        //                 $(this).attr('disabled','disabled');
+        //                 $(this).prop("checked",false);
+        //             }
+        //         });
+        //     }else  {
+        //         //显示全部，开启事项类型的勾选
+        //         $("input[name='conditionCheckbox${cardWid}']").each(function(){
+        //             if($(this).attr('value') == '004'){
+        //                 $(this).removeAttr('disabled');
+        //                 $(this).prop("checked",false);
+        //             }
+        //         });
+        //     }
+        // });
+    });
+
+    /**
+     *
+     */
+    function saveConfig${cardWid}(){
+        //获取：服务事项搜索框 单选
+        var BEFORE_LOGIN = "1";//$("input[name='beforeRadios${cardWid}']:checked").val();
+        //获取：服务事项搜索框 单选
+        var AFTER_LOGIN = "1";//$("input[name='afterRadios${cardWid}']:checked").val();
+        //获取：服务事项搜索框 单选
+        var SERVICE_ITEM_SEARCH_BOX = $("input[name='searchRadios${cardWid}']:checked").val();
+        //获取：筛选项展示信息 多选
+        var arr1 = new Array(),arr2 = new Array();
+        var items = document.getElementsByName('conditionCheckbox${cardWid}');
+        for (i = 0; i < items.length; i++) {
+            if (items[i].checked) {
+                arr1.push(items[i].value);
+            }
+        }
+        //获取：单条服务事项展示信息 多选
+        items = document.getElementsByName('singleItemCheckbox${cardWid}');
+        for (i = 0; i < items.length; i++) {
+            if (items[i].checked) {
+                arr2.push(items[i].value);
+            }
+        }
+        //获取：服务组织规则 单选
+        var SERVICE_ORG_RULES = $("input[name='rulesRadios${cardWid}']:checked").val();
+        var configParam = {
+            BEFORE_LOGIN : BEFORE_LOGIN,
+            AFTER_LOGIN : AFTER_LOGIN,
+            SERVICE_ITEM_SEARCH_BOX : SERVICE_ITEM_SEARCH_BOX,
+            FILTER_ITEM_DISPLAY_INFO : arr1.join(","),
+            SINGLE_ITEM_DISPLAY_INFO : arr2.join(","),
+            SERVICE_ORG_RULES : SERVICE_ORG_RULES
+        }
+        configCardCallBack("${cardId}","${cardWid}", JSON.stringify(configParam));
+    }
+
+</script>
+<!--@formatter:off-->
+
+

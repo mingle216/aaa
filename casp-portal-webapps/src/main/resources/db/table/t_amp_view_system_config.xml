@@ -1,0 +1,93 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_system_config-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_SYSTEM_CONFIG"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_SYSTEM_CONFIG" remarks="系统配置表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CONFIG_KEY" type="VARCHAR(64)" remarks="配置项key"/>
+            <column name="CONFIG_VALUE" type="VARCHAR2(128)" remarks="配置项值"/>
+            <column name="DEFAULT_VALUE" type="VARCHAR2(128)" remarks="默认值"/>
+            <column name="CONFIG_DESC" type="VARCHAR2(256)" remarks="描述"/>
+            <column name="CONFIG_MODEL" type="NUMBER(2)" remarks="0:系统配置  1:页面配置 2:其他配置"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <!--添加门户黑白模式配置 -->
+    <changeSet id="add_BlackAndWhiteMode_config" author="jcx">
+        <insert tableName="T_AMP_VIEW_SYSTEM_CONFIG">
+            <column name="wid">1c4f9c98a31e47f5a606afe53e4aebac</column>
+            <column name="config_key">local_blackAndWhite_Mode</column>
+            <column name="config_value"></column>
+            <column name="default_value">0</column>
+            <column name="config_desc">门户黑白模式配置  1：黑色模式  0：白色模式</column>
+            <column name="config_model">0</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+    <!--添加服务访问量配置 移动端服务访问跟踪 default_value有值表示此开关配置打开并生效-->
+    <changeSet id="add_MobileServiceVisits_config" author="jcx">
+        <insert tableName="T_AMP_VIEW_SYSTEM_CONFIG">
+            <column name="wid">de0aed33012c412d8332d617150c5739</column>
+            <column name="config_key">mobile_service_visits</column>
+            <column name="config_value"></column>
+            <column name="default_value">0</column>
+            <column name="config_desc">服务访问量配置,便于运营中心对移动端服务访问跟踪,default_value这里特殊处理，有值为1表示此开关配置打开并生效，为0表示此开关配置失效</column>
+            <column name="config_model">0</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+    <!--添加门户移动端黑白模式配置 -->
+    <changeSet id="add_Mobile_BlackAndWhiteMode_config" author="sltang">
+        <insert tableName="T_AMP_VIEW_SYSTEM_CONFIG">
+            <column name="wid">62058e50696849239d7fdfa64306ed84</column>
+            <column name="config_key">local_mobile_blackAndWhite_Mode</column>
+            <column name="config_value"></column>
+            <column name="default_value">0</column>
+            <column name="config_desc">门户黑白模式配置  1：黑色模式  0：白色模式</column>
+            <column name="config_model">0</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+    <!--添加小程序包时门户域名配置 -->
+    <changeSet id="add_Applet_PortalDomain_config" author="hxshen">
+        <insert tableName="T_AMP_VIEW_SYSTEM_CONFIG">
+            <column name="wid">202203021654</column>
+            <column name="config_key">applet_portal_domain</column>
+            <column name="config_value"></column>
+            <column name="default_value"></column>
+            <column name="config_desc">小程序包门户域名配置</column>
+            <column name="config_model">0</column>
+            <column name="is_deleted">0</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="add_config_lang_key" author="jcx">
+        <addColumn tableName="t_amp_view_system_config">
+            <column name="value_lang_key" type="VARCHAR(64)" remarks="配置值多语言"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="t_amp_view_system_config-3.5.4.Beta2-2022111701" author="hxshen">
+        <addColumn tableName="t_amp_view_system_config">
+            <column name="page_show" type="NUMBER(2)" remarks="是否在页面展示" defaultValueNumeric="0" />
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

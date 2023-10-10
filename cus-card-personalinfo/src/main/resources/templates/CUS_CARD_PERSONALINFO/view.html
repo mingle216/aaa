@@ -1,0 +1,343 @@
+<style>
+    .container-my-${cardWid} {
+        width: 100%;
+        /*background: yellow;*/
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(auto-fill, 240px);
+        grid-auto-rows: 105px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+
+    .item-my-${cardWid} {
+        margin-top: 5px;
+        width: 240px;
+        height: 100px;
+        background: #FFFFFF;
+        /*border: 1px solid black;*/
+        background: #F9FAFB;
+        border-radius: 4px;
+    }
+
+    .item-my-content-container-${cardWid} {
+        width: 100%;
+        height: 100%;
+        /*background: yellow;padding-right: 10px;*/
+        padding-left: 10px;
+        padding-top: 15px;
+        padding-bottom: 11px;
+    }
+
+    .row-nowrap-${cardWid} {
+        flex-wrap: nowrap !important;
+    }
+
+    .hide-text-${cardWid}, .title1-${cardWid}, .title2-${cardWid}, .title3-${cardWid} {
+        width: 190px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .item-my-${cardWid}:hover {
+        border-radius: 4px;
+        cursor: url('${ctxInternalPath}/${cardWid}/images/cursor.png'), auto;
+        display: block;
+    }
+
+    /*悬停在服务事项的效果*/
+    .item-my-${cardWid}:hover .title1-${cardWid}, .item-my-${cardWid}:hover .title2-${cardWid}, .item-my-${cardWid}:hover .title3-${cardWid} {
+
+    }
+
+    .flex-${cardWid} {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        margin-top: -1px;
+    }
+
+    .title1-${cardWid} {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        letter-spacing: 0;
+    }
+
+    .title2-${cardWid} {
+        font-family: PingFangSC-Medium;
+        font-size: 18px;
+        letter-spacing: 0;
+    }
+
+    .title3-${cardWid} {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        letter-spacing: 0;
+    }
+
+    .title3-email-btn-${cardWid} {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        letter-spacing: 0;
+    }
+
+    .no-data-container-${cardWid} {
+        padding: 20px 20px;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        display:flex;
+        align-items:center;
+    }
+
+    .no-data-img-${cardWid} {
+        vertical-align: middle;
+        width: 107px;
+        height: 56px
+    }
+
+    .no-data-label-${cardWid} {
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        color: #102645;
+        letter-spacing: 0;
+        text-align: center;
+        font-weight: bold
+    }
+
+    .alert-warning-${cardWid}{
+        position: fixed;
+        top: calc(15% - 60px);
+        left: calc(50% - 162px);
+        width: 324px;
+    }
+
+    .scroll-container-${cardWid}{
+        overflow-x:hidden;
+        overflow-y:hidden;
+        -ms-overflow-style:none;
+        -ms-touch-action:none;
+        width: 100%;
+        padding: 5px 5px 5px 5px;
+    }
+</style>
+<div class="alert-warning-${cardWid}"> </div>
+<%if(isEmpty(dataList)){%>
+<!--无数据-->
+<div class="no-data-container-${cardWid}">
+    <div class="row no-gutters row-nowrap-${cardWid} ">
+        <div>
+<!--            <img class="no-data-img-${cardWid}"-->
+<!--                 src="${ctxPath}/${cardWid}/images/1.png">-->
+            <span class="no-data-label-${cardWid}">暂无个人数据</span>
+        </div>
+    </div>
+</div>
+<%}else{%>
+<!--判断使用的自适应配置-->
+<%  if(type==1){%>
+<div class="scroll-container-${cardWid}" style="max-height: ${value}px;">
+<div class="container-my-${cardWid}" >
+    <%} else if(type==2){%>
+    <div class="scroll-container-${cardWid}" style="height: ${value}px;">
+    <div class="container-my-${cardWid}" >
+        <%}else{%>
+        <div class="scroll-container-${cardWid}">
+        <div class="container-my-${cardWid}">
+            <%}%>
+<% for(item in dataList){%>
+<div class="item-my-${cardWid} portal-font-color-lv1 portal-primary-color-hover-lv1 portal-primary-backgroundcolor-hover-lv5"
+     onclick="openUrl_${cardWid}(${item.clickState},'${item.linkUrl}','${item.urlSql}','${item.extraInfo}')">
+    <% if(item.bindEamil && item.urlSql=="userMailACLInformationManager"){%>
+        <!--未绑定邮箱-->
+        <div class="item-my-content-container-${cardWid}">
+            <div class="col-md-12 row row-nowrap-${cardWid} no-gutters">
+                <img style="width: 18px;height: 18px;"
+                     src="${item.iconUrl}"
+                     onerror="imgError_${cardWid}(this)">
+                <div class="flex-${cardWid}">
+                    <div class="title1-${cardWid} portal-font-color-lv2" title="${item.title}">
+                        ${item.title}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="title2-${cardWid}" title="${item.imptInfo}">
+                    ${item.imptInfo}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="title3-email-btn-${cardWid} portal-primary-color-lv1" title="${item.subTitle}">
+                    ${item.subTitle}
+                </div>
+            </div>
+        </div>
+    <%}else{%>
+        <div class="item-my-content-container-${cardWid}">
+            <div class="col-md-12 row row-nowrap-${cardWid} no-gutters">
+                <img style="width: 18px;height: 18px;"
+                     src="${item.iconUrl}"
+                     onerror="imgError_${cardWid}(this)">
+                <div class="flex-${cardWid}">
+                    <div class="title1-${cardWid} portal-font-color-lv2" title="${item.title}">
+                        ${item.title}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="title2-${cardWid}" title="${item.imptInfo}">
+                    ${item.imptInfo}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="title3-${cardWid} portal-font-color-lv2" title="${item.subTitle}">
+                    ${item.subTitle}
+                </div>
+            </div>
+        </div>
+    <%}%>
+</div>
+<%}%>
+</div>
+    </div>
+<%}%>
+<script type="text/javascript">
+    $(document).ready(function () {
+        justifyBrowser_${cardWid}();
+        $(".scroll-container-${cardWid}").niceScroll({
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: {top: 0, right: 2, left: 0, bottom: 0},
+            cursorborder: "0"
+        });
+    });
+
+    //兼容IE11
+    function justifyBrowser_${cardWid}() {
+        //判断浏览器的类型
+        var flag = this.isIE11_${cardWid}();
+        if(flag){
+            var w = $(".container-my-${cardWid}").innerWidth();
+            var column = Math.floor( w / 240);
+            var leftWidth = w - column * 240;
+            var totalSize = ${dataList.~size!0}+"";
+            var row = Math.ceil(totalSize/column);
+            $('.container-my-${cardWid}').css("display","-ms-grid");
+            $('.container-my-${cardWid}').css("-ms-grid-columns","(240px)["+column+"]");
+            //$('.app-list-${cardWid}').css("-ms-grid-rows","(82px)["+row+"]");
+            $('.container-my-${cardWid}').removeAttr("grid-template-columns");
+            var iCount=1;
+            var iRow=1;
+            var iColumn=1;
+            $(".item-my-${cardWid}").each(function () {
+                $(this).css('-ms-grid-column',iColumn+"");
+                $(this).css('-ms-grid-row',iRow+"");
+                if(iColumn != 1){
+                    $(this).css('margin-left',((leftWidth/(column-1)) * (iColumn - 1))+"px");
+                }
+                if(iCount>=iRow*column){
+                    iRow++;
+                    iColumn=0;
+                }
+                iCount++;
+                iColumn++;
+            });
+            $(".item-my-${cardWid}").hover(function(){
+               $(this).css("cursor","pointer");
+            });
+        }
+    }
+
+    //成功提示
+    function alert_success_${cardWid}(msg){
+        $(".alert-warning-${cardWid}").html("<div class=\"alert alert-success alert-dismissible fade show \" role=\"alert\">\n" +
+            "        <span>"+msg+"！</span>\n" +
+            "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "            <span aria-hidden=\"true\">&times;</span>\n" +
+            "        </button>\n" +
+            "    </div>");
+        setTimeout(function () {
+            $(".alert-warning-${cardWid}").empty();
+        },2000);
+    }
+
+    //警告提示
+    function alert_warning_${cardWid}(msg){
+        $(".alert-warning-${cardWid}").html("<div class=\"alert alert-warning alert-dismissible fade show \" role=\"alert\">\n" +
+            "        <span>"+msg+"！</span>\n" +
+            "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "            <span aria-hidden=\"true\">&times;</span>\n" +
+            "        </button>\n" +
+            "    </div>");
+        setTimeout(function () {
+            $(".alert-warning-${cardWid}").empty();
+        },2000);
+    }
+
+    //错误提示
+    function alert_error_${cardWid}(msg){
+        $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+            "        <span>"+msg+"！</span>\n" +
+            "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+            "            <span aria-hidden=\"true\">&times;</span>\n" +
+            "        </button>\n" +
+            "    </div>");
+        setTimeout(function () {
+            $(".alert-warning-${cardWid}").empty();
+        },2000);
+    }
+
+    //判断是否是IE11浏览器
+    function isIE11_${cardWid}() {
+        var flagIE = false;
+        var u = window.navigator.userAgent.toLocaleLowerCase(),
+            ie11 = /(trident)\/([\d.]+)/,
+            style = u.match(ie11);
+        if(null != style){
+            flagIE =  true;
+        }
+        return flagIE;
+    }
+
+    //图片报错回调
+    function imgError_${cardWid}(e) {
+        e.src = "${ctxInternalPath}/${cardWid}/images/no-data.png";
+        e.onerror=null;
+    }
+
+    function openUrl_${cardWid}(clickState,url,urlSql,extraInfo){
+        if(urlSql==="userMailACLInformationManager"){
+            if(!extraInfo){
+                //没有绑定邮箱跳到个人中心绑定邮箱
+                //地址不知道跳哪里，先随便跳个
+                window.open("http://wwww.baidu.com","_blank");
+                return;
+            }
+            //如果点击的是邮箱
+            var param = {
+                "mailAccount": extraInfo
+            };
+            //获取邮箱跳转地址
+            execCardMethod('${cardId}', '${cardWid}', null, 'getMailLinkUrl', param, function (data) {
+                console.log("getMailLinkUrl" + JSON.stringify(data))
+                if (200 === data.errcode || '0'=== data.errcode) {
+                    if(data.data.errcode===0){
+                        //跳转
+                        window.open(url,"_blank");
+                        console.log("取消收藏成功！");
+                    }else{
+                        alert_error_${cardWid}(data.data.errmsg);
+                    }
+                } else {
+                    alert_warning_${cardWid}(data);
+                    console.log(data)
+                }
+            });
+        }else{
+            if(clickState){
+                window.open(url,"_blank");
+            }
+        }
+    }
+</script>

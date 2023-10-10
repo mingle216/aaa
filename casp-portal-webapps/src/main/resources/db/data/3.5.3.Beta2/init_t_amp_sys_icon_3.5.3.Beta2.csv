@@ -1,0 +1,4 @@
+wid,icon_name,icon_type,icon_desc,icon_url,order_number,is_deleted,icon_item
+"160","icon-gangweiguanli",0,"岗位管理","icon-gangweiguanli",160,0,0
+"161","icon-xiaonengkanban",0,"效能看板","icon-xiaonengkanban",161,0,0
+"162","icon-shixiangguanli",0,"事项管理","icon-fuwuweixuanzhong",162,0,0

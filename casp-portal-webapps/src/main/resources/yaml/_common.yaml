@@ -1,0 +1,221 @@
+openapi: 3.0.0
+
+info:
+  version: '0.1'
+  title: 'Common Data Types'
+  description: 'Common Data Types for Minos Admin API'
+
+paths: {}
+
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        traceId:
+          type: string
+          example: C1A4702B-ABFC-45BD-83DB-C70E71CCDD8D
+          description: 用于唯一标识一次请求的，必须是 UUID 形式。
+
+    PaginationApiResponse:
+      type: object
+      required:
+        - errcode
+        - errmsg
+      properties:
+        pageNumber:
+          type: integer
+          format: int64
+          description: "页码，从0开始"
+          example: 0
+        pageSize:
+          type: integer
+          format: int64
+          description: "每页数据量"
+          example: 10
+        totalSize:
+          type: integer
+          format: int64
+          description: "总条数"
+          example: 100
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        traceId:
+          type: string
+          example: C1A4702B-ABFC-45BD-83DB-C70E71CCDD8D
+          description: 用于唯一标识一次请求的，必须是 UUID 形式。
+
+    ArrayOfIntegers:
+      type: array
+      items:
+        type: integer
+        format: int64
+
+    ArrayOfStrings:
+      type: array
+      items:
+        type: string
+
+    ModelInfo:
+      type: object
+      description: 模型对象信息
+      properties:
+        modelType:
+          type: string
+          description: 模型对象：-1:全部 0:用户 1:用户组 2:组织机构 3:用户分类 4:业务域
+        modelWid:
+          type: string
+          description: 模型对象对应的数据WID
+        modelName:
+          type: string
+          description: 模型对象对应数据的名称
+        modelAccount:
+          type: string
+          description: 模型涉及的账户名称
+        orderIndex:
+          type: integer
+          description: 排序字段 数字小的在前面
+        userSex:
+          type: string
+          description: 用户性别 0 男 1 女
+        orgName:
+          type: string
+          description: 组织机构名称
+    
+    PropertiesInfo:
+      type: object
+      description: 扩展属性使用的模型
+      properties:
+        key:
+          type: string
+          description: 扩展属性用到的key
+        value:
+          type: string
+          description: 扩展属性用到的Value
+        name:
+          type: string
+          description: 配置项的中文名称
+        isEdit:
+          type: string
+          description: 是否可以修改 1 可以  0 不可以
+       
+
+    SearchObject:
+      type: object
+      properties:
+        condition:
+          type: string
+          description: 与前一个条件的连接关系
+          enum: [and,or]
+        comparator:
+          type: string
+          enum: [not, alike, ilike, like, eq, ge, le, gt, lt, in, notIn, between]
+        field:
+          type: string
+        value:
+          type: object
+        mark:
+          type: string
+
+    SearchCriteria:
+      description: |
+        搜索条件。   </br>
+        
+        传入字段进行搜索，数组间根据condition这个进行判断是用or还是and   </br>
+        在需求中存在对账户进行精确匹配，但对姓名模糊批量，但输入的关键字是同一个的场景，需要增加一个特殊的处理：field=[useraccount],username，即[]包含的字段使用eq,不包含的字段使用comparator的条件，字段与字段之间使用or进行拼接
+      type: array
+      example:  [{'condition':'and',comparator':'ilike', 'field':'name1,name2', 'value':'赵'},{'condition':'or','comparator':'ilike', 'field':'name', 'value':'赵'},{'condition':'and','comparator':'ilike', 'field':'name', 'value':'赵'}]
+      minItems: 1
+      items:
+        $ref: "#/components/schemas/SearchObject"
+
+    multiLangData:
+      type: object
+      description: 多语言内容
+      properties:
+        wid:
+          type: string
+          description: 主键id
+        sourceType:
+          type: string
+          description: 数据来源,0 系统 1 手工  默认值 0
+        langKey:
+          type: string
+          description: 属性key,雪花算法生成
+        langValue:
+          type: string
+          description: 属性值
+        langCountry:
+          type: string
+          description: 语言类型
+          example: zh
+
+  parameters:
+    wid:
+      description: |
+        数据的唯一标识
+      in: path
+      required: true
+      name: wid
+      schema:
+        type: string
+    tid:
+      description: |
+        操作事务的唯一标识
+      in: path
+      required: true
+      name: wid
+      schema:
+        type: string
+    dataType:
+      description: |
+        导入的数据类型：user、org等
+      in: path
+      required: true
+      name: wid
+      schema:
+        type: string
+    code:
+      description: |
+        代码字段
+      in: path
+      required: true
+      name: code
+      schema:
+        type: string
+    appId:
+      description: |
+        代码字段
+      in: path
+      required: true
+      name: appId
+      schema:
+        type: string
+  responses:
+    '400':
+      description: "各类逻辑错误"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiResponse"
+
+    '404':
+      description: "找不到指定的内容"
+  

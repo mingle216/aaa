@@ -1,0 +1,27 @@
+[
+  {
+    "component":"radio",
+    "key":"autoRecommend",
+    "label": "是否开启自动推荐",
+    "required": 0,
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "是",
+        "value": "1"
+      },
+      {
+        "label": "否",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component": "addInfo",
+    "key": "addServiceItemList",
+    "aliasName": "itemName",
+    "aliasWid": "itemWid",
+    "value": null
+  }
+]

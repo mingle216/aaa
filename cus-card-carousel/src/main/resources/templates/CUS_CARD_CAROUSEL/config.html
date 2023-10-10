@@ -1,0 +1,1014 @@
+<style>
+    .carousel-config-container-${cardWid} {
+        width: 324px;
+        /*height: 716px;*/
+    }
+
+
+    .ivu-upload-drag-${cardWid} {
+        width: 288px;
+        height: 96px;
+        background: #fafafa;
+        border: 1px dashed #dcdee2;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: border-color .2s ease;
+    }
+
+    .ivu-article-${cardWid} p {
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    .bg-img-${cardWid}{
+        background-repeat: no-repeat;
+        width: 288px;
+        height: 96px;
+        background-size: cover;
+    }
+
+    .card-height-${cardWid}{
+        width: 300px;
+        clear:both;
+    }
+
+    .card-height-${cardWid}-left{
+        width:120px;
+    }
+
+    .card-height-${cardWid}-right{
+        width:300px;
+    }
+
+    .card-height-${cardWid}-right-item{
+        width:100%;
+        margin-bottom: 2px;
+    }
+
+    .inputHeight-${cardWid} {
+        width: 68px;
+        vertical-align: middle;
+        height: 28px;
+        border: 1px solid #d0d0d0;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+    .inputNum-${cardWid} {
+        width: 68px;
+        vertical-align: middle;
+        height: 28px;
+        border: 1px solid #d0d0d0;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+    .height-input-${cardWid}{
+        width: 100px;
+        display: inline-block;
+    }
+
+    #add-btn-${cardWid}:hover > #add-icon-${cardWid} {
+        color: white !important;
+    }
+
+    .alert-warning-${cardWid}{
+        position: absolute;
+        width: 324px;
+        z-index: 9999;
+    }
+
+    .choosed-font-${cardWid}{
+        font-size: 14px !important;
+        color: #333333 !important;
+        font-weight: 400 !important;
+        cursor: pointer;
+    }
+
+    .word-content-${cardWid}{
+        color: #999999;
+    }
+
+    .black-${cardWid}{
+        color:black !important;
+        font-family: 'MicrosoftYaHei', '微软雅黑';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 14px;
+        width: 75%;
+        max-width: 75%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .black-item-${cardWid}{
+        color:#666666 !important;
+    }
+
+    /* input等iview样式 */
+    .ivu-input-wrapper-${cardWid} {
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .ivu-input-word-count-${cardWid} {
+        text-align: center;
+        position: absolute;
+        right: 7px;
+        top: 2px;
+        bottom: 2px;
+        padding-left: 7px;
+        background: #fff;
+        z-index: 1;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        color: #808695;
+        font-size: 12px;}
+
+
+    .ivu-input-type-textarea-${cardWid} .ivu-input-word-count-${cardWid} {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        top: auto;
+    }
+
+    /* http下拉 */
+
+    .ivu-input-group-${cardWid} {
+        display: table;
+        width: 100%;
+        border-collapse: separate;
+        position: relative;
+        font-size: 14px;
+    }
+    .ivu-input-wrapper-${cardWid} {
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        vertical-align: middle;
+        line-height: normal;
+    }
+    .ivu-input-group-prepend-${cardWid}  {
+        border-right: 0;
+    }
+    .ivu-input-group-prepend-${cardWid}, .ivu-input-group-${cardWid}>.ivu-input-${cardWid}:first-child, .ivu-input-group-${cardWid}>span>.ivu-input-${cardWid}:first-child {
+        border-bottom-right-radius: 0!important;
+        border-top-right-radius: 0!important;
+    }
+     .ivu-input-group-prepend-${cardWid}  {
+        padding: 4px 7px;
+        font-size: inherit;
+        font-weight: 400;
+        line-height: 1;
+        color: #515a6e;
+        text-align: center;
+        background-color: #f8f8f9;
+        border: 1px solid #dcdee2;
+        border-radius: 4px;
+    }
+      .ivu-input-group-prepend-${cardWid}  {
+        width: 1px;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+     .ivu-input-group-prepend-${cardWid}, .ivu-input-group-${cardWid}>.ivu-input-${cardWid} {
+        display: table-cell;
+    }
+
+      .ivu-select-${cardWid}, .ivu-input-group-prepend-${cardWid} .ivu-select-${cardWid} {
+        margin: -5px -4px;
+    }
+    .ivu-select-${cardWid} {
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+        vertical-align: middle;
+        color: #515a6e;
+        font-size: 14px;
+        line-height: normal;
+    }
+
+      .ivu-input-group-prepend-${cardWid} {
+        padding: 4px 7px;
+        font-size: inherit;
+        font-weight: 400;
+        line-height: 1;
+        color: #515a6e;
+        text-align: center;
+        background-color: #f8f8f9;
+        border: 1px solid #dcdee2;
+        border-radius: 4px;
+        width: 1px;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+
+    .ivu-input-wrapper-${cardWid} {
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        vertical-align: middle;
+        line-height: normal;
+    }
+
+     .ivu-select-${cardWid} ul {
+        padding-left: 0!important;
+        list-style-type: none;
+    }
+    .ivu-select-${cardWid} ul {
+        padding-left: 0!important;
+        list-style-type: none;
+    }
+    .ivu-select-dropdown-list-${cardWid} {
+        min-width: 100%;
+        list-style: none;
+    }
+    .ivu-select-item-${cardWid} {
+        margin: 0;
+        line-height: normal;
+        padding: 7px 16px;
+        clear: both;
+        color: #515a6e;
+        font-size: 14px!important;
+        white-space: nowrap;
+        list-style: none;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+    }
+
+      .ivu-select-${cardWid} ul {
+        padding-left: 0!important;
+        list-style-type: none;
+    }
+
+    .ivu-select-dropdown-list-${cardWid} {
+        min-width: 100%;
+        list-style: none;
+    }
+</style>
+
+<div class="carousel-config-container-${cardWid}" id="carousel-config-container-${cardWid}">
+    <%
+    iconfig = json(config);
+    CARD_HEIGHT_TYPE = config.CARD_HEIGHT_TYPE;
+    MAX_HEIGHT = config.MAX_HEIGHT;
+    if(parseInt (MAX_HEIGHT) < 300){
+        MAX_HEIGHT = "300";
+    }
+
+    FIXED_HEIGHT = config.FIXED_HEIGHT;
+    if(parseInt (FIXED_HEIGHT) < 300){
+        FIXED_HEIGHT = "300";
+    }
+    carouselList = config.carouselList ;
+    CARD_SHOW_TITLE = config.CARD_SHOW_TITLE ;
+    CARD_SHOW_SUMMARY = config.CARD_SHOW_SUMMARY ;
+    %>
+
+
+    <div id="carousel-edit-${cardWid}" style="width: 324px;  overflow: hidden; " tabindex="100">
+        <div  style="width: 315px;">
+        <div class="alert-warning-${cardWid}"> </div>
+        <!-- 卡片高度 -->
+        <div style="padding: 17px;height: 160px;">
+
+            <label style="color:#777777;font-size: 12px;">卡片高度</label>
+
+                <div class="card-height-${cardWid}-right">
+                    <div class="card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid} float-left">
+                        <input type="radio" name="cardHeightRadios-${cardWid}" id="height1-${cardWid}" value="1"  ${CARD_HEIGHT_TYPE=="1"?"checked":""}>
+                        <% if(CARD_HEIGHT_TYPE=="1"){ %>
+                        <label for="height1-${cardWid}" class="word-content-${cardWid} choosed-font-${cardWid}">自适应（无最大限制）</label>
+                        <% }else{%>
+                        <label for="height1-${cardWid}" class="word-content-${cardWid} ">自适应（无最大限制）</label>
+                        <% } %>
+                    </div>
+
+                    <div  class="card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid} float-left">
+                        <input type="radio" name="cardHeightRadios-${cardWid}" id="height2-${cardWid}"  value="2" ${CARD_HEIGHT_TYPE=="2"?"checked":""} >
+
+                        <% if(CARD_HEIGHT_TYPE=="2"){ %>
+                        <label for="height2-${cardWid}" class="word-content-${cardWid} choosed-font-${cardWid}">自适应（有最大限制）</label>
+                        <% }else{%>
+                        <label for="height2-${cardWid}" class="word-content-${cardWid} ">自适应（有最大限制）</label>
+                        <% } %>
+                        <div id="for-fixed-height-${cardWid}" class=" height-input-${cardWid} card-height-${cardWid}-right-item-right  "  style=${CARD_HEIGHT_TYPE=="2"?"":"display:none"} >
+                            <input id="fixed-height-${cardWid}" class="inputHeight-${cardWid}" type="number" placeholder="请输入" max="2000" value="${FIXED_HEIGHT}"  onkeyup="value=value.replace(/[^\d]/g,'')" />
+                            <label>PX</label>
+                        </div>
+                    </div>
+
+
+                    <div class="float-left card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid}">
+                        <input type="radio" name="cardHeightRadios-${cardWid}" id="height3-${cardWid}" value="3" ${CARD_HEIGHT_TYPE=="3"?"checked":""} >
+
+                        <% if(CARD_HEIGHT_TYPE=="3"){ %>
+                        <label for="height3-${cardWid}" class="word-content-${cardWid} choosed-font-${cardWid}">固定高度</label>
+                        <% }else{%>
+                        <label for="height3-${cardWid}" class="word-content-${cardWid} ">固定高度</label>
+                        <% } %>
+                        <div   id="for-max-height-${cardWid}" class="height-input-${cardWid}  card-height-${cardWid}-right-item-right  " style=${CARD_HEIGHT_TYPE=="3"?"":"display:none"}>
+                            <input id="max-height-${cardWid}" class="inputHeight-${cardWid}" type="number" placeholder="请输入" max="2000" value="${MAX_HEIGHT}" onkeyup="value=value.replace(/[^\d]/g,'')" />
+                            <label style="margin-left: 5px;">PX</label>
+                        </div>
+                    </div>
+
+                </div>
+
+        </div>
+
+        <!-- 轮播图展示信息 -->
+        <div style="border-top: 1px #ddd solid; ">
+            <div style="padding: 17px;">
+            <label style="color:#777777;font-size: 12px;">轮播图展示信息</label>
+            <div>
+                <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="show-title-${cardWid}" value="1"
+                           ${CARD_SHOW_TITLE=="1"?"checked":""}>
+                    <span class="form-check-label choosed-font-${cardWid}">轮播图标题</span>
+                </label>
+                <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="show-summary-${cardWid}"  value="1"
+                           ${CARD_SHOW_SUMMARY=="1"?"checked":""}>
+                    <span class="form-check-label choosed-font-${cardWid}">轮播图摘要</span>
+                </label>
+            </div>
+            </div>
+        </div>
+        <!--轮播图配置-->
+
+        <div style="width: 100%;text-align: center;margin-top: 5px;margin-bottom: 5px;">
+            <div id="carouselConfigList-${cardWid}" style="  margin-top: 15px; ">
+                <% if(null != carouselList){
+                for(item in carouselList){
+                include("item.html",{item:item,cardWid:cardWid,cardId:cardId}){}
+                }}  %>
+            </div>
+
+        </div>
+        <!-- 添加轮播图按钮 -->
+        <% if(sum < 6) {%>
+        <div style="width: 100%;text-align: center;margin-top: 5px;margin-bottom: 5px;"
+             id="addCarouselBtn-${cardWid}">
+            <button id="add-btn-${cardWid}" type="button" class="btn btn-outline-primary"
+
+                    style="width: 98%;">
+
+                <span id="add-icon-${cardWid}" class="far fa-plus-square" style="color: #007bff;"></span>
+                 添加轮播图
+            </button>
+        </div>
+        <%}else{%>
+            <div style="display:none;width: 100%;text-align: center;margin-top: 5px;margin-bottom: 5px;"
+                 id="addCarouselBtn-${cardWid}">
+                <button id="add-btn-${cardWid}" type="button" class="btn btn-outline-primary"
+
+                        style="width: 98%;">
+
+                    <span id="add-icon-${cardWid}" class="far fa-plus-square" style="color: #007bff;"></span>
+                    添加轮播图
+                </button>
+            </div>
+            <%}%>
+        </div>
+    </div>
+
+
+    <!-- 上传Modal -->
+   <%  include("upload.html",{cardWid:cardWid,cardId:cardId}){}; %>
+</div>
+
+<!-- 保存按钮 -->
+<div class="  show-grid" style="padding: 10px 5px;
+    border-top: 1px solid #ddd;
+    width: 324px;
+    text-align: center;
+    bottom: 0px;position: absolute; ">
+    <button type="button" class="btn btn-primary btn-lg btn-block configCardBtn${cardWid}"
+            onclick="saveCarousel${cardWid}()" style="background-color: rgba(24, 144, 255, 1)">保存
+    </button>
+</div>
+
+<!-- confirm -->
+<div class="modal fade" id="confirm-close-${cardWid}" data-backdrop="static" data-keyboard="false" tabindex="999" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header  " style="border-bottom: 0;">
+                <h5 class="modal-title " id="staticBackdropLabel">确认取消上传图片？</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-footer  " style="border-top: 0;">
+                <button type="button" class="btn btn-primary"  onclick="cancelUpload${cardWid}()">确认</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input id="tag-target-${cardWid}" style="display: none;"/>
+
+<script>
+
+    $(document).ready(function(){
+        /* 初始化滚动条*/
+        $("#carousel-edit-${cardWid}").niceScroll({
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+            cursorborder: "0"
+        });
+        /* 定时器：页面大小改变后能及时改变滚动条 */
+        setInterval(function () {
+            $("#carousel-edit-${cardWid}").getNiceScroll().resize();
+        },500);
+
+        /* 拖拽排序组件*/
+        var el = document.getElementById('carouselConfigList-${cardWid}');
+        new Sortable(el, {
+            draggable: ".drag-container-${cardWid}",
+            handle: ".dragBtn-${cardWid}",
+            animation: 150,
+            ghostClass: 'blue-background-class',
+        });
+
+        /* 上传弹窗 */
+        $("#upload-modal-${cardWid}").modal({
+            show: false
+        });
+
+        document.getElementById("add-btn-${cardWid}").addEventListener("click",function() {
+                addCarousel${cardWid}();
+        }, false);
+
+
+
+
+        /* 卡片高度单选监听 */
+        $("input[name='cardHeightRadios-${cardWid}']").off('change').on('change', function (event) {
+            var value = $(this).val();
+            if  (value == 1){
+                $("#for-max-height-${cardWid}").hide();
+                $("#for-fixed-height-${cardWid}").hide();
+                $('[for="height1-${cardWid}"]').addClass('choosed-font-${cardWid}');
+                $('[for="height2-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+                $('[for="height3-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+            }else if (value == 2) {
+                $("#for-max-height-${cardWid}").hide();
+                $("#for-fixed-height-${cardWid}").css('display','inline-block');
+                $('[for="height2-${cardWid}"]').addClass('choosed-font-${cardWid}');
+                $('[for="height1-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+                $('[for="height3-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+            } else if (value == 3) {
+                $("#for-max-height-${cardWid}").css('display','inline-block');
+                $("#for-fixed-height-${cardWid}").hide();
+                $('[for="height3-${cardWid}"]').addClass('choosed-font-${cardWid}');
+                $('[for="height2-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+                $('[for="height1-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+
+            }
+        });
+
+
+    });
+
+    function cancelUpload${cardWid}(){
+        $("#confirm-close-${cardWid}").modal("hide");
+        $('#avatar-img-${cardWid}').cropper('destroy');
+        $("#upload-modal-${cardWid}").modal("hide");
+    }
+
+    function inputOnChange${cardWid} (id) {
+        var title = filterXSS($('#title-${cardWid}-'+id).val().trim());
+        if(null!=title && "" !=title && undefined !=title){
+            $('#c-title-${cardWid}-'+id).html(title);
+            $('#c-title-${cardWid}-'+id).attr('title',title);
+        }else{
+            $('#c-title-${cardWid}-'+id).html('轮播图'+id);
+            $('#c-title-${cardWid}-'+id).attr('title',title);
+        }
+
+    }
+    /* 输入框计数器 */
+    function inputChange${cardWid}(id){
+        var length =  $('#title-${cardWid}-'+id).val().length;
+        $('#title-span-${cardWid}-'+id).html(length+'/25');
+    }
+
+
+    function areaChange${cardWid}(id){
+        var length =  $('#summary-${cardWid}-'+id).val().length;
+        $('#summary-span-${cardWid}-'+id).html(length+'/50');
+    }
+
+    /* http协议切换 */
+    function changeHttp${cardWid}(id,num){
+        var protocol = "http://";
+        if(num == 2){
+            protocol = "https://";
+        }
+        $('#btn-protocol-${cardWid}-'+id).html(protocol);
+    }
+
+    var choosed_id = "";
+    /* 打开上传弹窗 */
+    function gotoUpload${cardWid}(id) {
+        //打开上传窗口
+        $('#img-upload-input-${cardWid}').click();
+        choosed_id= id;
+    }
+
+
+
+    function initCropper(url ) {
+        /**
+         * 计算新位置的函数
+         * @param {Object} scope  -- cropper对象
+         */
+        function calData(scope){
+            var cropBoxData = $(scope).cropper('getCropBoxData');
+            var container = $('.cropper-container')[0].getBoundingClientRect();  // 容器
+            var image = $('.cropper-canvas')[0].getBoundingClientRect(); // 图片
+            var box = $('.cropper-crop-box')[0].getBoundingClientRect(); // 裁剪框
+            var rightXLeft = image.left - container.left;
+            var rightXRight = image.left - container.left + (image.width - box.width);
+            var rightYTop = image.top - container.top;
+            var rightYBottom = image.top - container.top + (image.height - box.height);
+            var x = undefined;
+            var y = undefined;
+            var stop = false;
+
+            if(box.left<image.left){  // 到了左边界
+                x = rightXLeft+1;
+                stop = true;
+            } else if (box.right>image.right){  // 到了右边界
+                x = rightXRight-1;
+                stop = true;
+            }
+            if(box.top<image.top){  // 到了上边界
+                y = rightYTop+1;
+                stop = true;
+            }else if(box.bottom>image.bottom){  // 到了下边界
+                y = rightYBottom-1;
+                stop = true;
+            }
+            var width = cropBoxData.width;
+            if(width > (width.height-4)){
+                width = width.height-4;
+            }
+            var height = cropBoxData.height;
+            if(height > (image.height-4)){
+                height = image.height-4;
+            }
+            return  {
+                cropBoxData:{
+                    left:x||cropBoxData.left,
+                    top:y||cropBoxData.top,
+                    width:width ,
+                    height:height
+                },
+                stop:stop
+            }
+
+        }
+
+        function handlerOver(scope){  // 溢出  裁剪框 超过图片大小时候的操作。
+            var cropBoxData = $(scope).cropper('getCropBoxData');
+            var image = $('.cropper-canvas')[0].getBoundingClientRect(); // 图片
+            var box = $('.cropper-crop-box')[0].getBoundingClientRect(); // 裁剪框
+            if(box.width >= image.width){
+                // debugger
+                $(scope).cropper('setCropBoxData',{
+                    left: cropBoxData.left,
+                    top: cropBoxData.top,
+                    width: image.width-4 ,
+                    height:  (image.width-4)/3
+                } );
+            }
+        }
+        $("#upload-modal-${cardWid} ").modal("show");
+        //重新初始化
+        $('.img-preview-${cardWid} > img').remove();
+        $img = $('<img id="avatar-img-${cardWid}" src="">');
+        $(".avatar-wrapper-${cardWid}").empty().html($img);
+        var clearTime = null;
+        $img.cropper({
+            aspectRatio: 3/1,
+            preview: ".img-preview-${cardWid}",
+            strict: true,
+            minContainerWidth:570,
+            minContainerHeight:300,
+            guides:false,
+            crop(event) {
+                var width = parseInt(event.detail.width);
+                var height = parseInt(event.detail.height);
+                $('#cropper-ratio-${cardWid}').html(width+'像素*'+height+'像素');
+
+                this.newData =  calData(this);
+            },
+            cropmove:function(e){ // 只有这个才能阻止移动。。。
+                var data = null;
+                data = this.newData;
+                var scope = this;
+
+                if(data.stop){ // 停止移动
+                    e.preventDefault();
+                    $(scope).cropper('setCropBoxData', data.cropBoxData);
+                    !clearTime && (function(data){
+                        clearTime = setTimeout(()=>{
+                            data.stop = false;
+                            clearTime = undefined;
+                        },500)
+                    })(data)
+                }
+            },
+            cropend:function(e){ // 最终还原位置 做个判断
+                var scope = this;
+                var data =  calData(this);
+                $(this).cropper('setCropBoxData', data.cropBoxData);
+                handlerOver(this);
+                setTimeout(function(){
+                    if( this.window != window   ){
+                    var datafinal = calData(this);
+                    $(scope).cropper('setCropBoxData', datafinal.cropBoxData);
+                    }
+                },200);
+            },
+            zoom: function (e) {
+                this.newData =  calData(this);
+                e.preventDefault();
+            }
+
+        });
+        if(url != undefined && url != "" && url != null){
+            $('#avatar-img-${cardWid}').cropper('replace',url);
+        }
+
+
+    }
+
+    /* 监听图片上传改变事件 */
+    $("#img-upload-input-${cardWid}").off('change').on('change',function () {
+
+        var file_max_size = 1024 * 2;
+        var target = $("#img-upload-input-${cardWid}");
+        var targetFile = document.getElementById('img-upload-input-${cardWid}');
+        var file = target[0].files[0];
+        var Size = target[0].files[0].size / 1024;
+        if (Size > file_max_size) {
+            targetFile.value = ''; //重新初始化了file的html
+
+            $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                "        <span>请选择大小不超过2M的图片!</span>\n" +
+                "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "            <span aria-hidden=\"true\">&times;</span>\n" +
+                "        </button>\n" +
+                "    </div>");
+            return false;
+        }
+
+        if ( file.type !="image/png" && file.type !="image/jpeg") {
+            targetFile.value = '';
+
+            $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                "        <span>请选择.png/.jpeg格式图片! </span>\n" +
+                "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "            <span aria-hidden=\"true\">&times;</span>\n" +
+                "        </button>\n" +
+                "    </div>");
+
+        } else {
+            if(!$('#upload-modal-${cardWid}').hasClass('show')){
+                //如果上传窗口未打开，则先打开窗口
+                $('#tag-target-${cardWid}').attr('data-id',choosed_id)
+                //var url = $('#img-${cardWid}-'+choosed_id).attr('data-url') || "";
+                var url = URL.createObjectURL(file);
+                targetFile.value = '';
+                initCropper(url);
+                // $("#upload-modal-${cardWid} .modal-body").hide();
+
+                // setTimeout(function () {
+                //     $("#upload-modal-${cardWid} .modal-body").show();
+                // },301);
+            }else {
+                //将图片赋值给裁剪组件
+                $('#avatar-img-${cardWid}').cropper('replace',  URL.createObjectURL(file));
+                targetFile.value = '';
+            }
+
+
+        }
+    });
+    function guid() {
+        function S4() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    }
+    /* 保存图片 */
+    function saveUpload${cardWid}(){
+
+        var formdata = new FormData();
+
+        var dataurl =  $('#avatar-img-${cardWid}').cropper('getCroppedCanvas', {
+            width: 1200,
+            height: 400
+        }).toDataURL('image/png', 1);
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        //从此处开始处理blob
+        var blob = null;
+        try{
+            blob = new Blob([u8arr.buffer],{type : mime});
+        }catch(e){
+            var BlobBuilder = window.BlobBuilder = (
+                window.BlobBuilder ||
+                window.WebKitBlobBuilder ||
+                window.MozBlobBuilder ||
+                window.MSBlobBuilder
+            );
+            if (e.name === "TypeError" && BlobBuilder) {
+                var builder = new BlobBuilder();
+                builder.append(buff);
+                blob = builder.getBlob(fivarype);
+            }
+        }
+
+        //一定要注意这里。
+        formdata.append('files',blob,guid()+'.png');
+        formdata.append("module",'read');
+        /* var file = new File([u8arr], "carousel.png", {type: mime});
+         formdata.append("files", file);*/
+
+        $.ajax({
+            url: '${ctxPath}/fileTodo/uploadLocalServer/0',//路径
+            type: "POST",
+            data: formdata,
+            contentType: false,
+            multiple: true,
+            processData: false,
+            success: function (data) {
+                if (data.errcode == "0") {
+                    $('#avatar-img-${cardWid}').cropper('destroy');
+                    var url = data.data ;
+                    var id = $('#tag-target-${cardWid}').attr('data-id');
+                    $('#img-${cardWid}-' + id).attr('style', 'background-image: url(' + url + ')  ;');
+                    $('#img-${cardWid}-' + id).attr('data-url', url);
+                    $('#img-${cardWid}-' + id).attr('class', 'ivu-upload ivu-upload-drag-${cardWid} bg-img-${cardWid}');
+                    $('#img-${cardWid}-' + id).children('div').attr('style', 'display:none');
+                }else{
+                    if(isIE11_${cardWid}()){
+                        popupTips_${cardWid}('系统错误，保存失败!','35%');
+                    }else {
+                        popupTips_${cardWid}('系统错误，保存失败!',null);
+                    }
+                }
+
+            },
+            error: function (error) {
+                if(isIE11_${cardWid}()){
+                    popupTips_${cardWid}('系统错误，保存失败!','35%');
+                }else {
+                    popupTips_${cardWid}('系统错误，保存失败!',null);
+                }
+            }
+        });
+        $("#upload-modal-${cardWid}").modal("hide");
+    }
+
+
+    //判断是否是IE11浏览器
+    function isIE11_${cardWid}() {
+        var flagIE = false;
+        var u = window.navigator.userAgent.toLocaleLowerCase(),
+            ie11 = /(trident)\/([\d.]+)/,
+            style = u.match(ie11);
+        if(null != style){
+            flagIE =  true;
+        }
+        return flagIE;
+    }
+
+    //提示弹窗
+    function popupTips_${cardWid}(text,mg) {
+        if(null == mg){
+            mg = 0+'px';
+        }
+        $(".global-header").prepend(
+            "<div id='alert-${cardWid}' style='position: fixed;z-index: 999999;margin-left:"+ mg +"'>"+
+            "<div class=\"alert alert-danger fade show \" role=\"alert\">\n" +
+            "    <span> "+ text +"</span>\n" +
+            "</div>"+
+            "</div>"
+        );
+        window.setTimeout(function () {
+            $('#alert-${cardWid}').remove();
+        },100);
+    }
+
+    /**
+     * 展开or关闭详情
+     * @param id
+     */
+    function openItem${cardWid}(id) {
+        var isOpening = $("#collapseExample-${cardWid}-"+id).hasClass('collapsing');
+
+        if ($('#icon-${cardWid}-' + id).attr("class").indexOf("icon-Right") > -1 && !isOpening) {
+            $('#icon-${cardWid}-' + id).attr("class", "iconfont icon-Down");
+        } else  if ($('#icon-${cardWid}-' + id).attr("class").indexOf("icon-Down") > -1 && !isOpening){
+            $('#icon-${cardWid}-' + id).attr("class", "iconfont icon-Right");
+        }
+    }
+
+    /**
+     * 删除轮播图
+     * @param id
+     */
+    function delCarousel${cardWid}(id) {
+        var length = $('[name="list-${cardWid}"]').length;
+        //判断：如果已经四个， 则隐藏新增按钮
+        if (length == 1) {
+            $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                "        <span>最少保留一项！</span>\n" +
+                "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "            <span aria-hidden=\"true\">&times;</span>\n" +
+                "        </button>\n" +
+                "    </div>");
+        }else {
+            $('[li-id-${cardWid}=' + id + ']').remove();
+            $('#collapseExample-${cardWid}-' + id).remove();
+            $('#drag-id-${cardWid}-' + id).remove();
+            $('#addCarouselBtn-${cardWid}').show();
+        }
+    }
+
+
+
+    /**
+     * 添加一个轮播图(后端请求：根据id渲染模板)
+     */
+    function addCarousel${cardWid}() {
+        //获取未使用的ID,当前最后一个id
+        var length = $('[name="list-${cardWid}"]').length;
+        //判断：如果已经5个， 则隐藏新增按钮
+        if (length == 5) {
+            $('#addCarouselBtn-${cardWid}').hide();
+        }
+        var lastNum = 0;
+        var nums = [1, 2, 3, 4, 5,6];
+        for (var i = 0; i < length; i++) {
+            lastNum = Number($('[name="list-${cardWid}"]:eq(' + i + ')').attr('li-id'));
+            var index = nums.indexOf(lastNum);
+            if (index > -1) {
+                nums.splice(index, 1);
+            }
+        }
+        var nextNum = nums[0];
+
+        execCardMethod('${cardId}', '${cardWid}', null, 'addItem', {ID: nextNum}, function (data) {
+            if (data.errcode  == 200|| '0'=== data.errcode) {
+                $('#drag-id-${cardWid}-' + lastNum).after(data.data);
+            } else {
+
+                $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>新增失败 </span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+            }
+
+        })
+    }
+
+    /**
+     * 保存轮播图配置项
+     */
+    function saveCarousel${cardWid}(){
+        var length = $('[name="list-${cardWid}"]').length;
+        var params = [];
+        var id = "";
+        var hasAllUploadImg = true;
+        var notUploadId = 0;
+        for (var i = 0; i < length; i++) {
+            id = $('[name="list-${cardWid}"]:eq(' + i + ')').attr('li-id');
+            var img = $('#img-${cardWid}-' + id).attr("data-url");
+
+            if(img!= undefined && img!= "" && img != null){
+                var protocol = filterXSS($('#btn-protocol-${cardWid}-'+id).text());
+                var url = filterXSS($('#link-${cardWid}-' + id).val());
+                var realUrl = "";
+
+                 realUrl = protocol.trim()+url.trim();
+
+                var param = {
+                    ID: id,
+                    TITLE: $('#title-${cardWid}-' + id).val(),//标题
+                    URL: realUrl,//标题
+                    SUMMARY: $('#summary-${cardWid}-' + id).val(), //是否显示标题
+                    SORT_VALUE: i, //排序值
+                    IMAGE: img //图片
+                };
+                params.push(param);
+            }else{
+                notUploadId = id;
+                hasAllUploadImg = false;
+                break;
+            }
+
+        }
+        if(!hasAllUploadImg){
+
+            $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                "        <span>请上传轮播图"+notUploadId+"</span>\n" +
+                "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                "            <span aria-hidden=\"true\">&times;</span>\n" +
+                "        </button>\n" +
+                "    </div>");
+            return false;
+        }
+
+
+        var CARD_HEIGHT_TYPE = $("input[name='cardHeightRadios-${cardWid}']:checked").val();
+        var MAX_HEIGHT = 300;
+        var FIXED_HEIGHT = 300;
+        if (CARD_HEIGHT_TYPE == "2") {
+            FIXED_HEIGHT = $('#fixed-height-${cardWid}').val();
+            if(FIXED_HEIGHT < 300){
+                $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>高度最小为300，请输入大于等于300的正整数</span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+                return;
+            }
+            if(FIXED_HEIGHT > 2000){
+                $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>高度最大为2000，请输入小于等于200的正整数</span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+                return;
+            }
+        }
+        if (CARD_HEIGHT_TYPE == "3") {
+            MAX_HEIGHT = $('#max-height-${cardWid}').val();
+            if(MAX_HEIGHT < 300){
+                $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>高度最小为300，请输入大于等于300的正整数</span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+                return;
+            }
+            if(MAX_HEIGHT > 2000){
+                $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>高度最大为2000，请输入小于等于200的正整数</span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+                return;
+            }
+        }
+
+
+        var configParam = {
+            carouselList: JSON.stringify(params),
+            CARD_HEIGHT_TYPE: CARD_HEIGHT_TYPE,
+            MAX_HEIGHT: MAX_HEIGHT,
+            FIXED_HEIGHT: FIXED_HEIGHT,
+            CARD_SHOW_TITLE : $('[name=show-title-${cardWid}]:checked').val() || 0,
+            CARD_SHOW_SUMMARY : $('[name=show-summary-${cardWid}]:checked').val()  || 0
+        };
+        configCardCallBack('${cardId}', '${cardWid}', JSON.stringify(configParam));
+
+    }
+</script>
+
+
+

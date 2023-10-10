@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted,value_lang_key
+"1042090030678147072","compatible_browser_info_is_changed","","0","公共配置兼容提示文案是否修改 1：是 0：否 ",0,0,""

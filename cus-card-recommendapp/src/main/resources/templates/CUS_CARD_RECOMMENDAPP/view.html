@@ -1,0 +1,425 @@
+<style>
+    .split-container-${cardWid}{
+        width: 100%;
+        height: 12px;
+    }
+    .card-container-${cardWid}{
+        width: 100%;
+    }
+    .app-list-${cardWid}{
+        width: 100%;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(auto-fill, 250px);
+ /*       display: -ms-grid;
+        justify-content: space-between;
+        -ms-grid-columns: 250px 250px 250px;
+        -ms-grid-rows: 72px 72px;*/
+    }
+
+    .app-item-${cardWid}{
+        width: 250px;
+        height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        background: #FFFFFF;
+    }
+
+    .app-item-card-${cardWid} {
+        width: 100%;
+        padding: 14px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .app-item-img-${cardWid} {
+        border-radius: 4px;
+        width: 33%;
+        position: relative;
+        margin-right: 14px;
+    }
+
+    .app-item-img-lock-${cardWid}::after {
+        content: "";
+        border-radius: 8px;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(78, 78, 78, 0.5);
+    }
+
+    .app-item-img-icon{
+        font-size: 24px;
+        height: 24px;
+        color: #FFFFFF;
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .app-item-coll-${cardWid} {
+        width: 28px;
+    }
+
+    .app-item-appName-Con-${cardWid} {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-right: 27px;
+    }
+    .app-name-${cardWid}{
+        width: 126px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        letter-spacing: 0;
+    }
+
+
+    .app-item-${cardWid}:hover .collect-app-btn-${cardWid}{
+        display: block;
+    }
+    .collect-app-btn-${cardWid}{
+        display: none;
+    }
+    .cancel-collect-app-btn-${cardWid}{
+        display: none;
+    }
+
+    .app-item-${cardWid}:hover .cancel-collect-app-btn-${cardWid}{
+        display: block;
+    }
+    .collect-app-btn-${cardWid}:hover{
+        color: orange;
+        background: #F2F5F8;
+        border-radius: 4px;
+    }
+
+    .collect-img-${cardWid} {
+        width: 14.39px;
+        height: 13.8px;
+    }
+
+    .empty-contain-${cardWid} {
+        -webkit-display:flex;
+        display:flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+        height: 100%;
+    }
+
+    .empty-content-${cardWid} {
+        width: 250px;
+        height: 82px;
+        -webkit-display:flex;
+        display:flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+    }
+
+    .empty-text-${cardWid} {
+        min-width: 120px;
+        min-height: 20px;
+        font-weight: bold;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        color: #102645;
+        letter-spacing: 0;
+        text-align: center;
+    }
+    .no-data-min-div-${cardWid} {
+        height: 300px;
+    }
+
+    .tooltip-inner{
+        background:#102645 !important;
+    }
+
+    /*//三角箭头的颜色,四个方向*/
+    /*//top*/
+    .tooltip.bs-tooltip-top .arrow:before {
+        border-top-color: #102645 !important;
+    }
+    /*//right*/
+    .tooltip.bs-tooltip-right .arrow:before {
+        border-right-color: #102645 !important;
+    }
+    /*//bottom*/
+    .tooltip.bs-tooltip-bottom .arrow:before {
+        border-bottom-color: #102645 !important;
+    }
+    /*//left*/
+    .tooltip.bs-tooltip-left .arrow:before {
+        border-left-color: #102645 !important;
+    }
+
+</style>
+<div class="split-container-${cardWid}"></div>
+<% if(isEmpty(recommendAppList)){%>
+<div class="empty-contain-${cardWid} no-data-min-div-${cardWid}">
+    <div class="empty-content-${cardWid}">
+        <span class="empty-text-${cardWid}">暂无推荐服务</span>
+    </div>
+</div>
+<%}else{%>
+<div class="card-container-${cardWid} portal-font-color-lv1">
+    <%  if(!isEmpty(recommendAppList)  && userFlag){%>
+    <div class="app-list-${cardWid}">
+        <%   for(app in recommendAppList!){%>
+            <div class="app-item-${cardWid} portal-primary-color-hover-lv1 portal-primary-backgroundcolor-hover-lv5"
+                 id="app-item-${cardWid}-${appLP.index}" app-id="${app.serviceWid}" app-pc-url="${app.pcAccessUrl,xss}" app-mobile-url="${app.mobileAccessUrl,xss}">
+                <div class="app-item-card-${cardWid}">
+                        <div class="app-item-img-${cardWid}">
+                            <i class="app-item-img-icon iconfont"></i>
+                            <img src="${app.iconLink,xss}" onerror="imgerrorfun_${cardWid}();" width="44px" height="44px"/>
+                        </div>
+                        <div class="app-item-appName-Con-${cardWid}">
+                            <div
+                                    class="app-name-${cardWid}" data-toggle="tooltip"
+                                 title="${app.serviceName}">
+                                ${app.serviceName}
+                            </div>
+                        </div>
+
+                    <div class="app-item-coll-${cardWid}">
+                        <% if (app.favorite){%>
+                        <a class="collect-app-btn-${cardWid}" operate="0" app-id="${app.serviceWid}">
+                            <div id="cancel-${cardWid}">
+                                <i class="iconfont icon-favorites" style="color: #FFBC00"></i>
+                            </div>
+                        </a>
+                        <%}else {%>
+                        <a class="collect-app-btn-${cardWid}" operate="1" app-id="${app.serviceWid}">
+                            <div id="collect-${cardWid}">
+                                <i class="iconfont icon-favorites" style="color: #CCD0D3"></i>
+                            </div>
+                        </a>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+        <% if(1 == config.isShowAllService!0){ %>
+            <div class="app-item-${cardWid} all-service-url" app-id="${app.serviceWid!}" id="app-item-${cardWid}-${recommendAppListSize!+1}" all-service-url="${config.allServiceUrl!,xss}">
+                <div class="app-item-card-${cardWid}">
+                    <div class="app-item-img-${cardWid}">
+                        <span class="iconfont icon-AllServices" style="font-size: 44px;"></span>
+                    </div>
+                    <div class="app-item-appName-Con-${cardWid}">
+                        <div class="app-item-appName-${cardWid}">
+                            全部服务
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }%>
+    </div>
+        <!--点击跳转全部服务-->
+    <% }else{ %>
+        <% if(1 == config.isShowAllService!0){ %>
+            <div class="app-item-${cardWid} all-service-url" app-id="${app.serviceWid!}" id="app-item-${cardWid}-${recommendAppListSize!+1}" all-service-url="${config.allServiceUrl!,xss}">
+                <div class="app-item-card-${cardWid}">
+                    <div class="app-item-img-${cardWid}">
+                        <span class="iconfont icon-AllServices" style="font-size: 44px;"></span>
+                    </div>
+                    <div class="app-item-appName-Con-${cardWid}">
+                        <div class="app-item-appName-${cardWid}">
+                            全部服务
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    <%}%>
+</div>
+<%}%>
+<script type="text/javascript">
+
+    //点击按钮收藏
+    $('.card-container-${cardWid}').delegate('.collect-app-btn-${cardWid}', 'click', function(e) {
+        var appId = $(this).attr("app-id");
+        var operate = $(this).attr("operate");
+        var text = "<div id='alert-${cardWid}' class=\"alert alert-success fade show \" style='position:fixed;z-index: 99999;' role=\"alert\">\n <span>";
+        var textIE = "<div id='alert-${cardWid}' class=\"alert alert-success fade show \" style='position:fixed;z-index: 99999;margin-left: 35%' role=\"alert\">\n <span>";
+        var operateArr = ['取消收藏成功！','收藏成功！','取消收藏失败！','收藏失败！'];
+        var text2 = "</span>\n </div>";
+        var flag = isIE_${cardWid}();
+        execCardMethod('${cardId}','${cardWid}',null,'collectApp',{appId:appId,operate:operate},function(data){
+            if(data.errcode === 200|| '0'=== data.errcode) {
+                if(operate === "0"){
+                    if(flag){//ie需要调整弹框的位置
+                        this.popupTips_${cardWid}(textIE+operateArr[0]+text2);
+                    }else{
+                        this.popupTips_${cardWid}(text+operateArr[0]+text2);
+                    }
+                }else{
+                    if(flag){//ie需要调整弹框的位置
+                        this.popupTips_${cardWid}(textIE+operateArr[1]+text2);
+                    }else{
+                        this.popupTips_${cardWid}(text+operateArr[1]+text2);
+                    }
+                }
+               this.hideTips_${cardWid}();
+                publish("collectApp", {appId: appId, operate: operate});
+            }else {
+                if (operate == "0") {
+                    if(flag){//ie需要调整弹框的位置
+                        this.popupTips_${cardWid}(textIE+operateArr[2]+text2);
+                    }else{
+                        this.popupTips_${cardWid}(text+operateArr[2]+text2);
+                    }
+                } else {
+                    if(flag){//ie需要调整弹框的位置
+                        this.popupTips_${cardWid}(textIE+operateArr[3]+text2);
+                    }else{
+                        this.popupTips_${cardWid}(text+operateArr[3]+text2);
+                    }
+                }
+                this.hideTips_${cardWid}();
+            }
+        });
+        e.stopPropagation();
+    });
+
+
+    //弹框提示
+    function popupTips_${cardWid}(text){
+        $(".global-header").prepend(text);
+    }
+
+    //自动隐藏提示框
+    function hideTips_${cardWid}(){
+        window.setTimeout(function(){
+            $("#alert-${cardWid}").remove();
+        },1000);
+    }
+
+    subscribe("collectApp","${cardWid}",function (param) {
+        renderCard("${cardId}", "${cardWid}", {"cardWid":"${cardWid}"});
+        renderMark('${cardId}', '${cardWid}',globalPageParam);
+    });
+
+    function doconfig_${cardWid}(){
+        var height = "${config.height}";
+        var sourceVal = "${config.heightFlag}";
+
+        if(sourceVal == "3"){
+            $(".card-container-${cardWid}").height(height);
+        }else if(sourceVal == "2"){
+            $(".card-container-${cardWid}").css("max-height",height+"px");
+        }
+    }
+
+    //点击推荐服务
+    $('.card-container-${cardWid}').delegate('.app-item-${cardWid}', 'click', function(e) {
+        var appId = $(this).attr("app-id").trim();
+        var isMobileDevice = '${isMobileDevice}';
+        var accessUrl;
+        if(isMobileDevice == 'true'){
+            accessUrl = $(this).attr("app-mobile-url");
+        } else {
+            accessUrl = $(this).attr("app-pc-url");
+        }
+        var param = {id:appId,type:"service"}
+        if( undefined !== accessUrl && '' != accessUrl ){
+            openPage(accessUrl,1,param);
+        }
+    });
+
+    //点击全部服务
+    $('.card-container-${cardWid}').delegate('.all-service-url', 'click', function(e) {
+        var allServiceUrl = $(this).attr("all-service-url").trim();
+        console.log(allServiceUrl)
+        if( undefined !== allServiceUrl  && '' != allServiceUrl.trim()){
+            openPage(allServiceUrl,1);
+        }else{
+            var text = "<div id='alert-${cardWid}' class=\"alert alert-warning fade show \" style='position:fixed;z-index: 99999;' role=\"alert\">\n <span>" +
+                "未配置全部服务的跳转地址!" +
+                "</span>\n </div>";
+            popupTips_${cardWid}(text);
+            hideTips_${cardWid}();
+        }
+    });
+
+    //默认图片
+    function imgerrorfun_${cardWid}(){
+        var img=event.srcElement;
+        img.src="${ctxInternalPath}/${cardId}/images/default.png";
+        img.onerror=null;
+    }
+
+    //兼容IE11
+    function justifyIE_${cardWid}(){
+        var flag = this.isIE_${cardWid}();
+        var w = $(".app-list-${cardWid}").innerWidth();
+        var column = Math.floor( w / 250);
+        var leftWidth = w - column * 250;
+        var totalSize = "${recommendAppList.~size!}";
+        var row = Math.ceil(totalSize/column);
+        if(flag){
+            $('.app-list-${cardWid}').css("display","-ms-grid");
+            $('.app-list-${cardWid}').css("-ms-grid-columns","(250px)["+column+"]");
+            //$('.app-list-${cardWid}').css("-ms-grid-rows","(82px)["+row+"]");
+            $('.app-list-${cardWid}').removeAttr("grid-template-columns");
+            var index = 1;
+            for(var i = 1; i <= row; i++){
+                for(var j = 1; j <= column; j++){
+                    $('#app-item-${cardWid}-'+index).css('-ms-grid-column',j+"");
+                    $('#app-item-${cardWid}-'+index).css('-ms-grid-row',i+"");
+                    if(j != 1){
+                        $('#app-item-${cardWid}-'+index).css('margin-left',((leftWidth/(column-1)) * (j - 1))+"px");
+                    }
+                    index++;
+                }
+            }
+        }
+    }
+    //  是否是IE11
+    function isIE_${cardWid}(){
+        if(!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;
+        else
+            return false;
+    }
+
+    function getAutoScroll_${cardWid}(){
+        $(".card-container-${cardWid}").niceScroll({
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+            cursorborder: "0"
+        });
+        //刷新滚动条
+        $(".app-list-${cardWid}").getNiceScroll().resize()
+    }
+
+    $(document).ready(function(){
+        doconfig_${cardWid}();
+        justifyIE_${cardWid}();
+        getAutoScroll_${cardWid}();
+        //tooltip展示样式
+        $(".app-name-${cardWid}").mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    });
+
+</script>

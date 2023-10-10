@@ -1,0 +1,15 @@
+.we-calendar__popup .we-calendar__header-title{
+    font-size: 18px;
+    height: 56px;
+    line-height: 56px;
+    font-weight: bold;
+    text-align: left;
+    text-indent: 17px;
+    color: #102645;
+}
+.we-calendar__popup .we-popup__close-icon {
+    top: 18px;
+}
+.we-calendar__popup.we-popup--bottom{
+    height: 90% !important;
+}

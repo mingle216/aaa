@@ -1,0 +1,63 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <!-- 创建数据库表 -->
+    <!-- 配置相关 -->
+    <include file="classpath:db/table/t_amp_sys_icon.xml"/>
+    <include file="classpath:db/table/t_amp_view_card.xml"/>
+    <include file="classpath:db/table/t_amp_view_international.xml"/>
+    <include file="classpath:db/table/t_amp_view_menu.xml"/>
+    <include file="classpath:db/table/t_amp_view_menu_auth.xml"/>
+    <include file="classpath:db/table/t_amp_view_page_card_config.xml"/>
+    <include file="classpath:db/table/t_amp_view_page_info.xml"/>
+    <include file="classpath:db/table/t_amp_view_show_programme.xml"/>
+    <include file="classpath:db/table/t_amp_view_sidebar.xml"/>
+    <include file="classpath:db/table/t_amp_view_system_config.xml"/>
+    <include file="classpath:db/table/t_amp_view_template.xml"/>
+    <include file="classpath:db/table/t_amp_view_version_management.xml"/>
+    <include file="classpath:db/table/t_amp_attach_info.xml"/>
+    <include file="classpath:db/table/t_amp_attach_entity_rel.xml"/>
+    <include file="classpath:db/table/t_amp_service_search_his.xml"/>
+    <include file="classpath:db/table/t_amp_view_popup_window.xml"/>
+    <include file="classpath:db/table/t_amp_view_school_calendar.xml"/>
+    <include file="classpath:db/table/t_amp_personal_data_auth.xml"/>
+    <include file="classpath:db/table/t_amp_service_latest_use.xml"/>
+    <include file="classpath:db/table/t_amp_mail_plugin.xml" />
+    <include file="classpath:db/table/t_amp_personal_data.xml" />
+    <include file="classpath:db/table/t_amp_user_email.xml"/>
+    <include file="classpath:db/table/t_amp_view_site.xml"/>
+    <include file="classpath:db/table/t_amp_view_site_auth.xml"/>
+    <include file="classpath:db/table/t_amp_view_site_mag.xml"/>
+
+    <!-- quartz框架表 -->
+    <include file="classpath*:db/minos-scheduler-changelog.xml"/>
+
+    <!-- 增加本地化样式代码表-->
+    <include file="classpath:db/table/t_amp_view_pro_local_style.xml"/>
+    <!-- 增加插件安装表-->
+    <include file="classpath:db/table/t_amp_view_plugin_install.xml"/>
+    <include file="classpath:db/table/t_portal_plugin_install.xml"/>
+    <include file="classpath:db/table/t_portal_plugin_publish.xml"/>
+
+    <include file="classpath:db/table/t_amp_app_appraise.xml"/>
+
+    <include file="classpath:db/table/t_amp_view_user_login.xml"/>
+    <!-- 增加用户-我的日程卡片关联表-->
+    <include file="classpath:db/table/t_amp_user_cal_card_rel.xml" />
+
+    <!--旧OSS域名记录替换表-->
+    <include file="classpath:db/table/t_amp_view_old_oss.xml" />
+    <!--站点切换记录表-->
+    <include file="classpath:db/table/t_amp_view_site_switching.xml" />
+    <!-- 最新服务点击记录表 -->
+    <include file="classpath:db/table/t_amp_lastestapp_user.xml" />
+    <!-- 下拉菜单表 -->
+    <include file="classpath:db/table/t_amp_view_select_menu.xml" />
+
+
+    <!-- 初始化数据(这个脚本放在在最后，否则会报表不存在错误)-->
+    <include file="classpath:db/data/init_data.xml"/>
+</databaseChangeLog>

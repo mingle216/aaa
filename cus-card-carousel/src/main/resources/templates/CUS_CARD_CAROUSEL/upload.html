@@ -1,0 +1,86 @@
+<style>
+    #upload-modal-${cardWid} .avatar-preview img {
+        width: 100% !important;
+    }
+
+    .preview-md-${cardWid}{
+        width: 150px !important;
+        height: 50px !important;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+    .preview-md-${cardWid} > img {
+       /* width: 100% !important;
+        height: auto !important;*/
+    }
+
+    .avatar-wrapper-${cardWid}{
+        width: 570px;
+        height: 300px;
+
+    }
+
+    #upload-modal-${cardWid} .cropper-container{
+        width: 570px !important;
+        height: 300px !important;
+    }
+
+</style>
+<div class="modal  " id="upload-modal-${cardWid}" tabindex="-1" role="dialog"
+     aria-labelledby="upload-modal-${cardWid}" style="display: none;" aria-hidden="true"
+     data-backdrop="static" >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">图像裁剪</h5>
+                <button type="button" class="close" data-toggle="modal" data-target="#confirm-close-${cardWid}">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <div class="col-md-9" style=" width: 570px;  height: 300px;">
+                    <div class=" cropper-bg avatar-wrapper avatar-wrapper-${cardWid}">
+                        <img id="avatar-img-${cardWid}" src="${ctxInternalPath}/CUS_CARD_CAROUSEL/img/blank.png" alt="Picture">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div style="font-size: 14px;">图片预览</div>
+                    <div style="font-size: 12px;">裁剪后图片实际尺寸：
+                        <br>
+                    <div id="cropper-ratio-${cardWid}">1200像素*400像素</div></div>
+                    <!-- 预览图 100% -->
+                    <div class="docs-preview clearfix" style="margin-top: 5px;">
+                        <div class="img-preview  preview-md preview-md-${cardWid} img-preview-${cardWid}"></div>
+                    </div>
+
+                    <div style="    position: absolute; bottom: 0;font-size: 12px;">
+                        <a id="img-upload-btn--${cardWid}"
+                           href="javascript:return void(0); "
+                            onclick="javascript:$('#img-upload-input-${cardWid}').click();"
+                        ><i class="iconfont icon-Upload"></i> 重新上传</a>
+                        <div  style=" word-break: break-word;  width: 160px;">
+                            建议上传尺寸为1200*400 px的.png/.jpeg格式图片，大小不超过2MB
+                        </div>
+                        <input id="img-upload-input-${cardWid}" type="file" style="display: none;">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button data-toggle="modal" data-target="#confirm-close-${cardWid}" type="button" class="btn btn-light" >取消</button>
+                <button type="button" class="btn btn-primary" onclick="saveUpload${cardWid}()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+
+</script>

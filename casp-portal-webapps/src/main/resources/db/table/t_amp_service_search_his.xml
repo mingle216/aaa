@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_service_search_his-1.0.0">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_service_search_his"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_service_search_his" remarks="服务事项搜索历史表">
+            <column name="WID" type="VARCHAR(64)" remarks="业务主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="SEARCH_KEY" type="VARCHAR(512)" remarks="搜素关键字"/>
+            <column name="USER_ID" type="VARCHAR(64)" remarks="其他表wid" />
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,119 @@
+<%
+if(isNotEmpty(serviceItemList)){
+if(SERVICE_ORG_RULES == "1"){
+for(serviceItem in serviceItemList){
+%>
+
+<div class="listEver-${cardWid}  portal-font-color-lv1" link="${serviceItem.navId}-${cardWid}" id="${serviceItem.navId}-${cardWid}">
+    <div class="letter-index-parent-${cardWid}">
+        <div class="letter-index-${cardWid}">${serviceItem.navName,xss}</div>
+    </div>
+    <div class="row ml-0 mr-0 w1160-${cardWid}">
+        <%  for(data in serviceItem.datas){ %>
+        <div
+                class="hover-${cardWid}  row-${cardWid}  mouse-hover-${cardWid} go-to-item-${cardWid} portal-primary-backgroundcolor-hover-lv5 portal-primary-color-hover-lv1"
+             data-wid="${data.itemWid}" >
+
+            <div class="hover-img-${cardWid}"  >
+                <% if(strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"003")){ %>
+                <img class="img-icon-${cardWid}" src="${data.iconLink}" onerror="imgerrorfun${cardWid}()">
+                <% }else{ %>
+                <p class="no-icon-p-${cardWid} portal-primary-backgroundcolor-lv1"></p>
+                <%   } %>
+            </div>
+
+            <div class="hover-content-${cardWid}"  >
+                <div class="li-title-${cardWid} fit-${cardWid}" title="${data.itemName,xss}" data-toggle="tooltip" data-placement="bottom">${data.itemName,xss}</div>
+                <% if(strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"001")){
+                if(isEmpty(data.itemCategory)){ data.itemCategory = "无";}
+                %>
+                <div class="li-subject-${cardWid} pt-2 portal-font-color-lv2" title="${data.itemCategory,xss}" data-toggle="tooltip" data-placement="bottom">
+                    <i class="iconfont icon-serviceSubject icon-default-${cardWid}"  ></i>
+                    ${data.itemCategory,xss}
+                </div>
+                <% } %>
+                <% if(strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"002")){ %>
+                <div class="li-dept-${cardWid} portal-font-color-lv2" data-toggle="tooltip" data-placement="bottom"
+                     title=" ${isNotEmpty(data.itemDept)?data.itemDept:"无"}">
+                    <i class="iconfont icon-responsibleDepartment icon-default-${cardWid}"  ></i>
+                    ${(isNotEmpty(data.itemDept)?data.itemDept:"无"),xss}
+                </div>
+                <% } %>
+                <div class="li-views-${cardWid} portal-font-color-lv2" title="${data.visitCount}次访问" data-toggle="tooltip" data-placement="bottom">
+                    <i class="iconfont icon-views icon-default-${cardWid}" ></i>
+                    ${data.visitCount}次访问
+                </div>
+            </div>
+            <%if(userId != ""){%>
+            <div class=" favorite-icon-${cardWid} ">
+                <% if(data.favorite){%>
+                <i class="iconfont icon-favorites favorite-click-${cardWid} favorite-${cardWid}" data-item-id="${data.itemWid}" style="color: #CCD0D3  "></i>
+                <%}else{%>
+                <i class="iconfont icon-favorites favorite-click-${cardWid}  " data-item-id="${data.itemWid}" style="color: #CCD0D3;"></i>
+                <%}%>
+            </div>
+            <%}%>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%}}else{
+for(serviceItem in serviceItemList){
+%>
+<div class="listEver-${cardWid}"  >
+
+    <div class="row ml-0 mr-0 w1160-${cardWid}">
+        <%  for(data in serviceItem.datas){ %>
+        <div class="hover-${cardWid}  row-${cardWid}  mouse-hover-${cardWid} go-to-item-${cardWid} portal-primary-backgroundcolor-hover-lv5 portal-primary-color-hover-lv1" data-wid="${data.itemWid}">
+
+            <div class="hover-img-${cardWid}"  >
+                <% if(strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"003")){ %>
+                <img class="img-icon-${cardWid}" src="${data.iconLink}" onerror="imgerrorfun${cardWid}()">
+                <% }else{ %>
+                <div class="img-icon-${cardWid}"></div>
+                <%   } %>
+            </div>
+
+            <div class="hover-content-${cardWid}"  >
+                <div class="li-title-${cardWid} fit-${cardWid}" title="${data.itemName}" data-toggle="tooltip" data-placement="bottom">${data.itemName}</div>
+                <% if(strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"001")){
+
+                if(isEmpty(data.itemCategory)){ data.itemCategory = "无";}
+                %>
+                <div class="li-subject-${cardWid} pt-2 portal-font-color-lv2" title="${data.itemCategory}" data-toggle="tooltip" data-placement="bottom">
+                    <i class="iconfont icon-serviceSubject icon-default-${cardWid}"  ></i>
+                    ${data.itemCategory}
+                </div>
+                <% } %>
+                <% if(strutil.contain(SINGLE_ITEM_DISPLAY_INFO,"002")){ %>
+                <div class="li-dept-${cardWid} portal-font-color-lv2" data-toggle="tooltip" data-placement="bottom"
+                     title=" ${isNotEmpty(data.itemDept)?data.itemDept:"无"}" >
+                <i class="iconfont icon-responsibleDepartment icon-default-${cardWid}"  ></i>
+                ${isNotEmpty(data.itemDept)?data.itemDept:"无"}
+            </div>
+            <% } %>
+                <div class="li-views-${cardWid} portal-font-color-lv2" title="${data.visitCount}次访问" data-toggle="tooltip" data-placement="bottom">
+                    <i class="iconfont icon-views icon-default-${cardWid}" ></i>
+                    ${data.visitCount}次访问
+                </div>
+            </div>
+            <%if(userId != ""){%>
+            <div class=" favorite-icon-${cardWid} ">
+                <% if(data.favorite){%>
+                <i class="iconfont icon-favorites favorite-click-${cardWid} favorite-${cardWid}" data-item-id="${data.itemWid}" style="color: #CCD0D3;"></i>
+                <%}else{%>
+                <i class="iconfont icon-favorites favorite-click-${cardWid}  " data-item-id="${data.itemWid}" style="color: #CCD0D3;"></i>
+                <%}%>
+            </div>
+           <% } %>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<%}}}else{%>
+<img src="${ctxInternalPath}/CUS_CARD_ROLESERVICEITEM/img/nodata.png"  class="nodata-circle-${cardWid}">
+<div class="nodata-text-${cardWid} ortal-font-color-lv1 ">未找到相关服务事项</div>
+
+<%}%>

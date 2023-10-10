@@ -1,0 +1,2 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number
+"8a7731381e4b4b6c8740fdc920282f4b","SYS_CARD_CALENDAR_DETAIL","日程详情","/SYS_CARD_CALENDAR_DETAIL/pc/img/display.png","0",0,1,"日程详情",0,"",0,0,"1.0.0"

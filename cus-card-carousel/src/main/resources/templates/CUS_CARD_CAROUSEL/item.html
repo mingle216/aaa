@@ -1,0 +1,132 @@
+<div class="drag-container-${cardWid}" id="drag-id-${cardWid}-${item.ID}">
+    <div li-id="${item.ID}" name="list-${cardWid}"
+         style="  border: 1px solid rgba(0,0,0,.125);border-left: 0;border-right: 0;width:100%;height:52px;">
+        <div style=" margin:9px auto; text-align: left;" class="col-12">
+            <!--开关标志 -->
+            <div  onclick="openItem${cardWid}(${item.ID})"
+                  data-toggle="collapse" data-target="#collapseExample-${cardWid}-${item.ID}"
+                  aria-expanded="false" aria-controls="collapseExample-${cardWid}-${item.ID}"
+                  style="  width: 0.9em;  display: inline-block;    vertical-align: middle;  line-height: 34px; ">
+                <i id="icon-${cardWid}-${item.ID}"
+
+                   class="iconfont icon-Right" style="font-size: 1em;"></i>
+            </div>
+
+            <!-- 名称 -->
+            <%
+            var SHOW_TITLE = "轮播图" +item.ID ;
+            if(isNotEmpty( item.TITLE )){
+                 SHOW_TITLE = item.TITLE;
+            }
+            %>
+
+            <span class="black-${cardWid}" title="${SHOW_TITLE,xss}" id="c-title-${cardWid}-${item.ID}" style="       font-size: 1em;
+    width: 75%;
+    max-width: 62%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;">${SHOW_TITLE,xss}</span>
+            <div style="    float: right;
+    width: 3em;
+    margin-top: 8px;
+    vertical-align: middle;">
+                <!--拖拽标志 -->
+                <i class="iconfont icon-More drag-button dragBtn-${cardWid}" style="font-size: 1em;cursor:pointer;"></i>
+                &nbsp;
+                <!--删除标志 -->
+                <i onclick="delCarousel${cardWid}(${item.ID})" class="iconfont icon-Ashcan" style="cursor:pointer;font-size: 1em;"></i>
+            </div>
+
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample-${cardWid}-${item.ID}" style="padding: 17px; ">
+        <!-- 标题 -->
+        <div class="form-group">
+            <label class="black-item-${cardWid}" style="width: 100%;text-align: left;">轮播图标题
+            </label>
+            <div class="ivu-input-wrapper-${cardWid} ivu-input-wrapper-default ivu-input-type-text" >
+                <span id="title-span-${cardWid}-${item.ID}" class="ivu-input-word-count-${cardWid} ">${strutil.length(item.TITLE)}/25</span>
+                 <input id="title-${cardWid}-${item.ID}" autocomplete="off" spellcheck="false"  value="${item.TITLE,xss}"
+                      oninput="inputChange${cardWid}(${item.ID})" style="padding-right: 45px;text-overflow: ellipsis;"
+                        onchange="inputOnChange${cardWid}(${item.ID})"
+                       type="text" placeholder="请输入" maxlength="25" class="form-control form-control-sm">
+            </div>
+        </div>
+
+        <!-- 摘要 -->
+        <div class="form-group">
+            <label class="black-item-${cardWid}" style="width: 100%;text-align: left;">轮播图摘要</label>
+            <div class="ivu-input-wrapper-${cardWid} ivu-input-wrapper-default ivu-input-type-textarea-${cardWid} "  >
+                <textarea id="summary-${cardWid}-${item.ID}" wrap="soft" autocomplete="off"
+                          oninput="areaChange${cardWid}(${item.ID})"
+                          spellcheck="false" placeholder="请输入" rows="2"  class="form-control "
+                          maxlength="50" class="ivu-input-${cardWid}" style="margin-top: 0px;
+                          margin-bottom: 0px;">${item.SUMMARY,xss}</textarea>
+                <% if(null != item.SUMMARY){ %>
+                <span id="summary-span-${cardWid}-${item.ID}" class="ivu-input-word-count-${cardWid} ">
+                    ${strutil.length(item.SUMMARY)}/50
+                </span>
+                <% }else{%>
+                <span id="summary-span-${cardWid}-${item.ID}" class="ivu-input-word-count-${cardWid} ">
+                    0/50
+                </span>
+                <% }%>
+            </div>
+        </div>
+
+        <!-- 地址 -->
+        <div class="form-group">
+            <label class="black-item-${cardWid}" style="width: 100%;text-align: left;">轮播图地址</label>
+            <div class="  ivu-input-wrapper-default ivu-input-type-text ivu-input-group-${cardWid}  ivu-input-group-default ivu-input-group-with-prepend ivu-input-group-with-append ivu-input-hide-icon">
+                <div class="ivu-input-group-prepend-${cardWid}  " style="      border-radius: 4px 0 0 4px;  padding-left: 3px;">
+                    <div class="ivu-select-${cardWid}  ivu-select-single ivu-select-default btn-group">
+                        <button id="btn-protocol-${cardWid}-${item.ID}" type="button" class="btn  btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ${item.PROTOCOL,xss}
+                        </button>
+                        <div class="dropdown-menu ivu-select-dropdown-list-${cardWid} ">
+                            <div class="dropdown-item ivu-select-item-${cardWid} " onclick="changeHttp${cardWid}(${item.ID},1)" >http://</div>
+                            <div class="dropdown-item ivu-select-item-${cardWid} " onclick="changeHttp${cardWid}(${item.ID},2)" >https://</div>
+                        </div>
+                    </div>
+                </div>
+
+                 <input autocomplete="off" spellcheck="false"  style="border-left: 0;border-radius: 0 4px 4px 0;text-overflow: ellipsis; "
+                        value="${item.URL}" id="link-${cardWid}-${item.ID}"
+                        type="text" placeholder="请输入" class="form-control form-control-sm">
+
+            </div>
+
+             <!--   <input id="link-${cardWid}-${item.ID}" class="form-control form-control-sm" type="text" placeholder="请输入"
+                       value="${item.URL}">-->
+        </div>
+
+        <!-- 上传 -->
+        <div class="form-group">
+            <label class="black-item-${cardWid}" style="width: 100%;text-align: left;">展示图片<span style="color: red;">*</span></label>
+            <div class="ivu-upload" data-toggle="modal" data-target=".avatar-modal-${cardWid}" >
+
+                <% if(item.IMAGE == null || item.IMAGE == "" ){ %>
+                <div id="img-${cardWid}-${item.ID}" class="ivu-upload ivu-upload-drag-${cardWid}" onclick="gotoUpload${cardWid}(${item.ID})" data-target="#upload-modal-${cardWid}">
+                    <div style="padding: 20px 0px;">
+                        <i class="iconfont icon-Upload" style="font-size: 1.5rem;color:#8c8c8c;"></i>
+                        <p style="font-size: 12px; color: #BFBFBF;">请上传尺寸为1200*400 px的.png/.jpeg格式图片，大小不超过2MB</p>
+                    </div>
+                </div>
+                <% }else{ %>
+                <div id="img-${cardWid}-${item.ID}" class="ivu-upload ivu-upload-drag-${cardWid} bg-img-${cardWid}"
+                     style="background-image: url(${item.IMAGE})" data-url="${item.IMAGE}"
+                     onclick="gotoUpload${cardWid}(${item.ID})">
+                </div>
+                <% } %>
+                <input id="upload-${cardWid}-${item.ID}"
+                       class="carousel-upload"
+                       onchange="uploadChange${cardWid}(${item.ID})"
+                       cardWid="${cardWid}"
+                       index="${item.ID}"
+                       type="file" style="display: none;">
+            </div>
+        </div>
+    </div>
+</div>

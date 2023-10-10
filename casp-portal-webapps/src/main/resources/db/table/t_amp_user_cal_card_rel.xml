@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="hxshen" id="t_amp_user_cal_card_rel-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_user_cal_card_rel"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_user_cal_card_rel" remarks="用户-日程卡片关联表">
+            <column name="wid" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="VARCHAR(64)" remarks="用户id"/>
+            <column name="card_wid" type="VARCHAR(64)" remarks="卡片wid" />
+            <column name="remind_time" type="VARCHAR(64)" remarks="提醒时间"/>
+            <column name="remind_way" type="VARCHAR(256)" remarks="提醒方式" />
+            <column name="is_enabled" type="TINYINT(2)" remarks="周提醒状态 0 停用 1启用" defaultValue="0"/>
+            <column name="is_deleted" type="TINYINT(2)" remarks="是否已经删除 0:非删除 1:删除" defaultValue="0"/>
+            <column name="update_time" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="create_time" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="shx" id="t_amp_user_cal_card_rel-3.3.4-20220315">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="t_amp_user_cal_card_rel" columnName="remind_time_hour" />
+            </not>
+        </preConditions>
+        <addColumn tableName="t_amp_user_cal_card_rel">
+            <column name="remind_time_hour" remarks="提醒时间（小时）" type="VARCHAR(64)" />
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

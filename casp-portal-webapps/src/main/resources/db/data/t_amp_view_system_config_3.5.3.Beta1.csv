@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+1012019978975903744,SITE_RULE,0,0,站点规则0：匹配站点 1：随机站点,1,0

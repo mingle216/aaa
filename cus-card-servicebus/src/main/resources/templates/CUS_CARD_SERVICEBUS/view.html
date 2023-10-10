@@ -1,0 +1,613 @@
+<style>
+    .card-container-${cardWid}{
+        min-width: 165px;
+        display: flex;
+    }
+    .card-container-center-${cardWid}{
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+    }
+    .source-list-${cardWid}{
+        width:140px;
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-shadow: inset -1px 0 0 0 #F1F2F4;
+        margin-right: 15px;
+    }
+    .source-item-${cardWid}{
+        position: relative;
+        font-size: 14px;
+        color: #707D8F;
+        cursor: pointer;
+        height: 48px;
+        box-shadow: inset 0 -1px 0 0 #F1F2F4;
+    }
+
+    .source-item-active-${cardWid} {
+        background: #F6F6F8;
+        border-radius: 3px;
+        color: #102645;
+    }
+    .source-item-active-${cardWid}::before {
+        content: "";
+        width: 3px;
+        height: 30px;
+        background: #102645;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -15px;
+    }
+
+    .source-item-title-${cardWid} {
+        height: 100%;
+        padding: 14px 12px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-title-ellipsis-${cardWid} {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .card-title-num-${cardWid} {
+        min-width: 18px;
+        height: 18px;
+        line-height: 16px;
+        border-radius: 10px;
+        /*border: 1px solid transparent;*/
+        /*box-shadow: 0 0 0 1px #fff;*/
+        text-align: center;
+        padding: 0px 3px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+
+    .task-list-${cardWid}{
+        /*width: calc(100% - 140px);*/
+        /*height: 100%;*/
+    }
+    .task-list-item-${cardWid}{
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(auto-fill, 250px);
+        grid-template-rows: repeat(auto-fill, 82px);
+    }
+
+    .task-item-${cardWid}{
+        height:72px;
+        box-shadow: inset 0 -1px 0 0 #F1F2F4;
+    }
+
+    .task-item-content-${cardWid} {
+        height: 100%;
+        padding: 15px  0px 15px 12px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .tast-item-title-${cardWid}{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        font-size: 14px;
+    }
+
+    .tast-item-title-box-${cardWid} {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .tast-item-title-ellipsis-${cardWid} {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        color: #102645;
+        letter-spacing: 0;
+        line-height: 20px;
+        padding-right: 8px;
+        cursor: pointer;
+    }
+
+
+    .tast-item-title-chart-${cardWid} {
+        display: flex;
+        flex-direction: column;
+        width: 112px;
+    }
+    .tast-item-title-chart-box-${cardWid} {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .tast-item-chart-name-${cardWid} {
+        margin-left: 6px;
+        font-family: PingFangSC-Regular;
+        font-size: 12px;
+        color: #1869F9;
+        letter-spacing: 0;
+        height: 17px;
+        width:36px
+    }
+
+    .tast-item-title-chart-img-${cardWid} {
+        width:14px;
+        height: 13px;
+        line-height: 1;
+    }
+
+    .tast-item-desc-${cardWid} {
+
+    }
+
+    .tast-item-desc-info-${cardWid} {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 20px;
+    }
+
+    .tast-item-desc-color-${cardWid} {
+        font-family: PingFangSC-Regular;
+        height: 17px;
+        font-size: 12px;
+        color: #707D8F;
+        letter-spacing: 0;
+    }
+
+    .tast-item-desc-label-${cardWid} {
+        flex-grow: 1;
+        height: 17px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .tast-item-box-status-${cardWid} {
+        display: flex;
+        width: 134px;
+        height: 20px;
+    }
+
+    .tast-item-status-${cardWid}{
+        border-radius: 4px;
+        padding:2px 4px;
+        box-sizing: border-box;
+        font-size: 12px;
+        letter-spacing: 2px;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    .status-completed-${cardWid} {
+        background: rgba(16,149,27,0.10);
+        border: 1px solid #25B14D;;
+        color: #25B14D;
+
+    }
+    .status-having-${cardWid} {
+        background: rgba(255,144,0,0.10);
+        border: 1px solid #FF9000;
+        color: #FF9000;
+    }
+    .status-terminated-${cardWid}{
+        background: rgba(255,35,12,0.10);
+        border: 1px solid #FF230C;
+        color: #FF230C;
+
+    }
+
+    .mr-8-${cardWid} {
+        margin-right: 8px;
+    }
+
+    .tast-item-date-${cardWid} {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row-reverse;
+        width: 112px;
+        margin-top: 5px;
+    }
+
+
+    .tast-item-icon-${cardWid} {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+
+    .card-empty-${cardWid} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%; /* 高度300px固定 */
+    }
+
+    .card-empty-title-${cardWid} {
+        height:20px;
+        line-height: 20px;
+        font-family: PingFangSC-Medium;
+        font-weight: bold;
+        font-size: 14px;
+        color: #102645;
+    }
+
+    .app-item-${cardWid} {
+        width: 250px;
+        height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: 12px;
+
+        background: #FFFFFF;
+        border-radius: 4px;
+    }
+    .app-item-card-${cardWid} {
+        width: 100%;
+        padding: 4% 3%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+
+
+    .app-item-${cardWid}:hover .collect-app-btn-${cardWid}{
+        display: block;
+    }
+
+
+    .app-item-img-${cardWid} {
+        border-radius: 4px;
+        width: 33%;
+        margin-right: 14px;
+    }
+
+    .app-item-appName-Con-${cardWid} {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-right: 28.8px;
+    }
+
+    .app-item-appName-${cardWid} {
+        width: 126px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #102645;
+        letter-spacing: 0;
+    }
+
+    .app-item-appName-date-${cardWid} {
+        width: 115px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: 4px;
+
+        font-family: PingFangSC-Regular;
+        font-size: 12px;
+        color: #707D8F;
+        letter-spacing: 0;
+    }
+
+    .app-item-coll-${cardWid} {
+        width: 16px;
+        height: 16px;
+    }
+
+    .collect-app-btn-${cardWid}{
+        display: none;
+    }
+
+    .app-content-${cardWid} {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        grid-template-columns: repeat(auto-fill, 250px);
+    }
+
+    .empty-contain-${cardWid} {
+        -webkit-display:flex;
+        display:flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+        height: 100%;
+    }
+
+    .empty-content-${cardWid} {
+        width: 250px;
+        height: 82px;
+        -webkit-display:flex;
+        display:flex;
+        -webkit-align-items:center;
+        align-items:center;
+        -webkit-justify-content:center;
+        justify-content:center;
+    }
+
+    .empty-text-${cardWid} {
+        min-width: 120px;
+        min-height: 20px;
+        font-weight: bold;
+        font-family: PingFangSC-Medium;
+        font-size: 14px;
+        letter-spacing: 0;
+        text-align: center;
+
+
+    }
+
+    .no-data-min-div-${cardWid} {
+        height: 300px;
+
+    }
+
+    .no-data-min-div-g-${cardWid} {
+        /*line-height: 300px;*/
+        position: absolute;
+        left: calc(50% - 140px);
+        transform: translate(50%, 0px);
+    }
+    .card-${cardWid} {
+        /*position: relative;*/
+    }
+</style>
+<%  if(isEmpty(classifyData) && isEmpty(appData)){%>
+<div class="empty-contain-${cardWid} no-data-min-div-${cardWid}">
+    <div class="empty-content-${cardWid}">
+        <span class="empty-text-${cardWid} portal-font-color-lv1">暂无服务</span>
+    </div>
+</div>
+<%}else{%>
+<div class="card-container-${cardWid} portal-font-color-lv1" style="overflow-x:hidden">
+    <!--空数据-->
+    <%  if(isEmpty(classifyData)){%>
+    <div class="card-empty-${cardWid} no-data-min-div-g-${cardWid}">
+        <div class="card-empty-title-${cardWid}">暂无服务</div>
+    </div>
+    <%}else{%>
+
+    <!--分类显示 -->
+    <div class="source-list-${cardWid}">
+        <% if(isNotEmpty(classifyData)){%>
+        <% for(item in classifyData){%>
+        <div class="source-item-${cardWid}" onclick="reloadList_${cardWid}(this,'${cardId}','${cardWid}','list','render',{'typeId':'${item.typeId}'})">
+            <div class="source-item-title-${cardWid}">
+                <span class="card-title-ellipsis-${cardWid}" data-toggle="tooltip" title="${item.typeName, xss}">${item.typeName, xss}</span>
+                <%if(item.count!='0'){%>
+                <span class="card-title-num-${cardWid}">${item.count}</span>
+                <%}%>
+            </div>
+        </div>
+        <%}}%>
+    </div>
+
+    <div class="task-list-${cardWid}">
+        <%#ajax list :{%>
+        <% if(isEmpty(appData)){%>
+        <!--空数据 -->
+        <div class="card-empty-${cardWid}">
+<!--            <div><img src="/CUS_CARD_SERVICEBUS/img/empty.png" style="width: 278px;height: 146px;"></div>-->
+            <div class="card-empty-title-${cardWid} no-data-min-div-g-${cardWid}">该分类下无服务</div>
+        </div>
+        <%}else{%>
+        <div class="task-list-item-${cardWid}">
+        <%  for(app in appData!){%>
+        <div class="app-item-${cardWid} portal-primary-color-hover-lv1 portal-primary-backgroundcolor-hover-lv5"
+             app-id="${app.appId}" app-pc-url="${app.pcAccessUrl!}"
+             app-mobile-url="${app.mobileAccessUrl!}">
+            <div class="app-item-card-${cardWid}">
+                <div class="app-item-img-${cardWid}">
+                    <img src="${app.appIcon!}" onerror="imgerrorfun_${cardWid}();" width="44" height="44"/>
+                </div>
+                <div class="app-item-appName-Con-${cardWid}">
+                    <div class="app-item-appName-${cardWid}">
+                        <a class="app-item-a-${cardWid} portal-font-color-lv1" title="${app.appName, xss}">
+                            ${app.appName, xss}
+                        </a>
+                    </div>
+                </div>
+                <div class="app-item-coll-${cardWid}">
+                    <% if(app.appFavorite){ %>
+                    <a class="collect-app-btn-${cardWid}" type-id="${app.typeId}" app-id="${app.appId}" operate="0">
+                        <i class="iconfont icon-favorites" style="color: #FFBC00;position: relative;top: -5px;left: -5px;"></i>
+                    </a>
+                    <% } else { %>
+                    <a class="collect-app-btn-${cardWid}" type-id="${app.typeId}" app-id="${app.appId}" operate="1">
+                        <i class="iconfont icon-favorites" style="color: #CCD0D3;position: relative;top: -5px;left: -5px;"></i>
+                    </a>
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+        <%}}}%>
+        </div>
+    </div>
+    <%}%>
+</div>
+<%}%>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        //tooltip展示样式
+        $(".app-item-a-${cardWid}").mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        $(".card-title-ellipsis-${cardWid}").mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+    });
+
+    //获取高度
+    function getDiffHeight_${cardWid}(){
+
+        var hasChildClassify = "${hasChildClassify}";
+        var height = "${height}";
+        var heightFlag = "${heightFlag}";
+
+        if (hasChildClassify == "false") {
+            $(".source-list-${cardWid}").hide();
+            $(".task-list-${cardWid}").css("width","100%");
+        }
+        if(heightFlag == "3"){
+            $(".card-container-${cardWid}").css("height",height);
+        }else if(heightFlag == "2"){
+            $(".card-container-${cardWid}").css("max-height",height + "px");
+        }
+    }
+
+    function getAutoScroll_${cardWid}(){
+        $(".card-container-${cardWid}").niceScroll(".task-list-${cardWid}");
+        $(".task-list-${cardWid}").niceScroll({
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+            cursorborder: "0"
+        });
+        //刷新滚动条
+        $(".task-list-${cardWid}").getNiceScroll().resize()
+    }
+    $(function() {
+        //初始化页面
+        init_${cardWid}();
+        $(".source-item-${cardWid}:first").addClass("source-item-active-${cardWid}");
+    });
+
+    function init_${cardWid}() {
+        //增加title展示
+        $(".tast-item-desc-label-value-${cardWid}").mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        $(".tast-item-icon-${cardWid}").mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        getDiffHeight_${cardWid}(); //自适应宽度
+        doCss_${cardWid}(); //初始化加载
+        getAutoScroll_${cardWid}();
+        $('.task-list-${cardWid}').on('mouseenter mouseleave','.app-item-${cardWid}',function (e) {
+            if(e.type == "mouseenter"){
+                $(this).find(".app-item-appName-Con-${cardWid} .app-item-appName-${cardWid} a").removeClass("portal-font-color-lv1");
+                $(this).find(".app-item-appName-Con-${cardWid} .app-item-appName-${cardWid} a").addClass("portal-primary-color-lv1");
+            }else if(e.type == "mouseleave"){
+                $(this).find(".app-item-appName-Con-${cardWid} .app-item-appName-${cardWid} a").removeClass("portal-primary-color-lv1");
+                $(this).find(".app-item-appName-Con-${cardWid} .app-item-appName-${cardWid} a").addClass("portal-font-color-lv1");
+            };
+        })
+    }
+    function reloadList_${cardWid}(_this,cardId,cardWid,target,method, param){
+        execCardMethod(cardId,cardWid,target,method,param,function(data){
+            if (200 === data.errcode|| '0'=== data.errcode) {
+                $(".task-list-${cardWid}").html(data.data);
+                //初始化页面
+                init_${cardWid}();
+                $(".source-item-${cardWid}").removeClass("source-item-active-${cardWid}");
+                $(_this).addClass("source-item-active-${cardWid}");
+                resetBodyScroll();
+            }
+        });
+    }
+
+    $('.card-container-${cardWid}').delegate('.app-item-${cardWid}', 'click', function(e) {
+        var appId = $(this).attr("app-id");
+        var isMobileDevice = '${isMobileDevice}';
+        var accessUrl;
+        if(isMobileDevice == 'true'){
+            accessUrl = $(this).attr("app-mobile-url");
+        } else {
+            accessUrl = $(this).attr("app-pc-url");
+        }
+        var param = {id:appId,type:"service"};
+        openPage(accessUrl,1,param);
+    });
+
+    //点击按钮收藏
+    $('.card-container-${cardWid}').delegate('.collect-app-btn-${cardWid}', 'click', function(e) {
+        var typeId = $(this).attr("type-id");
+        var appId = $(this).attr("app-id");
+        var operate = $(this).attr("operate");
+        execCardMethod('${cardId}','${cardWid}',null,'collectApp',{appId:appId,operate:operate},function(data){
+            if(data.errcode == "200"|| '0'=== data.errcode) {
+
+                execCardMethod('${cardId}','${cardWid}',"list","render",{typeId : typeId},function(data){
+                    if (200 === data.errcode) {
+                        $(".task-list-${cardWid}").html(data.data);
+                        //初始化页面
+                        init();
+                    }
+                });
+                publish("collectApp", {appId: appId, operate: operate});
+            }else{
+                alert("收藏失败");
+            }
+        });
+        e.stopPropagation();
+    });
+
+    subscribe("collectApp","${cardWid}",function (param) {
+        console.log("接受到收藏服务消息，param=" + JSON.stringify(param));
+        renderCard("${cardId}", "${cardWid}",null);
+    });
+
+    //默认图片
+    function imgerrorfun_${cardWid}(){
+        var img=event.srcElement;
+        img.src="${ctxInternalPath}/${cardId}/images/default.png";
+        img.onerror=null;
+    }
+
+    //自适应横向宽度
+    function  doCss_${cardWid}() {
+
+        var itemWid =  $(".card-container-${cardWid}").innerWidth(); //总长度
+        var rigthCardWid = itemWid - 140;
+    <% if(isEmpty(classifyData)){%>
+            rigthCardWid=itemWid;
+            $(".source-list-${cardWid}").css("width", '0px');
+        <% }else{%>
+            $(".source-list-${cardWid}").css("width", '140px');
+        <% } %>
+
+        var itemWid = 0;
+
+        $(".task-list-${cardWid}").css("width", rigthCardWid + 'px');
+        $(".task-item-${cardWid}").css("width", rigthCardWid + 'px');
+        itemWid = rigthCardWid - 12;
+        $(".tast-item-title-${cardWid}").css("width", itemWid + 'px');
+        $(".tast-item-title-box-${cardWid}").css("width", (itemWid - 112) + 'px');
+
+
+    };
+</script>

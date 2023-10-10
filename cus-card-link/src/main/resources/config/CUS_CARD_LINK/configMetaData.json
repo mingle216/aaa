@@ -1,0 +1,197 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "linkHeight",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "value": null
+  },
+  {
+    "component":"radio",
+    "key":"linkDisplayRadio",
+    "label": "上下布局展示方式",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "名称在上图标在下",
+        "value": 1
+      },
+      {
+        "label": "图标在上名称在下",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "cardType",
+    "label": "卡片类别",
+    "required": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "首页banner(轮播图下)",
+        "value": 0
+      },
+      {
+        "label": "校园生活",
+        "value": 1
+      },
+      {
+        "label": "直通车",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "component":"select",
+    "key":"linkDisplayNumSelect",
+    "label": "展示列数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": "5",
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      },
+      {
+        "label": "7",
+        "value": "7"
+      },
+      {
+        "label": "8",
+        "value": "8"
+      },
+      {
+        "label": "9",
+        "value": "9"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      },
+      {
+        "label": "11",
+        "value": "11"
+      },
+      {
+        "label": "12",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "component": "select",
+    "key": "rowNum",
+    "label": "展示行数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": "5",
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      },
+      {
+        "label": "7",
+        "value": "7"
+      },
+      {
+        "label": "8",
+        "value": "8"
+      },
+      {
+        "label": "9",
+        "value": "9"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      },
+      {
+        "label": "11",
+        "value": "11"
+      },
+      {
+        "label": "12",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "component":"addLinkListPC",
+    "key":"linkList",
+    "min": 0,
+    "max": 0,
+    "defaultValue": [],
+    "value": null,
+    "datas": []
+  }
+
+]

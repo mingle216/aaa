@@ -1,0 +1,2 @@
+wid,template_id,template_system_type,template_name,template_img_url,template_desc,configurable_flag,configurable_runtime_flag,configure_content,platform_type,template_status,version_number,is_deleted,template_img_mobile_url
+"5hf7jua6l5ld7qogppywds1xeflwohou","SYS_TEMPLATE_CONCISE",0,"Concise模板","/sys_template_concise/base/image/display.png","Concise模板",0,1,"","0","0","1.0.0",1,""

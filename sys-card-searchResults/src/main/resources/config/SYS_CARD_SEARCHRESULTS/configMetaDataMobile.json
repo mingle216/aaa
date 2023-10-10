@@ -1,0 +1,108 @@
+[
+  {
+    "component": "radio",
+    "key": "noSeachResult",
+    "label": "搜索无数据展示方案",
+    "required": 0,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "0",
+    "value": null,
+    "datas": [
+      {
+        "label": "显示搜索分项标题",
+        "value": "1"
+      },
+      {
+        "label": "隐藏搜索分项标题",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component": "hotSearchDisplay",
+    "key": "hotSearchDisplay",
+    "label": "热门搜索",
+    "defaultValue": {
+      "displaySwitch": 0,
+      "timeDelay": 30,
+      "dataTypes": "0,1,2"
+    },
+    "displaySupport": "SYS_TEMPLATE_MATURE"
+  },
+  {
+    "component":"radio",
+    "key":"showCollectNews",
+    "label": "收藏新闻",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "defaultValue": 0,
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "showFavoriteTask",
+    "label": "收藏任务",
+    "required": 0,
+    "defaultValue": "0",
+    "datas": [
+      {
+        "label": "显示",
+        "value": "1"
+      },
+      {
+        "label": "隐藏",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"newsJump",
+    "label": "新闻详情跳转方式",
+    "required": 0,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "本地",
+        "value": "1"
+      },
+      {
+        "label": "数据源",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"authorityEnabled",
+    "label": "访问事项详情时是否开启权限判断",
+    "defaultValue": "0",
+    "datas": [
+      {
+        "label": "开启",
+        "value": "1"
+      },
+      {
+        "label": "关闭",
+        "value": "0"
+      }
+    ]
+  }
+]

@@ -1,0 +1,224 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    }
+  },
+  {
+    "component": "input",
+    "key": "todoCardWid",
+    "label": "系统卡片待办任务cardWid:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入",
+    "maxlength": 50,
+    "showLimit": 1,
+    "defaultValue": "6121868871325196",
+    "value": "",
+    "type": "text",
+    "tips": "系统卡片待办任务cardWid"
+  },
+  {
+    "component": "input",
+    "key": "todoLink",
+    "label": "待办任务跳转链接:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入",
+    "maxlength": 200,
+    "showLimit": 1,
+    "defaultValue": "",
+    "value": "",
+    "type": "text",
+    "tips": "待办任务跳转链接"
+  },
+  {
+    "component": "input",
+    "key": "doneCardWid",
+    "label": "系统卡片已办任务cardWid:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入",
+    "maxlength": 50,
+    "showLimit": 1,
+    "defaultValue": "5186040487255663",
+    "value": "",
+    "type": "text",
+    "tips": "系统卡片已办任务cardWid"
+  },
+  {
+    "component": "input",
+    "key": "doneLink",
+    "label": "已办任务跳转链接:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入",
+    "maxlength": 200,
+    "showLimit": 1,
+    "defaultValue": "",
+    "value": "",
+    "type": "text",
+    "tips": "已办任务跳转链接"
+  },
+  {
+    "component": "input",
+    "key": "myCardWid",
+    "label": "系统卡片我的申请cardWid:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入",
+    "maxlength": 50,
+    "showLimit": 1,
+    "defaultValue": "0867302183254055",
+    "value": "",
+    "type": "text",
+    "tips": "系统卡片我的申请cardWid"
+  },
+  {
+    "component": "input",
+    "key": "myLink",
+    "label": "我的发起跳转链接:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入",
+    "maxlength": 200,
+    "showLimit": 1,
+    "defaultValue": "",
+    "value": "",
+    "type": "text",
+    "tips": "我的发起跳转链接"
+  },
+  {
+    "component": "select",
+    "key": "linkDisplayNumSelect",
+    "label": "展示列数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": "5",
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      },
+      {
+        "label": "7",
+        "value": "7"
+      },
+      {
+        "label": "8",
+        "value": "8"
+      },
+      {
+        "label": "9",
+        "value": "9"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      },
+      {
+        "label": "11",
+        "value": "11"
+      },
+      {
+        "label": "12",
+        "value": "12"
+      }
+    ]
+  },
+  {
+    "component": "select",
+    "key": "rowNum",
+    "label": "展示行数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": "5",
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      },
+      {
+        "label": "7",
+        "value": "7"
+      },
+      {
+        "label": "8",
+        "value": "8"
+      },
+      {
+        "label": "9",
+        "value": "9"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      },
+      {
+        "label": "11",
+        "value": "11"
+      },
+      {
+        "label": "12",
+        "value": "12"
+      }
+    ]
+  }
+]

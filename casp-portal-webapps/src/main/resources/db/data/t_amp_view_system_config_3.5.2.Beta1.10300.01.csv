@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+1003684775299678208,subscribe_programme,0,0,是否支持订阅站点（1支持 0不支持）,1,0

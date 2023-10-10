@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_template-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_TEMPLATE"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_TEMPLATE" remarks="模板表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TEMPLATE_ID" type="VARCHAR(50)" remarks="模板id"/>
+            <column name="TEMPLATE_SYSTEM_TYPE" type="NUMBER(2)" remarks="模板系统类型0：系统模板1：自定义模板" defaultValue="1"/>
+            <column name="TEMPLATE_NAME" type="VARCHAR(50)" remarks="模板名称"/>
+            <column name="TEMPLATE_IMG_URL" type="VARCHAR(500)" remarks="模板展示图URL"/>
+            <column name="TEMPLATE_DESC" type="VARCHAR(300)" remarks="模板描述"/>
+            <column name="CONFIGURABLE_FLAG" type="NUMBER(2)" remarks="是否支持可配置 0:不支持 1:支持" defaultValue="0"/>
+            <column name="CONFIGURABLE_RUNTIME_FLAG" type="NUMBER(2)" remarks="是否支持运行时可配置 0:不支持 1:支持" defaultValue="0"/>
+            <column name="CONFIGURE_CONTENT" type="CLOB" remarks="配置信息"/>
+            <column name="PLATFORM_TYPE" type="VARCHAR(50)" remarks="运行平台 0:PC 1:Mobile,多个平台用；分割拼接"/>
+            <column name="TEMPLATE_STATUS" type="NUMBER(2)" remarks="状态0正常1有更新2不可用" defaultValue="2"/>
+            <column name="VERSION_NUMBER" type="VARCHAR(200)" remarks="版本号"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 3.1.3增加移动端主图地址-->
+    <changeSet id="t_amp_view_template-1.0.3" author="jcx">
+        <addColumn tableName="T_AMP_VIEW_TEMPLATE">
+            <column name="TEMPLATE_IMG_MOBILE_URL" type="VARCHAR(500)" remarks="移动端模板主图地址"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="t_amp_view_template-1.0.4" author="yyu">
+        <modifyDataType tableName="T_AMP_VIEW_TEMPLATE" columnName="TEMPLATE_NAME" newDataType="VARCHAR(128)"/>
+    </changeSet>
+
+</databaseChangeLog>

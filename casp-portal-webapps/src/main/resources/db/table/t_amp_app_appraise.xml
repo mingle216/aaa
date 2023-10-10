@@ -1,0 +1,54 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="whqiao" id="t_amp_app_appraise-3.3.1.Beta2-02">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_app_appraise"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_app_appraise" remarks="应用服务评价">
+            <column name="wid" type="VARCHAR(64)" remarks="业务主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="app_id" type="VARCHAR2(64)" remarks="应用id"/>
+            <column name="user_id" type="VARCHAR2(64)" remarks="用户id"/>
+            <column name="user_name" type="VARCHAR2(64)" remarks="用户名"/>
+            <column name="score" type="double" remarks="评分"/>
+            <column name="content" type="varchar(2000)" remarks="内容"/>
+            <column name="is_deleted" type="VARCHAR(2)" remarks="是否删除 1：正常 0：删除" />
+            <column name="create_time" type="TIMESTAMP" remarks="创建时间" />
+            <column name="update_time" type="TIMESTAMP" remarks="更新时间" />
+        </createTable>
+        <createIndex tableName="t_amp_app_appraise" indexName="idx_amp_app_appraise_1">
+            <column name="app_id"></column>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="shx" id="t_amp_app_appraise-3.5.2.Beta2-003">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="t_amp_app_appraise" columnName="appraise_pics" />
+            </not>
+        </preConditions>
+        <addColumn tableName="t_amp_app_appraise">
+            <column name="appraise_pics" remarks="评价图片" type="CLOB" />
+        </addColumn>
+    </changeSet>
+    <changeSet author="shx" id="t_amp_app_appraise-3.5.2.Beta2-004">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="t_amp_app_appraise" columnName="admin_comment" />
+            </not>
+        </preConditions>
+        <addColumn tableName="t_amp_app_appraise">
+            <column name="admin_comment" remarks="管理员回复" type="CLOB" />
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

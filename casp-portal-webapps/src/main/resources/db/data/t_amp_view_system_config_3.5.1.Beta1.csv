@@ -1,0 +1,2 @@
+wid,config_key,config_value,default_value,config_desc,config_model,is_deleted
+979083623895728128,coreMail_req_method,0,0,获取方式(0 socket+http，1 socket),1,0

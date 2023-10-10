@@ -1,0 +1,34 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    }
+  },
+  {
+    "component": "checkbox",
+    "key": "display",
+    "label": "轮播图展示信息",
+    "defaultValue": ["1","2"],
+    "datas": [{
+      "label": "标题",
+      "value": "1"
+    },{
+      "label": "摘要",
+      "value": "2"
+    }]
+  },
+  {
+    "component":"slideSetting",
+    "key":"slideList",
+    "defaultValue":{
+      "proportion":{
+        "width":3,
+        "height":1
+      },
+      "datas":[]
+    }
+  }
+]

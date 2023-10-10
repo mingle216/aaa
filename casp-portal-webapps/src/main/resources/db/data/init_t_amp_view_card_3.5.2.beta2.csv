@@ -1,0 +1,3 @@
+wid,card_id,card_name,image_url,platform_type,configurable_flag,configurable_runtime_flag,card_desc,card_system_type,configure_content,is_deleted,card_status,version_number,image_url_mobile
+"SYS_CARD_ALLONETHING","SYS_CARD_ALLONETHING","全部一件事","/SYS_CARD_ALLONETHING/pc/img/display.png","0;1",0,1,"全部一件事",0,"",0,0,"1.0.0","/SYS_CARD_ALLONETHING/mobile/img/display.png"
+"SYS_CARD_DETAILOFONETHING","SYS_CARD_DETAILOFONETHING","一件事详情","/SYS_CARD_DETAILOFONETHING/pc/img/display.png","0;1",0,1,"一件事详情",0,"",0,0,"1.0.0","/SYS_CARD_DETAILOFONETHING/mobile/img/display.png"

@@ -1,0 +1,471 @@
+# portal相关接口
+
+
+openapi: 3.0.0
+
+info:
+  version: '0.1'
+  title: 'Minos Admin API - CASP-PORTAL'
+  description: 'Address Related API for CASP-PORTAL'
+  contact:
+    name: CASP-PORTAL
+
+tags:
+  - name: CASP-PORTAL
+    description: 门户
+  - name: operationLog
+    description: 标记接口需要记录操作日志
+
+paths:
+
+  /selectMenu/querySelectMenus/{wid}:
+    get:
+      operationId: querySelectMenus
+      tags:
+        - Casp-portal
+      x-operation-logid: 400001
+      x-operation-logname: 查询下拉菜单
+      x-operation-object: 下拉菜单信息
+      summary: 查询下拉菜单
+      description: |
+        <b>查询下拉菜单：</br></b>
+        <b>业务逻辑：</br></b>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/wid"
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuerySelectMenusRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+
+  /selectMenu/querySelectMenuDetail:
+    post:
+      operationId: querySelectMenuDetail
+      tags:
+        - Casp-portal
+      x-operation-logid: 400002
+      x-operation-logname: 查询下拉菜单详情
+      x-operation-object: 下拉菜单详情信息
+      summary: 查询下拉菜单详情
+      description: |
+        <b>查询下拉菜单详情：</br></b>
+        <b>业务逻辑：</br></b>
+      requestBody:
+        description: |
+          查询下拉菜单详情
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SelectMenuDetailReq"
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SelectMenuDetailRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+
+  /selectMenu/saveSelectMenu:
+    post:
+      operationId: saveSelectMenu
+      tags:
+        - Casp-portal
+      x-operation-logid: 400003
+      x-operation-logname: 保存下拉菜单
+      x-operation-object: 保存下拉菜单
+      summary: 保存下拉菜单
+      description: |
+        <b>保存下拉菜单：</br></b>
+        <b>业务逻辑：</br></b>
+      requestBody:
+        description: |
+          保存下拉菜单
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SaveSelectMenuReq"
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommonRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+
+  /selectMenu/editStatus:
+    post:
+      operationId: editStatus
+      tags:
+        - Casp-portal
+      x-operation-logid: 400003
+      x-operation-logname: 下拉菜单启停用
+      x-operation-object: 下拉菜单启停用
+      summary: 下拉菜单启停用
+      description: |
+        <b>下拉菜单启停用：</br></b>
+        <b>业务逻辑：</br></b>
+      requestBody:
+        description: |
+          下拉菜单启停用
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EditStatusReq"
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommonRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+
+  /selectMenu/deletedSelectMenu:
+    post:
+      operationId: deletedSelectMenu
+      tags:
+        - Casp-portal
+      x-operation-logid: 400004
+      x-operation-logname: 删除下拉菜单
+      x-operation-object: 删除下拉菜单
+      summary: 删除下拉菜单
+      description: |
+        <b>删除下拉菜单：</br></b>
+        <b>业务逻辑：</br></b>
+      requestBody:
+        description: |
+          删除下拉菜单
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SelectMenuDetailReq"
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommonRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+
+  /selectMenu/sortSelectMenu:
+    post:
+      operationId: sortSelectMenu
+      tags:
+        - Casp-portal
+      x-operation-logid: 400005
+      x-operation-logname: 下拉菜单排序
+      x-operation-object: 下拉菜单排序
+      summary: 下拉菜单排序
+      description: |
+        <b>下拉菜单排序：</br></b>
+        <b>业务逻辑：</br></b>
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/SortSelectMenuReq'
+      requestBody:
+        description: |
+          下拉菜单排序
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/SortSelectMenuReq'
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommonRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+
+components:
+  schemas:
+
+    CommonRes:
+      description: 公共返回类
+      type: object
+      properties:
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        data:
+          type: object
+          default: null
+
+    CommonStringInfo:
+      type: object
+      properties:
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        data:
+          type: string
+          description: "统一的返回String属性字段"
+
+    QuerySelectMenusRes:
+      description: 查询下拉菜单情况
+      type: object
+      properties:
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/SelectMenusDto"
+
+    SelectMenuDetailRes:
+      description: 下拉菜单详情
+      type: object
+      properties:
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        data:
+          type: object
+          $ref: "#/components/schemas/SelectMenuInfo"
+
+
+    SelectMenusDto:
+      description: 查询下拉菜单信息
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "wid"
+        menuName:
+          type: string
+          description: "菜单名称"
+        orderNumber:
+          type: long
+          description: "排序"
+        isSystemMenu:
+          type: integer
+          description: "是否预置菜单 0:否 1:是"
+        isEnabled:
+          type: integer
+          description: "是否启用  0:停用 1:启用"
+        isAllRequired:
+          type: integer
+          default: 1
+          description: "必填值是否全部必填  0:否 1:是"
+
+
+    MenuAuthDto:
+      description: 菜单授权信息
+      type: object
+      properties:
+        authRelWid:
+          type: string
+          description: "授权wid"
+        authRelName:
+          type: string
+          description: "授权名称"
+        authType:
+          type: integer
+          description: "授权类型"
+
+    SelectMenuDetailReq:
+      description: 下拉菜单详情信息
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "wid"
+        programmeWid:
+          type: string
+          description: "展示方案wid"
+
+    EditStatusReq:
+      description: 下拉菜单启停用
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "wid"
+        programmeWid:
+          type: string
+          description: "展示方案wid"
+        isEnabled:
+          type: integer
+          description: "是否启用 0:停用 1:启用"
+
+    SortSelectMenuReq:
+      description: 下拉菜单排序
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "wid"
+        programmeWid:
+          type: string
+          description: "展示方案wid"
+        orderNumber:
+          type: long
+          description: "排序"
+
+
+    SelectMenuInfo:
+      description: 下拉菜单详情信息
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "wid"
+        menuName:
+          type: string
+          description: "菜单名称"
+        nameLang:
+          type: array
+          description: 菜单名称多语言
+          items:
+            $ref: "#/components/schemas/CommonLang"
+        isSystemMenu:
+          type: integer
+          description: "是否预置菜单 0:否 1:是"
+        menuType:
+          type: integer
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        pageId:
+          type: string
+          description: "对应页面"
+        pageName:
+          type: string
+          description: "对应页面名称"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+        linkUrl:
+          type: string
+          description: "菜单链接"
+        authType:
+          type: integer
+          description: "0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见 4:可用即可见"
+        menuAuthInfo:
+          type: array
+          description: 菜单授权范围
+          items:
+            $ref: "#/components/schemas/MenuAuthDto"
+        iconType:
+          type: integer
+          description: "图标类型  0 字体图标  1 png图标 2不使用图标"
+        iconUrl:
+          type: string
+          description: "图标URL"
+        iconPath:
+          type: string
+          description: "图标路径"
+        iconName:
+          type: string
+          description: "图标名称"
+
+
+    SaveSelectMenuReq:
+      description: 保存下拉菜单入参
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "wid"
+        programmeId:
+          type: string
+          description: "展示方案id"
+        menuName:
+          type: string
+          description: "菜单名称"
+        nameLang:
+          type: array
+          description: 菜单名称多语言
+          items:
+            $ref: "#/components/schemas/CommonLang"
+        menuType:
+          type: integer
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        pageId:
+          type: string
+          description: "对应页面"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+        linkUrl:
+          type: string
+          description: "菜单链接"
+        authType:
+          type: integer
+          description: "0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见 4:可用即可见"
+        menuAuthInfo:
+          type: array
+          description: 菜单授权范围
+          items:
+            $ref: "#/components/schemas/MenuAuthDto"
+        iconType:
+          type: integer
+          description: "图标类型  0 字体图标  1 png图标 2不使用图标"
+        iconUrl:
+          type: string
+          description: "图标URL"
+        iconPath:
+          type: string
+          description: "图标路径"
+        iconName:
+          type: string
+          description: "图标名称"
+
+
+    CommonLang:
+      description: 公共多语言返回对象
+      properties:
+        langKey:
+          type: string
+          description: 语言key
+        langCountry:
+          type: string
+          description: 语言
+        langValue:
+          type: string
+          description: 值

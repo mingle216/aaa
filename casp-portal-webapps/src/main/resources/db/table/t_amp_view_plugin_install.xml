@@ -1,0 +1,26 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_plugin_install-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_PLUGIN_INSTALL"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_PLUGIN_INSTALL" remarks="插件安装表">
+            <column name="PLUGIN_WID" type="VARCHAR(64)" remarks="插件发布表wid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="IP_ADDRESS" type="VARCHAR(64)" remarks="ip地址">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

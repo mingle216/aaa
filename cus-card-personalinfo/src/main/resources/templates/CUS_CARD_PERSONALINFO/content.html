@@ -1,0 +1,19 @@
+<style>
+    .title{
+		font-size: 20px;
+		font-family: 'MicrosoftYaHei-Bold', '微软雅黑 Bold', '微软雅黑', sans-serif;
+		font-weight: 700;
+	}
+	.content{
+		font-size: 16px;
+		font-family: 'MicrosoftYaHei', '微软雅黑', sans-serif;
+	}
+</style>
+
+<div>
+    <p class='title'>以下是您的验证码：</p>
+    <P class='title'>${verificationCode}</P>
+    <p class='content'>${userName}，您好！</p>
+    <p class='content'>我们收到了来自${schoolName}绑定邮箱的安全请求。请使用上面的验证码验证您的邮箱账号。</p>
+    <p class='content'>请注意：该验证码将在5分钟后过期，请尽快验证。</p>
+</div>

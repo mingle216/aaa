@@ -1,0 +1,119 @@
+.text__ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+ 
+.clear:after {
+  display: block;
+  content: "";
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+/* 全局固定色值 */
+
+/* 卡片及页面内一级分类目录中选中状态背景填充、弹窗内部分模块背景填充 */
+.catalog_lv1_bg {
+  background-color: #f6f6f8;
+}
+/* 页面内服务分类中，二级服务分类背景填充 */
+.catalog_lv2_bg {
+  background-color: #eef0f4;
+}
+/* 收藏背景色*/
+.favorite_bg {
+  background-color: #ffbc00;
+}
+/* 未收藏背景色 */
+.unfavorite_bg {
+  background-color: #ccd0d3;
+}
+/* 收藏字体图标色 */
+.favorite_font {
+  color: #ffbc00;
+}
+/* 未收藏字体图标色*/
+.unfavorite_font {
+  color: #ccd0d3;
+}
+ 
+/*其他固定主题色*/
+.catalog-backgroundcolor-Lv1{
+  background: #f6f6f8  !important;
+}
+.catalog-backgroundcolor-Lv1{
+  background: #eef0f4  !important;
+}
+.favorites{
+  color:#ffbc00 !important;
+}
+.not-favorites{
+  color:#ccd0d3 !important;
+}
+.sideline-border-color-lv1{
+  border-color:#d6dade !important;
+}
+.sideline-border-color-lv2{
+  border-color:#e7edf1 !important;
+}
+.sideline-border-color-lv3{
+  border-color:#f1f2f4 !important;
+}
+
+ 
+/*服务无权限加锁样式*/
+.no-permission-service {
+  position: relative;
+  /* -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); */
+}
+.no-permission-service::before,
+.no-permission-service::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: 7px;
+}
+.no-permission-service::before {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.no-permission-service::after {
+  z-index: 20;
+  content: "";
+  background: url("../assets/images/lock.png") no-repeat center;
+  background-size: 20px 20px;
+}
+ 
+input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.we-search .we-search__content {
+  padding-left: 8px;
+}
+.we-search .we-field__left-icon {
+  margin-right: 12px;
+}
+.we-search .we-field__left-icon .we-icon-search {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+}
+.we-search .we-icon-search::before {
+  content: "\e659"
+}
