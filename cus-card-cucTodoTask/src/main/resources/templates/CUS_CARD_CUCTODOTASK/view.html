@@ -1,0 +1,527 @@
+<style>
+    .card-container-${cardWid}{
+        display: flex;
+        position: relative;
+    }
+    .card-container-center-${cardWid}{
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+    }
+    .source-list-${cardWid}{
+        width:140px;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-shadow: inset -1px 0 0 0 #F1F2F4;
+    }
+    .source-item-${cardWid}{
+        position: relative;
+        font-size: 14px;
+        cursor: pointer;
+        height: 48px;
+        box-shadow: inset 0 -1px 0 0 #F1F2F4;
+    }
+
+    .source-item-active-${cardWid} {
+        background: #F6F6F8;
+        border-radius: 3px;
+    }
+    .source-item-active-${cardWid}::before {
+        content: "";
+        width: 3px;
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -15px;
+    }
+
+    .source-item-title-${cardWid} {
+        height: 100%;
+        padding: 14px 12px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-title-ellipsis-${cardWid} {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .card-title-num-${cardWid} {
+        min-width: 18px;
+        height: 18px;
+        line-height: 16px;
+        border-radius: 10px;
+        background: #FF230C;
+        color: #fff;
+        border: 1px solid transparent;
+        box-shadow: 0 0 0 1px #fff;
+        color: #fff;
+        text-align: center;
+        padding: 0px 3px;
+        font-size: 12px;
+        white-space: nowrap;
+        flex: none;
+    }
+
+
+    .task-list-${cardWid}{
+        width: calc(100% - 140px);
+        height: 100%;
+        overflow-y: auto;
+    }
+    .task-item-${cardWid}{
+        height:72px;
+        box-shadow: inset 0 -1px 0 0 #F1F2F4;
+    }
+
+    .task-item-content-${cardWid} {
+        height: 100%;
+        padding: 15px  0px 15px 12px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .tast-item-title-${cardWid}{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        font-size: 14px;
+    }
+
+    .tast-item-title-box-${cardWid} {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .tast-item-title-ellipsis-${cardWid} {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        letter-spacing: 0;
+        line-height: 20px;
+        padding-right: 8px;
+        cursor: pointer;
+    }
+
+    .tast-item-title-chart-${cardWid} {
+        display: flex;
+        flex-direction: column;
+        width: 112px;
+        flex-shrink: 1;
+        padding-right: 10px;
+    }
+    .tast-item-title-chart-box-${cardWid} {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .tast-item-chart-name-${cardWid} {
+        margin-left: 6px;
+        font-family: PingFangSC-Regular;
+        font-size: 12px;
+        letter-spacing: 0;
+        height: 17px;
+        width:36px
+    }
+
+    .tast-item-title-chart-img-${cardWid} {
+        width:14px;
+        height: 13px;
+        line-height: 1;
+        font-size: 13px;
+    }
+
+    .tast-item-desc-info-${cardWid} {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 20px;
+    }
+
+    .tast-item-desc-color-${cardWid} {
+        font-family: PingFangSC-Regular;
+        height: 17px;
+        font-size: 12px;
+        letter-spacing: 0;
+    }
+
+    .tast-item-desc-label-${cardWid} {
+        flex-grow: 1;
+        height: 17px;
+        overflow: hidden;
+        display: flex;
+        flex:1;
+    }
+
+    .tast-item-box-status-${cardWid} {
+        display: flex;
+        width: 134px;
+        height: 20px;
+    }
+
+    .tast-item-status-${cardWid}{
+        border-radius: 4px;
+        padding:2px 4px;
+        box-sizing: border-box;
+        font-size: 12px;
+        letter-spacing: 2px;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    .status-completed-${cardWid} {
+        background: rgba(16,149,27,0.10);
+        border: 1px solid #25B14D;;
+        color: #25B14D;
+
+    }
+    .status-having-${cardWid} {
+        background: rgba(255,144,0,0.10);
+        border: 1px solid #FF9000;
+        color: #FF9000;
+    }
+    .status-terminated-${cardWid}{
+        background: rgba(255,35,12,0.10);
+        border: 1px solid #FF230C;
+        color: #FF230C;
+
+    }
+
+    .mr-8-${cardWid} {
+        margin-right: 8px;
+    }
+
+    .tast-item-date-${cardWid} {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row-reverse;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+
+    .tast-item-icon-${cardWid} {
+        position: absolute;
+        top: -16px;
+        left: -8px;
+        z-index: 2;
+        font-size: 32px;
+        cursor: pointer;
+    }
+
+     .icon-color-extra-urgent {
+         color: #FF230C;
+     }
+
+    .icon-color-urgent {
+        color: #FFA306;
+    }
+
+    .card-source-empty-${cardWid} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .card-task-empty-${cardWid} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .card-empty-title-${cardWid} {
+        height:20px;
+        line-height: 20px;
+        font-family: PingFangSC-Medium;
+        font-weight: bold;
+        font-size: 14px;
+        color: #102645;
+    }
+    .tooltip{
+        z-index: 3000;
+    }
+    .tooltip-inner{
+        background:#102645 !important;
+    }
+    .tooltip.bs-tooltip-top .arrow:before {
+        border-top-color: #102645 !important;
+    }
+    .tooltip.bs-tooltip-bottom .arrow:before {
+        border-bottom-color: #102645 !important;
+    }
+    .tooltip.bs-tooltip-left .arrow:before {
+        border-left-color: #102645 !important;
+    }
+    .tooltip.bs-tooltip-right .arrow:before {
+        border-right-color: #102645 !important;
+    }
+    .tast-item-desc-label-value-${cardWid}{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1;
+    }
+</style>
+<div class="card-container-${cardWid} portal-font-color-lv1">
+    <!--空数据-->
+    <%  if(isEmpty(sourceList)&&isEmpty(taskInfo)){%>
+    <div class="card-source-empty-${cardWid} task-list-${cardWid}">
+        <div class="card-empty-title-${cardWid}">暂无待办任务</div>
+    </div>
+    <%}else{%>
+
+    <!--判断只有来源列表数据 -->
+    <div class="source-list-${cardWid}">
+        <% if(isNotEmpty(sourceList)){%>
+        <% for(source in sourceList){%>
+        <div class="source-item-${cardWid} portal-font-color-lv2" onclick="reloadList_${cardWid}(this,'${cardId}','${cardWid}','list','render',{'sourceWid':'${source.WID}'})">
+            <div class="source-item-title-${cardWid}">
+                <span class="card-title-ellipsis-${cardWid}" data-toggle="tooltip" title="${source.SOURCE_NAME,xss}">${source.SOURCE_NAME,xss}</span>
+                <%if(source.COUNT!='0'){%>
+                <span class="card-title-num-${cardWid}">${source.COUNT}</span>
+                <%}%>
+            </div>
+        </div>
+        <%}}%>
+    </div>
+    <!--判断来源任务列表数据-->
+    <div class="task-list-${cardWid}">
+        <%#ajax list :{%>
+        <% if(isEmpty(taskInfo)){%>
+        <!--空数据 -->
+        <div class="card-task-empty-${cardWid}">
+        <div class="card-empty-title-${cardWid} ">暂无待办任务</div>
+        </div>
+        <%}else{%>
+
+        <%  for(task in taskInfo!){%>
+        <div class="task-item-${cardWid}">
+            <div class="task-item-content-${cardWid}">
+                <!--紧急程度小图片 -->
+                <% var configure=config.configure;if(@configure.contains("0")){ %>
+                <% if(task.priority==1){%>
+                <!--特急小图片 -->
+                <div class="tast-item-icon-${cardWid} iconfont icon-color-extra-urgent" data-toggle="tooltip" title="特急">&#xe921;
+                </div>
+                <% }else if(task.priority==2){%>
+                <!--紧急小图片 -->
+                <div class="tast-item-icon-${cardWid} iconfont icon-color-urgent" data-toggle="tooltip" title="紧急">&#xe921;
+                </div>
+                <% }%>
+                <% }%>
+                <div class="tast-item-title-${cardWid}">
+                    <div class="tast-item-title-box-${cardWid} portal-font-color-lv1">
+                        <!--标题 -->
+                        <div class="tast-item-desc-info-${cardWid}   portal-primary-color-hover-lv1">
+                            <span  class="tast-item-title-ellipsis-${cardWid}" data-toggle="tooltip"
+                                  title="${task.subject,xss}" onclick="otherClick_${cardWid}('${task.formUrl}')">${task.subject,xss}</span>
+                            <!--隐藏状态  -->
+                        </div>
+                        <!--描述 -->
+                        <div class="tast-item-desc-info-${cardWid} tast-item-desc-color-${cardWid} portal-font-color-lv2">
+                            <%  if(@configure.contains("1")){ %>
+                            <div class="tast-item-desc-label-${cardWid} mr-8-${cardWid}">
+                                <span class="tast-item-desc-label-key-${cardWid}">任务来源：</span>
+                                <span class="tast-item-desc-label-value-${cardWid}"  data-toggle="tooltip" title="${task.bizDomain,xss}">${task.bizDomain,xss}</span>
+                            </div>
+                            <%}%>
+                           <% if(@configure.contains("2")){ %>
+                           <div class="tast-item-desc-label-${cardWid} mr-8-${cardWid}">
+                               <span class="tast-item-desc-label-key-${cardWid}">发起人：</span>
+                               <span class="tast-item-desc-label-value-${cardWid}"  data-toggle="tooltip" title="${task.author,xss}">${task.author,xss}</span></div>
+                           <%}%>
+                            <% if(@configure.contains("3")){ %>
+                           <div class="tast-item-desc-label-${cardWid}">
+                               <span class="tast-item-desc-label-key-${cardWid}">发起部门：</span>
+                               <span class="tast-item-desc-label-value-${cardWid}"  data-toggle="tooltip" title="${task.createdByDepts,xss}">${task.createdByDepts,xss}</span></div>
+                            <%}%>
+                       </div>
+                   </div>
+                   <div class="tast-item-title-chart-${cardWid}">
+                       <!--流程图标 -->
+                       <% if(@configure.contains("4")){ %>
+                       <%if(task.processInstanceImageUrl!=""){%>
+                        <div class="tast-item-title-chart-box-${cardWid}" onclick="otherClick_${cardWid}('${task.formUrl}')">
+                            <span class="portal-primary-color-lv1 tast-item-title-chart-img-${cardWid} iconfont">&#xe922;</span>
+                            <span class="portal-primary-color-lv1 tast-item-chart-name-${cardWid}">流程图</span>
+                        </div>
+                       <%}%>
+                       <%}%>
+                       <% if(@configure.contains("5")){ %>
+                        <!--日期 -->
+                        <div class="tast-item-date-${cardWid} tast-item-desc-color-${cardWid}" data-toggle="tooltip" title="${task.createTime}">${task.createTime}</div>
+                       <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}}}%>
+    </div>
+    <%}%>
+</div>
+
+<script type="text/javascript">
+    //1:自适应(无最大高度) 2.自适应(有最大高度) 3.固定高度
+    function getDiffHeight_${cardWid}(){
+        //初始化card-container-${cardWid}的高度
+
+        $(".card-container-${cardWid}").css("height",'auto')
+        $(".task-list-${cardWid}").css("height",'auto');
+        $(".source-list-${cardWid}").css("height",'auto');
+
+        var tastWid = $(".task-list-${cardWid}").innerHeight();
+        var sourWid = $(".source-list-${cardWid}").innerHeight();
+
+        var diffWid = 0;
+        if(sourWid==0){
+            //增加隐藏
+            $(".source-list-${cardWid}").hide();
+            $(".task-list-${cardWid}").css("width","100%");
+        }
+        if(${config.heightFlag}=='3'){ //固定高度
+            $(".card-container-${cardWid}").css("height",${config.height}+'px')
+        }else if(${config.heightFlag}=='2') { //自适应(有最大限制)
+
+            if(sourWid ==0 && tastWid == 0){
+                diffWid = 40;//空数据
+            }else {
+                diffWid  =  Math.max(sourWid,tastWid );
+            }
+
+            if(diffWid>${config.height}){
+                $(".card-container-${cardWid}").css("height",${config.height}+'px')
+            }else{
+                $(".card-container-${cardWid}").css("height",diffWid+'px');
+            }
+
+        }else if(${config.heightFlag}=='1'){ //自适应(无最大限制)
+            if(sourWid ==undefined && (tastWid == undefined||tastWid<40)){
+                diffWid = 40;//空数据
+                $(".card-container-${cardWid}").css("height",diffWid+'px');
+            }
+
+        }
+        <% if(isEmpty(sourceList)&&isEmpty(taskInfo)){%>
+            $(".card-container-${cardWid}").css("height", '300px');
+        <% } %>
+    }
+
+    function getAutoScroll_${cardWid}(){
+        $(".card-container-${cardWid}").niceScroll(".task-list-${cardWid}");
+        $(".task-list-${cardWid}").niceScroll({
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+            cursorborder: "0"
+        });
+        //刷新滚动条
+        $(".task-list-${cardWid}").getNiceScroll().resize();
+
+        $(".card-container-${cardWid}").niceScroll(".source-list-${cardWid}");
+        $(".source-list-${cardWid}").niceScroll({
+            cursorcolor: "#d8d8d8",
+            autohidemode: false,
+            railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+            cursorborder: "0"
+        });
+        //刷新滚动条
+        $(".source-list-${cardWid}").getNiceScroll().resize();
+
+    }
+
+    //自适应横向宽度
+    function  doCss_${cardWid}() {
+        var cardWid = $(".card-container-${cardWid}").innerWidth();
+        var rigthCardWid = cardWid - 140
+        <% if(isEmpty(sourceList)){%>
+            rigthCardWid=cardWid;
+            $(".source-list-${cardWid}").css("width", '0px');
+        <% }else{%>
+            $(".source-list-${cardWid}").css("width", '140px');
+        <% } %>
+
+        var itemWid = 0;
+        if(rigthCardWid <= 340) {
+            //remove 流程图
+            $(".tast-item-chart-name-${cardWid}").hide();
+            $(".tast-item-desc-label-key-${cardWid}").hide();
+            $(".task-list-${cardWid}").css("width",'340px');//右侧的宽度
+            $(".task-item-${cardWid}").css("width",'340px');
+            $(".tast-item-title-${cardWid}").css("width", '328px');//注意减掉padding-left:12px
+            $(".tast-item-title-box-${cardWid}").css("width", '216px')//再次减掉日期的宽度:112px
+            itemWid = 328;
+        }else {
+            $(".tast-item-chart-name-${cardWid}").show();
+            $(".tast-item-desc-label-key-${cardWid}").show();
+            $(".task-list-${cardWid}").css("width", rigthCardWid + 'px');
+            $(".task-item-${cardWid}").css("width", rigthCardWid + 'px');
+            itemWid = rigthCardWid - 12;
+            $(".tast-item-title-${cardWid}").css("width", itemWid + 'px');//恢复到大于340的宽度
+            $(".tast-item-title-box-${cardWid}").css("width", (itemWid - 112) + 'px'); //112px日期的宽度
+        }
+    };
+
+    function otherClick_${cardWid}(formUrl){
+        if(formUrl==undefined||formUrl==""||formUrl==null){
+
+        }else{
+            window.open(formUrl);
+        }
+    };
+
+    $(function() {
+        //初始化页面
+        init_${cardWid}();
+        $(".source-item-${cardWid}:first").addClass("source-item-active-${cardWid}");
+    });
+
+    function init_${cardWid}(){
+        $('[data-toggle="tooltip"]').tooltip();
+
+        getDiffHeight_${cardWid}(); //自适应宽度
+        doCss_${cardWid}(); //初始化加载
+        getAutoScroll_${cardWid}();
+
+
+        window.addEventListener("resize", function(){
+            doCss_${cardWid}(); //触发某个按钮，添加监听事件，改变容器的width
+            getAutoScroll_${cardWid}();
+        });
+
+    };
+
+    function reloadList_${cardWid}(_this,cardId,cardWid,target,method, param){
+        $(_this).siblings().addClass("portal-font-color-lv2");
+        $(_this).removeClass("portal-font-color-lv2");
+        $(_this).addClass("portal-font-color-lv1");
+        execCardMethod(cardId,cardWid,target,method,param,function(data){
+            if (200 === data.errcode|| '0'=== data.errcode) {
+                $(".task-list-${cardWid}").html(data.data);
+                init_${cardWid}();
+
+                //初始化页面
+                $(".source-item-${cardWid}").removeClass("source-item-active-${cardWid}");
+                $(_this).addClass("source-item-active-${cardWid}");
+            }
+        });
+    };
+
+</script>

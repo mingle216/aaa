@@ -1,0 +1,198 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "min": 150,
+    "max": 900
+  },
+  {
+    "component":"radio",
+    "key":"linkDisplayRadio",
+    "label": "列表展示方式",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "左右布局",
+        "value": 1,
+        "image": "/SYS_CARD_FAVORITEAPP/pc/img/layout1.png"
+      },
+      {
+        "label": "上下布局",
+        "value": 2,
+        "image": "/SYS_CARD_FAVORITEAPP/pc/img/layout2.png"
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "otherClassIcon",
+    "label": "服务图标",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 0,
+    "value": "",
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component":"select",
+    "key":"columns",
+    "label": "单行列表展示个数",
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": "5",
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "component":"select",
+    "key":"rows",
+    "label": "列表展示行数",
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "tips": "0为不限制行数",
+    "defaultValue": "0",
+    "value": null,
+    "datas": [
+      {
+        "label": "0",
+        "value": "0"
+      },
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      },
+      {
+        "label": "7",
+        "value": "7"
+      },
+      {
+        "label": "8",
+        "value": "8"
+      },
+      {
+        "label": "9",
+        "value": "9"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"serviceAppraise",
+    "label": "是否展示服务评价",
+    "required": 0,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "是",
+        "value": "1"
+      },
+      {
+        "label": "否",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "showManage",
+    "label": "管理按钮",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 1,
+    "value": "",
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  }
+]

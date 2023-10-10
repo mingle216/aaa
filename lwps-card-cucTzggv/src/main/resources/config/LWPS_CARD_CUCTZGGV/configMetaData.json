@@ -1,0 +1,81 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "newsHeight",
+    "defaultValue": {
+      "type": 1,
+      "value": 500
+    },
+    "value": null,
+    "min": 150,
+    "max": 1200
+  },
+  {
+    "component": "select",
+    "key": "newsColumns",
+    "label": "展示列数",
+    "multiple": 0,
+    "required":1,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": 1
+      },
+      {
+        "label": "2",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "component": "inputNumber",
+    "key": "newsPageSize",
+    "label": "展示条数",
+    "required":1,
+    "defaultValue": 5,
+    "min": 1,
+    "max": 30,
+    "step": 1,
+    "value": null
+  },
+  {
+    "component":"select",
+    "key":"lmDisplayType",
+    "label": "栏目展示方式",
+    "required": 1,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "1",
+    "value": "1",
+    "datas": [
+      {
+        "label": "横向",
+        "value": "1"
+      },
+      {
+        "label": "纵向",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component":"input",
+    "key":"contextPath",
+    "type":"text",
+    "label":"应用部署文根",
+    "isInternational":0,
+    "required":1,
+    "tips":"",
+    "defaultValue":"http://172.16.72.225:8081/emap/",
+    "placeholder": "请输入以http://或https://开头的地址，例http://localhost:8080/emap/",
+    "maxlength": 512,
+    "showLimit": 1
+  }
+
+]

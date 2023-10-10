@@ -1,0 +1,305 @@
+<style type="text/css">
+	.card-config-container-${cardWid}{
+	    width: 324px;
+	    height: 716px;
+	}
+
+	.padding-${cardWid}{
+	    padding: 5px 17px;
+	}
+
+	#show-list-${cardWid}{
+		/*max-height: 650px;*/
+		/*overflow-y:scroll;*/
+	}
+
+	.save-config-btn-${cardWid}{
+	    padding: 10px 5px;
+	    border-top: 1px solid #ddd;
+	    width: 324px;
+	    text-align: center;
+	    bottom: 0px;
+	    position: absolute;
+	}
+
+	.title-font-${cardWid}{
+	    font-family: MicrosoftYaHei, 微软雅黑;
+	    font-weight: 400;
+	    font-style: normal;
+	    font-size: 12px;
+	    color: rgb(119, 119, 119);
+	}
+	.content-font-${cardWid}{
+	    font-family: 'MicrosoftYaHei', '微软雅黑';
+	    font-weight: 400;
+	    font-style: normal;
+	    font-size: 14px;
+	    line-height: 14px;
+		width: 280px;
+		word-break: break-word;
+		cursor: pointer;
+	}
+
+	.inline-${cardWid}{
+	    display: inline-block;
+	}
+
+	.col-4-${cardWid}{
+	    -ms-flex: 0 0 32%;
+	    flex: 0 0 32%;
+	    max-width: 32%;
+	    width: 100%;
+	    padding-right: 15px;
+	}
+
+	.inputNum-${cardWid} {
+		width: 68px;
+		vertical-align: middle;
+		height: 28px;
+		border: 1px solid #d0d0d0;
+		text-align: center;
+		border-radius: 3px;
+	}
+	.inputHeight-${cardWid} {
+		width: 68px;
+		vertical-align: middle;
+		height: 28px;
+		border: 1px solid #d0d0d0;
+		text-align: center;
+		border-radius: 3px;
+	}
+
+	.alert-warning-${cardWid}{
+		position: absolute;
+		width: 324px;
+		z-index: 99
+	}
+</style>
+
+<div class="card-config-container-${cardWid}" id="carousel-config-container-${cardWid}">
+    <%
+    PRE_LOGIN_RULES = config.preLogin;
+    AFTER_LOGIN_RULES = config.afterLogin;
+    ROLE_RULES = config.showRoleRules;
+	FILTER_ITEM_DISPLAY_INFO = config.categoryRules;
+	CATEGORY_RULES = config.contentRules;
+	SHOW_ROWS = config.showRows;
+	ROW_NUMBER = config.rowNumber;
+    %>
+	<!-- 警告信息框 -->
+	<div class="alert-warning-${cardWid}"> </div>
+	<div id="show-list-${cardWid}">
+	<!-- 登录前信息展示 单选 -->
+	<div class="row padding-${cardWid}">
+            <legend class="col-form-label col-12  title-font-${cardWid}" >登录前</legend>
+            <div class="col-12 pt-1">
+                <div class="form-check col-5 inline-${cardWid}">
+                    <input class="form-check-input" type="radio" name="beforeLoginRadios${cardWid}"
+                           id="allRadios${cardWid}" value="0" ${PRE_LOGIN_RULES=="0"?"checked":""}>
+                    <label class="form-check-label content-font-${cardWid}" for="allRadios${cardWid}">
+                        显示全部
+                    </label>
+                </div>
+                <div class="form-check col-6 inline-${cardWid}">
+                    <input class="form-check-input" type="radio" name="beforeLoginRadios${cardWid}"
+                           id="guestRadios${cardWid}" value="1" ${PRE_LOGIN_RULES=="1"?"checked":""}>
+                    <label class="form-check-label content-font-${cardWid}" for="guestRadios${cardWid}">
+                        只显示游客访问
+                    </label>
+                </div>
+            </div>
+    </div>
+
+	<!-- 登录后信息展示 单选 -->
+	<div class="row padding-${cardWid}">
+		   <legend class="col-form-label col-12  title-font-${cardWid}" >登录后</legend>
+		   <div class="col-12 pt-1">
+			   <div class="form-check col-5 inline-${cardWid}">
+				   <input class="form-check-input" type="radio" name="afterLoginRadios${cardWid}"
+						  id="afterAllRadios${cardWid}" value="0" ${AFTER_LOGIN_RULES=="0"?"checked":""}>
+				   <label class="form-check-label content-font-${cardWid}" for="afterAllRadios${cardWid}">
+					   显示全部
+				   </label>
+			   </div>
+			   <div class="form-check col-6 inline-${cardWid}">
+				   <input class="form-check-input" type="radio" name="afterLoginRadios${cardWid}"
+						  id="afterOwnRadios${cardWid}" value="1" ${AFTER_LOGIN_RULES=="1"?"checked":""}>
+				   <label class="form-check-label content-font-${cardWid}" for="afterOwnRadios${cardWid}">
+					   只显示与我相关
+				   </label>
+			   </div>
+		   </div>
+	</div>
+
+	<!-- 角色展现方式 单选 -->
+	<div class="row padding-${cardWid}">
+		  <legend class="col-form-label col-12  title-font-${cardWid}" >角色展现方式</legend>
+		  <div class="col-12 pt-1">
+			  <div class="form-check col-5 inline-${cardWid}">
+				  <input class="form-check-input" type="radio" name="roleRadios${cardWid}"
+						 id="tabRadios${cardWid}1" value="1" ${ROLE_RULES=="1"?"checked":""}>
+				  <label class="form-check-label content-font-${cardWid}" for="tabRadios${cardWid}1">
+					  Tab切换
+				  </label>
+			  </div>
+			  <div class="form-check col-6 inline-${cardWid}">
+				  <input class="form-check-input" type="radio" name="roleRadios${cardWid}"
+						 id="tiledRadios${cardWid}2" value="2" ${ROLE_RULES=="2"?"checked":""}>
+				  <label class="form-check-label content-font-${cardWid}" for="tiledRadios${cardWid}2">
+					  平铺
+				  </label>
+			  </div>
+		  </div>
+	</div>
+
+	<!-- 分类维度展示 多选 -->
+	<div class="row padding-${cardWid}">
+		<div class="col-12 title-font-${cardWid}">分类维度展示信息</div>
+		<div class="col-12 ">
+			<%for(categoryItem in categoryItemInfo){%>
+			<label class="form-check inline-${cardWid} col-5-${cardWid} pt-2">
+				<input class="form-check-input" name="categoryCheckbox${cardWid}" type="checkbox" value="${categoryItem.categoryWid}" ${categoryItem.isChecked}>
+				<span class="form-check-label content-font-${cardWid}" >
+					${categoryItem.categoryName}
+				</span>
+			</label>
+			<%}%>
+		</div>
+	</div>
+
+	<!-- 分类内容 单选 -->
+	<div class="row padding-${cardWid}">
+			   <legend class="col-form-label col-12  title-font-${cardWid}" >分类内容说明</legend>
+			   <div class="col-12 pt-1">
+				   <div class="form-check col-6 inline-${cardWid}">
+					   <input class="form-check-input" type="radio" name="categoryContentRadios${cardWid}"
+							  id="secondRadios${cardWid}" value="1" ${CATEGORY_RULES=="1"?"checked":""}>
+					   <label class="form-check-label content-font-${cardWid}" for="secondRadios${cardWid}">
+						   从属二级分类
+					   </label>
+				   </div>
+				   <div class="form-check col-5 inline-${cardWid}">
+					   <input class="form-check-input" type="radio" name="categoryContentRadios${cardWid}"
+							  id="itemRadios${cardWid}" value="2" ${CATEGORY_RULES=="2"?"checked":""}>
+					   <label class="form-check-label content-font-${cardWid}" for="itemRadios${cardWid}">
+						   从属事项
+					   </label>
+				   </div>
+			   </div>
+	</div>
+
+	<!-- 数量规则设置 输入框 -->
+	<div class="row padding-${cardWid}">
+	    <legend class="col-form-label col-6 pt-1 pr-0 title-font-${cardWid}" >分类内容展示行数</legend>
+	    <div class="col-6">
+	      <input class="inputHeight-${cardWid}" name="categoryRow${cardWid}" type="number" placeholder="请输入" min="1" value=${SHOW_ROWS}  onkeyup="value=value.replace(/[^\d]/g,'')" />
+	    </div>
+	</div>
+
+	<div class="row padding-${cardWid}">
+	    <legend class="col-form-label col-6 pt-1 pr-0 title-font-${cardWid}" >分类内容一行展示数量</legend>
+	    <div class="col-6">
+	      <input class="inputHeight-${cardWid}" name="rowNumber${cardWid}" type="number" placeholder="请输入" min="1" max="4" value=${ROW_NUMBER}  onkeyup="value=value.replace(/[^\d]/g,'')" />
+	    </div>
+	</div>
+		</div>
+</div>
+
+<!-- 保存按钮 -->
+<div class="show-grid save-config-btn-${cardWid}" style="position: absolute">
+	<button type="button" class="btn btn-primary btn-lg btn-block configCardBtn${cardWid}"
+			onclick="saveConfig${cardWid}()" style="background-color: rgba(24, 144, 255, 1)">保存
+	</button>
+</div>
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		// getAutoScroll_${cardWid}();
+	});
+
+	//保存设置
+	function saveConfig${cardWid}(){
+		//1.获取登录前选项 单选
+		var PRE_LOGIN_CHECKBOX = $("input[name='beforeLoginRadios${cardWid}']:checked").val();
+		//2.获取登录后选项 单选
+		var AFTER_LOGIN_CHECKBOX = $("input[name='afterLoginRadios${cardWid}']:checked").val();
+		//3.获取角色展现方式 单选
+		var ROLE_SHOW_CHECKBOX = $("input[name='roleRadios${cardWid}']:checked").val();
+		//4.获取分类维度展示方式 多选
+		var categoryArr = new Array();
+		var $items = $("input[name='categoryCheckbox${cardWid}']:checked");
+		$items.each(function(){
+		     categoryArr.push($(this).val());
+		});
+		if(categoryArr.length < 1){
+			$(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+					"        <span>请至少选择一个分类纬度展示信息！</span>\n" +
+					"        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+					"            <span aria-hidden=\"true\">&times;</span>\n" +
+					"        </button>\n" +
+					"    </div>");
+			return;
+		}
+		//5.获取分类内容 单选
+		var CATEGORY_CONTENT_CHECKBOX = $("input[name='categoryContentRadios${cardWid}']:checked").val();
+		//6.获取展示行数
+		var SHOW_ROW =  $("input[name='categoryRow${cardWid}']").val();
+		//7.获取一行展示数量
+		var ROW_NUMBER = $("input[name='rowNumber${cardWid}']").val();
+		//8.校验
+		if(ROW_NUMBER > 4){
+			$(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+			                        "        <span>一行展示数量不能超过四条！</span>\n" +
+			                        "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+			                        "            <span aria-hidden=\"true\">&times;</span>\n" +
+			                        "        </button>\n" +
+			                        "    </div>");
+			return;
+		}
+
+		if(ROW_NUMBER ==0 || ROW_NUMBER==""){
+			$(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+			                        "        <span>分类内容一行展示数量必须为正整数！</span>\n" +
+			                        "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+			                        "            <span aria-hidden=\"true\">&times;</span>\n" +
+			                        "        </button>\n" +
+			                        "    </div>");
+			return;
+		}
+
+		if(SHOW_ROW ==0 || SHOW_ROW==""){
+			$(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+			                        "        <span>分类内容展示行数数量必须为正整数！</span>\n" +
+			                        "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+			                        "            <span aria-hidden=\"true\">&times;</span>\n" +
+			                        "        </button>\n" +
+			                        "    </div>");
+			return;
+		}
+		var configParam = {
+			preLogin : PRE_LOGIN_CHECKBOX,
+			afterLogin : AFTER_LOGIN_CHECKBOX,
+			showRoleRules : ROLE_SHOW_CHECKBOX,
+			categoryRules : categoryArr.join(","),
+			contentRules : CATEGORY_CONTENT_CHECKBOX,
+			showRows : SHOW_ROW,
+			rowNumber : ROW_NUMBER
+		}
+		console.log(configParam);
+		configCardCallBack("${cardId}","${cardWid}", JSON.stringify(configParam));
+	}
+
+	//滚动条
+	function getAutoScroll_${cardWid}(){
+		$(".card-container-${cardWid}").niceScroll("#show-list-${cardWid}");
+		$("#show-list-${cardWid}").niceScroll({
+			cursorcolor: "#d8d8d8",
+			autohidemode: false,
+			railpadding: { top: 0, right: 0, left: 5, bottom: 0 },
+			cursorborder: "0"
+		});
+		//刷新滚动条
+		$("#show-list-${cardWid}").getNiceScroll().resize()
+	}
+</script>

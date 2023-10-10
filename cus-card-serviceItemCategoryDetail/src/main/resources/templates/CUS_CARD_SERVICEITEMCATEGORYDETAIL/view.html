@@ -1,0 +1,933 @@
+<% include("css.html",{cardWid:cardWid,cardId:cardId}){} %>
+<div class='card-container-${cardWid}'>
+	<!-- 顶部tab栏start -->
+	<div class='serviceItem-detail-tab-${cardWid}'>
+		<div class='head-switch-tab-${cardWid}'>
+			<ul class="pagination pagination-lg	">
+				<div id="allNavList-${cardWid}"></div>
+				<!-- <span class="indicator-${cardWid} "
+					style="left: 24px; width: 24px; background: #386AEB !important;"></span> -->
+			</ul>
+		</div>
+	</div>
+	<!-- 顶部tab栏start -->
+	<!-- 左侧导航栏start -->
+	<div class='business-left-${cardWid}'>
+
+		<!-- 搜索开始 -->
+		<div class="search-box-${cardWid}">
+			<div class="ivu-input-wrapper-${cardWid}">
+				<i class="ztfl-search-${cardWid}">
+					<img alt="icon"
+					src="${ctxInternalPath}/SYS_CARD_SERVICEITEMCATEGORYDETAIL/images/search.png"
+					width="26" height="26" class="search-pic-${cardWid}">
+				</i> <input autocomplete="off" spellcheck="false" type="text"
+					placeholder="请输入服务主题名称" maxlength="20" class="ivu-input-${cardWid}"
+					id="search-fwzt-${cardWid}" style="padding-right: 33px;" />
+
+			</div>
+		</div>
+		<!-- 搜索结束 -->
+		<div class='sort-list-${cardWid}'>
+			<div class="switch-tab-${cardWid} vertical-${cardWid}">
+				<!-- 卡片左侧部门导航栏 -->
+				<!-- 按主题分类 -->
+				<ul id="sortListForZT-${cardWid}">
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 左侧导航栏end -->
+	<!-- 右侧内容start -->
+	<div class='business-right-${cardWid}'>
+		<p id="right-bm-display-${cardWid}"></p>
+
+		<div class='ztlf-table-${cardWid} ztfl-nr-table-${cardWid}'>
+			<div class='search-${cardWid}'>
+				<div class='zzc-search-app-${cardWid}'>
+					<input type="text" class="form-control" placeholder="请输入服务事项名称"
+						style="width: 236px; height: 40px;width:236px; color:#ACB4BC ;font-size:14px;border: 1px solid #ced4da; border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
+						id="inputfwsxmc" aria-describedby="basic-addon1" maxlength="20">
+					<button type="button" style="border-color: #007bff00; height: 40px;width:68px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
+						class="btn btn-primary button-${cardWid} portal-primary-backgroundcolor-lv1">搜索</button>
+					<div class='custom-control custom-checkbox'>
+						<div class="fwztcheckbox-${cardWid}">
+							<input type="checkbox" class="custom-control-input"
+								id="customCheck-${cardWid}" value="0"> <label
+								class="custom-control-label fwztword-content-${cardWid}"
+								for="customCheck-${cardWid}">可在线办理</label>
+						</div>
+					</div>
+
+					<% var configure=config.configure;if(@configure.contains("1")){ %>
+					<div
+						style="display: flex; margin-left: 20px; margin-top: 8px; cursor: pointer;"
+						id="fwtype-${cardWid}" onclick="fwlOnclick()">
+						<p>按访问量排序</p>
+						<div style="margin-left: 5px; margin-top: 5px;">
+							<div class="fwlarrow-top-${cardWid}"></div>
+							<div class="fwlarrow-bottom-${cardWid}"></div>
+						</div>
+					</div>
+					<% }%>
+				</div>
+			</div>
+
+			<div class='ztfl-nr-${cardWid}'></div>
+		</div>
+		<div style="position: relative; width: 888px;padding-right: 30px;" class="page_container">
+			<div class="tip">
+				共 <span id="totalNumber"></span> 条 显示第 <span id="showNumber"></span>
+				条
+			</div>
+			<span id="totalPage" style="display: none"></span>
+			<div id="pagination" style=" display: flex;align-items: center"></div>
+			<div class="ivu-page-options">
+				<div class="ivu-page-options-sizer">
+					<div class="ivu-select ivu-select-single ivu-select-default">
+						<div tabindex="0" class="ivu-select-selection">
+							<input type="hidden" value="10">
+							<div class="checkPage">
+								<span class="ivu-select-selected-value"></span> <i
+									class="ivu-icon ivu-icon-arrow-down-b ivu-select-arrow"></i>
+							</div>
+						</div>
+						<div class="ivu-select-dropdown" style="display: none;">
+							<ul class="ivu-select-not-found">
+								<li></li>
+							</ul>
+							<ul class="ivu-select-dropdown-list">
+								<li class="ivu-select-item  checked-10"
+									style="text-align: center;" value="10">10 条/页</li>
+								<li class="ivu-select-item checked-20" style="text-align: center;" value="20">20
+									条/页</li>
+								<li class="ivu-select-item checked-30" style="text-align: center;" value="30">30
+									条/页</li>
+								<li class="ivu-select-item checked-40" style="text-align: center;" value="40">40
+									条/页</li>
+							</ul>
+							<ul class="ivu-select-loading" style="display: none;"></ul>
+						</div>
+					</div>
+				</div>
+				<div class="ivu-page-options-elevator">
+					跳至 <input type="text" autocomplete="off" spellcheck="false"
+						id='goPage'> 页
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/template" id="tab-nva-list">
+      <li class="tab-nav-${cardWid}" style="width:122px">
+            <div  class="item-content-${cardWid}"  style="width:122px">
+                <div style="width:100%">
+					<p title="@categoryName" class="title">@categoryName</p>
+                    <span class="title" style="display:none">@categoryWid</span>
+				</div>
+					</div>
+<span class="indicator-${cardWid} portal-primary-backgroundcolor-lv1" style="left: 32px; width: 24px;display:none"></span>
+</li>
+</script>
+	<script type="text/template" id="one-left-list">
+   <li class="" style="height:auto">
+    <div class="item-content-${cardWid}">
+<div class="item-flag-${cardWid}">
+<div class="fwzt-nav-${cardWid}">
+							<img alt="icon"
+								src="@picLink" onerror="imageError_${cardWid}(this)" width="36"
+								height="36" class="pic1-${cardWid}">
+                           <i class="@iconLink icon1-${cardWid}"  style="display:none"></i>
+ <div class="hor portal-primary-color-hover-lv1">
+								<span title="@categoryName" class="title portal-primary-color-hover-lv1">@categoryName</span><span class="sub-hor-${cardWid}">@total</span>
+							 <span style="display:none">@categoryWid</span>
+                             </div>
+</div>
+</div>
+               <ul style="overflow-y: hidden;margin-left: 0px;width: 100%;" class="second-left-nav"></ul>
+			</div></li>
+</script>
+	<script type="text/template" id="second-left-list">
+								<li class="second-fwzt-nav-${cardWid}" style="height: 56px;margin-top:1px;">
+									<div class="item-content-${cardWid}" style="margin-left: 26px">
+
+										<img alt="icon"
+											src="@picLink"  onerror="imageError_${cardWid}(this)"
+											width="26" height="26" class="pic2-${cardWid}">
+            <i class="@iconLink icon2-${cardWid}" style="display:none" ></i>
+<div class="hor portal-primary-color-hover-lv1" style="display: flex;">
+											<span title="@categoryName" class="title-second-${cardWid} portal-primary-color-hover-lv1">@categoryName</span><span
+												class="sub-hor-${cardWid}" style="font-size: 12px; height: 56px;line-height: 56px;">@total</span>
+                                          <span style="display:none">@categoryWid</span>
+										</div>
+									</div>
+								</li>
+</script>
+	<script type="text/template" id="category-nr">
+<div class="one-detail-${cardWid}">
+<% configure=config.configure;if(@configure.contains("0")){ %>
+					<div class="zsnr-left-${cardWid}">
+						<img alt="icon"
+							src="@iconLink" onerror="imageError_${cardWid}(this)" width="44"
+							height="44">
+					</div>
+<% }%>
+					<div class="zsnr-center-${cardWid}">
+						<div class="content-${cardWid}">
+							<p class="p-content-${cardWid}" title="@itemName">@itemName</p>
+							<p class="p-content-second-${cardWid}" title="@itemDept">@itemDept</p>
+						</div>
+					</div>
+					<div class="zsnr-right-${cardWid}">
+						<button type="button" style="height: 35px; margin-left: 10px; border: 1px solid;color:#637389;border-color:#637389"
+							class="btn btn-default bszn-${cardWid}" onclick=toBSzn("@itemWid")>办事指南</button>
+						<button type="button" style="height: 35px; margin-left: 10px;background-color: #007bff00;color:#3F83FB;border-color:#3F83FB"
+							class="btn btn-primary zxbl-${cardWid} portal-primary-color-lv1 portal-primary-backgroundcolor-hover-lv5 portal-primary-border-color-lv1" serviceList="@serviceList">在线办理</button>
+					</div>
+				</div>
+</script>
+	<script type="text/javascript">
+		var tabIndex = 0;//顶部栏active 下标位置
+		var roleWid = '1';
+		var categoryWid;
+		var oneCategoryWid;
+		var isRelate = 0;
+		var pageNumber=1;
+		var pageSize=10;
+		var visitOrder=null;
+		var fwType="";
+		var isAuthority;
+		var bmCategoryWid;//按部门分类的CategoryWid
+		if("${roleWid}" != '')
+		roleWid = "${roleWid}";
+		bmCategoryWid = "${config.bmCategoryWid}";
+		var outOneCategoryWid = "${oneCategoryWid}";//胡超传来的一级维度
+		var outCategoryWid = "${categoryWid}";//胡超传来的二级维度
+		$(document).ready(function() {
+			getOneCategoryList();
+			$(".ivu-select-selected-value").html("10 条/页");
+			$(".checked-10").addClass("ivu-select-item-selected");
+			/*   顶部tab栏点击事件 */
+			$("body").on('click', '.tab-nav-${cardWid}', function() {
+				emptyInput();
+				var Index = $(this).index();
+				$(this).addClass('active-${cardWid}').siblings().removeClass('active-${cardWid}');
+				$(".indicator-${cardWid}").css("display", "none");
+				$(this).find('.indicator-${cardWid}').css("display", "");
+				oneCategoryWid = $(this).find('span').eq(0).html();
+				var catagoryName =  $(this).find('p').eq(0).html()
+				catagoryName = catagoryName.substring(1,catagoryName.length-2);
+				catagoryName = '请输入'+catagoryName+'名称';
+				if(catagoryName.length > 13){
+					catagoryName = catagoryName.substr(0,13)+"...";
+				}
+				$("#search-fwzt-${cardWid}").attr('placeholder',catagoryName);
+				categoryWid=null;
+				$("#sortListForZT-${cardWid}").empty();
+				$(".ztfl-nr-${cardWid}").empty();
+				var params = {
+						"isRelate":isRelate,
+						"roleWid":roleWid,
+						"oneCategoryWid":oneCategoryWid
+				}
+				allCateGoryList(params);
+			})
+
+			dropdown_menu_${cardWid}();
+			//点击服务主题
+			 $("body").on('click','.item-flag-${cardWid}',function() {
+				 var searchValue = $("#search-fwzt-${cardWid}").val();
+				 emptyInput();
+				 $("#search-fwzt-${cardWid}").val(searchValue);
+				 $("#right-bm-display-${cardWid}").html($(this).find('span').eq(0).html());
+				 $('.item-flag-${cardWid}').removeClass('active');
+				 $('.second-fwzt-nav-${cardWid}').removeClass('active');
+				 $(this).addClass('active');
+				 categoryWid = $(this).find('span').eq(2).html();
+				 var params = {
+							"isRelate":isRelate,
+							"roleWid":roleWid,//roleWid,
+							"pageSize": pageSize,
+							"pageNumber":pageNumber,
+							"visitOrder":fwType,
+							"isAuthority":isAuthority,
+							"categoryWid":categoryWid//临时测试  one_categoryWid
+					};
+				 $(".ztfl-nr-${cardWid}").empty();
+				 queryItemByCategoryList(params);
+			 });
+			 $("body").on('click','.second-fwzt-nav-${cardWid}',function() {
+				 var searchValue = $("#search-fwzt-${cardWid}").val();
+				 emptyInput();
+				 $("#search-fwzt-${cardWid}").val(searchValue);
+				 $('.second-fwzt-nav-${cardWid}').removeClass('active');
+				 $('.item-flag-${cardWid}').removeClass('active');
+				 $(this).parent().prev('div').addClass('active');
+				 $("#right-bm-display-${cardWid}").html($(this).find('span').eq(0).html());
+				 $(this).addClass('active');
+				 categoryWid = $(this).find('span').eq(2).html();
+				 var params = {
+							"isRelate":isRelate,
+							"roleWid":roleWid,//roleWid,
+							"pageSize": pageSize,
+							"pageNumber":pageNumber,
+							"visitOrder":fwType,
+							"isAuthority":isAuthority,
+							"categoryWid":categoryWid//临时测试  one_categoryWid
+					};
+				 $(".ztfl-nr-${cardWid}").empty();
+				 queryItemByCategoryList(params);
+			 });
+
+
+			 //左侧搜索框  搜索事件
+			  $("body").on('click','.ztfl-search-${cardWid}',function() {
+			    	var searchValue = $("#search-fwzt-${cardWid}").val();
+			    	searchValue = searchValue.trim();
+			    	$("#sortListForZT-${cardWid}").empty();
+					var params = {
+							"isRelate":isRelate,
+							"roleWid":roleWid,
+							"searchValue":searchValue,
+							"oneCategoryWid":oneCategoryWid
+					}
+					allCateGoryList(params);
+			    });
+			 //内容搜索框搜索
+			 $("body").on('click','.button-${cardWid}',function() {
+				 if(categoryWid != null && categoryWid !=''){
+				 var inputVal = $("#inputfwsxmc").val();
+				 inputVal = inputVal.trim();
+				 $(".ztfl-nr-${cardWid}").empty();
+				 var params = {
+		        		 "searchKey":inputVal,
+		        		 "isRelate":isRelate,
+						 "roleWid":roleWid,//roleWid,
+						 "pageSize": pageSize,
+						 "pageNumber":pageNumber,
+						 "visitOrder":fwType,
+						 "isAuthority":isAuthority,
+						 "categoryWid":categoryWid//临时测试 categoryWid
+		         }
+				 queryItemByCategoryList(params);
+				 }
+			 });
+
+			 $("#customCheck-${cardWid}").click(function() {
+				 if(categoryWid != null && categoryWid !=''){
+				 var inputVal = $("#inputfwsxmc").val();
+				 inputVal = inputVal.trim();
+				 isAuthority = false;
+				 $(".ztfl-nr-${cardWid}").empty();
+				 var params = {
+		        		 "searchKey":inputVal,
+		        		 "isRelate":isRelate,
+						 "roleWid":roleWid,//roleWid,
+						 "pageSize": pageSize,
+						 "pageNumber":pageNumber,
+						 "isAuthority":false,
+						 "visitOrder":fwType,
+						 "categoryWid":categoryWid
+		         }
+		        if ($(this).is(":checked")== true) {
+		        	isAuthority = true;
+		        	params = {
+			        		 "searchKey":inputVal,
+			        		 "isRelate":isRelate,
+							 "roleWid":roleWid,//roleWid,
+							 "pageSize": pageSize,
+							 "pageNumber":pageNumber,
+							 "isAuthority":true,
+							 "visitOrder":fwType,
+							 "categoryWid":categoryWid
+			         }
+		        }
+				 queryItemByCategoryList(params);
+				 }
+			 })
+
+			  $("body").on('click','.zxbl-${cardWid}',function() {
+			//在线办理
+	            var self = this;
+			    var itemId;
+	            var serviceList = $(this).attr('serviceList');
+	            //查询服务详情
+	            execCardMethod('${cardId}','${cardWid}',null,'queryServiceInfo',{serviceList:serviceList},function(data){
+	                if(data && data.errcode && data.errcode == 200 || '0'=== data.errcode){
+	                    if(data.data == undefined || data.data.code == undefined){
+	                        if(this.isIE11_${cardWid}()){
+	                            popupWarningTips_${cardWid}( "加载失败...",'35%');
+	                        } else {
+	                            popupWarningTips_${cardWid}( "加载失败...",null);
+	                        }
+	                    }else if(data.data.code == -1){
+	                        if(this.isIE11_${cardWid}()){
+	                            popupWarningTips_${cardWid}( data.data.msg,'35%');
+	                        } else {
+	                            popupWarningTips_${cardWid}(data.data.msg,null);
+	                        }
+	                    }else if(data.data.code == 0){
+	                        //异常情况
+	                        window.open(data.data.url);
+	                    }else if(data.data.code == 200){
+	                        $(self).off('click');
+	                        var items =  data.data.list;//
+	                        var html = '<div class="dropdown-menu dropdown-menu-${cardWid}" aria-labelledby="dropdownMenuLink'+itemId+'" style="max-height: 242px;overflow-y: auto; width: 220px;">';
+	                        for(var i =0;i < items.length;i++){
+
+	                        	 html +=  ' <div  onclick="openServiceUrl${cardWid}(\'' +items[i].wid+'\'  ,\'' +items[i].serviceVisibility+'\'  ,\''+filterXSS(items[i].pcAccessUrl)+ '\' )" title="'+filterXSS(items[i].serviceName)+'" data-toggle="tooltip" data-placement="bottom" class="dropdown-item service-item-${cardWid} mouse-hover-${cardWid}" data-access="'+items[i].serviceVisibility+'" data-link="'+filterXSS(items[i].pcAccessUrl)+'"> ' +
+	                                '  <img onerror="imageError_${cardWid}(this)" src="'+filterXSS(items[i].pcIconUrl)+'" ' +
+	                                'width="20" height="20" class="d-inline-block align-top" alt="" loading="lazy"> &nbsp;&nbsp;' +
+                                     filterXSS(items[i].serviceName)+
+	                                ' </div>   ';
+	                        }
+	                        html +=  '  </div>';
+	                        $(self).after(html);
+	                        $(self).attr('data-toggle','dropdown');
+	                        $(self).attr('aria-haspopup','true');
+	                        $(self).attr('aria-expanded','false');
+	                        $(self).removeClass('zxbl-${cardWid}');
+	                        $(self).click();
+	                    }
+	                }else{
+	                    if(this.isIE11_${cardWid}()){
+	                        popupWarningTips_${cardWid}( "加载失败...",'35%');
+	                    } else {
+	                        popupWarningTips_${cardWid}( "加载失败...",null);
+	                    }
+	                }
+	            });
+			  });
+			 //getAutoScroll_${cardWid}();
+		});
+
+		$(".checkPage").off('click').on('click', function () {
+			var _style=$(".ivu-select-dropdown").attr("style").indexOf("display");
+			if(_style!=-1){
+				$(".ivu-select-dropdown").show();
+			}else{
+				$(".ivu-select-dropdown").hide();
+			}
+		});
+		$(".ivu-select-item").off('click').on('click', function (e) {
+			$(".ivu-select-dropdown").hide();
+			var page=$(this).attr("value");
+			$(".ivu-select-selected-value").html(page+" 条/页");
+
+			if(page=="10"){
+				$(".checked-10").addClass("ivu-select-item-selected");
+				$(".checked-20").removeClass("ivu-select-item-selected");
+				$(".checked-30").removeClass("ivu-select-item-selected");
+				$(".checked-40").removeClass("ivu-select-item-selected");
+			}else if(page=="20"){
+				$(".checked-10").removeClass("ivu-select-item-selected");
+				$(".checked-20").addClass("ivu-select-item-selected");
+				$(".checked-30").removeClass("ivu-select-item-selected");
+				$(".checked-40").removeClass("ivu-select-item-selected");
+			}else if(page=="30"){
+				$(".checked-10").removeClass("ivu-select-item-selected");
+				$(".checked-20").removeClass("ivu-select-item-selected");
+				$(".checked-30").addClass("ivu-select-item-selected");
+				$(".checked-40").removeClass("ivu-select-item-selected");
+			}else if(page=="40"){
+				$(".checked-10").removeClass("ivu-select-item-selected");
+				$(".checked-20").removeClass("ivu-select-item-selected");
+				$(".checked-30").removeClass("ivu-select-item-selected");
+				$(".checked-40").addClass("ivu-select-item-selected");
+			}
+			pageSize = page;
+			//点击分页参数   重新获取内容
+			 var inputVal = $("#inputfwsxmc").val();
+			 inputVal = inputVal.trim();
+			 $(".ztfl-nr-${cardWid}").empty();
+			 var params = {
+	        		 "searchKey":inputVal,
+	        		 "isRelate":isRelate,
+					 "roleWid":roleWid,//roleWid,
+					 "pageSize": pageSize,
+					 "pageNumber":pageNumber,
+					 "visitOrder":fwType,
+					 "categoryWid":categoryWid//临时测试 categoryWid  766368381707223041
+	         }
+			 queryItemByCategoryList(params);
+		});
+		//顶部tab栏目获取
+		function getOneCategoryList() {
+
+			execCardMethod('${cardId}', '${cardWid}', null, 'getOneCategoryList', null, function(data) {
+				if (data.data != null && data.data.data != null && data.data.data != undefined) {
+					var res = data.data.data;
+					if (res != null && res.length > 0) {
+						res.forEach(function(item, index) {
+							var navHtml = $("#tab-nva-list").html().replace("@categoryName", filterXSS(item.categoryName)).replace("@categoryName", filterXSS(item.categoryName)).replace("@categoryWid",
+									item.categoryWid);
+							$("#allNavList-${cardWid}").append(navHtml);
+						});
+						if( outOneCategoryWid != '' && outOneCategoryWid != undefined && outOneCategoryWid != null){//胡超传来的tab栏目CategoryWid
+							var tab_nav = $(".tab-nav-${cardWid}");
+							tab_nav.each(function(index,item) {
+								if($(this).find("span").eq(0).html() == outOneCategoryWid){
+									$(this).addClass('active-${cardWid}');
+									$(this).find('.indicator-${cardWid}').css("display", "");
+									var catagoryName =  $(this).find('p').eq(0).html();
+									catagoryName = catagoryName.substring(1,catagoryName.length-2);
+									catagoryName = '请输入'+catagoryName+'名称';
+									if(catagoryName.length > 13){
+										catagoryName = catagoryName.substr(0,13)+"...";
+									}
+									$("#search-fwzt-${cardWid}").attr('placeholder',catagoryName);
+								}
+							});
+							var params = {
+									"isRelate":isRelate,
+									"roleWid":roleWid,
+									"oneCategoryWid":outOneCategoryWid
+							}
+							allCateGoryList(params);
+							oneCategoryWid = outOneCategoryWid;
+							outOneCategoryWid = '';
+						}else{
+						$(".tab-nav-${cardWid}").eq(0).addClass('active-${cardWid}');
+						$(".tab-nav-${cardWid}").eq(0).find('.indicator-${cardWid}').css("display", "");
+						oneCategoryWid = res[0].categoryWid;
+						var catagoryName =  $(".tab-nav-${cardWid}").eq(0).find('p').eq(0).html();
+						catagoryName = catagoryName.substring(1,catagoryName.length-2);
+						catagoryName = '请输入'+catagoryName+'名称';
+						if(catagoryName.length > 13){
+							catagoryName = catagoryName.substr(0,13)+"...";
+						}
+						$("#search-fwzt-${cardWid}").attr('placeholder',catagoryName);
+						var params = {
+								"isRelate":isRelate,
+								"roleWid":roleWid,
+								"oneCategoryWid":oneCategoryWid
+						}
+						allCateGoryList(params);
+					}
+					}
+				}
+			});
+		}
+		//所有服务分类及一二级主题
+		function allCateGoryList(params) {
+			$(".ztfl-nr-${cardWid}").empty();
+			execCardMethod('${cardId}', '${cardWid}', null, 'allCateGoryList', params, function(data) {
+				if (data.data != null && data.data.data != null && data.data.data != undefined) {
+					var res = data.data.data.children;
+					if (res != null && res.length > 0) {
+						res.forEach(function(item, index) {
+							var oneLeftHtml = $("#one-left-list").html().replace("@iconLink", item.iconLink).replace("@picLink", item.picLink).replace("@categoryName", filterXSS(item.categoryName)).replace("@categoryName", filterXSS(item.categoryName)).replace("@total", item.total).replace("@categoryWid",
+									item.categoryWid);
+							$("#sortListForZT-${cardWid}").append(oneLeftHtml);
+							if(item.picLink ==null && item.iconLink!=null){
+								$(".pic1-${cardWid}").eq(index).css("display","none");
+								$(".icon1-${cardWid}").eq(index).css("display","");
+							}
+							var childrens = item.children;
+							if(childrens != null && childrens.length > 0){
+								childrens.forEach(function(children,childrenIndex) {//iconLink
+									if(children.total > 0){
+								var secondLeftHtml = $("#second-left-list").html().replace("@iconLink", children.iconLink).replace("@picLink", children.picLink).replace("@categoryName", filterXSS(children.categoryName)).replace("@categoryName", filterXSS(children.categoryName)).replace("@total", children.total).replace("@categoryWid",
+										children.categoryWid);
+								$(".second-left-nav").eq(index).append(secondLeftHtml);
+								if(children.picLink==null && children.iconLink!=null){
+									$(".pic2-${cardWid}").eq(childrenIndex).css("display","none");
+									$(".icon2-${cardWid}").eq(childrenIndex).css("display","");
+								}
+									}
+								});
+							  }
+						});
+						if( outCategoryWid != '' && outCategoryWid != undefined && outCategoryWid != null){
+							var item_flag = $(".item-flag-${cardWid}");
+							item_flag.each(function(index,item) {
+								if($(this).find("span").eq(2).html() == outCategoryWid){
+									$(this).addClass('active');
+									$("#right-bm-display-${cardWid}").html($(this).find("span").eq(0).html());//内容上方服务事项名称展示
+								}
+							});
+							var params = {
+									"isRelate":isRelate,
+									"roleWid":roleWid,//roleWid,
+									"pageSize": pageSize,
+									"pageNumber":pageNumber,
+									 "visitOrder":fwType,
+									 "isAuthority":isAuthority,
+									 "categoryWid": outCategoryWid//临时测试   res[0].categoryWid
+							};
+							queryItemByCategoryList(params);
+							categoryWid = outCategoryWid;
+							outCategoryWid = '';
+						}
+
+				else{
+						categoryWid = res[0].categoryWid;
+						$("#right-bm-display-${cardWid}").html(filterXSS(res[0].categoryName))
+						$(".item-flag-${cardWid}").eq(0).addClass('active');
+						var params = {
+								"isRelate":isRelate,
+								"roleWid":roleWid,//roleWid,
+								"pageSize": pageSize,
+								"pageNumber":pageNumber,
+								"visitOrder":fwType,
+								"isAuthority":isAuthority,
+								"categoryWid": res[0].categoryWid//res[0].categoryWid
+						};
+						queryItemByCategoryList(params);
+					}
+					}else{
+						var emptyHtml = "<p style=\"margin-left: 50px;margin-top: 150px;\"><span style=\"font-size: 17px;color: #dddee1;\">未找到相关内容</span></p>";
+						$("#sortListForZT-${cardWid}").append(emptyHtml);
+						refreshPages(0, 0,false);
+						$("#showNumber").html(""+(0)+"~"+(0)+"");
+						var emptyHtml = "<p style=\"margin-left: 350px;margin-top: 100px; margin-bottom: 50px;\"><span style=\"font-size: 20px;color: #dddee1;\">未找到相关服务</span></p>";
+						$(".ztfl-nr-${cardWid}").append(emptyHtml);
+					}
+					getAutoScroll_${cardWid}();//渲染完成后  设置滚动条
+                    resetBodyScroll()// 设置body滚动条
+				}
+			});
+			// resetBodyScroll()	// 设置body滚动条
+		}
+
+		//按分类主题查询服务事项
+		function queryItemByCategoryList(params) {
+			$(".ztfl-nr-${cardWid}").empty();
+
+			execCardMethod('${cardId}', '${cardWid}', null, 'queryItemByCategoryList', params, function(data) {
+				if (data.data != null && data.data.data != null && data.data.data != undefined) {
+					var res = data.data.data;
+					var totalSize = data.data.totalSize;//获取总数
+					refreshPages(Math.ceil(totalSize/params.pageSize),params.pageNumber,false);
+		        	$("#totalPage").html(Math.ceil(totalSize/params.pageSize));
+		        	$("#totalNumber").html(totalSize);
+					if (res != null && res.length > 0) {
+						$("#showNumber").html(""+((Number(params.pageNumber)-1)*params.pageSize+1)+"~"+((Number(params.pageNumber)-1)*params.pageSize+res.length)+"");
+						res.forEach(function(item, index) {
+							var navHtml = $("#category-nr").html().replace("@itemName", filterXSS(item.itemName)).replace("@itemName", filterXSS(item.itemName)).replace("@itemDept", filterXSS(item.itemDept)).replace("@itemDept", item.itemDept==null?"":filterXSS(item.itemDept))
+							.replace("@iconLink", item.iconLink).replace("@serviceList", item.serviceList).replace("@itemWid", item.itemWid);
+							if(oneCategoryWid == bmCategoryWid){
+								var navHtml = $("#category-nr").html().replace("@itemName", filterXSS(item.itemName)).replace("@itemName", filterXSS(item.itemName)).replace("@itemDept", item.itemCategory==null?"":filterXSS(item.itemCategory)).replace("@itemDept", filterXSS(item.itemCategory))
+								.replace("@iconLink", item.iconLink).replace("@serviceList", item.serviceList).replace("@itemWid", item.itemWid);//itemCategory
+							}
+
+							$(".ztfl-nr-${cardWid}").append(navHtml);
+							if(item.workGuide==false){
+							   $(".bszn-${cardWid}").eq(index).css("display","none");
+							}
+						 if(item.serviceList == null || item.serviceList.length < 1){ //在线办理按钮置灰操作
+							$('.zxbl-${cardWid}').eq(index).addClass('button-disabled-${cardWid}');
+							$('.zxbl-${cardWid}').eq(index).prop('disabled', true);
+							$('.zxbl-${cardWid}').eq(index).removeClass("portal-primary-color-lv1");
+							$('.zxbl-${cardWid}').eq(index).removeClass("portal-primary-backgroundcolor-hover-lv5");
+							$('.zxbl-${cardWid}').eq(index).removeClass("portal-primary-border-color-lv1");
+						 }
+						});
+
+					}else{
+						$("#showNumber").html(""+(0)+"~"+(0)+"");
+						var emptyHtml = "<p style=\"margin-left: 350px;margin-top: 100px; margin-bottom: 50px;\"><span style=\"font-size: 20px;color: #dddee1;\">未找到相关数据</span></p>";
+						$(".ztfl-nr-${cardWid}").append(emptyHtml);
+					}
+					$("#fwtype-${cardWid}").attr("onclick","fwlOnclick()");
+				}
+				var $height = $(".ztlf-table-${cardWid}").height();
+				if($height > 840)
+				$("#sortListForZT-${cardWid}").height($height);
+				else
+					$("#sortListForZT-${cardWid}").css("height",600+"px");
+                resetBodyScroll()	// 设置body滚动条
+			});
+			// resetBodyScroll()	// 设置body滚动条
+		}
+		 function getPagination(totalPage, currentPage,isClick) {
+
+				var paginationInfo = "<ul class=\"pagination\" >" + "<li><a href=\"javascript:void(0);\" " +
+					" οnclick=\"refreshPages(" + totalPage + " , " + (currentPage - 1) + ","+isClick+")\"" + "><</a></li>";
+				if (totalPage <= 10) {
+					for (var i = 1; i <= totalPage; i++) {
+						paginationInfo += "<li><a  value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+							totalPage + " , " + i + ","+isClick+")\">" + i + "</a></li>";
+					}
+				} else {
+					if (currentPage <= 3) {
+						for (var i = 1; i <= currentPage + 2; i++) {
+							paginationInfo += "<li><a  value='" + i + "'" + " href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+								totalPage + " , " + i + ","+isClick+")\">" + i + "</a></li>";
+						}
+						paginationInfo += "<li><a href=\"#\">...</a></li>";
+						paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+							totalPage + " , " + totalPage + ","+isClick+")\">" + totalPage + "</a></li>";
+					} else if (currentPage <= totalPage - 5) {
+						paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+							totalPage + " , " + 1 + ","+isClick+")\">" + 1 + "</a></li>";
+						paginationInfo += "<li><a href=\"#\">...</a></li>";
+						for (var i = currentPage - 1; i <= currentPage + 2; i++) {
+							paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+								totalPage + " , " + i + ","+isClick+")\">" + i + "</a></li>";
+						}
+						paginationInfo += "<li><a href=\"#\">...</a></li>";
+						paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+							totalPage + " , " + totalPage + ","+isClick+")\">" + totalPage + "</a></li>";
+					} else {
+						paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+							totalPage + " , " + 1 + ","+isClick+")\">" + 1 + "</a></li>";
+						paginationInfo += "<li><a href=\"#\">...</a></li>";
+						for (var i = currentPage - 1; i <= totalPage; i++) {
+							paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+								totalPage + " , " + i + ","+isClick+")\">" + i + "</a></li>";
+						}
+					}
+				}
+				paginationInfo += "<li><a value='" + i + "'" + "href=\"javascript:void(0);\" " + " οnclick=\"refreshPages(" +
+					totalPage + " , " + Number(currentPage + 1) + ","+isClick+")\"" + ">></a></li>";
+				return paginationInfo;
+			}
+		  function refreshPages(totalPage, currentPage1,isClick) {
+				var self = this;
+				var paginationInfo ="";
+				self.currentPage = parseInt(currentPage1)
+				if (currentPage < 1 || currentPage > totalPage) {
+					document.getElementById('pagination').innerHTML = paginationInfo;
+					return;
+				}
+				paginationInfo = getPagination(totalPage, currentPage,true);
+				document.getElementById('pagination').innerHTML = paginationInfo;
+				$('#pagination li a[value=' + currentPage + ']').addClass("page_active portal-primary-backgroundcolor-lv1");
+				$('#pagination li a').on('click', function() {
+					$('#pagination').empty()
+					refreshPages(totalPage, Number($(this).text()),true)
+				})
+				if(isClick==true){
+					 var inputVal = $("#inputfwsxmc").val();
+					 inputVal = inputVal.trim();
+					 $(".ztfl-nr-${cardWid}").empty();
+					 var params = {
+			        		 "searchKey":inputVal,
+			        		 "isRelate":isRelate,
+							 "roleWid":roleWid,//roleWid,
+							 "pageSize": pageSize,
+							 "pageNumber":currentPage1,
+							 "visitOrder":fwType,
+							 "categoryWid":categoryWid//临时测试 categoryWid  766368381707223041
+			         }
+					 queryItemByCategoryList(params);
+				}
+				$('#pagination li a').first().unbind("click");
+				$('#pagination li a').last().unbind("click");
+				$('#pagination li a').first().on('click', function() {
+					if (self.currentPage == 1) {
+						return
+					}
+					self.currentPage -= 1
+					$('#pagination').empty()
+					refreshPages(totalPage, self.currentPage,true)
+					console.log(self.currentPage)
+				})
+				$('#pagination li a').last().on('click', function() {
+					if (self.currentPage == totalPage) {
+						return
+					}
+					self.currentPage += 1
+					$('#pagination').empty()
+					refreshPages(totalPage, self.currentPage,true)
+					console.log(self.currentPage)
+				})
+				resetBodyScroll()	// 设置body滚动条
+			}
+		  $('#goPage').keydown(function(event) {
+				var totalPage = $('#totalPage').html();
+				if (event.keyCode == 13) {
+					if((Number($(this).val()) > Number(totalPage)) || $(this).val() == null || $(this).val()==''){
+						return
+					}
+					refreshPages(totalPage, Number($(this).val()),true)
+				}
+			});
+		    //内容搜索框搜索KEY DOWN
+			 $('#inputfwsxmc').keydown(function(event) {
+				 if (event.keyCode == 13) {
+				 if(categoryWid != null && categoryWid !=''){
+				 var inputVal = $("#inputfwsxmc").val();
+				 inputVal = inputVal.trim();
+				 $(".ztfl-nr-${cardWid}").empty();
+				 var params = {
+		        		 "searchKey":inputVal,
+		        		 "isRelate":isRelate,
+						 "roleWid":roleWid,//roleWid,
+						 "pageSize": pageSize,
+						 "pageNumber":pageNumber,
+						 "visitOrder":fwType,
+						 "isAuthority":isAuthority,
+						 "categoryWid":categoryWid//临时测试 categoryWid
+		         }
+				 queryItemByCategoryList(params);
+				 }
+				 }
+			 });
+
+			 //左侧搜索框  key-DOwn搜索事件
+			  $('#search-fwzt-${cardWid}').keydown(function(event) {
+				  if (event.keyCode == 13) {
+			    	var searchValue = $("#search-fwzt-${cardWid}").val();
+			    	searchValue = searchValue.trim();
+			    	$("#sortListForZT-${cardWid}").empty();
+					var params = {
+							"isRelate":isRelate,
+							"roleWid":roleWid,
+							"searchValue":searchValue,
+							"oneCategoryWid":oneCategoryWid
+					}
+					allCateGoryList(params);
+				  }
+			    });
+		  function getAutoScroll_${cardWid}(){
+                $(".switch-tab-${cardWid}.vertical-${cardWid} ul").getNiceScroll().remove();
+		        $(".switch-tab-${cardWid}.vertical-${cardWid} ul").niceScroll({
+		            cursorcolor: "#d8d8d8",
+		            autohidemode: true,
+		            railpadding: { top: 0, right: 2, left:-7, bottom: 0},
+		            cursorborder: "0"
+		        });
+		        //刷新滚动条
+		        $(".switch-tab-${cardWid}.vertical-${cardWid} ul").getNiceScroll().resize()
+                // $(document.body).getNiceScroll().resize()
+		    }
+
+		  function dropdown_menu_${cardWid}(){
+                $(".dropdown-menu-${cardWid}").getNiceScroll().remove();
+		        $(".dropdown-menu-${cardWid}").niceScroll({
+		            cursorcolor: "#d8d8d8",
+		            autohidemode: true,
+		            railpadding: { top: 0, right: 2, left:-7, bottom: 0 },
+		            cursorborder: "0"
+		        });
+		        //刷新滚动条
+		        $(".dropdown-menu-${cardWid}").getNiceScroll().resize()
+		    }
+		  //访问量排序点击事件
+		  function fwlOnclick(){
+			// $("#fwtype-${cardWid}").css("pointer-events","none");
+			 $("#fwtype-${cardWid}").removeAttr("onclick");
+			  var clickColor = "#0062cc";
+			  var unclickColor = "#495057";
+			  if(fwType == null || fwType == ''){
+				  $(".fwlarrow-bottom-${cardWid}").css("border-color",""+clickColor+"");
+				  $(".fwlarrow-bottom-${cardWid}").addClass("portal-primary-border-color-lv1");
+				  $(".fwlarrow-top-${cardWid}").css("border-color",""+unclickColor+"");
+				  fwType = "desc";
+			  }else{
+				  if(fwType == 'desc'){
+					  $(".fwlarrow-top-${cardWid}").css("border-color",""+clickColor+"");
+					  $(".fwlarrow-top-${cardWid}").addClass("portal-primary-border-color-lv1");
+					  $(".fwlarrow-bottom-${cardWid}").css("border-color",""+unclickColor+"");
+					  $(".fwlarrow-bottom-${cardWid}").removeClass("portal-primary-border-color-lv1");
+					  fwType = "asc";
+				  }else{
+					  $(".fwlarrow-top-${cardWid}").css("border-color",""+unclickColor+"");
+					  $(".fwlarrow-top-${cardWid}").removeClass("portal-primary-border-color-lv1");
+					  $(".fwlarrow-bottom-${cardWid}").css("border-color",""+clickColor+"");
+					  $(".fwlarrow-bottom-${cardWid}").addClass("portal-primary-border-color-lv1");
+					  fwType = "desc";
+				  }
+			  }
+
+
+			  if(categoryWid != null && categoryWid !=''){
+			  var inputVal = $("#inputfwsxmc").val();
+			  inputVal = inputVal.trim();
+				 $(".ztfl-nr-${cardWid}").empty();
+				 var params = {
+		        		 "searchKey":inputVal,
+		        		 "isRelate":isRelate,
+						 "roleWid":roleWid,//roleWid,
+						 "pageSize": pageSize,
+						 "pageNumber":pageNumber,
+						 "visitOrder":fwType,
+						 "isAuthority":isAuthority,
+						 "categoryWid":categoryWid//临时测试 categoryWid
+		         }
+				 queryItemByCategoryList(params);
+			  }
+
+		  }
+		  //字母排序点击事件
+		  function zmOnclick(){
+
+		  }
+		  //办事指南点击事件
+		  function toBSzn(itemWid){
+			  var param = {id:itemWid,type:"serviceItem"};
+			  openPage("${ctxPath}/portal/itemDetail?wid="+itemWid,1,param);
+		  }
+
+
+
+		  function emptyInput(){
+			  isAuthority = false;
+			  fwType = null;
+			  $("#search-fwzt-${cardWid}").val('');
+			  $("#inputfwsxmc").val('');
+			  $(".fwlarrow-top-${cardWid}").css("border-color","#495057");
+			  $(".fwlarrow-bottom-${cardWid}").css("border-color","#495057");
+			  $(".fwlarrow-top-${cardWid}").removeClass("portal-primary-border-color-lv1");
+			  $(".fwlarrow-bottom-${cardWid}").removeClass("portal-primary-border-color-lv1");
+			  $('#customCheck-${cardWid}').prop("checked",false);//设置不选中状态
+		  }
+		  function imageError_${cardWid}(e) {
+			    e.src='${ctxInternalPath}/SYS_CARD_SERVICEITEMCATEGORYDETAIL/images/default-app.png';
+			    e.onerror=null; //控制不要一直跳动  c
+			}
+		  function popupWarningTips_${cardWid}(text,mg) {
+		        if(null == mg){
+		            mg = 0+'px';
+		        }
+		        $(".global-header").prepend(
+		            "<div id='alert-${cardWid}' style='position: fixed;z-index: 999999;margin-left:"+ mg +"'>"+
+		            "<div class=\"alert alert-warning fade show \" role=\"alert\">\n" +
+		            "    <span> "+ text +"</span>\n" +
+		            "</div>"+
+		            "</div>"
+		        );
+		        window.setTimeout(function () {
+		            $('#alert-${cardWid}').remove();
+		        },1000);
+		    }
+
+		  function openServiceUrl${cardWid}(serviceWid, canAccess, link) {
+		        //查询该用户是否能进入服务
+		        execCardMethod('${cardId}','${cardWid}',null,'checkUserServiceGrant',{serviceWid:serviceWid},function(data){
+		            //console.log(data)
+		            if(data && data.data && data.data.errcode == "0"){
+		                if(data.data.data && link !== ""){
+                            openPage(link,1,{id:serviceWid,type:"service"});
+		                }else{
+		                    if(this.isIE11_${cardWid}()){
+
+		                        popupWarningTips_${cardWid}( "您无使用权限，请联系管理员",'35%');
+		                    } else {
+		                        popupWarningTips_${cardWid}( "您无使用权限，请联系管理员",null);
+		                    }
+		                }
+		            }else{
+		                if(this.isIE11_${cardWid}()){
+		                    popupWarningTips_${cardWid}( data.data.errmsg, '35%');
+		                } else {
+		                    popupWarningTips_${cardWid}( data.data.errmsg, null);
+		                }
+		            }
+		        })
+
+		    }
+
+		//判断是否是IE11浏览器
+		    function isIE11_${cardWid}() {
+		        var flagIE = false;
+		        var u = window.navigator.userAgent.toLocaleLowerCase(),
+		            ie11 = /(trident)\/([\d.]+)/,
+		            style = u.match(ie11);
+		        if(null != style){
+		            flagIE =  true;
+		        }
+		        return flagIE;
+		    }
+	</script>

@@ -1,0 +1,12 @@
+{
+  "zh_CN": {
+    "login": "请登录",
+    "loginTip": "登录后可查看统计内容",
+    "nodata":"暂无内容"
+  },
+  "en": {
+    "login": "please login",
+    "loginTip": "after logging in, you can view the statistical content",
+    "nodata":"No Data"
+  }
+}

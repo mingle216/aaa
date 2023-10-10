@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisedu.minos.casp.portal.dao.mapper.AppAppraiseMapper">
+
+    <select id="queryAppAppraiseSummary" resultType="com.wisedu.minos.casp.portal.vo.AppAppraiseSummaryVo">
+       select count(wid) as total ,sum(score)/count(wid) as  avgScore from t_amp_app_appraise where app_id = #{appId}
+    </select>
+
+    <select id="queryAppAppraiseSummaryByPage" resultType="com.wisedu.minos.casp.portal.vo.AppAppraiseSummaryVo">
+select serviceWid,
+total,
+totalScore/case when scoreNum != 0 then scoreNum else 1 end as avgScore from (
+       select app_id as serviceWid,count(wid) as total ,sum(case when is_deleted = '0' then score else 0 end) as totalScore ,sum(case when is_deleted = '0' then 1 else 0 end) as  scoreNum
+       from t_amp_app_appraise
+       where 1= 1
+       <foreach collection="serviceWids" item="serviceWid" separator="," open="and app_id in (" close=")">
+           #{serviceWid}
+       </foreach>
+       group by app_id) servicetable
+    </select>
+
+</mapper>

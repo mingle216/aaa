@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisedu.minos.casp.portal.dao.mapper.ShowProgrammeMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache-ref namespace="com.wisedu.minos.casp.portal.dao.mapper.ShowProgrammeMapper"></cache-ref>
+
+    <select id="queryCardWidByProgrammeWid" resultType="java.lang.String">
+        SELECT pageConfig.card_wid FROM (SELECT page.wid AS pageWid,page.page_name AS pageName
+            FROM t_amp_view_show_programme pro
+            LEFT JOIN t_amp_view_page_info page
+            ON pro.wid = page.programme_id  WHERE pro.wid = #{templateWid}
+        )tmp
+            LEFT JOIN t_amp_view_page_card_config pageConfig
+            ON tmp.pageWid = pageconfig.page_wid WHERE pageconfig.card_id = 'SYS_CARD_CALENDAR'
+            AND pageConfig.is_deleted = '0' AND pageconfig.enabled_flag = '1'
+        ORDER BY create_time ASC
+    </select>
+
+</mapper>

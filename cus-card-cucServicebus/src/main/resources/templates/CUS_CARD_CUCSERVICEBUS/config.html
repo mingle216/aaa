@@ -1,0 +1,516 @@
+<style>
+
+    .card-container-${cardWid}{
+        font-family: 'MicrosoftYaHei', '微软雅黑';
+        width: 324px;
+        height: 716px;
+    }
+    .card-container-${cardWid}-padding{
+        padding: 13px;
+    }
+    .card-container-${cardWid}-left{
+        width: 90px;
+        height: 30px;
+    }
+    .card-container-${cardWid}-right{
+        width: 180px;
+        height: 30px;
+    }
+    .inputNum-${cardWid} {
+        width: 68px;
+        vertical-align: middle;
+        height: 28px;
+        border: 1px solid #d0d0d0;
+        text-align: center;
+        border-radius: 3px;
+    }
+    .inputHeight-${cardWid} {
+        width: 68px;
+        vertical-align: middle;
+        height: 28px;
+        border: 1px solid #d0d0d0;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+    .btn-${cardWid} {
+        display: inline-block;
+        vertical-align: middle;
+        background: #f0f0f0 no-repeat center;
+        border: 1px solid #d0d0d0;
+        width: 24px;
+        height: 24px;
+        border-radius: 2px;
+        box-shadow: 0 1px rgba(100, 100, 100, .1);
+        color: #666;
+        transition: color .2s, background-color .2s;
+    }
+
+    .btn-${cardWid}:active {
+        box-shadow: inset 0 1px rgba(100, 100, 100, .1);
+    }
+
+    .btn-${cardWid}:hover {
+        background-color: #e9e9e9;
+        color: #333;
+    }
+
+    .btn_plus-${cardWid} {
+        background-image: linear-gradient(to top, currentColor, currentColor), linear-gradient(to top, currentColor, currentColor);
+        background-size: 10px 2px, 2px 10px;
+    }
+
+    .btn_minus-${cardWid} {
+        background-image: linear-gradient(to top, currentColor, currentColor);
+        background-size: 10px 2px;
+    }
+    .split-line-${cardWid}{
+        height: 6px;
+        width:100%;
+        border-top: 6px solid #ddd;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .word-style-${cardWid}{
+        font-size: 12px;
+        color:#777777;
+        margin-bottom:10px;
+    }
+    .configCardBtn-${cardWid}{
+        width: 294px;
+        height:42px;
+        text-align: center;
+        background-color: rgba(24, 144, 255, 1);
+        color: white;
+        margin-top: 16px;
+    }
+    .addDynamicLink-${cardWid}{
+        width: 294px;
+        height:42px;
+        text-align: center;
+        background-color: white;
+        color: rgba(24, 144, 255, 1);
+        margin-top: 16px;
+    }
+    .card-height-${cardWid}{
+        width: 300px;
+        clear:both;
+    }
+    .card-height-${cardWid}-left{
+        width:120px;
+    }
+    .card-height-${cardWid}-right{
+        width:300px;
+    }
+    .card-height-${cardWid}-right-item{
+        width:170px;
+        margin-bottom: 2px;
+    }
+    .card-height-${cardWid}-right-item-right{
+        width: 130px;
+        text-align: center;
+    }
+    .card-serviceBus-${cardWid}{
+        width: 300px;
+        clear:both;
+    }
+    .card-serviceBus-${cardWid}-left{
+        width:120px;
+    }
+    .card-serviceBus-${cardWid}-right{
+        width:300px;
+    }
+    .card-serviceBus-${cardWid}-right-item{
+        width:170px;
+        margin-bottom: 2px;
+    }
+    .card-serviceBus-${cardWid}-right-item-right{
+        width: 300px;
+        text-align: center;
+    }
+    .clear-${cardWid}{
+        clear:both;
+    }
+    .card-${cardWid}-hide{
+        display:none;
+    }
+    .checkbox-${cardWid}{
+        margin-top: 8px;
+        width: 90px;
+    }
+    .button-${cardWid}-bottom{
+        border-top: 1px solid #ddd;
+        width:324px;
+        height:75px;
+        text-align: center;
+        position: absolute;
+        bottom:0px;
+    }
+    .button-${cardWid}-center{
+        width:324px;
+        height:75px;
+        text-align: center;
+    }
+    .word-content-${cardWid}{
+        cursor:pointer;
+    }
+    .i-picture-${cardWid}{
+        height: 14px;
+        width: 14px;
+        background-color: rgba(255, 255, 255, 1);
+        display: inline-block;
+        vertical-align: top;
+        box-sizing:border-box;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(153, 153, 153, 1);
+        border-radius: 7px;
+        box-shadow: none;
+        font-family: 'Times-Roman', 'Times';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 12px;
+        color: #999999;
+        margin-top:8px;
+    }
+    .i-picture-${cardWid}-content{
+        display: block;
+        font-family: 'Times-Roman', 'Times';
+        color: #999999;
+        height: 12px;
+        line-height: 12px;
+        text-align: center;
+        cursor:pointer;
+    }
+    .radio-${cardWid} input[type=radio] + label::before {
+        content: "\a0";
+        display: inline-block;
+        vertical-align: 2px;
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid rgba(234, 234, 234, 1);
+        text-indent: 2px;
+        line-height: .35;
+        padding: 3px;
+    }
+    .radio-${cardWid} input[type="radio"]:checked + label::before {
+        background-color: rgba(24, 144, 255, 1);
+        padding: 3px;
+        background-clip: content-box;
+        border: 1px solid rgba(24, 144, 255, 1);
+    }
+    .radio-${cardWid} input[type='radio'] {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+    }
+    .up-height-${cardWid}{
+        width: 12px;
+        height: 12px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(153, 153, 153, 1);
+        border-right:0px;
+        border-bottom: 0px;
+        transform: rotate(45deg);
+    }
+    .down-height-${cardWid}{
+        width: 12px;
+        height: 12px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(153, 153, 153, 1);
+        border-left:0px;
+        border-top: 0px;
+        transform: rotate(45deg);
+    }
+
+    .alert-warning-${cardWid}{
+        position: absolute;
+        width: 324px;
+    }
+
+    .node-checked .check-icon {
+        color: cornflowerblue;
+    }
+
+    .treeview span.indent {
+        margin-left: 20px !important;
+        margin-right: 10px;
+    }
+    .choosed-font-${cardWid} {
+        font-size: 14px !important;
+        color: #333333 !important;
+        font-weight: 400 !important;
+        cursor: pointer;
+    }
+    .word-content-txt-${cardWid} {
+        color: #999999;
+    }
+
+</style>
+
+<div class="card-container-${cardWid}">
+
+    <div class="alert-warning-${cardWid}"> </div>
+
+    <div class="card-container-${cardWid}-padding">
+
+        <div class="card-height-${cardWid}">
+
+
+            <div class="card-height-${cardWid}-left word-style-${cardWid}">卡片高度</div>
+
+            <div class="card-height-${cardWid}-right">
+                <div class="card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid} float-left">
+                    <input type="radio" name="height-${cardWid}" id="height1-${cardWid}" value="1" ${heightFlag1} >
+                    <label for="height1-${cardWid}" class="word-content-${cardWid} word-content-txt-${cardWid}">自适应（无最大限制）</label>
+                </div>
+
+                <div class="card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid} float-left">
+                    <input type="radio" name="height-${cardWid}" id="height2-${cardWid}"  value="2" ${heightFlag2} >
+                    <label for="height2-${cardWid}" class="word-content-${cardWid} word-content-txt-${cardWid}">自适应（有最大限制）</label>
+                </div>
+                <div class="float-right card-height-${cardWid}-right-item-right ${hideClass1}" id="height2-input-${cardWid}">
+                    <input class="inputHeight-${cardWid}" type="number" placeholder="请输入" min="1" value="${height}" onkeyup="value=value.replace(/[^\d]/g,'')"/>
+                    <label>PX</label>
+                </div>
+
+                <div class="float-left card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid}">
+                    <input type="radio" name="height-${cardWid}" id="height3-${cardWid}" value="3" ${heightFlag3} >
+                    <label for="height3-${cardWid}" class="word-content-${cardWid} word-content-txt-${cardWid}">固定高度</label>
+                </div>
+                <div class="float-right card-height-${cardWid}-right-item-right ${hideClass2}" id="height3-input-${cardWid}">
+                    <input class="inputHeight-${cardWid}" type="number" placeholder="请输入" min="1" value="${height}" onkeyup="value=value.replace(/[^\d]/g,'')" />
+                    <label style="margin-left: 5px;">PX</label>
+                </div>
+            </div>
+
+            <div class="card-serviceBus-${cardWid}-left word-style-${cardWid}">选择直通车</div>
+
+            <div class="card-serviceBus-${cardWid}-right">
+<!--                树形下拉框 Start-->
+                <div class="card-serviceBus-${cardWid}-right-item word-content-${cardWid} float-left">
+                    <button id="knowledgeText" class="custom-select card-serviceBus-${cardWid}-right-item-right" onclick="isShowTree()">
+                        请选择
+                    </button>
+                    <div id="tree" style="width: 300px;display: none;">
+                        <div id="knowledgeTree"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="button-${cardWid}-bottom"><button type="button" class="btn btn-primary configCardBtn-${cardWid}">保存</button></div>
+</div>
+
+<script>
+    // 处理卡片高度按钮事件
+    $(".card-height-${cardWid}-right-item").on("click", function() {
+
+        var value = $("input[name=height-${cardWid}]:checked").val();
+
+        if (value == "1") {
+
+            $("#height2-input-${cardWid}").addClass("card-${cardWid}-hide");
+            $("#height3-input-${cardWid}").addClass("card-${cardWid}-hide");
+
+        } else if (value == "2") {
+
+            $("#height2-input-${cardWid}").removeClass("card-${cardWid}-hide");
+            $("#height3-input-${cardWid}").addClass("card-${cardWid}-hide");
+
+        } else if (value == "3") {
+
+            $("#height2-input-${cardWid}").addClass("card-${cardWid}-hide");
+            $("#height3-input-${cardWid}").removeClass("card-${cardWid}-hide");
+
+        }
+        $(".word-content-txt-${cardWid}").removeClass("choosed-font-${cardWid}");
+        $("input[name=height-${cardWid}]:checked").next().addClass("choosed-font-${cardWid}");
+    });
+
+    // 直通车树形选择 JS Start
+
+    var flagShow = false;
+    function isShowTree(){
+        flagShow = !flagShow
+        console.log(flagShow)
+        if( flagShow ){
+            $("#tree").css("display", "block")
+        } else {
+            $("#tree").css("display", "none")
+        }
+    }
+
+    $(function () {
+        $("input[name=height-${cardWid}]:checked").next().addClass("choosed-font-${cardWid}");
+        getTree();
+    })
+
+    //单选储存容器
+    var radioData
+
+    function getTree() {
+        execCardMethod("${cardId}","${cardWid}",null,"queryAllClassifyList",null,function(data){
+            if (200 === data.errcode|| '0'=== data.errcode) {
+                console.log(data)
+                $('#knowledgeTree').treeview({
+                    data: eval('['+data.data+']'),
+                    level: 3,
+                    expand: false,
+                    showCheckbox: true,
+                    // uncheckedIcon: 'iconfont icon-MultipleSelectUnselected',
+                    // expandIcon: 'icon icon-Right',
+                    // checkedIcon: "icon icon-Right", //节点被选中时显示的图标         String
+                    multiSelect: 0,
+                    state: {
+                        expanded: false, //是否展开节点
+                    },
+                    onNodeChecked : function(event, data) {
+                        var checkedList = $('#knowledgeTree').treeview('getChecked').filter(function (item) {
+                                return item.nodeId != data.nodeId;
+                            }
+                        );
+                        if( 0 === checkedList.length ){
+                            $('#knowledgeText').html('')
+                        }
+
+                        //获取选中node的id
+                        console.log(data);
+                        console.log(radioData)
+                        if( undefined === radioData || null === radioData ){
+                            radioData = data
+                        }else{
+                            $('#knowledgeTree').treeview( 'uncheckNode' , [ radioData.nodeId, { silent: true } ]);
+                            removeText(radioData);
+                            radioData = data
+                        }
+
+
+                        var str = $("#knowledgeText").html();
+                        if (str.length > 0) {
+                            $("#knowledgeText").html(str + data.text + ',');
+                        } else {
+                            $("#knowledgeText").html(data.text);
+                        }
+                    },
+                    onNodeUnchecked : function (event, data) {
+                        var checkedList = $('#knowledgeTree').treeview('getChecked').filter(function (item) {
+                                return item.nodeId != data.nodeId;
+                            }
+                        );
+
+                        radioData = undefined
+
+                        if( 0 === checkedList.length ){
+                            $('#knowledgeText').html('请选择')
+                        }
+                        removeText(data);
+                    }
+                });
+                feedBack();
+            }
+        });
+    }
+
+    //uncheck时去除文字
+    function removeText(data) {
+        var str = $("#knowledgeText").html();
+        $("#knowledgeText").html(str.replace(data.text, ""));
+    }
+
+    var findCheckableNodess = function(data) {
+        return $('#knowledgeTree').treeview('findNodes', ['^' + data.id + '$', 'g', 'id']);//新版中的find方法，支持field字段，这里查id，id是唯一的，多么方便啊。
+    };
+
+    var findCheckableNodessById = function(id) {
+        return $('#knowledgeTree').treeview('findNodes', ['^' + id + '$', 'g', 'id']);//新版中的find方法，支持field字段，这里查id，id是唯一的，多么方便啊。
+    };
+
+    function feedBack(){
+        var classifyList = ${classifyList!}
+        console.log(classifyList)
+        if( undefined === classifyList || 0 === classifyList.length ){
+            return
+        }
+        //设置input框的值
+        var str = ""
+        for(var j=0;j<classifyList.length;j++){
+            if (j < classifyList.length-1) {
+                str += classifyList[j].text + ','
+            } else {
+                str += classifyList[j].text
+            }
+        }
+        $("#knowledgeText").html(str);
+
+        var checkableNodes = findCheckableNodess(classifyList[0]);
+        console.log("checkableNodes")
+        console.log(checkableNodes)
+        $('#knowledgeTree').treeview('toggleNodeChecked', [ checkableNodes, { silent: true } ]);
+        radioData = checkableNodes[0]
+    }
+
+    //保存事件
+    $(".configCardBtn-${cardWid}").on("click",function () {
+
+        var param = {};
+
+        // 获取单选框的值
+
+        var heightFlag = $("input[name=height-${cardWid}]:checked").val();
+
+        if (heightFlag == undefined){
+
+            heightFlag = "";
+
+        }
+        // 获取卡片高度
+        var height;
+
+        if (heightFlag=='2' || heightFlag=='3') {
+
+            height = $("input[name=height-${cardWid}]:checked").parent().next().children().val();
+
+            if (height == undefined || height < 1) {
+
+                $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>卡片高度请输入正整数！</span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+
+                return false;
+
+            }
+        }
+
+        //获取选择的直通车分类
+        var classifyList =  $('#knowledgeTree').treeview('getChecked');
+        param["heightFlag"] = heightFlag;
+        param["height"] = height;
+
+        //如果所选分类有父类和子类，则将父类去除
+        if( 1 === classifyList.length && undefined === classifyList[0].parentId ){
+
+        }else{
+            classifyList = classifyList.filter(function (item) {
+               return undefined !== item.parentId
+            })
+        }
+        // classifyList = JSON.stringify(classifyList)
+        console.log("classifyList")
+        console.log(classifyList)
+        param["classifyList"] = classifyList;
+
+        //集合所有参数
+        configCardCallBack("${cardId}","${cardWid}", JSON.stringify(param));
+
+    });
+</script>

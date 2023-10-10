@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="14px" viewBox="0 0 28 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tag/最新</title>
+    <defs>
+        <path d="M4.705,10.425 L4.705,6.085 L7.465,10.425 L9.155,10.425 L9.155,3.575 L7.665,3.575 L7.665,7.925 L4.905,3.575 L3.215,3.575 L3.215,10.425 L4.705,10.425 Z M15.015,10.425 L15.015,9.025 L11.545,9.025 L11.545,7.625 L14.745,7.625 L14.745,6.265 L11.545,6.265 L11.545,4.975 L15.005,4.975 L15.005,3.575 L9.995,3.575 L9.995,10.425 L15.015,10.425 Z M18.885,10.425 L20.065,6.195 L21.265,10.425 L23.115,10.425 L24.785,3.575 L23.245,3.575 L22.155,8.545 L20.795,3.575 L19.425,3.575 L18.055,8.495 L17.005,3.575 L15.375,3.575 L17.045,10.425 L18.885,10.425 Z" id="path-1"></path>
+    </defs>
+    <g id="链接导航/新闻通知公告/轮播图/消息中心/办理统计/个人数据/待办/办理进度/校历" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="新闻通知公告" transform="translate(-1124.000000, -1934.000000)">
+            <g id="编组-7" transform="translate(152.000000, 1761.000000)">
+                <g id="04">
+                    <g id="新闻通知公告单列-仅标题时间备份" transform="translate(0.000000, 64.000000)">
+                        <g id="编组-26" transform="translate(0.000000, 92.000000)">
+                            <g id="tag/最新" transform="translate(972.000000, 17.000000)">
+                                <g stroke-width="1" fill-rule="evenodd" fill="#FF9000" fill-opacity="0.1" id="编组-3" stroke="#FF9000">
+                                    <g stroke-width="0.5">
+                                        <g>
+                                            <rect id="矩形备份-33" x="0.25" y="0.25" width="27.5" height="13.5" rx="2"></rect>
+                                        </g>
+                                    </g>
+                                </g>
+                                <g id="NEW" fill-rule="nonzero">
+                                    <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                                    <use fill="#FF9000" xlink:href="#path-1"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,192 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 0
+    },
+    "value": {
+      "type": 0,
+      "value": 0
+    }
+  },
+  {
+    "label":"业务场景列表",
+    "component":"radio",
+    "key":"sourceList",
+    "defaultValue": 1,
+    "value": 1,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "showFavorite",
+    "label": "收藏功能",
+    "required": 0,
+    "defaultValue": "0",
+    "datas": [
+      {
+        "label": "显示",
+        "value": "1"
+      },
+      {
+        "label": "隐藏",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "label":"任务列表展示信息（最多选4项）",
+    "component":"checkbox",
+    "key":"itemConfigure",
+    "defaultValue": ["time", "dept","author","level"],
+    "value": ["time", "dept","author","level"],
+    "max":4,
+    "datas": [
+      {
+        "label": "所属应用",
+        "value": "source"
+      },
+      {
+        "label": "业务场景",
+        "value": "scene"
+      },
+      {
+        "label": "发起人",
+        "value": "author"
+      },
+      {
+        "label": "发起部门",
+        "value": "dept"
+      },
+      {
+        "label": "紧急程度",
+        "value": "level"
+      },
+      {
+        "label": "任务接收时间",
+        "value": "time"
+      }
+    ]
+  },
+  {
+    "label": "任务列表展示数量",
+    "component": "select",
+    "key": "rows",
+    "datas": [
+      {
+        "label": 1,
+        "value": 1
+      },
+      {
+        "label": 2,
+        "value": 2
+      },
+      {
+        "label": 3,
+        "value": 3
+      },
+      {
+        "label": 4,
+        "value": 4
+      },
+      {
+        "label": 5,
+        "value": 5
+      },
+      {
+        "label": 6,
+        "value": 6
+      },
+      {
+        "label": 7,
+        "value": 7
+      },
+      {
+        "label": 8,
+        "value": 8
+      },
+      {
+        "label": 9,
+        "value": 9
+      },
+      {
+        "label": 10,
+        "value": 10
+      }
+    ],
+    "defaultValue": 6,
+    "value": 6,
+    "min": 1,
+    "max": 1
+  },
+  {
+    "component":"radio",
+    "key":"newsRules",
+    "label": "new标签展示规则",
+    "required": 1,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": 0,
+    "value": null,
+    "datas": [
+      {
+        "label": "近1h内容",
+        "value": 1
+      },
+      {
+        "label": "近3h内容",
+        "value": 3
+      },
+      {
+        "label": "近12h内容",
+        "value": 12
+      },
+      {
+        "label": "近一天内容",
+        "value": 24
+      },
+      {
+        "label": "隐藏new标签",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "label": "自动更新频率",
+    "key": "refreshRate",
+    "component": "inputNumber",
+    "defaultValue": null,
+    "value": null,
+    "placeholder": null,
+    "min": 30,
+    "step": 1,
+    "stepStrictly": 0,
+    "precision": 0,
+    "unit": "秒"
+  },
+  {
+    "component": "input",
+    "key": "todolistWid",
+    "label": "卡片WID:",
+    "isInternational": 1,
+    "required": 1,
+    "placeholder": "请输入",
+    "maxlength": 100,
+    "showLimit": 1,
+    "defaultValue": "21903842819026664",
+    "value": "",
+    "type": "text",
+    "tips": "待办任务列表取值卡片WID"
+  }
+]

@@ -1,0 +1,207 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "newsHeight",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "value": null,
+    "min": 150,
+    "max": 1200
+  }, {
+    "component":"radio",
+    "key":"cardType",
+    "label": "是否OA卡片数据",
+    "required": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "1",
+    "value": null,
+    "datas": [
+      {
+        "label": "非OA卡片数据",
+        "value": "NoOA"
+      },
+      {
+        "label": "个人邮箱",
+        "value": "getListMessages"
+      },
+      {
+        "label": "学校发文(OA)",
+        "value": "getEmailReceiveList"
+      },
+      {
+        "label": "通知公告(OA)",
+        "value": "getUserPimList"
+      }
+    ]
+  },
+  {
+    "component": "newsDisplay",
+    "key": "newsDisplay",
+    "defaultValue": {
+      "type": 0,
+      "dateFormat": 1
+    },
+    "value": null
+  },
+  {
+    "component": "select",
+    "key": "newsColumns",
+    "label": "展示列数",
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": 1
+      },
+      {
+        "label": "2",
+        "value": 2
+      },
+      {
+        "label": "3",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "component": "inputNumber",
+    "key": "newsTotal",
+    "label": "展示总数",
+    "min": 1,
+    "max": 30,
+    "step": 1,
+    "defaultValue": 6,
+    "value": null
+  },
+  {
+    "component":"radio",
+    "key":"newsRules",
+    "label": "new标签展示规则",
+    "required": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "1",
+    "value": null,
+    "datas": [
+      {
+        "label": "展示近24h内容",
+        "value": "1"
+      },
+      {
+        "label": "展示近三天内容",
+        "value": "2"
+      },
+      {
+        "label": "展示近一周内容",
+        "value": "3"
+      },
+      {
+        "label": "隐藏new标签",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"showMore",
+    "label": "查看更多按钮",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "位于列表底部",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"showPage",
+    "label": "是否展示分页",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "位于列表底部",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"newsShowSubscribe",
+    "label": "栏目订阅功能",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"newsDetailJump",
+    "label": "新闻详情跳转方式",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": 0,
+    "value": null,
+    "datas": [
+      {
+        "label": "本地",
+        "value": 1
+      },
+      {
+        "label": "数据源",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "newsContent",
+    "key": "newsContent",
+    "label": "栏目内容",
+    "required": 1,
+    "fixedMax": 3,
+    "defaultValue": [],
+    "value": [],
+    "datas": []
+  }
+
+]

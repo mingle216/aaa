@@ -1,0 +1,535 @@
+<style>
+   .card-container-${cardWid}{
+      font-family: 'MicrosoftYaHei', '微软雅黑';
+      width: 324px;
+      /*height: 716px;*/
+   }
+   .card-container-${cardWid}-padding{
+      padding: 13px;
+   }
+   .card-container-${cardWid}-left{
+      width: 90px;
+      height: 30px;
+   }
+   .card-container-${cardWid}-right{
+      width: 180px;
+      height: 30px;
+   }
+   .inputNum-${cardWid} {
+      width: 300px;
+      vertical-align: middle;
+      height: 28px;
+      border: 1px solid #d0d0d0;
+      border-radius: 3px;
+   }
+   .inputHeight-${cardWid} {
+      width: 68px;
+      vertical-align: middle;
+      height: 28px;
+      border: 1px solid #d0d0d0;
+      text-align: center;
+      border-radius: 3px;
+   }
+
+   .btn-${cardWid} {
+      display: inline-block;
+      vertical-align: middle;
+      background: #f0f0f0 no-repeat center;
+      border: 1px solid #d0d0d0;
+      width: 24px;
+      height: 24px;
+      border-radius: 2px;
+      box-shadow: 0 1px rgba(100, 100, 100, .1);
+      color: #666;
+      transition: color .2s, background-color .2s;
+   }
+
+   .btn-${cardWid}:active {
+      box-shadow: inset 0 1px rgba(100, 100, 100, .1);
+   }
+
+   .btn-${cardWid}:hover {
+      background-color: #e9e9e9;
+      color: #333;
+   }
+
+   .btn_plus-${cardWid} {
+      background-image: linear-gradient(to top, currentColor, currentColor), linear-gradient(to top, currentColor, currentColor);
+      background-size: 10px 2px, 2px 10px;
+   }
+
+   .btn_minus-${cardWid} {
+      background-image: linear-gradient(to top, currentColor, currentColor);
+      background-size: 10px 2px;
+   }
+   .split-line-${cardWid}{
+      height: 1px;
+      width:100%;
+      border-top: 1px solid #ddd;
+      margin-top: 88px;
+      margin-bottom: 5px;
+   }
+   .word-style-${cardWid}{
+      font-size: 12px;
+      color:#777777;
+      margin-bottom:10px;
+   }
+   .configCardBtn${cardWid}{
+      width: 294px;
+      height:42px;
+      text-align: center;
+      background-color: rgba(24, 144, 255, 1);
+      color: white;
+      margin-top: 16px;
+   }
+   .card-height-${cardWid}{
+      width: 300px;
+      clear:both;
+   }
+   .card-height-${cardWid}-left{
+      width:120px;
+   }
+   .card-height-${cardWid}-right{
+      width:300px;
+   }
+   .card-height-${cardWid}-right-item{
+      width:170px;
+      margin-bottom: 2px;
+   }
+   .clear-${cardWid}{
+      clear:both;
+   }
+   .card-${cardWid}-hide{
+      display:none;
+   }
+   .checkbox-${cardWid}{
+      margin-top: 8px;
+      width: 90px;
+   }
+   .button-${cardWid}-bottom{
+      border-top: 1px solid #ddd;
+      width:324px;
+      height:75px;
+      text-align: center;
+      position: absolute;
+      bottom:0px;
+   }
+   .word-content-${cardWid}{
+      cursor:pointer;
+   }
+   .i-picture-${cardWid}{
+      height: 14px;
+      width: 14px;
+      background-color: rgba(255, 255, 255, 1);
+      display: inline-block;
+      vertical-align: top;
+      box-sizing:border-box;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(153, 153, 153, 1);
+      border-radius: 7px;
+      box-shadow: none;
+      font-family: 'Times-Roman', 'Times';
+      font-weight: 400;
+      font-style: normal;
+      font-size: 12px;
+      color: #999999;
+      margin-top:8px;
+   }
+   .i-picture-${cardWid}-content{
+      display: block;
+      font-family: 'Times-Roman', 'Times';
+      color: #999999;
+      height: 12px;
+      line-height: 12px;
+      text-align: center;
+      cursor:pointer;
+   }
+   .radio-${cardWid} input[type=radio] + label::before {
+      content: "\a0";
+      display: inline-block;
+      vertical-align: 2px;
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+      border-radius: 50%;
+      background-color: white;
+      border: 1px solid rgba(234, 234, 234, 1);
+      text-indent: 2px;
+      line-height: .35;
+      padding: 3px;
+   }
+   .radio-${cardWid} input[type="radio"]:checked + label::before {
+      background-color: rgba(24, 144, 255, 1);
+      padding: 3px;
+      background-clip: content-box;
+      border: 1px solid rgba(24, 144, 255, 1);
+   }
+   .radio-${cardWid} input[type='radio'] {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+   }
+   .up-height-${cardWid}{
+      width: 12px;
+      height: 12px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(153, 153, 153, 1);
+      border-right:0px;
+      border-bottom: 0px;
+      transform: rotate(45deg);
+   }
+   .down-height-${cardWid}{
+      width: 12px;
+      height: 12px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(153, 153, 153, 1);
+      border-left:0px;
+      border-top: 0px;
+      transform: rotate(45deg);
+   }
+   .card-height-${cardWid}-right-item-right{
+      width: 130px;
+      text-align: center;
+   }
+
+   .alert-warning-${cardWid}{
+      position: absolute;
+      width: 324px;
+   }
+
+   #add-btn-${cardWid}:hover > #add-icon-${cardWid} {
+      color: white !important;
+   }
+
+   /*查看全部样式*/
+   .card-allService-${cardWid}-right-item {
+      width: 95px;
+      margin-bottom: 2px;
+   }
+
+   .card-allService-${cardWid}-right {
+      width: 300px;
+      display: flex;
+   }
+
+   /*灰色遮罩样式*/
+   .app-item-img-lock-${cardWid} {
+      content: "";
+      border-radius: 8px;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(78, 78, 78, 0.5);
+   }
+
+   /*模态框灰色遮罩*/
+   .card-container-${cardWid} .modal{
+      background-color: rgba(0,0,0,0.5);
+   }
+
+   .choosed-font-${cardWid}{
+      font-size: 14px !important;
+      color: #333333 !important;
+      font-weight: 400 !important;
+      cursor: pointer;
+   }
+   .word-content-${cardWid}{
+      color: #999999;
+   }
+
+</style>
+
+<div class="card-container-${cardWid}">
+   <div class="alert-warning-${cardWid}"> </div>
+   <div class="card-container-${cardWid}-padding">
+      <div class="card-height-${cardWid}">
+         <div class="card-height-${cardWid}-left word-style-${cardWid}">卡片高度</div>
+
+         <div class="card-height-${cardWid}-right">
+            <div class="card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid} float-left">
+               <input type="radio" name="height-${cardWid}" id="height1-${cardWid}" value="1" ${heightFlag1} >
+               <% if(heightFlag1=="checked"){ %>
+               <label for="height1-${cardWid}" class="word-content-${cardWid} choosed-font-${cardWid}">自适应（无最大限制）</label>
+               <% }else{%>
+               <label for="height1-${cardWid}" class="word-content-${cardWid}">自适应（无最大限制）</label>
+               <% } %>
+            </div>
+
+            <div class="card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid} float-left">
+               <input type="radio" name="height-${cardWid}" id="height2-${cardWid}"  value="2" ${heightFlag2} >
+               <% if(heightFlag2=="checked"){ %>
+               <label for="height2-${cardWid}" class="word-content-${cardWid} choosed-font-${cardWid}">自适应（有最大限制）</label>
+               <% }else{%>
+               <label for="height2-${cardWid}" class="word-content-${cardWid}">自适应（有最大限制）</label>
+               <% } %>
+            </div>
+            <div class="float-right card-height-${cardWid}-right-item-right ${hideClass1}">
+               <input class="inputHeight-${cardWid}" id="limited-${cardWid}" type="number" placeholder="请输入" min="1" value="${height}"  onkeyup="value=value.replace(/[^\d]/g,'')" />
+               <label>PX</label>
+            </div>
+
+            <div class="float-left card-height-${cardWid}-right-item word-content-${cardWid} radio-${cardWid}">
+               <input type="radio" name="height-${cardWid}" id="height3-${cardWid}" value="3" ${heightFlag3} >
+               <% if(heightFlag3=="checked"){ %>
+               <label for="height3-${cardWid}" class="word-content-${cardWid} choosed-font-${cardWid}">固定高度</label>
+               <% }else{%>
+               <label for="height3-${cardWid}" class="word-content-${cardWid}">固定高度</label>
+               <% } %>
+            </div>
+            <div class="float-right card-height-${cardWid}-right-item-right ${hideClass2}">
+               <input class="inputHeight-${cardWid}" id="fixed-${cardWid}" type="number" placeholder="请输入" min="1" value="${height}" onkeyup="value=value.replace(/[^\d]/g,'')" />
+               <label style="margin-left: 5px;">PX</label>
+            </div>
+         </div>
+
+      </div>
+   </div>
+   <div class="clear-${cardWid}"></div>
+
+   <!--
+      查看全部服务Start
+      0 不显示按钮
+      1 显示按钮
+   -->
+   <div class="card-container-${cardWid}-padding" style="padding: 0px 13px">
+      <div class="card-height-${cardWid}-left word-style-${cardWid}">查看全部服务</div>
+      <div class="card-allService-${cardWid}-right">
+         <div class="card-allService-${cardWid}-right-item word-content-${cardWid}">
+            <input type="radio" name="allService-${cardWid}" id="allService1-${cardWid}" value="1"  >
+            <label for="allService1-${cardWid}" class="choosed-font-${cardWid}">显示按钮</label>
+         </div>
+
+         <div class="card-allService-${cardWid}-right-item word-content-${cardWid}">
+            <input type="radio" name="allService-${cardWid}" id="allService2-${cardWid}"  value="0"  >
+            <label for="allService2-${cardWid}" class="choosed-font-${cardWid}">不显示按钮</label>
+         </div>
+      </div>
+   </div>
+   <!-- 查看全部服务End -->
+
+<!--   配置全部服务跳转地址 Start-->
+   <div class="card-container-${cardWid}-padding">
+      <div class="card-height-${cardWid}-left word-style-${cardWid}">全部服务跳转地址</div>
+      <input class="inputNum-${cardWid}" id="num-${cardWid}" value="${allServiceUrl!,xss}" placeholder="请输入" />
+   </div>
+<!--   配置全部服务跳转地址 End-->
+
+   <div style="height: 6px;background: #d0d0d0"></div>
+
+   <!--   所选服务展示区域-->
+   <div style="width: 100%;text-align: center;margin-top: 5px;margin-bottom: 5px;">
+      <div id="carouselConfigList-${cardWid}" style="  margin-top: 15px; ">
+         <% if(null != carouselList!){
+         for(item in carouselList){
+         include("item.html",{item:item,cardWid:cardWid,cardId:cardId}){}
+         }}  %>
+
+      </div>
+   </div>
+   <!-- 添加推荐服务按钮 -->
+   <% if(sum!0 < 6) {%>
+   <div style="width: 100%;text-align: center;margin-top: 5px;margin-bottom: 5px;"
+        id="addCarouselBtn-${cardWid}">
+
+      <div id="serveiceList-${cardWid}"></div>
+      <button id="add-btn-${cardWid}" type="button" class="btn btn-outline-primary"
+              onclick="gotoUpload${cardWid}()"
+              style="width: 98%;">
+         添加服务
+      </button>
+   </div>
+   <%}%>
+
+   <div class="button-${cardWid}-bottom">
+      <button type="button" class="btn btn-primary configCardBtn${cardWid}">保存</button>
+   </div>
+
+   <!-- 上传Modal -->
+   <%  include("chooseService.html",{cardWid:cardWid,cardId:cardId}){}; %>
+</div>
+
+<!-- confirm start -->
+<div class="modal fade" id="confirm-close-${cardWid}" data-backdrop="static" data-keyboard="false" tabindex="999" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+         <div class="modal-header alert-warning" style="border-bottom: 0;">
+            <h5 class="modal-title " id="staticBackdropLabel">提示</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div style="display: flex;align-content: center">
+            <span class="iconfont icon-Warning" style="color: orange;margin-left: 26px;font-size: 25px;"></span>
+            <h6 style="margin-left: 12px;margin-top: 10px;font-size: 15px;">确认取消选择服务？</h6>
+         </div>
+         <div class="modal-footer alert-warning" style="border-top: 0;">
+            <button type="button" class="btn btn-light" onclick="cancelModal${cardWid}()">取消</button>
+            <button type="button" class="btn btn-primary"  onclick="cancelUpload${cardWid}()">确认</button>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- confirm end -->
+
+<script type="text/javascript">
+   $(".i-picture-${cardWid}").mouseenter(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+   });
+
+   $(document).ready(function() {
+      // getAutoScroll_${cardWid}();
+      $("input[name='height-${cardWid}']").off('change').on('change', function (event) {
+         var value = $(this).val();
+         if(value == '1'){
+            $(this).parent().next().next().addClass("card-${cardWid}-hide");
+            $(this).parent().next().next().next().next().addClass("card-${cardWid}-hide");
+            $('[for="height1-${cardWid}"]').addClass('choosed-font-${cardWid}');
+            $('[for="height2-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+            $('[for="height3-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+         }else if (value == '2') {
+            $(this).parent().next().removeClass("card-${cardWid}-hide");
+            $(this).parent().next().next().next().addClass("card-${cardWid}-hide");
+            $('[for="height2-${cardWid}"]').addClass('choosed-font-${cardWid}');
+            $('[for="height1-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+            $('[for="height3-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+         }else if (value == '3') {
+            $(this).parent().next().removeClass("card-${cardWid}-hide");
+            $(this).parent().next().prev().prev().addClass("card-${cardWid}-hide");
+            $('[for="height3-${cardWid}"]').addClass('choosed-font-${cardWid}');
+            $('[for="height2-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+            $('[for="height1-${cardWid}"]').removeClass('choosed-font-${cardWid}');
+         }
+      });
+
+      if( 0 == ${isShowAllService!}){
+         $("#allService2-${cardWid}").attr('checked', 'true');
+      } else {
+         $("#allService1-${cardWid}").attr('checked', 'true');
+      }
+
+      var serviceListA = ${appInfoBizList!}
+      console.log(serviceListA);
+      if(undefined !== serviceListA){
+         shuttleBoxData.serviceList = serviceListA.slice(0)
+         operation.renderServiceList()
+      }
+
+      $('#confirm-close-${cardWid}').on("hidden.bs.modal",function(){
+         $(document.body).addClass("modal-open");
+      });
+
+   });
+   //保存事件
+   $(".configCardBtn${cardWid}").on("click",function () {
+
+      var appInfoBizList = []
+      var serviceList = shuttleBoxData.serviceList.slice(0)
+      $('#serveiceList-${cardWid}').find('.app-row-${cardWid}').each(function (index,itemobj) {
+         var inde = serviceList.findIndex(function (item) {
+            item.serviceName=filterXSS(item.serviceName);
+            return item.serviceWid === $(itemobj).attr('app-id') })
+         appInfoBizList.push(serviceList[inde])
+         serviceList.splice(inde,1)
+      })
+
+      //获取卡片高度
+      var height=$('.inputHeight-${cardWid}').val();
+
+      var heightFlag=$("input[name=height-${cardWid}]:checked").val();
+
+      if(heightFlag=='2'||heightFlag=='3'){
+         height=$("input[name=height-${cardWid}]:checked").parent().next().children().val();
+         if(height== undefined||height<1){
+            $(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+                    "        <span>卡片高度请输入正整数！</span>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+                    "            <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "    </div>");
+            return;
+         }
+      }
+
+      if (heightFlag== undefined){
+         heightFlag="";
+      }else if( heightFlag=="2"){
+         height = $('#limited-${cardWid}').val();
+      }else if(heightFlag=="3"){
+         height = $('#fixed-${cardWid}').val();
+      }
+
+      //获取全部服务跳转地址
+      var allServiceUrl=filterXSS($("#num-${cardWid}").val());
+
+      //获取是否展示全部服务
+      var isShowAllService = $("input[name='allService-${cardWid}']:checked").val();
+
+      var param={};
+      param["height"] = height;
+      param["heightFlag"] = heightFlag;
+      param["allServiceUrl"] = allServiceUrl;
+      param["isShowAllService"] = isShowAllService;
+
+      param["appInfoBizList"] = appInfoBizList;
+      //集合所有参数
+      configCardCallBack("${cardId}","${cardWid}", JSON.stringify(param));
+   });
+
+
+   /* 打开添加弹窗 */
+   function gotoUpload${cardWid}(id) {
+      $("#upload-modal-${cardWid}").modal("show");
+      $('#tag-target-${cardWid}').attr('data-id',id)
+      //点击时给配置容器添加灰色遮罩
+      // $('.card-container-${cardWid}').addClass('app-item-img-lock-${cardWid}')
+      shuttleBoxData.checkedList = shuttleBoxData.serviceList.slice(0)
+      operation.renderCheckedList()
+      shuttleBoxData.currentList = operation.contrast(shuttleBoxData.currentList)
+      operation.renderCurrentList()
+      operation.changeClass()
+      operation.changeSelectedValue()
+
+   }
+
+   function cancelUpload${cardWid}(){
+      $("#confirm-close-${cardWid}").modal("hide");
+      $("#upload-modal-${cardWid}").modal("hide");
+      var el = $("body").attr("class")
+      if( undefined !== el ){
+         $("body").removeClass("modal-open");
+      }
+   }
+
+   function cancelModal${cardWid}(){
+      $("#confirm-close-${cardWid}").modal("hide");
+   }
+
+   var el = document.getElementById('serveiceList-${cardWid}');
+
+   //常用
+   new Sortable(el, {
+      draggable: ".app-row-${cardWid}",
+      handle: ".dragBtn-${cardWid}",  //能拖拽的位置
+      animation: 150,
+      ghostClass: 'blue-background-class',
+   });
+
+   function getAutoScroll_${cardWid}(){
+      $(".card-container-SYS_CARD_RECOMMENDAPP").niceScroll({
+         cursorcolor: "#d8d8d8",
+         autohidemode: false,
+         railpadding: { top: 0, right: 2, left: 0, bottom: 0 },
+         cursorborder: "0"
+      });
+      //刷新滚动条
+      /* 定时器：页面大小改变后能及时改变滚动条 */
+      setInterval(function () {
+         $("#addCarouselBtn-${cardWid}").getNiceScroll().resize();
+      },100);
+   }
+</script>

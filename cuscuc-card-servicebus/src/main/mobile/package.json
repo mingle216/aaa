@@ -1,0 +1,52 @@
+{
+  "name": "card-messageCenter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "serve -l 5003 ./dist",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "dev:shell": "cross-env NODE_ENV=development RUN_MODE=shell vue-cli-service serve",
+    "serve:local": "concurrently 'npm:build' 'npm:serve'"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "less": "^3.12.2",
+    "less-loader": "^7.1.0",
+    "postcss-pxtorem": "5.x",
+    "terser-webpack-plugin": "^4",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.1.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

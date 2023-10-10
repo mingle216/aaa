@@ -1,0 +1,591 @@
+<style>
+    #upload-modal-${cardWid} .avatar-preview img {
+        width: 100% !important;
+    }
+
+    .preview-md-${cardWid}{
+        width: 150px !important;
+        height: 50px !important;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+    .preview-md-${cardWid} > img {
+        /* width: 100% !important;
+         height: auto !important;*/
+    }
+
+    .avatar-wrapper-${cardWid}{
+        width: 570px;
+        height: 300px;
+
+    }
+
+    #upload-modal-${cardWid} .cropper-container{
+        width: 570px !important;
+        height: 300px !important;
+    }
+
+    .row1 {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .pop-right-${cardWid} {
+        border: 1px solid rgba(0,0,0,.2);
+        width: 360px;
+        height: 510px;
+        margin-left: 9px;
+        margin-right: 25px;
+        border-radius: .3rem;
+    }
+
+    .pop-left-${cardWid} {
+        border: 1px solid rgba(0,0,0,.2);
+        width: 360px;
+        height: 510px;
+        margin-left: 25px;
+        margin-right: 9px;
+        border-radius: .3rem;
+    }
+
+    .top {
+        width: 100%;
+        height: 46px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        border-bottom:1px solid rgba(0,0,0,.2);
+    }
+
+    .app-row-${cardWid} {
+        width: 93%;
+        height: 42px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-around;
+        margin: 0px 12px;
+        border-bottom:1px solid rgba(0,0,0,.2);
+        align-items: center;
+    }
+    .app-row-${cardWid} > .app-row-icon-${cardWid} {
+        border-bottom:1px solid rgba(0,0,0,.2);
+        width: 26px;
+        height: 26px;
+        border-radius: .3rem;
+    }
+    .app-row-${cardWid}>.app-row-name-${cardWid}{
+        margin: 0px;
+        width: 240px;
+        text-overflow: ellipsis;
+        padding: 0 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+    }
+    .app-content-${cardWid} {
+        width: 100%;
+    }
+
+    .empty-${cardWid}{
+        background-color: white;
+        border: none;
+        margin: 0px;
+        padding: 0px;
+        outline: none;
+        opacity: .5;
+    }
+    .empty-${cardWid}:focus{
+        outline: none;
+    }
+    .empty-${cardWid}.active{
+        opacity: 1;
+    }
+    /*.button-${cardWid}{*/
+    /*    opacity: .5;*/
+    /*}*/
+    .button-${cardWid}.active{
+        opacity: 1;
+    }
+    .noData-${cardWid}{
+        text-align: center;
+        height: 100px;
+        margin-top: 165px;
+    }
+    .noData-${cardWid}>img{
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+    .noData-${cardWid}::after{
+        content:"请至少添加一个要选择的服务";
+        color: #666;
+    }
+
+    .app-pagination-${cardWid}{
+        position: relative;
+        width: 358px;
+        height: 44px;
+    }
+
+    .app-recommend-button-close-${cardWid}:focus{
+        outline: 5px auto white;
+    }
+
+    /*覆盖bootstrap弹出框样式*/
+    .alert-warning {
+        background-color: white;
+    }
+</style>
+<div class="modal fade" id="upload-modal-${cardWid}"  data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="upload-modal-${cardWid}" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">添加服务</h5>
+                <button type="button" class="close app-recommend-button-close-${cardWid}" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body row1">
+                <div class="pop-left-${cardWid}">
+                    <div class="top">
+                        <div class="" style="width: 45%;line-height: 33px;padding-left: 15px;">
+                            <span>全部服务</span>
+                        </div>
+                        <div class="" style="width: 55%;padding-right: 3px">
+                            <div class="input-group">
+                                <input type="text" id="searchInput${cardWid}" class="form-control" placeholder="请输入服务名称" aria-label="Recipient's username" autocomplete="off" aria-describedby="basic-addon2" maxlength="100" style="border-right: none;">
+                                <div class="input-group-append">
+                                    <span id="search-btn-${cardWid}" class="input-group-text iconfont icon-search" id="basic-addon2" style="width: 40px;background-color: white;cursor:pointer;font-size: 14px;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--展示服务-->
+                    <div style="height: 420px" class="app-context-${cardWid}" id="app-context-${cardWid}" >
+
+                    </div>
+                    <!-- 分页组件 -->
+                    <div class="app-pagination-${cardWid}">
+                        <div class="my-page"></div>
+                    </div>
+                </div>
+                <!-- 右边的框 -->
+                <div class="pop-right-${cardWid}" >
+                    <div class="top" style="padding:0px 15px">
+                        <span id="alread">已选0/10</span>
+                        <button class='empty-${cardWid}' style="margin-left:auto;">清空</button>
+                    </div>
+                    <div class="app-selected-context-${cardWid}" id="app-selected-context-${cardWid}">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" type="button" class="btn btn-light" >取消</button>
+                <button type="button" class="btn btn-primary button-${cardWid}" onclick="saveUpload${cardWid}()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--分页插件-->
+<script>
+    (function ($,execCardMethod) {
+        //复用的类名
+        var domName = {
+            app:'.app-row-${cardWid}',
+            appSelected:'#app-selected-context-${cardWid}',
+            appContext:'#app-context-${cardWid}'
+        };
+        //data
+        var shuttleBoxData = {
+            page:1,
+            pageSize:10,
+            appList:[],//数据源
+            checkedList:[],//已选中数据
+            currentList:[],//当前页数据
+            serviceList:[],//服务列表
+            getCurrentList:function () {//获取缓存
+                var _this = this;
+                this.appList.some(function (item) {
+                    if(item.page === _this.page){
+                        _this.currentList = item;
+                        return true
+                    }
+                })
+            },
+
+        }
+        //dom模板
+        var templateList = {
+            appTemplate:function (data) {
+                var iconPath;
+                if(data.iconLink){
+                    iconPath = data.iconLink;
+                } else {
+                    iconPath = data.mobileIconLink
+                }
+                return '<div class="app-row-${cardWid}"  app-id=' + data.serviceWid +'>'+
+                    (data.checked?'<input type="checkbox" checked>':'<input type="checkbox">')+
+                    '<div class="app-row-icon-${cardWid}">' +
+                    '<img src="'+iconPath+'" onerror="imgerrorfun_${cardWid}();" width="26px" height="26px"/>'+
+                    '</div>\n'+
+                    '<div class="app-row-name-${cardWid}" data-toggle="tooltip" data-placement="top" title="'+filterXSS(data.serviceName)+'" >' + filterXSS(data.serviceName) +
+                    '</div>'+
+                    '</div>'
+            },
+            checkedTemplate:function (data) {
+                var iconPath;
+                if(data.iconLink){
+                    iconPath = data.iconLink;
+                } else {
+                    iconPath = data.mobileIconLink
+                }
+                return '<div class="app-row-${cardWid}"  app-id=' + data.serviceWid+'>'+
+                    '<div class="app-row-icon-${cardWid}">'+
+                    '<img src="'+iconPath+'" onerror="imgerrorfun_${cardWid}();" width="26px" height="26px"/>'+
+                    '</div>'+
+                    '<div class="app-row-name-${cardWid}" data-toggle="tooltip" data-placement="top" title="'+filterXSS(data.serviceName)+'">'+filterXSS(data.serviceName) +
+                    '</div>'+
+                    // '<button>删除</button>'+
+                    '<span id="button" class="iconfont icon-delete" style="font-size: 16px;color: red"></span>'+
+                    '</div>'
+            },
+            serviceTemplate:function(data){
+                var iconPath;
+                if(data.iconLink){
+                    iconPath = data.iconLink;
+                } else {
+                    iconPath = data.mobileIconLink
+                }
+                return '<div class="app-row-${cardWid}"  app-id=' + data.serviceWid+'>'+
+                    '<div class="app-row-icon-${cardWid}">'+
+                    '<img src="'+iconPath+'" onerror="imgerrorfun_${cardWid}();" width="26px" height="26px"/>'+
+                    '</div>'+
+                    '<div class="app-row-name-${cardWid}" data-toggle="tooltip" data-placement="top" title="'+filterXSS(data.serviceName)+'">'+filterXSS(data.serviceName) +
+                    '</div>'+
+                    '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list pull-right icon-color-${cardWid} dragBtn-${cardWid}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\n' +
+                    '<path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>\n' +
+                    '</svg>\n' +
+                    '&nbsp;\n' +
+                    '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill pull-right icon-color-${cardWid} deleteLink-${cardWid}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\n' +
+                    '<path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>\n' +
+                    '</svg>'+
+                    '</div>'
+            },
+            noData:'<div class="noData-${cardWid}"><img src="${ctxInternalPath}/SYS_CARD_RECOMMENDAPP/images/nodata.png" /></div>'
+
+        }
+        //逻辑操作
+        var operation = {
+            add:function(data) {//选中添加
+                console.log(data)
+                //判断选择是否超过10个
+                // if(10 < shuttleBoxData.checkedList.length){
+                //     //置灰其他复选框
+                //
+                //     return
+                // }
+                shuttleBoxData.checkedList.push(data)
+                this.changeClass()
+                this.changeSelectedValue()
+                this.changeSelected({
+                    type:'add',
+                    data:data
+                })
+            },
+            deleteData:function (appId) { // 删除选中
+                console.log(appId)
+                var index = shuttleBoxData.checkedList.findIndex(function (item) {
+                    return item.serviceWid == appId
+                })
+                var appListIndex = shuttleBoxData.currentList.findIndex(function (item) {
+                    return item.serviceWid == appId
+                })
+                shuttleBoxData.appList.some(function (item) {
+                    return item.some(function (ite) {
+                        if(ite.serviceWid == appId){
+                            ite.checked = false
+                            return true
+                        }
+                    })
+                })
+                shuttleBoxData.checkedList.splice(index,1)
+                if(appId==='all' || !shuttleBoxData.checkedList.length){
+                    shuttleBoxData.appList.forEach(function (item) {
+                        item.forEach(function (ite) {
+                            ite.checked = false
+                        })
+                    })
+                    shuttleBoxData.checkedList.length = 0
+                    this.changeChecked()
+                    this.changeSelected({
+                        type:'delete',
+                    })
+                }else{
+                    this.changeChecked(appListIndex)
+                    this.changeSelected({
+                        type:'delete',
+                        index:index
+                    })
+                }
+                this.changeSelectedValue()
+                this.changeClass()
+            },
+            //删除服务
+            deleteServeice:function(appId){
+                var index = shuttleBoxData.serviceList.findIndex(function (item) {
+                    return item.serviceWid == appId
+                })
+                shuttleBoxData.serviceList.splice(index,1)
+            },
+            //切换类名
+            changeClass:function () {
+                if(shuttleBoxData.checkedList.length){
+                    $('.empty-${cardWid}').addClass('active')
+                    $('.button-${cardWid}').addClass('active')
+                    return
+                }
+                $('.empty-${cardWid}').removeClass('active')
+                // $('.button-${cardWid}').removeClass('active')
+                $(domName.appSelected).html(templateList.noData)
+            },
+            //对比
+            contrast:function(list){
+                list.forEach(function (x) {
+                    x.checked = shuttleBoxData.checkedList.some(function (y) {
+                        return y.serviceWid === x.serviceWid
+                    })
+                })
+            },
+            //更改已选value
+            changeSelectedValue:function () {
+                $('#alread').html('已选'+shuttleBoxData.checkedList.length+'/10')
+            },
+            //更新checkbox
+            changeChecked:function (index) {
+                if(index || index === 0){
+                    $(domName.appContext+'>'+domName.app+':eq('+index+')>input[type="checkbox"]').prop("checked",function(){
+                        return false;
+                    });
+                    return
+                }
+                $(domName.appContext).find(domName.app+'>input[type="checkbox"]').prop("checked",function(){
+                    return false;
+                });
+            },
+            //选中数据dom
+            changeSelected:function (obj) {
+                if(obj.type==='add'){
+                    if(shuttleBoxData.checkedList.length==1){
+                        return $(domName.appSelected).html('').append(templateList.checkedTemplate(obj.data))
+                    }
+                    $(domName.appSelected).append(templateList.checkedTemplate(obj.data))
+                }else{
+                    if(obj.index || obj.index===0){
+                        $(domName.appSelected+'>'+domName.app+':eq('+obj.index+')').remove()
+                        return
+                    }
+                    $(domName.appSelected).html('').html(templateList.noData)
+                }
+            },
+
+            renderServiceList:function () {
+                var app = ''
+                shuttleBoxData.serviceList.forEach(function (item) {
+                    app+=templateList.serviceTemplate(item)
+                })
+                $('#serveiceList-${cardWid}').html('').append(app)
+            },
+            renderCheckedList:function () {
+                var app = ''
+                shuttleBoxData.checkedList.forEach(function (item) {
+                    app+=templateList.checkedTemplate(item)
+                })
+                $(domName.appSelected).html('').append(app)
+            },
+            renderCurrentList:function () {
+                shuttleBoxData.getCurrentList()
+                var app = ''
+                if(undefined !== shuttleBoxData.currentList ){
+                    shuttleBoxData.currentList.forEach(function (item) {
+                        app+=templateList.appTemplate(item)
+                    })
+                }
+                $(domName.appContext).html('').append(app)
+            }
+        }
+        //事件
+        $(document).ready(function(){
+            //点击选中事件
+            $(domName.appContext).on('click','input[type="checkbox"]',function(){
+                if(shuttleBoxData.checkedList.length >= 10){
+                    if( this.checked ){     //取消选择
+                        popupTips_${cardWid}("只能选择10个服务!",'40%')
+                        return false
+                    }
+                }
+                var appId = $(this).parent().attr('app-id')
+                var _this = this;
+                shuttleBoxData.currentList.some(function (item) {
+
+                    if(item.serviceWid == appId){
+                        item.checked = _this.checked
+                        _this.checked?operation.add(item):operation.deleteData(appId)
+                        return true
+                    }
+
+                })
+            });
+            //清空
+            $('.empty-${cardWid}').click(function () {
+                operation.deleteData('all')
+            })
+            //删除
+            $(domName.appSelected).on('click','button',function(){
+                operation.deleteData($(this).parent().attr('app-id'))
+            });
+            $(domName.appSelected).on('click','#button',function(){
+                operation.deleteData($(this).parent().attr('app-id'))
+            });
+            //删除服务
+            $('#serveiceList-${cardWid}').on('click','.deleteLink-${cardWid}',function(){
+                operation.deleteServeice($(this).parent().attr('app-id'))
+                $(this).parent().remove()
+            });
+        })
+
+
+        //接口渲染
+        var rendering = function (callback) {
+            var searchKey = filterXSS($("#searchInput${cardWid}").val().trim());
+            if(undefined != searchKey || searchKey != null || searchKey != ""){
+                shuttleBoxData["searchKey"] = searchKey  ;
+            }
+            execCardMethod('${cardId}','${cardWid}',null,'queryAllApp',{pageNum:shuttleBoxData.page,pageSize:shuttleBoxData.pageSize,searchKey:shuttleBoxData.searchKey},function(data){
+                var result = data.data;
+                console.log(result);
+                if("0" === result.errcode){
+                    var list = data.data.data.slice(0);
+                    list.page = shuttleBoxData.page
+                    operation.contrast(list);
+                    shuttleBoxData.appList=[];
+                    shuttleBoxData.appList.push(list);
+                    operation.renderCurrentList()
+                    callback && callback(result)
+                }
+            })
+        };
+        $('#search-btn-${cardWid}').on('click',function(){
+            rendering(function (result) {
+                operation.changeClass()
+                //分页
+                var pageCount = Math.ceil(result.total / shuttleBoxData.pageSize); //总页数
+                if( undefined === pageCount || 0 === pageCount ){
+                    pageCount = 1
+                }
+                myPageInit({
+                    pages: pageCount,
+                    currentPage: 1,
+                    element: '.my-page',
+                    callback: function(page) {
+                        console.log("当前页:", page);
+                        shuttleBoxData.page = page
+                        var list = '';
+                        shuttleBoxData.appList.some(function (item,index) {
+                            if(item.page === page){
+                                operation.contrast(item);
+                                operation.renderCurrentList()
+                                return true
+                            }
+                        }) || rendering()
+                    }
+                });
+            });
+        });
+        //初始化
+        $(function () {
+            rendering(function (result) {
+                operation.changeClass()
+                //分页
+                var pageCount = Math.ceil(result.total / shuttleBoxData.pageSize); //总页数
+                if( undefined === pageCount || 0 === pageCount ){
+                    pageCount = 1
+                }
+                myPageInit({
+                    pages: pageCount,
+                    currentPage: 1,
+                    element: '.my-page',
+                    callback: function(page) {
+                        console.log("当前页:", page);
+                        shuttleBoxData.page = page
+                        var list = '';
+                        shuttleBoxData.appList.some(function (item,index) {
+                            if(item.page === page){
+                                operation.contrast(item)
+                                operation.renderCurrentList()
+                                return true
+                            }
+                        }) || rendering()
+                    }
+                });
+            })
+        });
+        window.saveUpload${cardWid} = function () {
+            shuttleBoxData.serviceList = shuttleBoxData.checkedList.slice(0)
+            operation.renderServiceList()
+            $("#upload-modal-${cardWid}").modal("hide");
+        };
+        window.operation = operation
+        window.shuttleBoxData = shuttleBoxData
+    })($,execCardMethod);
+
+    //默认图片
+    function imgerrorfun_${cardWid}(){
+        var img=event.srcElement;
+        img.src="${ctxInternalPath}/${cardId}/images/default.png";
+        img.onerror=null;
+    }
+
+    //提示弹窗
+    function popupTips_${cardWid}(text,mg) {
+        if(null == mg){
+            mg = 0+'px';
+        }
+        $("#root").prepend(
+            "<div id='alert' style='position: fixed;z-index: 999999;margin-left:"+ mg +";top: 0'>"+
+            "<div class=\"alert alert-danger fade show \" role=\"alert\">\n" +
+            "    <span> "+ text +"</span>\n" +
+            "</div>"+
+            "</div>"
+        );
+        window.setTimeout(function () {
+            $('#alert').remove();
+        },2000);
+    }
+
+    //回车搜索
+    $('#searchInput${cardWid}').bind('keypress', function (event) {
+        if (event.keyCode === 13) {
+            $("#search-btn-${cardWid}").click();
+        }
+    })
+</script>

@@ -1,0 +1,26 @@
+[ {
+    "component":"addInfo",
+    "key":"dataItemList",
+    "min": 0,
+    "max": 0,
+    "aliasName": "dataName",
+    "aliasWid": "dataId",
+    "defaultValue": [{"dataId": "currentItem","dataName": [{"langKey": "zh_CN","langValue": "当前进驻事项"}],"oldName": "当前进驻事项","type": 1}
+    ,{"dataId": "onlineItem","dataName": [{"langKey": "zh_CN","langValue": "可在线办理事项"}],"oldName": "可在线办理事项","type": 1}
+    ,{"dataId": "currentDept","dataName": [{"langKey": "zh_CN","langValue": "进驻服务部门"}],"oldName": "进驻服务部门","type": 1}
+    ,{"dataId": "onlinePercent","dataName": [{"langKey": "zh_CN","langValue": "在线办理覆盖率"}],"oldName": "在线办理覆盖率","type": 1}
+    ,{"dataId": "allCount","dataName": [{"langKey": "zh_CN","langValue": "总办件数量"}],"oldName": "总办件数量","type": 1}
+    ,{"dataId": "currentCount","dataName": [{"langKey": "zh_CN","langValue": "当前正在办件"}],"oldName": "当前正在办件","type": 1}
+    ,{"dataId": "doneCount","dataName": [{"langKey": "zh_CN","langValue": "已完成办件"}],"oldName": "已完成办件","type": 1}
+    ,{"dataId": "itemScore","dataName": [{"langKey": "zh_CN","langValue": "事项平均分"}],"oldName": "事项平均分","type": 1}],
+    "value": [{"dataId": "currentItem","dataName": [{"langKey": "zh_CN","langValue": "当前进驻事项"}],"oldName": "当前进驻事项","type": 1}
+    ,{"dataId": "onlineItem","dataName": [{"langKey": "zh_CN","langValue": "可在线办理事项"}],"oldName": "可在线办理事项","type": 1}
+    ,{"dataId": "currentDept","dataName": [{"langKey": "zh_CN","langValue": "进驻服务部门"}],"oldName": "进驻服务部门","type": 1}
+    ,{"dataId": "onlinePercent","dataName": [{"langKey": "zh_CN","langValue": "在线办理覆盖率"}],"oldName": "在线办理覆盖率","type": 1}
+    ,{"dataId": "allCount","dataName": [{"langKey": "zh_CN","langValue": "总办件数量"}],"oldName": "总办件数量","type": 1}
+    ,{"dataId": "currentCount","dataName": [{"langKey": "zh_CN","langValue": "当前正在办件"}],"oldName": "当前正在办件","type": 1}
+    ,{"dataId": "doneCount","dataName": [{"langKey": "zh_CN","langValue": "已完成办件"}],"oldName": "已完成办件","type": 1}
+    ,{"dataId": "itemScore","dataName": [{"langKey": "zh_CN","langValue": "事项平均分"}],"oldName": "事项平均分","type": 1}]
+  }
+
+]

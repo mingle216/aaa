@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisedu.minos.casp.portal.dao.mapper.UserCalCardRelMapper">
+
+    <select id="queryUserCalList" resultType="com.wisedu.minos.casp.portal.dao.entity.UserCalCardRelEntity">
+        select rel.user_id as userId, rel.card_wid as cardWid, rel.remind_way as remindWay from t_amp_user_cal_card_rel rel
+        join t_amp_view_page_card_config config on rel.card_wid = config.card_wid and config.is_deleted = '0' and config.enabled_flag = '1'
+        join t_amp_view_page_info page on page.wid = config.page_wid and page.is_deleted = '0' and page.enabled_flag = '1'
+        join t_amp_view_show_programme pro on pro.wid = page.programme_id and pro.is_deleted = '0' and pro.page_status = '0'
+        where rel.remind_time = #{week} and rel.remind_time_hour = #{hour}
+    </select>
+</mapper>

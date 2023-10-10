@@ -1,0 +1,70 @@
+.my-page {
+    font-size: 14px;
+    overflow: hidden;
+    text-align: center;
+    color: #333333;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 28px;
+    width: 290px;
+}
+
+.my-page .my-page-prev,
+.my-page .my-page-next {
+    float: left;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.my-page .my-page-prev.my-page-forbid,
+.my-page .my-page-next.my-page-forbid {
+    border: 0px solid #DEDEDE;
+    pointer-events: none;
+    color:#DEDEDE;
+}
+
+.my-page .my-page-prev:hover,
+.my-page .my-page-next:hover {
+    border: 1px solid #1890FF;
+    border-radius: 5px;
+}
+
+.my-page .my-page-group {
+    float: left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.my-page .my-page-group li {
+    float: left;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 28px;
+    padding: 0 5px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+.my-page .my-page-group .my-page-cell:hover,
+.my-page .my-page-group .my-page-checked {
+    border: 1px solid #1890FF;
+    border-radius: 5px;
+}
+
+.my-page .my-page-group .my-page-omit {
+    pointer-events: none;
+}
+/*# sourceMappingURL=my-page.css.map */

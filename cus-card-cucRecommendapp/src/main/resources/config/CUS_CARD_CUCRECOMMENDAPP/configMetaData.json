@@ -1,0 +1,112 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "min": 150,
+    "max": 900
+  },
+  {
+    "label": "单行列表展示个数",
+    "component": "select",
+    "key": "columns",
+    "datas": [
+      {
+        "label": 1,
+        "value": 1
+      },
+      {
+        "label": 2,
+        "value": 2
+      },
+      {
+        "label": 3,
+        "value": 3
+      },
+      {
+        "label": 4,
+        "value": 4
+      },
+      {
+        "label": 5,
+        "value": 5
+      },
+      {
+        "label": 6,
+        "value": 6
+      }
+    ],
+    "defaultValue": 5,
+    "min": 1,
+    "max": 1
+  },
+  {
+    "label": "全部服务地址（/apps）",
+    "component": "radio",
+    "key": "isShowAllService",
+    "labelAlias": "name",
+    "datas": [
+      {
+        "name": "当前页面打开",
+        "value": 0
+      },
+      {
+        "name": "新页签打开",
+        "value": 1
+      },
+      {
+        "name": "隐藏",
+        "value": 2
+      }
+    ],
+    "defaultValue": 2
+  },
+  {
+    "component":"radio",
+    "key":"serviceAppraise",
+    "label": "是否展示服务评价",
+    "required": 0,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "是",
+        "value": "1"
+      },
+      {
+        "label": "否",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"autoRecommend",
+    "label": "是否开启自动推荐",
+    "required": 0,
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "是",
+        "value": "1"
+      },
+      {
+        "label": "否",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component": "addInfo",
+    "key": "addServiceList",
+    "aliasName": "serviceName",
+    "aliasWid": "serviceWid"
+  }
+]

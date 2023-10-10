@@ -1,0 +1,99 @@
+[
+  {
+    "component": "cardHeight",
+    "key": "serviceCarHeight",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "value": null,
+    "min": 150,
+    "max": 900
+  },
+  {
+    "component": "radio",
+    "key": "tabPosition",
+    "label": "找服务/找系统",
+    "required": 0,
+    "defaultValue": 0,
+    "value": null,
+    "datas": [
+      {
+        "label": "找服务",
+        "value": 0
+      },
+      {
+        "label": "找系统",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "component": "input",
+    "key": "moreLink",
+    "label": "查看更多地址:",
+    "isInternational": 1,
+    "required": 0,
+    "placeholder": "请输入",
+    "showLimit": 1,
+    "defaultValue": "",
+    "value": "",
+    "type": "text"
+  },
+  {
+    "label": "单行列表展示个数",
+    "component": "select",
+    "key": "columns",
+    "datas": [
+      {
+        "label": 1,
+        "value": 1
+      },
+      {
+        "label": 2,
+        "value": 2
+      },
+      {
+        "label": 3,
+        "value": 3
+      },
+      {
+        "label": 4,
+        "value": 4
+      },
+      {
+        "label": 5,
+        "value": 5
+      }
+    ],
+    "defaultValue": 4,
+    "min": 1,
+    "max": 1
+  },
+  {
+    "component": "cascader",
+    "key": "serviceCarCascader",
+    "label": "选择所需展示服务列表的服务分类",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "classifyName",
+    "valueAlias": "classifyWid",
+    "childrenAlias": "classifyInfoList",
+    "hideFirstChoice": 1,
+    "tips": "选择展示分类列表后，仅会展示选中服务分类下子分类的服务列表",
+    "defaultValue": [],
+    "value": null,
+    "datas": []
+  },
+  {
+    "component": "link",
+    "key": "openServiceClassify",
+    "name": "打开【服务分类设置】",
+    "target": "_blank",
+    "defaultValue": "/router/manageTool/serviceManage",
+    "value": "/router/manageTool/serviceManage"
+  }
+]
