@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="${ctxPath}/js/jquery/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>系统异常</title>
+    <meta name="description" content="一网通办">
+
+
+    <script type="text/javascript">
+        $(function () {
+            var errorCode='${errorCode}';
+            if(errorCode=="500"){
+                document.getElementById("picSrc").src = "/img/500.png";
+            }else if(errorCode=="404"){
+                document.getElementById("picSrc").src = "/img/404.png";
+            }else if(errorCode=="403"){
+                document.getElementById("picSrc").src = "/img/403.png";
+            }
+        });
+    </script>
+</head>
+
+<body>
+<div class="topDiv">
+    <img id="picSrc">
+    <h1 id="errorCode">错误码：${errorCode}</h1>
+<!--    <p>错误地址：${url}</p>-->
+    <p>错误原因：${message}</p>
+    <a href="${ctxPath}/index.html">返回首页</a>
+</div>
+
+</body>
+<style>
+
+    .topDiv{
+        text-align: center;
+        width: 100%;
+        margin-top: 200px
+    }
+
+
+
+</style>
+
+</html>

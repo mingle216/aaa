@@ -1,0 +1,3 @@
+wid,template_id,template_system_type,template_name,template_img_url,template_desc,configurable_flag,configurable_runtime_flag,configure_content,platform_type,template_status,version_number,is_deleted
+"8b0cf4b03add40e69805bb7078f4b349","SYS_TEMPLATE_STANDARDS",0,"Standard模板","/sys_template_standards/base/image/display.png","Standard模板",0,1,"","0","0","1.0.0",0
+"5","SYS_TEMPLATE_VIOLET",0,"Violet模板","/sys_template_violet/base/image/display.png","Violet模板",0,1,"","0","0","1.0.0",0

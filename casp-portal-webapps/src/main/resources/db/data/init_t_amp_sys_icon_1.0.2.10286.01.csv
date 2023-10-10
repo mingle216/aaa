@@ -1,0 +1,13 @@
+wid,icon_name,icon_type,icon_desc,icon_url,order_number,is_deleted,icon_item
+"132","icon-dongdamobangongzuotai",0,"东大模板工作台","icon-dongdamobangongzuotai",132,0,0
+"133","icon-dongdamobanbanshidating",0,"东大模板办事大厅","icon-dongdamobanbanshidating",133,0,0
+"134","icon-dongdamobanshouye",0,"东大模板首页","icon-dongdamobanshouye",134,0,0
+"135","icon-dongdamoban-youjiantou",0,"东大模板-右箭头","icon-dongdamoban-youjiantou",135,0,0
+"136","icon-dongdamoban-dingyue",0,"东大模板-订阅","icon-dongdamoban-dingyue",136,0,0
+"137","icon-dongdamoban-guanli",0,"东大模板-管理","icon-dongdamoban-guanli",137,0,0
+"138","icon-dongdamoban-renwuzhongxin",0,"东大模板-任务中心","icon-dongdamoban-renwuzhongxin",138,0,0
+"139","icon-Servicematters-default",0,"默认图标","icon-Servicematters-default",139,0,0
+"140","icon-CardSearch",0,"搜索","icon-CardSearch",140,0,0
+"141","icon-Singlechoice-Selected",0,"单选-选中","icon-Singlechoice-Selected",141,0,0
+"142","icon-toastfailure",0,"失败","icon-toastfailure",142,0,0
+"143","icon-toastsuccess",0,"成功","icon-toastsuccess",143,0,0

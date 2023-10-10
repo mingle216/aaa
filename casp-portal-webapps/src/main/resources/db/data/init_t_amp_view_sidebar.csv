@@ -1,0 +1,5 @@
+wid,column_code,column_name,is_system,icon_type,auth_type,enabled_flag,order_number,link_url,icon_url,display_name,position_type,display_name_lang_key,programme_id,menu_type,open_type,page_id,is_deleted
+0e285d7aa1bdaf662e0f2b4d568e8de7,0e291448e3334a56b5e8e275142c5bfd,我的消息,0,1,1,1,2,,icon-menu-MyMessage,,1,770951747391717376,2d8296b6d3bc49ec977af23029b3d718,0,0,,0
+10f5bf144ecb36cb04048d5d3afdab59,659a7e7c0f664e5e92fbbaeee2be4dfe,智能问答,0,1,2,1,1,,icon-menu-SmartQ-A,,1,770952277639823360,2d8296b6d3bc49ec977af23029b3d718,0,0,,0
+0e285d7aa1bdaf662e0f2b4d568e8de8,0e291448e3334a56b5e8e275142c5bfe,我的消息,0,1,1,1,2,,icon-menu-MyMessage,,1,770951747391717377,2d8296b6d3bc49ec977af23029b3d717,0,0,,0
+10f5bf144ecb36cb04048d5d3afdab58,659a7e7c0f664e5e92fbbaeee2be4dff,智能问答,0,1,2,1,1,,icon-menu-SmartQ-A,,1,770952277639823361,2d8296b6d3bc49ec977af23029b3d717,0,0,,0

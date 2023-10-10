@@ -1,0 +1,393 @@
+ <template>
+  <div class="container">
+      <!-- :style="headerStyle" -->
+    <div class="common-head" ref="commonHead">
+        <we-swipe class="my-swipe" :autoplay="6000" indicator-color="white" :show-indicators='false'>
+            <we-swipe-item><img src="../dzimages/1.jpg"/></we-swipe-item>
+            <we-swipe-item><img src="../dzimages/2.jpg"/></we-swipe-item>
+            <we-swipe-item><img src="../dzimages/3.jpg"/></we-swipe-item>
+          </we-swipe>
+      <div class="head-title">
+        <img :src="logoUrl" height="50" />
+        <div v-if="currentUser">
+          <i class="iconfont icon-duoyuyan" @click="showLangList" v-if="actions.length > 1" />
+          <i
+            class="iconfont icon-menu-MyMessage"
+            v-if="messageUrl"
+            @click="handleMessage"
+          ></i>
+          <i class="iconfont icon-UserName" @click="handlePersonal"></i>
+        </div>
+        <div v-if="!currentUser" class="head-isNotLogin">
+          <span @click="handleLogin">
+            {{ $Lan('SYS_TEMPLATE_OFFICIAL_h5', 'login', '请登录') }}
+          </span>
+        </div>
+      </div>
+      <div class="text__wrap">
+        <p class="title text__ellipsis">
+          <span>
+            {{ langTitle }}
+          </span>
+        </p>
+        <div class="title-search">
+          <we-cell-group class="title_input" @click="inputSearch">
+            <we-field
+              :placeholder="newplaceholder"
+              :readonly="true"
+              class="title_search"
+              :value="newplaceholder"
+            />
+          </we-cell-group>
+          <we-button
+            class="title_input_button portal-primary-backgroundcolor-lv1"
+            @click="handleSearch"
+            >
+              {{ $Lan('SYS_TEMPLATE_OFFICIAL_h5', 'search', '搜索') }}
+          </we-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="head-title-top" v-show="isFixed">
+      <img :src="colorLogoUrl" height="50" />
+      <div v-if="currentUser">
+        <i class="iconfont icon-duoyuyan" @click="showLangList" v-if="actions.length > 1" />
+        <!-- <i class="iconfont icon-search" @click="inputSearch"></i> -->
+        <i
+          class="iconfont icon-menu-MyMessage"
+          v-if="messageUrl"
+          @click="handleMessage"
+        ></i>
+        <i class="iconfont icon-UserName" @click="handlePersonal"></i>
+      </div>
+      <div v-if="!currentUser" class="head-isNotLogin">
+        <i class="iconfont icon-search" @click="inputSearch"></i>
+        <span @click="handleLogin">
+          {{ $Lan('SYS_TEMPLATE_OFFICIAL_h5', 'login', '请登录') }}
+        </span>
+      </div>
+    </div>
+    <div class="common-content" ref="commonContent">
+      <card-layout :cardLayout="cardLayout" />
+    </div>
+    <customActionSheet
+      v-model="langShow"
+      :actions="actions"
+      :cancel-text="$Lan('SYS_TEMPLATE_OFFICIAL_h5', 'cancel', '取消')"
+      close-on-click-action
+      @select="changeLanguage"
+      :duration="0"
+      style="height: initial"
+    />
+  </div>
+</template>
+
+<script>
+/* eslint-disable no-debugger */
+import common from "@/mixins/common";
+import CardLayout from "../cardLayout";
+export default {
+  mixins: [common],
+  components: {
+    CardLayout,
+  },
+  props: {
+    pageData: Object,
+  },
+  data() {
+    return {
+      scrollToTop: false,
+      newplaceholder: "",
+      scrollTop: 0,
+      isFixed: false,
+      langShow: false,
+      // actions: [{ name: "退出登录", color: "#ee0a24" }],
+    };
+  },
+  computed: {
+
+    actions() {
+      const list = this.currentUser && this.currentUser.supportLanguages || []
+      return list.map(el => ({
+        name: el.langName,
+        value: el.langCode
+      }))
+    }
+  },
+
+  methods: {
+    handleScroll() {
+      if (
+        this.$refs.commonContent &&
+        this.$refs.commonContent.getBoundingClientRect().top < 0
+      ) {
+        this.scrollToTop = true;
+      } else {
+        this.scrollToTop = false;
+      }
+    },
+    handleLogin() {
+      const location = window.shell.getLocation();
+      const page = location.hash.replace("#", "");
+      window.shell.login({
+        params: {
+          localHref: page,
+        },
+      });
+    },
+    inputSearch() {
+      window.shell.openPage(
+        `result?searchKey=&placeholder=${this.newplaceholder}`,
+        0,
+        1
+      );
+    },
+    handleSearch() {
+      window.shell.openPage(
+        `result?searchKey=${this.newplaceholder}&placeholder=${this.newplaceholder}`,
+        0,
+        1
+      );
+    },
+    async getPlaceholderVal(t) {
+      const renderData = t && t.pageContext.pageInfoEntity;
+      console.log("placeholderwid", t);
+      const [res] = await window.shell.getPlaceholderVal({
+        wid: renderData.wid,
+      });
+
+      let placeholder = "";
+      if (res.errcode === "0" && res.data) {
+        placeholder = res.data["search.placeholderVal"];
+      } else {
+        placeholder = "";
+      }
+      console.log("res", res);
+      this.newplaceholder = placeholder;
+      //  this.placeholderEllipsis(this.newplaceholder);
+    },
+    // 折叠展示的placeholder
+    placeholderEllipsis(newplaceholder) {
+      const val = newplaceholder || "";
+      const dom = document.createElement("span");
+      dom.style.visibility = "hidden";
+      dom.style.display = "inline-block";
+      dom.textContent = val;
+      document.body.appendChild(dom);
+      let width = dom.clientWidth;
+      let offset = val.length;
+      let realText = val;
+      if (width > 350) {
+        while (width > 350) {
+          realText = `${val.slice(0, offset)}...`;
+          dom.textContent = realText;
+          width = dom.clientWidth;
+          offset = offset - 1;
+        }
+      }
+      document.body.removeChild(dom);
+      this.newplaceholder = realText;
+    },
+    handleMessage() {
+      // window.open(this.messageUrl, "_blank");
+      window.shell.openPage(this.messageUrl, 1, 2);
+    },
+    handlePersonal() {
+      window.shell.openPage(`personal`, 0, 1);
+    },
+    showLangList() {
+      this.langShow = true
+    },
+    changeLanguage(item) {
+      sessionStorage.setItem('locale', item.value)
+      this.$i18n.locale = item.value || 'zh_CN'
+      window.shell.setLanguage(item.value)
+      window.shell.getLanguageList(item.value, res => {
+        if (res.errcode === '0') {
+          this.$i18n.mergeLocaleMessage(item.value, res.data)
+        }
+      })
+    }
+  },
+
+  watch: {
+    pageData: {
+      handler(res) {
+        this.getPlaceholderVal(res);
+      },
+      deep: true,
+    },
+    scrollTop(val) {
+      this.isFixed = val >= 180;
+    },
+  },
+  mounted() {
+    window.shell.on("getScrollTop", (it) => {
+      this.scrollTop = it;
+    });
+  },
+  created() {
+    if (this.pageData && !this.newplaceholder) {
+      this.getPlaceholderVal(this.pageData);
+    }
+  },
+  beforeDestroy() {
+    window.shell.off("getScrollTop");
+  },
+};
+</script>
+
+<style lang="less" scoped>
+// .container {
+//   width: 100vw;
+//   padding: 0 15px;
+// }
+.common-head {
+  height: 180px;
+  .we-swipe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;.we-swipe__track{
+    width: 100%;
+    height: 100%;
+
+    }
+  }
+  .head-title {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    justify-content: space-between;
+    //box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    img {
+      height: auto;
+      max-width: 100%;
+      margin-left: 17px;
+      width: 120px;
+    }
+    i {
+      font-size: 22px;
+      margin-right: 17px;
+      color: #ffffff;
+    }
+    .head-isNotLogin {
+      margin-right: 17px;
+      span {
+        // font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #ffffff;
+        letter-spacing: 0;
+        text-align: justify;
+        line-height: 18px;
+      }
+    }
+  }
+  .text__wrap {
+    display: flex;
+    flex-direction: column;
+    margin: 26px 17px;
+    .title {
+      // font-family: PingFangSC-Semibold;
+      font-weight: bold;
+      font-size: 26px;
+      color: #ffffff;
+      letter-spacing: 0;
+      text-align: justify;
+      line-height: 32px;
+    }
+    .title-search {
+      margin: 46px 0 10px 0;
+      display: flex;
+      align-items: center;
+      .title_input {
+        width: calc(100% - 72px);
+        height: 42px;
+        background: #ffffff;
+        box-shadow: 0 2px 8px 0 rgba(112, 125, 143, 0.2);
+        border-radius: 4px;
+        border-radius: 4px;
+        &::after {
+          border: none !important;
+        }
+        .title_search {
+          padding: 8px 0.42667rem;
+          border-radius: 4px;
+          margin-top:2px;
+         /deep/input[class="we-field__control"] {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #9FA8B5;
+          }
+        
+        }
+      }
+      .title_input_button {
+        background: #3f83fb;
+        font-size: 16px;
+        color: #fff;
+        margin-left: -2px;
+        z-index: 1;
+        border-radius: 0px 4px 4px 0px;
+        min-width: 72px;
+        height: 42px;
+        border: none;
+        max-width: 111px;
+        /deep/.we-button__text {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+.head-title-top {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdfe6;
+  //position: sticky;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px 0 rgba(112, 125, 143, 0.2);
+  z-index: 999;
+  overflow: hidden;
+  img {
+    height: auto;
+    max-width: 100%;
+    margin-left: 17px;
+    width: 120px;
+  }
+  i {
+    font-size: 22px;
+    margin-right: 17px;
+    color: #102645;
+  }
+  .head-isNotLogin {
+    margin-right: 17px;
+    display: flex;
+    align-items: center;
+    span {
+      // font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #102645;
+      letter-spacing: 0;
+      text-align: justify;
+      line-height: 18px;
+    }
+  }
+}
+.common-content {
+  padding: 17px 0;
+  width: 100%;
+}
+</style>

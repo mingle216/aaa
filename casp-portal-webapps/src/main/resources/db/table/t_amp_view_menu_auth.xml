@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_menu_auth-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_MENU_AUTH"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_MENU_AUTH" remarks="菜单权限表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="MENU_WID" type="VARCHAR(64)" remarks="菜单ID"/>
+            <column name="AUTH_REL_WID" type="VARCHAR(64)" remarks="授权的其他类型id"/>
+            <column name="AUTH_TYPE" type="VARCHAR(64)" remarks="授权类型  0:组织机构 1:用户 2:域及用户组"/>
+            <column name="MENU_AUTH_TYPE" type="VARCHAR(2)"  remarks="授权菜单种类  0:顶部菜单 1:侧边栏" defaultValue="0"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

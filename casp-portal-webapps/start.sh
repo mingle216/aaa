@@ -1,0 +1,2 @@
+#!/bin/bash
+java -Xms$(($jvmUnitSize*1))m -Xmx$(($jvmUnitSize*1))m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -Dloader.path=/opt/casp-portal-webapps/cards/custom,/casp-portal/lib,/opt/casp-portal-webapps/templates/custom -jar /casp-portal-webapps/casp-portal-webapps-*.jar

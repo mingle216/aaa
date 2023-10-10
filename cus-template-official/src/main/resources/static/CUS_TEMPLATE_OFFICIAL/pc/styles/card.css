@@ -1,0 +1,107 @@
+.card {
+  margin: 8px;
+}
+
+.card__title {
+  color: black;
+}
+
+.card-color-success {
+  color: green!important;;
+}
+
+.card-color-error {
+  color: red;
+}
+
+.card-check-icon {
+  float: right;
+  margin-right: 20px;
+  margin-top: 2px;
+  color: black;
+  cursor: pointer;
+}
+
+.card-check-icon.checked {
+  color: blue;
+}
+
+/*.link-icon-font{*/
+  /*font-size: 32px!important;*/
+/*}*/
+
+/* add by zjchen for footer start */
+.official-footer {
+  margin: 0 auto;
+  display: flex;
+  width: 1200px;
+  height: 184px;
+  font-size: 14px;
+  color: #6f7d8f;
+}
+
+.official-footer .official-footer-left .label {
+  display: block;
+  margin-top: 30px;
+  color: #606062;
+}
+
+.official-footer .official-footer-left .info {
+  display: flex;
+  margin-top: 18px;
+}
+
+.official-footer .official-footer-left .info-item {
+  display: flex;
+  /* justify-content: center; */
+  align-items: flex-start;
+  margin-right: 20px;
+  padding: 14px 12px;
+  width: 270px;
+  height: 86px;
+  background-color: #eaebee;
+  box-sizing: border-box;
+}
+
+.official-footer .official-footer-left .info-item:not(first-child) .text {
+  display: inline-block;
+  max-width: 214px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.official-footer .official-footer-right {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  padding-top: 27px;
+}
+
+.official-footer .official-footer-right .title {
+  text-align: center;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.official-footer .official-footer-right .img {
+  display: block;
+  margin: 6px auto 0;
+  width: 104px;
+  height: 104px;
+}
+.sys_card_lunbotu .link-text{
+  font-size: 20px!important;
+}
+.copyright {
+  width: 100%;
+  height: 40px;
+  background-color: #1d1d1f;
+  color: #81818f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* add by zjchen for footer end */

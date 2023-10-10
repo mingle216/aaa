@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_sidebar-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_SIDEBAR"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_SIDEBAR" remarks="侧边栏表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="COLUMN_CODE" type="VARCHAR(64)" remarks="栏目编码,不可重复"/>
+            <column name="COLUMN_NAME" type="VARCHAR(64)" remarks="栏目名称"/>
+            <column name="IS_SYSTEM" type="NUMBER(2)" remarks="是否系统自带栏目（0：否；1：是）" defaultValue="0"/>
+            <column name="ICON_TYPE" type="NUMBER(2)" remarks="栏目的图标类型（图标类型  0 字体图标  1 png图标）" defaultValue="1"/>
+            <column name="AUTH_TYPE" type="NUMBER(2)" remarks="授权类别（0：游客可见；1：登录后可见；2：授权后可见）"/>
+            <column name="ENABLED_FLAG" type="NUMBER(2)" remarks="是否启用（0：否；1：是）" defaultValue="0"/>
+            <column name="ORDER_NUMBER" type="NUMBER(10)" remarks="排序"/>
+            <column name="LINK_URL" type="VARCHAR(2048)" remarks="栏目链接地址，非特定栏目有值"/>
+            <column name="ICON_URL" type="VARCHAR(2048)" remarks="栏目的图标样式名称"/>
+            <column name="DISPLAY_NAME" type="VARCHAR(256)" remarks="展示名称"/>
+            <column name="POSITION_TYPE" type="NUMBER(2)" remarks="方位0:(左侧),1:(右侧)"/>
+            <column name="DISPLAY_NAME_LANG_KEY" type="VARCHAR(64)" remarks="展示名称国际化id"/>
+            <column name="PROGRAMME_ID" type="VARCHAR(64)" remarks="展示方案id"/>
+            <column name="MENU_TYPE" type="NUMBER(2)" remarks="菜单类型0：无链接1：内部页面2：第三方链接"/>
+            <column name="OPEN_TYPE" type="NUMBER(2)" remarks="打开方式  0:当前页 1:新开窗口" defaultValue="1"/>
+            <column name="PAGE_ID" type="VARCHAR(64)" remarks="对应页面"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <!-- 3.1.5.SP2增加数量提醒地址-->
+    <changeSet id="t_amp_view_sidebar-1.0.1" author="yyu">
+        <addColumn tableName="T_AMP_VIEW_SIDEBAR">
+            <column name="COUNT_ADDRESS" type="VARCHAR(500)" remarks="数量提醒地址"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

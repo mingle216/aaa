@@ -1,0 +1,11 @@
+{
+  "common": {
+    "lang": "English",
+    "home": "home",
+    "login": "login",
+    "logout": "logout",
+    "more": "more",
+    "backtop": "backtop",
+    "search": "search"
+  }
+}

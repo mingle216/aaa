@@ -1,0 +1,42 @@
+[
+  {
+    "code":"home",
+    "name":"首页",
+    "iconUrl":"/sys_template_official/home/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=金智大学网上办事服务大厅\nheader.title.en=Jinzhi University Online Service Hall\nheader.imgUrl=/sys_template_official/home/image/header.png\nsearch.display=Y\nsearch.history.display=Y\nsearch.placeholder=randomServiceMatter\ncard.area=default",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【搜索模块】search.display=Y/N(Y表示展示搜索模块，N表示不展示)\n【搜索历史】search.history.display=Y/N(Y表示展示搜索历史，N表示不展示)\n【默认搜索词】 search.placeholder=***(\nrandomServiceMatter：随机服务事项名称；其他任意文本：固定搜索词)\n****注：搜索历史、默认搜索词配置需在配置搜索模块为Y时生效****\n【卡片渲染区域】card.area=default/all(default表示默认居中，all表示满格)",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"common",
+    "name":"通用页",
+    "iconUrl":"/sys_template_official/common/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=金智大学网上办事服务大厅\nheader.title.en=Jinzhi University Online Service Hall\nheader.subTitle.zh_CN=1.全日制在册本科生、研究生校园卡统一制卡，新生报道时由院系发放到人。2.事业编制教职工、博士后、培训职员。\nheader.subTitle.en=1. Full time registered undergraduate and graduate campus card printing, freshmen report by the Department issued to people. 2. Faculty, postdoctoral and training staff.\nheader.imgUrl=/sys_template_official/common/image/header.png\nbreadcrumb.show=Y\ncard.area=default",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【副标题】header.subTitle.zh_CN=***(此处填写任意文本)\n         header.subTitle.en=***(此处填写英文标题，格式以此类推)\n【面包屑】breadcrumb.show=Y/N(Y表示展示面包屑，N表示不展示，通用页为一级时，该配置不生效)\n【卡片渲染区域】card.area=default/all(default表示默认居中，all表示满格)",
+    "isDefaultTemplate":true
+  },
+  {
+    "code":"detail",
+    "name":"详情页",
+    "iconUrl":"/sys_template_official/detail/image/demo.png",
+    "defaultPageConfig":"header.imgUrl=/sys_template_official/detail/image/header.png",
+    "defaultPageConfigDesc":"",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"search",
+    "name":"搜索页",
+    "iconUrl":"/sys_template_official/search/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=搜索结果\nheader.title.en=Search Result\nheader.imgUrl=/sys_template_official/detail/image/header.png\nsearch.history.display=Y\ncard.area=default",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【搜索历史】search.history.display=Y/N(Y表示展示搜索历史，N表示不展示)\n【卡片渲染区域】card.area=default/all(default表示默认居中，all表示满格)\n",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"blank",
+    "name":"空白页",
+    "iconUrl":"/sys_template_official/blank/image/demo.png",
+    "defaultPageConfig":"card.area=default",
+    "defaultPageConfigDesc":"规则说明：\n【卡片渲染区域】card.area=default/all(default表示默认居中，all表示满格)",
+    "isDefaultTemplate":false
+  }
+]

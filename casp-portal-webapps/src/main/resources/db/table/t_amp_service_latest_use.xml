@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="gulong" id="t_amp_service_latest_use-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_SERVICE_LATEST_USE"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_SERVICE_LATEST_USE" remarks="用户最近使用服务表">
+            <column name="SERVICE_WID" type="VARCHAR(64)" remarks="用户最近使用服务表"/>
+            <column name="USER_ID" type="VARCHAR(32)" remarks="访问用户Id"/>
+            <column name="USE_TIME" type="TIMESTAMP" remarks="最新使用时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+        <createIndex tableName="T_AMP_SERVICE_LATEST_USE" indexName="user_service_index">
+            <column name="USER_ID"></column>
+            <column name="SERVICE_WID"></column>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,667 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2131494 */
+  src: url('iconfont.woff2?t=1627264625887') format('woff2'),
+       url('iconfont.woff?t=1627264625887') format('woff'),
+       url('iconfont.ttf?t=1627264625887') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-duoyuyan:before {
+  content: "\e65a";
+}
+
+.icon-32sousuotubiao:before {
+  content: "\e659";
+}
+
+.icon-biaoqianguanbi:before {
+  content: "\e653";
+}
+
+.icon-xinwentongzhigonggaochakangengduo:before {
+  content: "\e654";
+}
+
+.icon-pingfenxingxing:before {
+  content: "\e655";
+}
+
+.icon-danchuangclose:before {
+  content: "\e656";
+}
+
+.icon-shixiangshoucang:before {
+  content: "\e657";
+}
+
+.icon-32banbenyoujiantou:before {
+  content: "\e658";
+}
+
+.icon-icon-mianxingshoucang:before {
+  content: "\e652";
+}
+
+.icon-icon-xiankuangxingshoucang:before {
+  content: "\e651";
+}
+
+.icon-icon-tip:before {
+  content: "\e650";
+}
+
+.icon-icon-gengduodaibanrenwu:before {
+  content: "\e64f";
+}
+
+.icon-icon-xinzeng:before {
+  content: "\e64d";
+}
+
+.icon-gengduo:before {
+  content: "\e64b";
+}
+
+.icon-icon-dingyue:before {
+  content: "\e64a";
+}
+
+.icon-shixiangfenleijiantou:before {
+  content: "\e648";
+}
+
+.icon-dongdamobangongzuotai:before {
+  content: "\e647";
+}
+
+.icon-dongdamobanbanshidating:before {
+  content: "\e646";
+}
+
+.icon-dongdamobanshouye:before {
+  content: "\e645";
+}
+
+.icon-dongdamoban-youjiantou:before {
+  content: "\e643";
+}
+
+.icon-dongdamoban-dingyue:before {
+  content: "\e642";
+}
+
+.icon-dongdamoban-guanli:before {
+  content: "\e641";
+}
+
+.icon-dongdamoban-renwuzhongxin:before {
+  content: "\e63d";
+}
+
+.icon-Servicematters-default:before {
+  content: "\e76b";
+}
+
+.icon-CardSearch:before {
+  content: "\e769";
+}
+
+.icon-Singlechoice-Selected:before {
+  content: "\e767";
+}
+
+.icon-toastfailure:before {
+  content: "\e765";
+}
+
+.icon-toastsuccess:before {
+  content: "\e766";
+}
+
+.icon-place:before {
+  content: "\e693";
+}
+
+.icon-ArtificialService:before {
+  content: "\e615";
+}
+
+.icon-SelfService:before {
+  content: "\e617";
+}
+
+.icon-lianjie:before {
+  content: "\e764";
+}
+
+.icon-default:before {
+  content: "\e763";
+}
+
+.icon-delete:before {
+  content: "\e616";
+}
+
+.icon-reupload:before {
+  content: "\e60f1";
+}
+
+.icon-menu-PutAway:before {
+  content: "\e613";
+}
+
+.icon-menu-Unfold:before {
+  content: "\e614";
+}
+
+.icon-More:before {
+  content: "\e60b";
+}
+
+.icon-Down:before {
+  content: "\e60c";
+}
+
+.icon-Right:before {
+  content: "\e60d";
+}
+
+.icon-Ashcan:before {
+  content: "\e60e";
+}
+
+.icon-Upload:before {
+  content: "\e60f";
+}
+
+.icon-MultipleSelection:before {
+  content: "\e600";
+}
+
+.icon-MultipleSelectUnselected:before {
+  content: "\e60a";
+}
+
+.icon-Ashcan01:before {
+  content: "\e926";
+}
+
+.icon-UserName:before {
+  content: "\e925";
+}
+
+.icon-taskCenter:before {
+  content: "\e924";
+}
+
+.icon-favorites:before {
+  content: "\e923";
+}
+
+.icon-flowChart:before {
+  content: "\e922";
+}
+
+.icon-urgent:before {
+  content: "\e921";
+}
+
+.icon-newest:before {
+  content: "\e920";
+}
+
+.icon-location:before {
+  content: "\e919";
+}
+
+.icon-duration:before {
+  content: "\e918";
+}
+
+.icon-timeOnline:before {
+  content: "\e917";
+}
+
+.icon-theTeacher:before {
+  content: "\e916";
+}
+
+.icon-serviceSubject:before {
+  content: "\e915";
+}
+
+.icon-courseNo:before {
+  content: "\e914";
+}
+
+.icon-views:before {
+  content: "\e913";
+}
+
+.icon-responsibleDepartment:before {
+  content: "\e912";
+}
+
+.icon-session:before {
+  content: "\e911";
+}
+
+.icon-applicationServiceDefault:before {
+  content: "\e910";
+}
+
+.icon-Locking:before {
+  content: "\e909";
+}
+
+.icon-AllServices:before {
+  content: "\e908";
+}
+
+.icon-Unfold:before {
+  content: "\e907";
+}
+
+.icon-PutAway:before {
+  content: "\e906";
+}
+
+.icon-Common:before {
+  content: "\e905";
+}
+
+.icon-Warning:before {
+  content: "\e904";
+}
+
+.icon-Failure:before {
+  content: "\e903";
+}
+
+.icon-Waiting:before {
+  content: "\e902";
+}
+
+.icon-Selection:before {
+  content: "\e901";
+}
+
+.icon-Language:before {
+  content: "\e900";
+}
+
+.icon-logout:before {
+  content: "\e930";
+}
+
+.icon-backstageManage:before {
+  content: "\e929";
+}
+
+.icon-personCenter:before {
+  content: "\e928";
+}
+
+.icon-accountManage:before {
+  content: "\e927";
+}
+
+.icon-linknav-PartyMember:before {
+  content: "\e700";
+}
+
+.icon-linknav-Innovation:before {
+  content: "\e701";
+}
+
+.icon-linknav-RetrievalSystem:before {
+  content: "\e702";
+}
+
+.icon-linknav-PersonnelSystem:before {
+  content: "\e703";
+}
+
+.icon-linknav-News:before {
+  content: "\e704";
+}
+
+.icon-linknav-SchoolCalendar:before {
+  content: "\e705";
+}
+
+.icon-linknav-Universal:before {
+  content: "\e706";
+}
+
+.icon-linknav-System:before {
+  content: "\e707";
+}
+
+.icon-linknav-GenuineSoftware:before {
+  content: "\e708";
+}
+
+.icon-linknav-Folder:before {
+  content: "\e709";
+}
+
+.icon-linknav-AcademicSystem:before {
+  content: "\e710";
+}
+
+.icon-linknav-VPN:before {
+  content: "\e711";
+}
+
+.icon-linknav-Bidding:before {
+  content: "\e712";
+}
+
+.icon-linknav-OASystem:before {
+  content: "\e713";
+}
+
+.icon-linknav-FixedTelephone:before {
+  content: "\e714";
+}
+
+.icon-linknav-MobilePhone:before {
+  content: "\e715";
+}
+
+.icon-linknav-CustomerService:before {
+  content: "\e716";
+}
+
+.icon-dep-PrincipalOffice:before {
+  content: "\ea28";
+}
+
+.icon-dep-SchoolClinic:before {
+  content: "\ea29";
+}
+
+.icon-dep-HealthCenter:before {
+  content: "\ea30";
+}
+
+.icon-dep-AcademicOffice:before {
+  content: "\ea31";
+}
+
+.icon-dep-GraduateSchool:before {
+  content: "\ea32";
+}
+
+.icon-dep-BiddingOffice:before {
+  content: "\ea33";
+}
+
+.icon-dep-ChineseSocialSciences:before {
+  content: "\ea34";
+}
+
+.icon-dep-AssetsDepartment:before {
+  content: "\ea35";
+}
+
+.icon-dep-InformationCenter:before {
+  content: "\ea36";
+}
+
+.icon-dep-SecurityOffice:before {
+  content: "\ea01";
+}
+
+.icon-dep-FinanceOffice:before {
+  content: "\ea02";
+}
+
+.icon-dep-PartyCommitteeOffice:before {
+  content: "\ea03";
+}
+
+.icon-dep-EntrepreneurshipCenter:before {
+  content: "\ea04";
+}
+
+.icon-dep-P-PropagandaDepartment:before {
+  content: "\ea05";
+}
+
+.icon-dep-P-OrganizationDepartment:before {
+  content: "\ea06";
+}
+
+.icon-dep-Archives:before {
+  content: "\ea07";
+}
+
+.icon-dep-YouthLeagueCommittee:before {
+  content: "\ea08";
+}
+
+.icon-dep-DevelopmentCommittee:before {
+  content: "\ea09";
+}
+
+.icon-dep-G-ManagementOffice:before {
+  content: "\ea10";
+}
+
+.icon-dep-LegalOffice:before {
+  content: "\ea11";
+}
+
+.icon-dep-InternationalCooperation:before {
+  content: "\ea12";
+}
+
+.icon-dep-LogisticsOffice:before {
+  content: "\ea13";
+}
+
+.icon-dep-DisciplinaryCommitteeOffice:before {
+  content: "\ea14";
+}
+
+.icon-dep-CapitalConstruction:before {
+  content: "\ea15";
+}
+
+.icon-dep-ContinuingEducation:before {
+  content: "\ea16";
+}
+
+.icon-dep-AcademicAffairsOffice:before {
+  content: "\ea17";
+}
+
+.icon-dep-TeachingDevelopmentCenter:before {
+  content: "\ea18";
+}
+
+.icon-dep-CareerCenter:before {
+  content: "\ea19";
+}
+
+.icon-dep-RetirementOffice:before {
+  content: "\ea20";
+}
+
+.icon-dep-NJUmuseum:before {
+  content: "\ea22";
+}
+
+.icon-dep-ScienceTechnologyOffice:before {
+  content: "\ea23";
+}
+
+.icon-dep-PersonnelOffice:before {
+  content: "\ea24";
+}
+
+.icon-dep-Library:before {
+  content: "\ea25";
+}
+
+.icon-dep-EquipmentManagementOffice:before {
+  content: "\e76d";
+}
+
+.icon-dep-ModernAnalysisCenter:before {
+  content: "\e76e";
+}
+
+.icon-Clf-GraduateService:before {
+  content: "\e800";
+}
+
+.icon-Clf-FinancialServices:before {
+  content: "\e801";
+}
+
+.icon-Clf-PublicService:before {
+  content: "\e802";
+}
+
+.icon-Clf-PartyAffairs:before {
+  content: "\e803";
+}
+
+.icon-Clf-Cooperation:before {
+  content: "\e804";
+}
+
+.icon-Clf-Education:before {
+  content: "\e805";
+}
+
+.icon-Clf-EmploymentServices:before {
+  content: "\e806";
+}
+
+.icon-Clf-LogisticsSupport:before {
+  content: "\e807";
+}
+
+.icon-dep-Clf-Other:before {
+  content: "\e808";
+}
+
+.icon-Clf-EquipmentAssets:before {
+  content: "\e809";
+}
+
+.icon-Clf-PersonnelService:before {
+  content: "\e810";
+}
+
+.icon-Clf-ActivityApplication:before {
+  content: "\e811";
+}
+
+.icon-Clf-NetworkAccount:before {
+  content: "\e812";
+}
+
+.icon-Clf-CampusCardService:before {
+  content: "\e75d";
+}
+
+.icon-Clf-ResearchService:before {
+  content: "\e814";
+}
+
+.icon-Clf-AcademicService:before {
+  content: "\e815";
+}
+
+.icon-Clf-ITService:before {
+  content: "\e816";
+}
+
+.icon-Clf-MedicalHealth:before {
+  content: "\e817";
+}
+
+.icon-Clf-Administration:before {
+  content: "\e818";
+}
+
+.icon-Clf-SocialActivity:before {
+  content: "\e819";
+}
+
+.icon-Clf-GraduateAffairs:before {
+  content: "\e820";
+}
+
+.icon-Clf-SchoolLife:before {
+  content: "\e821";
+}
+
+.icon-Clf-RecruitmentAffairs:before {
+  content: "\e822";
+}
+
+.icon-Clf-Bursary:before {
+  content: "\e823";
+}
+
+.icon-menu-Workbench:before {
+  content: "\e603";
+}
+
+.icon-menu-BusinessLobby:before {
+  content: "\e602";
+}
+
+.icon-menu-Universal:before {
+  content: "\e605";
+}
+
+.icon-menu-ThreeLists:before {
+  content: "\e604";
+}
+
+.icon-menu-MyUniversity:before {
+  content: "\e601";
+}
+
+.icon-menu-BackTop:before {
+  content: "\e608";
+}
+
+.icon-menu-MyCollection:before {
+  content: "\e607";
+}
+
+.icon-menu-MyOffice:before {
+  content: "\e606";
+}
+
+.icon-menu-TeacherWork:before {
+  content: "\e610";
+}
+
+.icon-menu-StudentAffairs:before {
+  content: "\e609";
+}
+
+.icon-menu-MyMessage:before {
+  content: "\e611";
+}
+
+.icon-menu-SmartQ-A:before {
+  content: "\e612";
+}
+

@@ -1,0 +1,7 @@
+wid,plugin_id,plugin_type,plugin_name,is_system,install_type,version,auth_name,description,enabled
+8915d68d943d4100b8dfff2694d3acae,SYS_MAIL_EYOUMAIL,1,亿邮邮箱插件,1,1,1.0.0,wisedu,亿邮邮箱插件,1
+0922118f5c084c20aa42b41baba262a9,CORE_MAIL_PLUGIN,1,coremail邮箱插件,1,1,1.0.0,wisedu,coremail邮箱插件,1
+da4ace36ef6940aaa3f7e5e20782a2ac,SYS_MAIL_NETEASEMAIL,1,网易邮箱插件,1,1,1.0.0,wisedu,网易邮箱插件,1
+c2aefa41301f4b2d8ea999f3adb1d1e6,SYS_MAIL_QUARKMAIL,1,快客电邮插件,1,1,1.0.0,wisedu,快客电邮邮箱插件,1
+60b1808263e940d483f6cae90c72eac9,TENCENT_MAIL_PLUGIN,1,腾讯企业邮箱插件,1,1,1.0.0,wisedu,腾讯企业邮箱插件,1
+a4bde97a52b34ddd83dff0b6371d0016,TENCENT_MAIL_LOWVERSION_PLUGIN,1,腾讯邮箱低版本插件,1,1,1.0.0,wisedu,腾讯邮箱低版本,1

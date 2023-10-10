@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en" id="html-content"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="format-detection" content="telephone=yes">
+    <link rel="icon" href="./favicon.ico">
+    <title>网上办事服务大厅</title>
+    <script>
+        // /ywtb-mobile/index.html?access_type=2#/MatterDetail 跳转到  /index.html#/itemDetail?wid=
+        var wid = getQueryString("serviceWid");
+        // location.href = location.protocol + "//" + location.host + "/index.html#/itemDetail?wid=" + wid;
+        location.href = "/index.html#/itemDetail?isHideBack=1&wid=" + wid;
+
+        function getQueryString(name) {
+            var query = location.href;
+            let reg = new RegExp("(^|&|\\?)" + name + "=([^&]*)(&|$)", "i");
+            let r = query.match(reg);
+            if (r != null) {
+                return decodeURIComponent(r[2]);
+            };
+            return null;
+        }
+    </script>
+</head><body>
+<noscript><strong>今日校园跳转中...</strong></noscript>
+</body></html>

@@ -1,0 +1,55 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="guoyuan" id="T_PORTAL_PLUGIN_PUBLISH-1.0.1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_PORTAL_PLUGIN_PUBLISH"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_PORTAL_PLUGIN_PUBLISH" remarks="当前系统中注册的插件列表">
+            <column name="wid" type="VARCHAR(64)" remarks="业务主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="plugin_id" type="varchar(64)	" remarks="插件ID"/>
+            <column name="plugin_type" type="number(4)" remarks="插件类型
+                                                                    1：个人数据-邮箱插件
+                                                                    2：个人数据插件
+                                                                    3：日程插件
+                                                                    4：任务推送插件
+                                                                    5：消息通道插件
+                                                                    6：通讯录同步插件
+                                                                    7：联合认证插件
+                                                                    8：非标CAS插件
+                                                                    9：非标Oauth插件
+                                                                    10：完善资料插件
+                                                                    11：特殊加密插件">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plugin_name" type="varchar(256)" remarks="插件名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_system" type="number(1)" remarks="是否系统内置插件 0:自定义插件 1:系统内置插件">
+                <constraints nullable="false"/>
+            </column>
+            <column name="install_type" type="number(1)" remarks="">
+                <constraints nullable="false"/>
+            </column>
+            <column name="download_url" type="VARCHAR(4000)" remarks="插件下载地址">
+            </column>
+            <column name="version" type="varchar(256)" remarks="插件版本号">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publish_time" type="timestamp" remarks="插件发布时间" defaultValueComputed="CURRENT_TIMESTAMP">
+            </column>
+            <column name="auth_name" type="VARCHAR(100)" remarks="作者"/>
+            <column name="description" type="VARCHAR(4000)" remarks="插件描述"/>
+            <column name="enabled" type="number(1)" remarks="0：停用 1：启用"/>
+            <column name="update_time" type="timestamp" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
