@@ -1,0 +1,17 @@
+<ul class=" ">
+    <%
+    if(SERVICE_ORG_RULES == "1"){
+    for(navItem in navList){%>
+    <li class="toc-entry-${cardWid} ">
+        <%if(navItem.hasValue){%>
+        <div class="normal  mouse-hover-${cardWid}"   link="${navItem.href}-${cardWid}" id="nav-${navItem.id}-${cardWid}">
+            ${navItem.name}
+        </div>
+        <%}else{%>
+        <div class= "disabled"   id="nav-${navItem.id}-${cardWid}">
+            ${navItem.name}
+        </div>
+        <%}%>
+    </li>
+    <% }}%>
+</ul>

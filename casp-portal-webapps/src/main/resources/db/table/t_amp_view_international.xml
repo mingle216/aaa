@@ -1,0 +1,31 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_international-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_INTERNATIONAL"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_INTERNATIONAL" remarks="国际化公用表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="SOURCE_TYPE" type="NUMBER(2)" remarks="数据来源,0 系统 1 手工  默认值 0" defaultValue="0"/>
+            <column name="LANG_KEY" type="VARCHAR(200)" remarks="属性key,雪花算法生成"/>
+            <column name="LANG_COUNTRY" type="VARCHAR(50)" remarks="语言类型（例zh_CN  、en_US等）"/>
+            <column name="LANG_VALUE" type="VARCHAR(2000)" remarks="属性值"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="update_LANG_VALUE_type" author="jcx">
+        <modifyDataType tableName="T_AMP_VIEW_INTERNATIONAL" columnName="LANG_VALUE" newDataType="VARCHAR(3200)"/>
+    </changeSet>
+
+</databaseChangeLog>

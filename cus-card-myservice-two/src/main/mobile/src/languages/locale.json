@@ -1,0 +1,24 @@
+{
+  "zh_CN": {
+    "noService": "未找到相关服务",
+    "noMore": "— 没有更多内容了 —",
+    "search": "搜索",
+    "filter": "筛选",
+    "fold": "收起",
+    "more": "更多",
+    "itemPlaceholder": "输入服务名称",
+    "reset": "重置",
+    "confirm": "确定"
+  },
+  "en": {
+    "noService": "no relevant service",
+    "noMore": "— no more data —",
+    "search": "search",
+    "filter": "filter",
+    "fold": "fold",
+    "more": "more",
+    "itemPlaceholder": "please input name of service",
+    "rest": "reset",
+    "confirm": "confirm"
+  }
+}

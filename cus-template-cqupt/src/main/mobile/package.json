@@ -1,0 +1,61 @@
+{
+  "name": "master",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "dev:shell": "cross-env NODE_ENV=development RUN_MODE=shell vue-cli-service serve",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "serve": "serve -l 8006 ./dist",
+    "serve:local": "concurrently 'npm:build' 'npm:serve'",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "stackframe": "1.3.0",
+    "vconsole": "^3.7.0",
+    "vue": "^2.6.11",
+    "vue-clamp": "^0.3.1",
+    "vue-i18n": "5.x"
+  },
+  "devDependencies": {
+    "@kazupon/vue-i18n-loader": "^0.5.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "less-loader": "6.x",
+    "postcss-pxtorem": "5.x",
+    "serve": "^11.3.2",
+    "style-resources-loader": "1.3.x",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-unused-vars": "off",
+      "no-mixed-spaces-and-tabs": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "IE 10"
+  ]
+}

@@ -1,0 +1,253 @@
+.text__ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis,.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.clear:after {
+  display: block;
+  content: "";
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+/* 全局固定色值 */
+
+/* 卡片及页面内一级分类目录中选中状态背景填充、弹窗内部分模块背景填充 */
+.catalog_lv1_bg {
+  background-color: #f6f6f8;
+}
+/* 页面内服务分类中，二级服务分类背景填充 */
+.catalog_lv2_bg {
+  background-color: #eef0f4;
+}
+/* 收藏背景色*/
+.favorite_bg {
+  background-color: #ffbc00;
+}
+/* 未收藏背景色 */
+.unfavorite_bg {
+  background-color: #ccd0d3;
+}
+/* 收藏字体图标色 */
+.favorite_font {
+  color: #ffbc00;
+}
+/* 未收藏字体图标色*/
+.unfavorite_font {
+  color: #ccd0d3;
+}
+/* 用于页面内表格头部背景填充 */
+.table_header_bg {
+  background-color: #f9fafb;
+}
+/* 用于链接导航图标 */
+.icon_nav_bg {
+  background-color: #acb4be;
+}
+/* 小卡片及页面卡片中选择器、搜索框、输入框、分页器、按钮等边框颜色 */
+.border_lv1 {
+  border-color: #d6dade !important;
+}
+/* 小卡片及页面卡片一级标题分割线、课表分割线、页面卡片内列表分割线 */
+.border_lv2 {
+  border-color: #e7edf1 !important;
+}
+/* 小卡片内列表分割线 */
+.border_lv3 {
+  border-color: #f1f2f4 !important;
+}
+.we-input__inner {
+  border-color: #D9D9D9 !important;
+}
+/* input focus内边框 */
+.we-input.is-active .we-input__inner, .we-input__inner:focus, .we-select .we-input__inner:focus {
+  border-color: #D9D9D9 !important;
+}
+/* checkbox */
+.we-checkbox__inner {
+  border-color: #D9D9D9;
+}
+/* 第三方分页组件 */
+.we-pagination {
+  font-weight: 500 !important;
+  font-size: 12px !important;
+}
+.we-pagination .we-pagination__editor.we-input {
+  width: 60px;
+}
+.we-pagination button, .we-pagination span:not([class*=suffix]) {
+  font-size: 12px !important;
+}
+.we-pagination .we-pager li {
+  font-size: 12px;
+}
+.we-pagination.is-background .btn-next, .we-pagination.is-background .btn-prev, .we-pagination.is-background .we-pager li {
+  border-radius: 4px !important;
+  min-width: 28px !important;
+}
+/* tooltip */
+.we-tooltip__popper.is-dark {
+  opacity: 0.7;
+  background: #000000;
+  max-width: 350px;
+  line-height: 18px;
+  word-break: break-all;
+}
+.we-tooltip__popper[x-placement^="bottom"].is-dark .popper__arrow,
+.we-tooltip__popper[x-placement^="bottom"].is-dark .popper__arrow::after {
+  border-bottom-color: rgba(0, 0, 0, 0.7);
+}
+.we-tooltip__popper[x-placement^="top"].is-dark .popper__arrow,
+.we-tooltip__popper[x-placement^="top"].is-dark .popper__arrow::after {
+  border-top-color: rgba(0, 0, 0, 0.7);
+}
+.we-tooltip__popper[x-placement^="left"].is-dark .popper__arrow,
+.we-tooltip__popper[x-placement^="left"].is-dark .popper__arrow::after {
+  border-left-color: rgba(0, 0, 0, 0.7);
+}
+.we-tooltip__popper[x-placement^="right"].is-dark .popper__arrow,
+.we-tooltip__popper[x-placement^="right"].is-dark .popper__arrow::after {
+  border-right-color: rgba(0, 0, 0, 0.7);
+}
+
+.we-message .we-message__icon {
+  font-size: 20px;
+}
+.we-message {
+  background: #fff;
+  min-width: 128px;
+  padding: 12px 15px 12px 20px;
+}
+
+/* 菜单 */
+.el-menu-item,
+.el-submenu__title {
+  font-size: 18px;
+}
+.more__menu .el-submenu__title {
+  padding: 10px 0;
+}
+
+/*菜单展开*/
+.we-submenu.is-opened > .we-submenu__title .we-submenu__icon-arrow {
+  transform: rotateZ(0deg);
+}
+
+.we-dropdown-menu {
+  /* padding: 0; */
+}
+.we-dropdown-menu__item {
+  color: #102645;
+  line-height: 40px;
+}
+.we-tabs__item
+{
+  user-select: none;
+}
+/* 解决tabs获取焦点时出现蓝色边框 */
+.we-tabs__item:focus.is-active.is-focus:not(:active) {
+  box-shadow: none !important;
+}
+
+/*服务无权限加锁样式*/
+.no-permission-service {
+  position: relative;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.no-permission-service::before,
+.no-permission-service::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+}
+.no-permission-service::before {
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.no-permission-service::after {
+  z-index: 20;
+  content: "";
+  background: url("../assets/images/lock.png") no-repeat center;
+  background-size: 24px 24px;
+}
+
+/*其他固定主题色*/
+.catalog-backgroundcolor-Lv1{
+  background: #f6f6f8  !important;
+}
+.catalog-backgroundcolor-Lv1{
+  background: #eef0f4  !important;
+}
+.favorites{
+  color:#ffbc00 !important;
+}
+.not-favorites{
+  color:#ccd0d3 !important;
+}
+.sideline-border-color-lv1{
+  border-color:#d6dade !important;
+}
+.sideline-border-color-lv2{
+  border-color:#e7edf1 !important;
+}
+.sideline-border-color-lv3{
+  border-color:#f1f2f4 !important;
+}
+
+.we-loading-spinner .path{
+  stroke:#666666 !important;
+}
+
+.newsLink-visited {
+  cursor: pointer;
+}
+
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+	width: 8px;
+	height: 8px;
+	background-color: #F5F5F5;
+}
+ 
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+	border-radius: 6px;
+	background-color: transparent;
+}
+ 
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+	border-radius: 6px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	background-color: rgba(0,0,0,0.2);
+}
+.we-tooltip:focus{
+  outline: none;
+}
+
+input {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

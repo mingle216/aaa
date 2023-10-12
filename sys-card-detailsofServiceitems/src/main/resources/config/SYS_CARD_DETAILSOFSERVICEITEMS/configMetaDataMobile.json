@@ -1,0 +1,26 @@
+[
+  {
+    "key": "detailConfigure",
+    "component": "checkbox",
+    "label": "操作项配置",
+    "defaultValue": [
+      "evaluation",
+      "favourite"
+    ],
+    "value": null,
+    "required": 0,
+    "min": 0,
+    "max": 0,
+    "datas": [
+      {
+        "value": "evaluation",
+        "label": "评价"
+      },
+      {
+        "value": "favourite",
+        "label": "收藏"
+      }
+    ],
+    "tips": ""
+  }
+]

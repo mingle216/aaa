@@ -1,0 +1,112 @@
+[
+  {
+    "component":"cardHeight",
+    "key":"containerType",
+    "defaultValue": {
+      "type": 0,
+      "value": 500
+    },
+    "value": null
+  },
+  {
+    "label": "列表展示信息",
+    "key":"showItem",
+    "component":"checkbox",
+    "value": ["icon","service","dept"],
+    "defaultValue":[],
+    "required": 0,
+    "datas": [
+      {
+        "label": "图标",
+        "value": "icon"
+      },
+      {
+        "label": "服务主题",
+        "value": "service"
+      },
+      {
+        "label": "责任部门",
+        "value": "dept"
+      }
+    ]
+  },
+  {
+    "component":"select",
+    "key":"columns",
+    "label": "单行列表展示个数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "defaultValue": "5",
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      },
+      {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "showManage",
+    "label": "管理按钮",
+    "required": 0,
+    "labelAlias": "",
+    "valueAlias": "",
+    "tips": "",
+    "defaultValue": 1,
+    "value": "",
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "showDealOnline",
+    "label": "是否展示在线办理",
+    "required": 0,
+    "tips": "",
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "0",
+    "value": "0",
+    "datas": [
+      {
+        "label": "是",
+        "value": "1"
+      },
+      {
+        "label": "否",
+        "value": "0"
+      }
+    ]
+  }
+]

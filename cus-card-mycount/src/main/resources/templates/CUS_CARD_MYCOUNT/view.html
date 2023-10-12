@@ -1,0 +1,203 @@
+<style type="text/css">
+	.container-${cardWid}{
+		width: 100%;
+		height: 224px;
+		background:url('${ctxPath}/${cardId}/images/background.png') center center ;
+		display: flex;
+		align-items: center;
+	}
+
+	.item-${cardWid}{
+		display: flex;
+		width: 1200px;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.base-clear-hover-${cardWid} {
+		text-align: center;
+		height: 102px;
+		width: 195px;
+		margin-bottom: 10px;
+	}
+
+	.count-${cardWid} {
+		padding-top: 10px;
+		font-family: DIN-Bold;
+		font-size: 34px;
+		color: #102645;
+		letter-spacing: -1px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.bt-line-${cardWid} {
+		width: 20px;
+		height: 4px;
+		margin: 0px auto;
+		font-weight: 500;
+		font-family: Helvetica Neue;
+		border-radius: 2px;
+	}
+
+	.amp-theme-${cardWid} {
+		background: #3F83FB;
+	}
+
+	.info-${cardWid} {
+		 font-family: MicrosoftYaHei, 微软雅黑;
+		font-size: 14px;
+		color: #102645;
+		letter-spacing: 0;
+		text-align: center;
+		margin-top: 6px;
+	}
+
+	.split-line-${cardWid}{
+		height: 34.67px;
+		border-left: dotted 1px #ccc;
+		vertical-align: middle;
+		display: inline-block;
+		margin-top: 38px;
+	}
+
+	.no-data-${cardWid}{
+		font-weight: bold;
+		font-family: MicrosoftYaHei, 微软雅黑;
+		font-size: 14px;
+		letter-spacing: 0;
+		height: 300px;
+		width: 100%;
+		text-align: center;
+		padding-top: 150px;
+	}
+</style>
+
+<div class="container-${cardWid}">
+	<%if(isEmpty(list)){%>
+		<div class="no-data-${cardWid}">
+			暂无事项统计!
+		</div>
+	<%}else{%>
+	<div class="item-${cardWid}">
+		<%for(item in list){%>
+		<%if(item.isUse){%>
+			<div class="base-clear-hover-${cardWid}">
+				<div class="count-${cardWid}">${item.count}</div>
+				<div class="bt-line-${cardWid} amp-theme-${cardWid} portal-primary-backgroundcolor-lv1"></div>
+				<div class="info-${cardWid}">${item.name,xss}</div>
+			</div>
+				<div class="split-line-${cardWid}"></div>
+		<%}}%>
+	</div>
+	<%}%>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		//高度自适应
+		//1.获取容器高度
+		var cardHeight = $("#card-${cardWid}").height();
+		var itemHeight = $(".item-${cardWid}").height();
+		//2.设置边距
+		// $(".item-${cardWid}").css("padding-top",(cardHeight-itemHeight)/2+"px");
+		//宽度自适应
+		//1.获取容器的宽度
+		var containerWidth = $(".container-${cardWid}").width();
+		//大于1200px
+		if(containerWidth >=1200){
+			var mWidth = (containerWidth -1200) / 2;
+			$(".item-${cardWid}").css("margin-left",mWidth+"px");
+			adjust_${cardWid}();
+		}else if(containerWidth >=800){
+			$('.item-${cardWid}').css('width','800px');
+			var mWidth = (containerWidth -800) / 2;
+			$(".item-${cardWid}").css("margin-left",mWidth+"px");
+			adjust2_${cardWid}();
+		}else{
+			$('.item-${cardWid}').css('width','800px');
+			var mWidth = (containerWidth -800) / 2;
+			$(".item-${cardWid}").css("margin-left",mWidth+"px");
+			adjust2_${cardWid}();
+			getAutoScroll_${cardWid}();
+		}
+		 var agent = navigator.userAgent.toLowerCase();
+		 var isMac = /macintosh|mac os x/i.test(navigator.userAgent);
+		 if(isMac){
+			 $('.info-${cardWid}').css('font-family','PingFangSC-Regular');
+			 $('.no-data-${cardWid}').css('font-family','PingFangSC-Regular');
+		 }
+	});
+
+	//数量自适应 小于六个按照一行展示，大于6个按照上下相等展示
+	function adjust_${cardWid}(){
+		//1.获取事项个数
+		var itemNum = $(".item-${cardWid}").find(".base-clear-hover-${cardWid}").length;
+
+		//2.获取卡片宽度
+		var cardWidth =1200;
+		var $item = $(".item-${cardWid}").find(".base-clear-hover-${cardWid}");
+		if(itemNum > 0 && itemNum <= 6){
+			//2.0宽度自适应
+			var  itemWidth = 1200 / itemNum - (itemNum-1);
+			$item.css("width",itemWidth+"px");
+			$(".split-line-${cardWid}").last().hide();
+		}/*else if(itemNum > 6){
+			if(itemNum % 2 == 0){
+				//2.0宽度自适应
+				var  itemWidth2 = 1200 / (itemNum/2) - (itemNum/2-1);
+				$item.css("width",itemWidth2+"px");
+				$(".split-line-${cardWid}").last().hide();
+				$(".split-line-${cardWid}").eq(itemNum/2 - 1).hide();
+			}else{
+				var  itemWidth3 = 1200 / Math.ceil(itemNum/2) - (Math.ceil(itemNum/2)-1);
+				$item.css("width",itemWidth3+"px");
+				$(".split-line-${cardWid}").eq(Math.ceil(itemNum/2) - 1).hide();
+				$(".split-line-${cardWid}").last().hide();
+			}
+		}*/
+	}
+
+	//数量自适应 小于六个按照一行展示，大于6个按照上下相等展示
+	function adjust2_${cardWid}(){
+		//1.获取事项个数
+		var itemNum = $(".item-${cardWid}").find(".base-clear-hover-${cardWid}").length;
+
+		//2.获取卡片宽度
+		var cardWidth =800;
+		var $item = $(".item-${cardWid}").find(".base-clear-hover-${cardWid}");
+		if(itemNum > 0 && itemNum <= 6){
+			//2.0宽度自适应
+			var  itemWidth = 800 / itemNum - (itemNum-1);
+			$item.css("width",itemWidth+"px");
+			$(".split-line-${cardWid}").last().hide();
+		}/*else if(itemNum > 6){
+			if(itemNum % 2 == 0){
+				//2.0宽度自适应
+				var  itemWidth2 = 800 / (itemNum/2) - (itemNum/2-1);
+				$item.css("width",itemWidth2+"px");
+				$(".split-line-${cardWid}").last().hide();
+				$(".split-line-${cardWid}").eq(itemNum/2 - 1).hide();
+			}else{
+				var  itemWidth3 = 800 / Math.ceil(itemNum/2) - (Math.ceil(itemNum/2)-1);
+				$item.css("width",itemWidth3+"px");
+				$(".split-line-${cardWid}").eq(Math.ceil(itemNum/2) - 1).hide();
+				$(".split-line-${cardWid}").last().hide();
+			}
+		}*/
+	}
+
+	//滚动条
+	function getAutoScroll_${cardWid}(){
+		$(".container-${cardWid}").niceScroll(".item-${cardWid}");
+		$(".item-${cardWid}").niceScroll({
+			cursorcolor: "#d8d8d8",
+			autohidemode: false,
+			railpadding: { top: 0, right: 0, left: 0, bottom: 0 },
+			cursorborder: "0"
+		});
+		//刷新滚动条
+		$(".item-${cardWid}").getNiceScroll().resize()
+	}
+
+</script>

@@ -1,0 +1,353 @@
+<style type="text/css">
+	.card-config-container-${cardWid}{
+	    width: 324px;
+	    /*height: 716px;*/
+	}
+	
+	.padding-${cardWid}{
+	    padding: 5px 17px;
+	}
+
+	#show-list-${cardWid}{
+		/*max-height: 600px;*/
+		/*overflow-y:scroll;*/
+	}
+	
+	.save-config-btn-${cardWid}{
+	    padding: 10px 5px;
+	    border-top: 1px solid #ddd;
+	    width: 324px;
+	    text-align: center;
+	    bottom: 0px;
+	    position: absolute;
+	}
+	
+	.title-font-${cardWid}{
+	    font-family: MicrosoftYaHei, 微软雅黑;
+	    font-weight: 400;
+	    font-style: normal;
+	    font-size: 12px;
+	    color: rgb(119, 119, 119);
+	}
+	.content-font-${cardWid}{
+	    font-family: 'MicrosoftYaHei', '微软雅黑';
+	    font-weight: 400;
+	    font-style: normal;
+	    font-size: 14px;
+	    line-height: 14px;
+	}
+	
+	.inline-${cardWid}{
+	    display: inline-block;
+	}
+	
+	.col-4-${cardWid}{
+	    -ms-flex: 0 0 32%;
+	    flex: 0 0 32%;
+	    max-width: 32%;
+	    width: 100%;
+	    padding-right: 15px;
+	}
+	
+	.inputNum-${cardWid} {
+		width: 68px;
+		vertical-align: middle;
+		height: 28px;
+		border: 1px solid #d0d0d0;
+		text-align: center;
+		border-radius: 3px;
+	}
+	.inputHeight-${cardWid} {
+		width: 68px;
+		vertical-align: middle;
+		height: 28px;
+		border: 1px solid #d0d0d0;
+		text-align: center;
+		border-radius: 3px;
+	}
+	
+	.alert-warning-${cardWid}{
+		position: absolute;
+		width: 326px;
+		z-index: 99
+	}
+	
+
+
+   .button-check-${cardWid}{
+		display: none;
+	}
+	.button-label{
+		position: relative;
+		display: inline-block;
+		width: 50px;
+		background-color: #ccc;
+		border-radius: 30px;
+		overflow: hidden;
+		cursor: pointer;
+	}
+	.circle{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: #fff;
+	}
+	.button-label .text {
+		line-height: 10px;
+		font-size: 12px;
+		text-shadow: 0 0 2px #ddd;
+	}
+	.on {
+		color: #fff;
+		display: none; 
+		text-indent: 6px;
+	}
+	.off { 
+		color: #fff;
+		display: inline-block;
+		text-indent: 20px;
+	}
+	.button-label .circle{
+		left: 0;
+		transition: all 0.3s;
+	}
+	
+	<%for (item in configInfo.itemList){%>
+	#item0${itemLP.index}-${cardWid}:checked + label.button-label .circle{
+		left: 30px;
+	}
+	#item0${itemLP.index}-${cardWid}:checked + label.button-label .on{ display: inline-block; }
+	#item0${itemLP.index}-${cardWid}:checked + label.button-label .off{ display: none; }
+	#item0${itemLP.index}-${cardWid}:checked + label.button-label{
+		background-color:  rgba(24, 144, 255, 1);
+	}
+	<%}%>
+	
+	#renameSwitch-${cardWid}:checked + label.button-label .circle{
+		left: 30px;
+	}
+	#renameSwitch-${cardWid}:checked + label.button-label .on{ display: inline-block; }
+	#renameSwitch-${cardWid}:checked + label.button-label .off{ display: none; }
+	#renameSwitch-${cardWid}:checked + label.button-label{
+		background-color:  rgba(24, 144, 255, 1);
+	}
+	
+	.line-${cardWid}{
+		border-bottom: 1px solid #ddd;
+	}
+	
+	a.disabled {
+		color: #637389;
+		pointer-events: none;
+		filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+		-moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+		opacity: 0.5; /*其他，透明度50%*/
+	}
+</style>
+
+<div class="card-config-container-${cardWid}" id="carousel-config-container-${cardWid}">
+   
+	<!-- 警告信息框 -->
+	<div class="alert-warning-${cardWid}"> </div>
+	
+	<div class="row padding-${cardWid}">
+	    <legend class="col-form-label col-6 pt-1 pr-0 title-font-${cardWid}" >展示信息</legend>
+	</div>
+	
+	<div id="show-list-${cardWid}">
+		<% for (item in configInfo.itemList){%>
+		<div class="row padding-${cardWid}">
+		    <div class=" col-6" data-name="${item.customerName}">${item.name}</div>
+			<div class=" col-6 title-font-${cardWid}" >
+				<span class="title-font-${cardWid} sort-up"><a href="javascript:void(0)">上移</a></span>
+				<span class="title-font-${cardWid} sort-down">|<a href="javascript:void(0)">下移</a></span>
+				<span class="title-font-${cardWid} rename">|<a data-toggle="modal" data-target="#exampleModal-${cardWid}" href="javascript:void(0)">重命名</a></span>
+			</div>
+			<div class=" col-12 pt-2 line-${cardWid}" >
+				<div class="toggle-button-wrapper">
+				    <!-- 注意：label的for属性 要与其对应的input的id相对应 -->
+				    <input type="checkbox" id="item0${itemLP.index}-${cardWid}" class="button-check-${cardWid}" name="switch" data-check=${item.isUse}> 
+				    <label for="item0${itemLP.index}-${cardWid}" class="button-label">
+				        <span class="circle"></span>
+				        <span class="text on">启用</span>
+				        <span class="text off">停用</span>
+				    </label>
+				</div>
+			</div>
+		</div>
+		<%}%>
+	</div>
+	
+	<!-- 重命名模态框 -->
+	<div class="modal fade" id="exampleModal-${cardWid}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">事项统计</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">事项统计名称:</label>
+	            <input maxlength="10" autocomplete="off" type="text" class="form-control" id="renameInput-${cardWid}">
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" onclick="confirm${cardWid}()">确定</button>
+	        <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+		
+</div>
+
+<!-- 保存按钮 -->
+<div class="show-grid save-config-btn-${cardWid}" style="position:absolute;">
+	<button type="button" class="btn btn-primary btn-lg btn-block configCardBtn${cardWid}"
+			onclick="saveConfig${cardWid}()" style="background-color: rgba(24, 144, 255, 1)">保存
+	</button>
+</div>
+
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+		$("#rename").hide();
+		init_${cardWid}();
+	});
+	
+	//保存设置
+	function saveConfig${cardWid}(){
+		var itemList = new Array();
+		//遍历页面元素
+		$("#show-list-${cardWid}").find(".padding-${cardWid}").each(function(index,element){
+			var item = new Object();
+			item.order = index + 1;
+			item.name = $(this).children(":first").text();
+			item.isUse = $(this).children(":last").find("input[name='switch']").prop('checked');
+			item.customerName = $(this).children(":first").attr("data-name");
+			itemList.push(item);
+		});
+		var configParam = {
+			 itemList : itemList,
+		}
+		configCardCallBack("${cardId}","${cardWid}", JSON.stringify(configParam));
+	}
+	
+	//上移下移重命名
+	$(document).on(
+	        'click',
+	        '.sort-down',
+	        function() {
+	            //判断是否有下一个节点
+	            if ($(this).parents('.padding-${cardWid}').nextAll().length > 0) {
+	                $(this).parents('.padding-${cardWid}').next().after(
+	                        $(this).parents('.padding-${cardWid}').prop('outerHTML'));
+	                $(this).parents('.padding-${cardWid}').remove();
+					//重新渲染禁止状态
+					$("a").removeClass("disabled");
+					init_${cardWid}();
+	            }
+	        }).on(
+	        'click',
+	        '.sort-up',
+	        function() {
+	            //判断是否有上一个节点
+				console.log($(this));
+	            if ($(this).parents('.padding-${cardWid}').prevAll().length > 0) {
+	                $(this).parents('.padding-${cardWid}').prev().before(
+	                        $(this).parents('.padding-${cardWid}').prop('outerHTML'));
+	                $(this).parents('.padding-${cardWid}').remove();
+					//重新渲染禁止状态
+					$("a").removeClass("disabled");
+					init_${cardWid}();
+	            }
+	}).on(
+		'click',
+		'.rename',
+		function(){
+			 $("#renameInput-${cardWid}").val('');
+			  var itemName = $(this).parents('.title-font-${cardWid}').prev().text();
+			  var currrentId = $(this).parents('.title-font-${cardWid}').next().find("input[name='switch']").attr("id");
+			  $("#renameInput-${cardWid}").attr('data-id',currrentId);
+			  $("#renameInput-${cardWid}").attr('placeholder',itemName);
+			$('#exampleModal-${cardWid}').on('show.bs.modal', function (event) {
+			  var button = $(event.relatedTarget) // Button that triggered the modal
+			})
+	});
+	
+	//初始化
+	function init_${cardWid}(){
+		//遍历所有的div第一个禁止上移，最后一个元素禁止下移
+		console.log($("#show-list-${cardWid} .padding-${cardWid}").first());
+		console.log($("#show-list-${cardWid} .padding-${cardWid}").first().find(".sort-up").find("a"));
+		$("#show-list-${cardWid} .padding-${cardWid}").first().find(".sort-up").find("a").addClass("disabled");
+		$("#show-list-${cardWid} .padding-${cardWid}").last().find(".sort-down").find("a").addClass("disabled");
+		//回显保存的按钮状态
+		$("#show-list-${cardWid} .padding-${cardWid}").each(function(index,element){
+			var configStatus = $(this).find("input[name='switch']").attr("data-check");
+			if(configStatus == "true"){
+				$(this).find("input[name='switch']").prop('checked',true);
+			}
+		});
+		// getAutoScroll_${cardWid}();
+	}
+	
+
+	//确认
+	function confirm${cardWid}(){
+		//将重命名页面的开关状态与input值赋给选中对象
+		var renameValue = $("#renameInput-${cardWid}").val();
+		var preNameValue = $("#renameInput-${cardWid}").attr("placeholder");
+		if(renameValue == ''){
+			$(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+			                        "        <span>名称不能为空！</span>\n" +
+			                        "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+			                        "            <span aria-hidden=\"true\">&times;</span>\n" +
+			                        "        </button>\n" +
+			                        "    </div>");
+			return;
+		}
+		//重命名校验
+		var isInvalid = false;
+		$('#show-list-${cardWid} .padding-${cardWid}').each(function(index,element){
+			var value = $(this).children().first().text();
+			if(value == renameValue){
+				$(".alert-warning-${cardWid}").html("<div class=\"alert alert-danger alert-dismissible fade show \" role=\"alert\">\n" +
+				                        "        <span>事项统计名称不能重复！</span>\n" +
+				                        "        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
+				                        "            <span aria-hidden=\"true\">&times;</span>\n" +
+				                        "        </button>\n" +
+				                        "    </div>");
+				isInvalid = true;
+				return false;
+			}
+		});
+		if(isInvalid){
+			return;
+		}
+		var targetId = $("#renameInput-${cardWid}").attr("data-id");
+		$("#"+targetId).parents(".line-${cardWid}").prev().prev().text(renameValue);
+		$('#exampleModal-${cardWid}').modal('hide');
+	}
+	
+	//滚动条
+	function getAutoScroll_${cardWid}(){
+		$(".card-container-${cardWid}").niceScroll("#show-list-${cardWid}");
+		$("#show-list-${cardWid}").niceScroll({
+			cursorcolor: "#d8d8d8",
+			autohidemode: false,
+			railpadding: { top: 0, right: 0, left: 5, bottom: 0 },
+			cursorborder: "0"
+		});
+		//刷新滚动条
+		$("#show-list-${cardWid}").getNiceScroll().resize()
+	}
+</script>

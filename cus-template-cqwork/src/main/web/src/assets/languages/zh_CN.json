@@ -1,0 +1,11 @@
+{
+  "common": {
+    "lang": "中文",
+    "home": "",
+    "login": "登录",
+    "logout": "安全退出",
+    "more": "更多",
+    "backtop": "回到顶部",
+    "search": "搜索"
+  }
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "key": "detailConfigure",
+    "component": "checkbox",
+    "label": "操作项配置",
+    "defaultValue": [
+      "evaluation",
+      "favourite",
+      "share"
+    ],
+    "value": null,
+    "required": 0,
+    "min": 0,
+    "max": 0,
+    "datas": [
+      {
+        "value": "evaluation",
+        "label": "评价"
+      },
+      {
+        "value": "favourite",
+        "label": "收藏"
+      },
+      {
+        "value": "share",
+        "label": "分享"
+      }
+    ],
+    "tips": ""
+  },
+  {
+    "key": "pageConfigure",
+    "component": "checkbox",
+    "label": "展示信息配置",
+    "defaultValue": [
+      "icon",
+      "navbar"
+    ],
+    "value": null,
+    "required": 0,
+    "min": 0,
+    "max": 0,
+    "datas": [
+      {
+        "value": "icon",
+        "label": "图标"
+      },
+      {
+        "value": "navbar",
+        "label": "锚点导航"
+      }
+    ],
+    "tips": ""
+  },
+  {
+    "component": "radio",
+    "key": "showAppraise",
+    "label": "查看评价详情功能",
+    "required": 0,
+    "defaultValue": 1,
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": 1
+      },
+      {
+        "label": "隐藏",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "colorGroup",
+    "label": "展示模式",
+    "required": 0,
+    "defaultValue": "deep",
+    "value": null,
+    "datas": [
+      {
+        "label": "深色模式",
+        "value": "deep"
+      },
+      {
+        "label": "浅色模式",
+        "value": "light"
+      }
+    ]
+  }
+]

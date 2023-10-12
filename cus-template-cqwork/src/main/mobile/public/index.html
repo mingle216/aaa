@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh" id="main-content">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
+    <!-- <link rel="stylesheet" href="http://res.wisedu.com/fe_components/wed/0.9.0/theme-chalk/index.css"> -->
+    <!--<link rel="stylesheet" href="//at.alicdn.com/t/font_1816866_a82ktn4bwo6.css">-->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+     
+      var setRootFontSize=function(){
+        var w_width=window.screen.availWidth;
+        var h_height=window.screen.availHeight;
+        // 横屏
+        if (window.orientation == 90 || window.orientation == -90) {
+          if (navigator.userAgent.match(/Android/i)) {
+            document.getElementById('main-content').style.fontSize =  w_width/10+'px';
+          } else {
+            document.getElementById('main-content').style.fontSize =  h_height/10 +'px';
+          }
+        } else {
+          document.getElementById('main-content').style.fontSize =  (w_width/375)*37.5+'px';
+        }
+      }
+      window.onresize=setRootFontSize;
+      window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", setRootFontSize, false)
+      setRootFontSize();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- IE10垫片 -->
+    <!-- <script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.js"></script> -->
+    <% if (process.env.NODE_ENV === 'development') { %>
+      <script src="http://localhost:8005/js/vue.min.js"></script>
+      <script src="http://localhost:8005/js/wed.mobile.js"></script>
+      <script src="http://localhost:8005/js/vue-i18n.min.js"></script>
+      <!-- <script src="http://localhost:8005/js/fetch.min.js"></script> -->
+      <script src="http://localhost:8005/langulages/zh_CN.js"></script>
+      <script src="http://localhost:8005/langulages/en_US.js"></script>
+    <% } else { %>
+      <script src="./js/vue.min.js"></script>
+      <script src="./js/wed.mobile.js"></script>
+      <script src="./js/vue-i18n.min.js"></script>
+      <!-- <script src="./js/fetch.min.js"></script> -->
+      <script src="./langulages/zh_CN.js"></script>
+      <script src="./langulages/en_US.js"></script>
+    <% } %>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

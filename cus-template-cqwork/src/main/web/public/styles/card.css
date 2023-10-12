@@ -1,0 +1,35 @@
+.card {
+  margin: 8px;
+}
+
+.card__title {
+  color: black;
+}
+
+.card-color-success {
+  color: green!important;;
+}
+
+.card-color-error {
+  color: red;
+}
+
+.card-check-icon {
+  float: right;
+  margin-right: 20px;
+  margin-top: 2px;
+  color: black;
+  cursor: pointer;
+}
+
+.card-check-icon.checked {
+  color: blue;
+}
+
+.work-footer {
+  color: #8C8C8C;
+  font-size: 12px;
+  padding: 16px 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "component": "select",
+    "key": "newsColumns",
+    "label": "列表展示总数",
+    "multiple": 0,
+    "filterable": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": 5,
+    "value": null,
+    "datas": [
+      {
+        "label": "1",
+        "value": 1
+      },
+      {
+        "label": "2",
+        "value": 2
+      },
+      {
+        "label": "3",
+        "value": 3
+      },
+      {
+        "label": "4",
+        "value": 4
+      },
+      {
+        "label": "5",
+        "value": 5
+      },
+      {
+        "label": "6",
+        "value": 6
+      },
+      {
+        "label": "7",
+        "value": 7
+      },
+      {
+        "label": "8",
+        "value": 8
+      },
+      {
+        "label": "9",
+        "value": 9
+      },
+      {
+        "label": "10",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "component": "radio",
+    "key": "newsRules",
+    "label": "new标签展示规则",
+    "required": 0,
+    "labelAlias": "label",
+    "valueAlias": "value",
+    "defaultValue": "1",
+    "value": null,
+    "datas": [
+      {
+        "label": "展示近24h内容",
+        "value": "1"
+      },
+      {
+        "label": "展示近三天内容",
+        "value": "2"
+      },
+      {
+        "label": "展示近一周内容",
+        "value": "3"
+      },
+      {
+        "label": "隐藏new标签",
+        "value": "4"
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"newsDetailJump",
+    "label": "新闻详情跳转方式",
+    "required": 0,
+    "labelAlias": "label" ,
+    "valueAlias": "value",
+    "tips": "",
+    "defaultValue": 0,
+    "value": null,
+    "datas": [
+      {
+        "label": "本地",
+        "value": 1
+      },
+      {
+        "label": "数据源",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "component": "newsContent",
+    "key": "newsContent",
+    "label": "资讯内容",
+    "required": 1,
+    "fixedMax": 3,
+    "defaultValue": [],
+    "value": [],
+    "datas": []
+  }
+]

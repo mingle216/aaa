@@ -1,0 +1,52 @@
+[
+  {
+    "component": "radio",
+    "key": "search",
+    "label": "搜索框",
+    "required": 0,
+    "defaultValue": "1",
+    "datas": [
+      {
+        "label": "显示",
+        "value": "1"
+      },
+      {
+        "label": "隐藏",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "component": "allServiceItemsDisplay",
+    "key": "allServiceItemsDisplay",
+    "defaultValue": {
+      "displayType": 1,
+      "filterFields": ["-1","0","1","2","3"],
+      "itemDisplayGroups": "0",
+      "itemDisplayInfo": ["0","1","2","3","4"]
+    },
+    "datas": [
+      {
+        "filterFields": [],
+        "itemDisplayGroups":  [],
+        "itemDisplayInfo":  []
+      }
+    ]
+  },
+  {
+    "component":"radio",
+    "key":"authorityEnabled",
+    "label": "访问事项详情时是否开启权限判断",
+    "defaultValue": "0",
+    "datas": [
+      {
+        "label": "关闭",
+        "value": "0"
+      },
+      {
+        "label": "开启",
+        "value": "1"
+      }
+    ]
+  }
+]

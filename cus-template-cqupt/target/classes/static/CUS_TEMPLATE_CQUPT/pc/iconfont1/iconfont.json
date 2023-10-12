@@ -1,0 +1,114 @@
+{
+  "id": "3378367",
+  "name": "新模板",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "29927768",
+      "name": "caise日程",
+      "font_class": "caisericheng",
+      "unicode": "e692",
+      "unicode_decimal": 59026
+    },
+    {
+      "icon_id": "29927769",
+      "name": "caise首页",
+      "font_class": "caiseshouye",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "29927770",
+      "name": "caise通知",
+      "font_class": "caisetongzhi",
+      "unicode": "e694",
+      "unicode_decimal": 59028
+    },
+    {
+      "icon_id": "29927771",
+      "name": "caise服务",
+      "font_class": "caisefuwu",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "29927794",
+      "name": "caise消息",
+      "font_class": "caisexiaoxi",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "29472498",
+      "name": "日程详情选中",
+      "font_class": "richengxiangqingxuanzhong",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "29472500",
+      "name": "日程详情",
+      "font_class": "richengxiangqing",
+      "unicode": "e68b",
+      "unicode_decimal": 59019
+    },
+    {
+      "icon_id": "29472312",
+      "name": "综合1",
+      "font_class": "zonghe1",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "29472323",
+      "name": "综合选中",
+      "font_class": "zonghexuanzhong",
+      "unicode": "e685",
+      "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "29472337",
+      "name": "日程选中",
+      "font_class": "richengxuanzhong",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "29472342",
+      "name": "公告选中",
+      "font_class": "gonggaoxuanzhong",
+      "unicode": "e687",
+      "unicode_decimal": 59015
+    },
+    {
+      "icon_id": "29472377",
+      "name": "我的消息",
+      "font_class": "wodexiaoxi",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
+      "icon_id": "29472388",
+      "name": "消息选中",
+      "font_class": "xiaoxixuanzhong",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "29471999",
+      "name": "通知公告",
+      "font_class": "tongzhigonggao",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "29472002",
+      "name": "应用列表",
+      "font_class": "yingyongliebiao",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    }
+  ]
+}

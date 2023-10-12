@@ -1,0 +1,59 @@
+package com.wisedu.casp.portal.template.sys.cqwork.service;
+
+
+import com.wisedu.casp.portal.template.sys.cqwork.util.SourceTypeUtil;
+import com.wisedu.minos.casp.portal.common.utils.StringUtil;
+import com.wisedu.minos.casp.portal.dao.entity.PersonalDataEntity;
+import com.wisedu.minos.casp.portal.utils.MailUtil;
+import com.wisedu.minos.config.ApplicationContextUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class UserMailACLInformationService {
+    private static final Logger LOGGER = LogManager.getLogger(UserMailACLInformationService.class);
+
+    private UserMailACLInformationService () {
+    }
+
+    public static void getInformation(Map<String, PersonalDataEntity> dataInfoMap, String extraInfo, int unReadCount, boolean success) {
+        List<PersonalDataEntity> values = new ArrayList<>(dataInfoMap.values());
+        if(success) {
+            // 拼装信息
+            values.forEach(item -> {
+                // 拼接主要信息及次要信息
+                // 未读邮件数量：【unreadCount】
+                item.setSubInfo(buildInfo(item.getSubInfo(), extraInfo));
+                // 主要信息拼装
+                item.setMainInfo(buildInfo(item.getMainInfo(), String.valueOf(unReadCount)));
+            });
+
+        } else  {
+            values.forEach(item -> {
+                // 拼接主要信息及次要信息
+                // 卡号：【account】
+                item.setSubInfo(buildInfo(item.getSubInfo(), extraInfo));
+                // 次要信息拼装
+                item.setMainInfo(SourceTypeUtil.buildErrorInfo(item.getMainInfo()));
+            });
+        }
+    }
+
+    private static String buildInfo (String s, String result) {
+        // 信息不为空
+        if ( StringUtil.isNotBlank(s) ) {
+            String[] keys = StringUtil.substringsBetween(s, SourceTypeUtil.SEPARATOR_LEFT, SourceTypeUtil.SEPARATOR_RIGHT);
+            if ( null != keys && keys.length > 0 ) {
+                for ( String key : keys ) {
+                    s = s.replaceFirst(
+                            SourceTypeUtil.getSeparatorWithContent(key),
+                            SourceTypeUtil.getSpanWithContent(result));
+                }
+            }
+        }
+        return s;
+    }
+}

@@ -1,0 +1,3365 @@
+openapi: 3.0.0
+
+info:
+  version: "1.0.0"
+  title: CASP-PORTAL——基础数据API说明文档
+  description: CASP-PORTAL——基础数据API说明文档
+  contact:
+    name: CASP-PORTAL Group
+
+tags:
+  - name: Card
+    description: 卡片相关Api
+  - name: Template
+    description: 模板相关Api
+  - name: Minos
+    description: Minos相关公共接口
+  - name: Common
+    description: 通用公共接口
+  - name: Programme
+    description: 展示方案Api
+  - name: manager-gateway-tag
+    description: 接口注册给网关端网关
+  - name: operationLog
+    description: 标记接口需要记录操作日志
+
+
+# the domain of the service
+host: 'localhost:8116'
+basePath: /
+# array of all schemes that your API supports
+schemes:
+  - http
+  # will be prefixed to all paths
+
+paths:
+
+  /common/restartService:
+    post:
+      operationId: restartService
+      tags:
+        - Common
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20000
+      x-operation-logname: 重启服务
+      x-operation-object: 公共
+      summary: "重启服务"
+      description: |
+        <b>使用场景：</br></b>
+        在卡片/模板安装后，使用本接口重启服务以使新卡片/模板生效   </br>
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功重启服务后，将消息返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /common/getConfigPage/{wid}:
+    get:
+      operationId: getConfigPage
+      tags:
+        - Common
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20009
+      x-operation-logname: 得到卡片/模板配置页面 html渲染字符串
+      x-operation-object: 公共
+      summary: "得到卡片/模板配置页面 html渲染字符串"
+      description: |
+        <b>使用场景：</br></b>
+        在卡片/模板需要到配置页面时，通过此接口获取配置页面html渲染字符串 提供给前端渲染   </br>
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功调用后，将html字符串返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/commonStringInfo"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /common/queryLangList:
+    post:
+      operationId: queryLangList
+      tags:
+        - Common
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20077
+      x-operation-logname: 获取minos国际化语言列表
+      x-operation-object: 公共
+      summary: "获取minos国际化语言列表"
+      description: |
+        <b>使用场景：</br></b>
+        获取minos国际化语言列表，在需要多语言的时候需要查询此接口，根据返回展示语言输入框   </br>
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取卡片列表后，将卡片列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/langVo"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /common/queryVersions:
+    post:
+      operationId: queryVersions
+      tags:
+        - Common
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20078
+      x-operation-logname: 获取卡片或模板版本数据
+      x-operation-object: 公共
+      summary: "获取卡片或模板版本数据"
+      description: |
+        <b>使用场景：</br></b>
+        获取卡片或模板版本数据 </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/queryVersionsReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取卡片或模板版本数据后，将卡片或模板版本数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/versionInfo"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+  /card/queryCardList:
+    post:
+      operationId: queryCardList
+      tags:
+        - Card
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20001
+      x-operation-logname: 获取卡片列表(有分页)
+      x-operation-object: 卡片
+      summary: "卡片管理--获取卡片列表(有分页)"
+      description: |
+        <b>使用场景：</br></b>
+        在查询卡片列表，使用本接口查询   </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/commonQueryListReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取卡片列表后，将卡片列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/PaginationApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/cardInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /card/getCardInfo/{wid}:
+    get:
+      operationId: getCardInfo
+      tags:
+        - Card
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20002
+      x-operation-logname: 卡片管理--根据卡片WId获取卡片内容详情
+      x-operation-object: 卡片
+      summary: "卡片管理--根据卡片WId获取卡片内容详情"
+      description: |
+        <b>使用场景：</br></b>
+        在查询单个卡片内容详情时，使用本接口查询，传入主键Wid   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的卡片WID如果不存在，则直接返回错误信息     </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/wid"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取卡片内容详情后，将卡片列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/cardInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /card/deleteCard:
+    post:
+      operationId: deleteCard
+      tags:
+        - Card
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20003
+      x-operation-logname: 删除部分卡片
+      x-operation-object: 卡片
+      summary: "删除部分卡片"
+      description: |
+        <b>使用场景：</br></b>
+        当卡片创建不合理或卡片已经不在使用的情况下，可以调用本接口将卡片删除   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的卡片WID如果不存在，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "_common.yaml#/components/schemas/ArrayOfStrings"
+              example: ["1001","1002"]
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          oneOf:
+                            - $ref: "#/components/schemas/cardInfo"
+                            - $ref: "#/components/schemas/cardInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /card/saveCardConfig:
+    post:
+      operationId: saveCardConfig
+      tags:
+        - Card
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20004
+      x-operation-logname: 保存卡片配置
+      x-operation-object: 卡片
+      summary: "保存卡片配置"
+      description: |
+        <b>使用场景：</br></b>
+        在卡片需要保存各自的配置信息的时候   </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/commonStringInfo"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功保存卡片配置后，将卡片数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/cardInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+
+
+  /template/queryTemplates:
+    post:
+      operationId: queryTemplates
+      tags:
+        - Template
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20005
+      x-operation-logname: 获取模板列表(有分页)
+      x-operation-object: 模板
+      summary: "模板管理--获取模板列表(有分页)"
+      description: |
+        <b>使用场景：</br></b>
+        在查询模板列表时，使用本接口查询   </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/commonQueryListReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取模板列表后，将模板列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/PaginationApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/templateInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+
+  /template/getTemplateInfo/{wid}:
+    get:
+      operationId: getTemplateInfo
+      tags:
+        - Template
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20006
+      x-operation-logname: 模板管理--根据模板WId获取模板内容详情
+      x-operation-object: 模板
+      summary: "模板管理--根据模板WId获取模板内容详情"
+      description: |
+        <b>使用场景：</br></b>
+        在查询单个模板内容详情时，使用本接口查询，传入主键Wid   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的模板WID如果不存在，则直接返回错误信息     </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/wid"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取卡片内容详情后，将卡片列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/templateInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /template/deleteTemplate:
+    post:
+      operationId: deleteTemplate
+      tags:
+        - Template
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20007
+      x-operation-logname: 删除部分模板
+      x-operation-object: 模板
+      summary: "删除部分模板"
+      description: |
+        <b>使用场景：</br></b>
+        当模板创建不合理或模板已经不在使用的情况下，可以调用本接口将模板删除   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的模板WID如果不存在，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "_common.yaml#/components/schemas/ArrayOfStrings"
+              example: ["1001","1002"]
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          oneOf:
+                            - $ref: "#/components/schemas/templateInfo"
+                            - $ref: "#/components/schemas/templateInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /template/saveTemplateConfig:
+    post:
+      operationId: saveTemplateConfig
+      tags:
+        - Template
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20008
+      x-operation-logname: 保存模板配置
+      x-operation-object: 模板
+      summary: "保存模板配置"
+      description: |
+        <b>使用场景：</br></b>
+        在模板需要保存各自的配置信息的时候   </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/commonStringInfo"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功保存卡片配置后，将卡片数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/templateInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/support:
+    get:
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      operationId: support
+      x-operation-logid: 20010
+      x-operation-logname: 获取支持创建的展示方案类型
+      x-operation-object: 展示方案
+      summary: "获取支持创建的展示方案类型，目前包含pc门户和移动h5"
+      description: |
+        从产品授权文件获取支持创建的展示方案类型，</br>
+        目前包含pc门户和移动h5,例如： </br>
+        portalH5:true,</br>
+        portalPC:false </br>
+        表示支持移动端，不支持PC端
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取支持创建的展示方案类型后，将数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/SupportProgrammeResp"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/deleteMenu:
+    post:
+      operationId: deleteMenu
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20021
+      x-operation-logname: 删除目录
+      x-operation-object: 展示方案
+      summary: "展示方案--删除菜单"
+      description: |
+        <b>使用场景：</br></b>
+        当目录创建不合理或目录已经不在使用的情况下，可以调用本接口将卡目录删除   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的目录WID如果不存在，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "_common.yaml#/components/schemas/ArrayOfStrings"
+              example: ["1001","1002"]
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+        properties:
+          data:
+            type: array
+            items:
+              oneOf:
+                - $ref: "#/components/schemas/menuInfo"
+                - $ref: "#/components/schemas/menuInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/deletePageInfo:
+    post:
+      operationId: deletePageInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20022
+      x-operation-logname: 展示方案--删除页面
+      x-operation-object: 展示方案
+      summary: "展示方案--删除页面"
+      description: |
+        <b>使用场景：</br></b>
+        当页面创建不合理或已经不在使用的情况下，可以调用本接口将页面删除   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的页面WID如果不存在，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "_common.yaml#/components/schemas/ArrayOfStrings"
+              example: ["1001","1002"]
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          oneOf:
+                            - $ref: "#/components/schemas/pageInfo"
+                            - $ref: "#/components/schemas/pageInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/previewPage:
+    post:
+      operationId: previewPage
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20023
+      x-operation-logname: 展示方案--预览页面
+      x-operation-object: 展示方案
+      summary: "展示方案--预览页面"
+      description: |
+        <b>使用场景：</br></b>
+        当页面创建或修改过程中需要对页面进行预览时调用此接口进行页面预览   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的参数为空时，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/previewPageReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            返回html字符串，前端加载。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/previewPageResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/querySidebarList:
+    post:
+      operationId: querySidebarList
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20024
+      x-operation-logname: 展示方案--侧边栏列表
+      x-operation-object: 卡片
+      summary: "展示方案--侧边栏列表"
+      description: |
+        <b>使用场景：</br></b>
+        在查询侧边栏列表，使用本接口查询   </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的侧边栏对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sidebarListReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            返回列表数据。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/sidebarInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/updateSidebarStatus:
+    post:
+      operationId: updateSidebarStatus
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20025
+      x-operation-logname: 侧边栏启用禁用
+      x-operation-object: 展示方案
+      summary: "侧边栏启用禁用"
+      description:  |
+        <b>使用场景：</br></b>
+        当需要对侧边栏进行启用或禁用的时候可以调用此接口进行操作  </br>
+        <b>业务逻辑：</br></b>
+        1、传入的参数如果为空，则直接返回错误信息     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的参数对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sidebarStatusReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            调用后，将调用结果返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/updateMenuStatus:
+    post:
+      operationId: updateMenuStatus
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20050
+      x-operation-logname: 展示方案菜单启用禁用
+      x-operation-object: 展示方案
+      summary: "展示方案菜单启用禁用"
+      description:  |
+        <b>使用场景：</br></b>
+        当需要对菜单进行启用或禁用的时候可以调用此接口进行操作  </br>
+        <b>业务逻辑：</br></b>
+        1、传入的参数如果为空，则直接返回错误信息     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的参数对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sidebarStatusReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            调用后，将调用结果返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/getSidebarInfo/{wid}:
+    get:
+      operationId: getSidebarInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20026
+      x-operation-logname: 展示方案--获取侧边栏详情
+      x-operation-object: 展示方案
+      summary: "获取侧边栏详情"
+      description: |
+        <b>使用场景：</br></b>
+        在查询或者点击编辑单个侧边栏时，使用本接口查询，传入主键Wid   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的侧边栏WID如果不存在，则直接返回错误信息     </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/wid"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取侧边栏内容详情后，将详情数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/sidebarInfoResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/updateSidebarSequence:
+    post:
+      operationId: updateSidebarSequence
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20028
+      x-operation-logname: 侧边栏排序
+      x-operation-object: 展示方案
+      summary: "侧边栏排序"
+      description: |
+        <b>使用场景：</br></b>
+        当侧边栏进行拖动变换顺序时调用此接口   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的参数如果为空，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sidebarSequenceReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            调用后，将调用结果返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/deleteSidebar:
+    post:
+      operationId: deleteSidebar
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20029
+      x-operation-logname: 根据主键删除侧边栏
+      x-operation-object: 展示方案
+      summary: "根据主键删除侧边栏"
+      description: |
+        <b>使用场景：</br></b>
+        当侧边栏创建不合理或已经不在使用的情况下，可以调用本接口将侧边栏删除   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的侧边栏WID如果不存在，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "_common.yaml#/components/schemas/ArrayOfStrings"
+              example: ["1001","1002"]
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          oneOf:
+                            - $ref: "#/components/schemas/sidebarInfo"
+                            - $ref: "#/components/schemas/sidebarInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/saveCopyOfPageInfo:
+    post:
+      operationId: saveCopyOfPageInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20030
+      x-operation-logname: 展示方案-复制页面信息
+      x-operation-object: 展示方案
+      summary: "展示方案-复制页面信息"
+      description: |
+        <b>使用场景：</br></b>
+        当在展示方案中点击页面中复制按钮弹出框时，填入pagecode后确认按钮后调用此接口   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的参数为空，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/pageInfoRes"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            调用后，将调用结果返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/queryPageList:
+    post:
+      operationId: queryPageList
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20031
+      x-operation-logname: 展示方案-根据展示方案id查询页面列表
+      x-operation-object: 展示方案
+      summary: "展示方案-根据展示方案id查询页面列表"
+      description: |
+        <b>使用场景：</br></b>
+        当在展示方案列表中点击页面管理时，获取页面管理左侧页面数列表时需要调用此接口   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的参数为空，则直接返回错误信息     </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/programmeReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            调用后，将调用结果返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: "array"
+                        items:
+                          $ref: "#/components/schemas/pageListObj"
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/queryProgrammeList:
+    post:
+      operationId: queryProgrammeList
+      tags:
+        - Programme
+        - manager-gateway-tag
+      summary: "查询展示方案列表"
+      description: |
+        <b>使用场景：</br></b>
+        展示方案管理首页的PC端和移动端方案列表查询      </br>
+        <b>业务逻辑：</br></b>
+        传入的适配终端platformType<br>
+           1.如果platformType为null，则返回PC端和移动端方案     </br>
+           2.如果platformType为0，则返回PC方案     </br>
+           3.如果platformType为1，则返回移动端方案     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/programmeListReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取展示方案列表后，将展示方案列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: "array"
+                        items:
+                          $ref: "#/components/schemas/programmeBiz"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/updateStatusByWid:
+    post:
+      operationId: updateStatusByWid
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20041
+      x-operation-logname: 停用启用展示方案
+      x-operation-object: 展示方案
+      summary: "停用启用展示方案"
+      description: |
+        <b>使用场景：</br></b>
+        展示方案管理首页的PC端和移动端方案的停用启用  </br>
+        <b>业务逻辑：</br></b>
+        传入的wid和适配终端platformType<br>
+        传入的wid表示该方案启用，其他方案停用</br>
+           2.如果platformType为0，则表示PC方案的停用启用     </br>
+           3.如果platformType为1，则表示移动端方案的停用启用     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/updateStatusReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功停用或启用展示方案，将数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/deleteProgramme:
+    post:
+      operationId: deleteProgramme
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20042
+      x-operation-logname: 删除部分展示方案
+      x-operation-object: 展示方案
+      summary: "删除展示方案,支持批量删除应用"
+      description: |
+        <b>使用场景：</br></b>
+        当展示方案创建不合理或应用已经不在使用的情况下，可以调用本接口将展示方案删除      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的展示方案WID如果不存在，则直接返回错误信息     </br>
+        2、传入的展示方案WID存在，则根据wid删除  </br>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "_common.yaml#/components/schemas/ArrayOfStrings"
+              example: ["1001","1002"]
+      responses:
+        '200':
+          description: "操作成功"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          oneOf:
+                            - $ref: "#/components/schemas/programmeInfo"
+                            - $ref: "#/components/schemas/programmeInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/getBasicInfo/{code}:
+    get:
+      operationId: getBasicInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20043
+      x-operation-logname: 根据展示方案id获取基本信息
+      x-operation-object: 展示方案
+      summary: "根据展示方案id获取基本信息"
+      description: |
+        <b>使用场景：</br></b>
+        查询全局配置的基本信息时使用      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的展示方案WID如果不存在，则直接返回错误信息     </br>
+        2、传入的展示方案WID存在，则根据wid返回相应信息  </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/code"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取基本信息后，将基本信息数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/programmeInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/queryMenuList:
+    post:
+      operationId: queryMenuList
+      tags:
+        - Programme
+        - manager-gateway-tag
+      summary: "根据展示方案id查询菜单信息"
+      description: |
+        <b>使用场景：</br></b>
+        查询展示方案全局配置的菜单信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的展示方案ID如果不存在，则直接返回错误信息     </br>
+        2、传入的展示方案ID存在，则根据wid返回相应信息，如果菜单有子菜单，会将该菜单信息的所有子菜单都查询出来（类似于树的形式）  </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/menuListRes"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取菜单信息列表后，将菜单信息列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: "array"
+                        items:
+                          $ref: "#/components/schemas/menuBiz"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/getPageInfo/{wid}:
+    get:
+      operationId: getPageInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+      summary: "根据页面wid查询页面信息"
+      description: |
+        <b>使用场景：</br></b>
+        查询展示方案的页面信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的页面ID如果不存在，则直接返回错误信息     </br>
+        2、传入的页面ID存在，则根据wid返回页面信息和卡片运行时配置  </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/wid"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取页面信息后，将页面信息数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/pageInfoRes"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/getCardConfig/{code}:
+    get:
+      operationId: getCardConfig
+      tags:
+        - Programme
+        - manager-gateway-tag
+      summary: "根据卡片运行时ID查询卡片配置信息"
+      description: |
+        <b>使用场景：</br></b>
+        查询卡片配置信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的卡片运行时ID如果不存在，则返回默认的卡片配置html页面字符串 </br>
+        2、传入的卡片运行时ID存在，则根据wid返回卡片配置html页面字符串 </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/code"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取页面信息后，将页面信息数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/cardConfigBiz"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/saveMenuInfo:
+    post:
+      operationId: saveMenuInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20044
+      x-operation-logname: 新增修改菜单信息
+      x-operation-object: 菜单信息
+      summary: "新增修改菜单信息"
+      description: |
+        <b>使用场景：</br></b>
+        新增修改全局配置的菜单信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的应用WID如果不存在，则新增     </br>
+        2、传入的应用WID如果存在，则修改     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/menuInfoRes"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功保存卡片配置后，将卡片数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/menuInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/savePageInfo:
+    post:
+      operationId: savePageInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20045
+      x-operation-logname: 新增修改页面信息
+      x-operation-object: 页面信息
+      summary: "新增修改页面信息"
+      description: |
+        <b>使用场景：</br></b>
+        新增修改全局配置的菜单信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的应用WID如果不存在，则新增     </br>
+        2、传入的应用WID如果存在，则修改     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/pageInfoRes"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功保存卡片配置后，将卡片数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/pageInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/saveProgrammeInfo:
+    post:
+      operationId: saveProgrammeInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20046
+      x-operation-logname: 新增修改展示方案信息
+      x-operation-object: 展示方案信息
+      summary: "新增修改展示方案信息"
+      description: |
+        <b>使用场景：</br></b>
+        新增修改展示方案信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的应用WID如果不存在，则新增     </br>
+        2、传入的应用WID如果存在，则修改     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/programmeInfoRes"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功保存卡片配置后，将卡片数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/programmeInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/saveSidebarInfo:
+    post:
+      operationId: saveSidebarInfo
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20048
+      x-operation-logname: 新增修改侧边栏信息
+      x-operation-object: 侧边栏信息
+      summary: "新增修改侧边栏信息"
+      description: |
+        <b>使用场景：</br></b>
+        新增修改全局配置的侧边栏信息时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的应用WID如果不存在，则新增     </br>
+        2、传入的应用WID如果存在，则修改     </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sidebarInfoBiz"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功保存侧边栏配置后，返回成功信息。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /programme/copyProgramme:
+    post:
+      operationId: copyProgramme
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20049
+      x-operation-logname: 复制展示方案
+      x-operation-object: 展示方案
+      summary: "复制展示方案"
+      description: |
+        <b>使用场景：</br></b>
+        复制展示方案时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的应用WID如果不存在，则报错     </br>
+        2、传入的应用WID如果存在，则复制       </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/commonReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功复制后，返回成功信息。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/updateMenuSequence:
+    post:
+      operationId: updateMenuSequence
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20047
+      x-operation-logname: 修改菜单排序
+      x-operation-object: 菜单排序
+      summary: "修改菜单排序"
+      description: |
+        <b>使用场景：</br></b>
+        修改全局配置的菜单信息的排序时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+        1、传入的父级菜单id和wi[前端传一个数组，数组中包含所移动的菜单parentID和自身的wid 以及 与它同parentID的菜单的信息（parentID和wid）]
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/sortInfo"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            修改菜单排序。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /programme/querySysIconList:
+    post:
+      operationId: querySysIconList
+      tags:
+        - Programme
+        - manager-gateway-tag
+      summary: "查询系统图标库列表"
+      description: |
+        <b>使用场景：</br></b>
+        展示方案全局配置的菜单信息和侧边栏字体图标设置时调用此方法      </br>
+        <b>业务逻辑：</br></b>
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取系统图标库列表后，将系统图标库列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: "array"
+                        items:
+                          $ref: "#/components/schemas/sysIconInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+  /minos/searchUser:
+    post:
+      operationId: searchUser
+      tags:
+        - Minos
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20051
+      x-operation-logname: 获取用户列表(有分页)
+      x-operation-object: 卡片
+      summary: "用户管理--获取用户列表(有分页)"
+      description: |
+        <b>使用场景：</br></b>
+        在查询用户列表，使用本接口查询   </br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/userInfoReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取卡片列表后，将卡片列表数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/PaginationApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/userInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+
+
+  /minos/getUserDetails/{wid}:
+    get:
+      operationId: getUserDetails
+      tags:
+        - Minos
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20053
+      x-operation-logname: 用户管理--根据用户WId获取用户详情
+      x-operation-object: 用户管理
+      summary: "用户管理--根据用户WId获取用户详情"
+      description: |
+        <b>使用场景：</br></b>
+        在查询单个用户详情时，使用本接口查询，传入主键Wid   </br>
+        <b>业务逻辑：</br></b>
+        1、传入的用户WID如果不存在，则直接返回错误信息     </br>
+      parameters:
+        - $ref: "_common.yaml#/components/parameters/wid"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取用户详情后，将用户详细数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        $ref: "#/components/schemas/userInfo"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /minos/getMinosOrg:
+    post:
+      operationId: getMinosOrg
+      tags:
+        - Minos
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20054
+      x-operation-logname: 机构管理--获取Minos机构树信息
+      x-operation-object: 机构管理
+      summary: "机构管理--获取Minos机构树信息"
+      description: |
+        <b>使用场景：</br></b>
+        在查询Minos机构树信息时，使用本接口查询</br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/orgInfoTreeReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取机构信息后，将机构数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/orgInfosBiz"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /minos/updateUserInfo:
+    post:
+      operationId: updateUserInfo
+      tags:
+        - Minos
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 202101
+      x-operation-logname: 更新用户信息
+      x-operation-object: 更新用户信息
+      summary: "更新用户信息"
+      description: |
+        <b>使用场景：</br></b>
+        在更新用户信息时，使用本接口更新</br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/dubboUserInfoReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            返回更新用户信息结果。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: boolean
+
+
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+  /minos/getFieldGroups:
+    post:
+      operationId: getFieldGroups
+      tags:
+        - Minos
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20055
+      x-operation-logname: Minos接口--获取Minos域及用户组信息
+      x-operation-object: Minos接口
+      summary: "Minos接口--获取Minos域及用户组信息"
+      description: |
+        <b>使用场景：</br></b>
+        在查询Minos域及用户组信息时，使用本接口查询</br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的卡片对象。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/fieldGroupsReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功获取Minos域及用户组信息后，将Minos域及用户组信息返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/fieldGroupBiz"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+  /programme/updatePageStatusByWid:
+    post:
+      operationId: updatePageStatusByWid
+      tags:
+        - Programme
+        - manager-gateway-tag
+        - operationLog
+      x-operation-logid: 20042
+      x-operation-logname: 停用启用页面信息
+      x-operation-object: 展示方案
+      summary: "停用启用页面信息"
+      description: |
+        <b>使用场景：</br></b>
+        展示方案页面管理页面停用启用  </br>
+        <b>业务逻辑：</br></b>
+        传入的wid表示页面主键</br>
+        传入的enabledFlag表示是否启用（0：否；1：是）</br>
+      requestBody:
+        description: |
+          封装为 JSON 文档的配置信息。
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/enabledReq"
+      responses:
+        '200':
+          x-summary: 操作成功
+          description: |
+            成功停用或启用展示方案，将数据返回。
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "_common.yaml#/components/schemas/ApiResponse"
+        '400':
+          $ref: "_common.yaml#/components/responses/400"
+        '404':
+          $ref: "_common.yaml#/components/responses/404"
+
+components:
+  schemas:
+
+    sysIconInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键"
+        iconName:
+          type: string
+          description: "图标名称"
+        iconType:
+          type: string
+          description: "图标类型  0 字体图标  1 png图标"
+        iconDesc:
+          type: string
+          description: "图标描述"
+        iconUrl:
+          type: string
+          description: "图标地址"
+
+
+    commonNoDataResponse:
+      type: object
+      properties:
+        errcode:
+          type: string
+          description: "错误代码，0 表示无错误"
+          default: "0"
+        errmsg:
+          type: string
+          description: "错误信息"
+          default: "success"
+        traceId:
+          type: string
+          example: C1A4702B-ABFC-45BD-83DB-C70E71CCDD8D
+          description: 用于唯一标识一次请求的，必须是 UUID 形式。
+
+
+    userInfoReq:
+      type: object
+      properties:
+        keyword:
+          type: "string"
+          description: "工号/姓名关键字查询"
+        userAccount:
+          type: "string"
+          description: "用户帐号"
+        pageSize:
+          type: "integer"
+          description: ""
+          example: 10
+        pageNumber:
+          type: "integer"
+          description: ""
+          example: 1
+
+
+    orgInfoTreeReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "机构主键Wid"
+        orgType:
+          type: "string"
+          description: "人员授权机构类型：1-教职工 2-学生 3-其他人员"
+        isTree:
+          type: "string"
+          description: "是否以树形数据展示 1：是  0：否"
+
+    dubboUserInfoReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        personWid:
+          type: "string"
+          description: "人员主键"
+        categoryWid:
+          type: "string"
+          description: "分类Wid"
+        categoryName:
+          type: "string"
+          description: "分类名称"
+        userAccount:
+          type: "string"
+          description: "用户账号"
+        userName:
+          type: "string"
+          description: "用户名称"
+        userAlias:
+          type: "string"
+          description: "用户别名"
+        enterSchoolDate:
+          type: "string"
+          description: "入学日期"
+        certTypeWid:
+          type: "string"
+          description: "证书类型Wid"
+        certCode:
+          type: "string"
+          description: "主键Wid"
+        phone:
+          type: "string"
+          description: "主键Wid"
+        email:
+          type: "string"
+          description: "主键Wid"
+        userStatus:
+          type: "string"
+          description: "主键Wid"
+        activeStatus:
+          type: "string"
+          description: "主键Wid"
+        accountStatus:
+          type: "string"
+          description: "主键Wid"
+        identityStatus:
+          type: "string"
+          description: "主键Wid"
+        userSpeciality:
+          type: "string"
+          description: "主键Wid"
+        userClass:
+          type: "string"
+          description: "主键Wid"
+        lifeCycle:
+          type: "string"
+          description: "主键Wid"
+        lifeCycleExpire:
+          type: "string"
+          description: "主键Wid"
+        deptWid:
+          type: "string"
+          description: "主键Wid"
+        deptName:
+          type: "string"
+          description: "主键Wid"
+        sexCode:
+          type: "string"
+          description: "主键Wid"
+        birthday:
+          type: "string"
+          description: "主键Wid"
+        activateNow:
+          type: "integer"
+          description: "主键Wid"
+        pwd:
+          type: "string"
+          description: "主键Wid"
+        pwdExpirePolicy:
+          type: "string"
+          description: "主键Wid"
+        pwdStrength:
+          type: "string"
+          description: "主键Wid"
+        userIcon:
+          type: "string"
+          description: "人员授权机构类型：1-教职工 2-学生 3-其他人员"
+        userIconPath:
+          type: "string"
+          description: "是否以树形数据展示 1：是  0：否"
+        userIconName:
+          type: "string"
+          description: "主键Wid"
+        isPrimary:
+          type: "integer"
+          description: "主键Wid"
+        isCreated:
+          type: "integer"
+          description: "主键Wid"
+        phoneVerify:
+          type: "integer"
+          description: "主键Wid"
+        emailVerify:
+          type: "integer"
+          description: "主键Wid"
+        preferredLanguage:
+          type: "string"
+          description: "主键Wid"
+        accountValidity:
+          type: "string"
+          description: "主键Wid"
+        orgWid:
+          type: "string"
+          description: "主键Wid"
+        orgName:
+          type: "string"
+          description: "主键Wid"
+        orgiName:
+          type: "string"
+          description: "主键Wid"
+        leaveSchTime:
+          type: "string"
+          description: "主键Wid"
+        orgs:
+          type: array
+          items:
+            $ref: "#/components/schemas/dubboOrgBeanInfo"
+        groups:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/dubboGroupInfo"
+        ext:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/dubboExtInfoReq"
+
+
+    fieldGroupsReq:
+      type: object
+      properties:
+        isTree:
+          type: "string"
+          description: "是否以树形数据展示 1：是  0：否"
+        wid:
+          type: "string"
+          description: "域及用户组主键Wid"
+
+    commonQueryListReq:
+      type: object
+      properties:
+        # cardName:
+        #   type: "string"
+        #   description: "卡片名称"
+        # cardSystemType:
+        #   type: "string"
+        #   description: "卡片属性0：系统1：自定义  "
+        searchCriteria:
+          $ref: "_common.yaml#/components/schemas/SearchCriteria"
+          description: "搜索条件"
+        pageSize:
+          type: "integer"
+          description: "当前页码"
+        pageNumber:
+          type: "integer"
+          description: "每页条数"
+    queryVersionsReq:
+      type: object
+      properties:
+        foreignKey:
+          type: string
+          description: "模板/卡片id"
+        versionType:
+          type: string
+          description: "类型0：模板1：卡片"
+        versionNumber:
+          type: string
+          description: "当前版本号"
+
+    cardInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键wid"
+        cardId:
+          type: string
+          description: "卡片ID"
+        cardName:
+          type: string
+          description: "卡片名称"
+        cardDesc:
+          type: string
+          description: "卡片描述"
+        imageUrl:
+          type: string
+          description: "截图地址"
+        imageUrlMobile:
+          type: string
+          description: "移动端截图地址"
+        updateTime:
+          type: string
+          description: "最近一次更新时间"
+        platformType:
+          type: string
+          description: "运行平台 0:PC 1:Mobile,多个平台用；分割拼接"
+        configurableFlag:
+          type: integer
+          description: "是否支持可配置 0:不支持 1:支持"
+        configurableRuntimeFlag:
+          type: integer
+          description: "是否支持运行时可配置 0:不支持 1:支持"
+        cardSystemType:
+          type: integer
+          description: "卡片属性0：系统1：自定义"
+        configureContent:
+          type: string
+          description: "配置信息"
+        versionNumber:
+          type: string
+          description: "版本号"
+        cardStatus:
+          type: integer
+          description: "卡片状态 0正常1有更新2不可用"
+
+    templateInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键wid"
+        templateId:
+          type: string
+          description: "模板id"
+        templateSystemType:
+          type: integer
+          description: "模板系统类型0：系统模板1：自定义模板"
+        templateName:
+          type: string
+          description: "模板名称"
+        templateImgUrl:
+          type: string
+          description: "模板展示图URL"
+        templateImgMobileUrl:
+          type: string
+          description: "模板移动端展示图URL"
+        templateDesc:
+          type: string
+          description: "模板描述"
+        configureContent:
+          type: string
+          description: "配置信息"
+        configurableFlag:
+          type: integer
+          description: "是否支持可配置 0:不支持 1:支持"
+        configurableRuntimeFlag:
+          type: integer
+          description: "是否支持运行时可配置 0:不支持 1:支持"
+        platformType:
+          type: string
+          description: "运行平台 0:PC 1:Mobile（1是0否多位连接，例00 都不支持）"
+        templateStatus:
+          type: integer
+          description: "状态0正常1有更新2不可用"
+        versionNumber:
+          type: string
+          description: "版本号"
+        updateTime:
+          type: string
+          description: "最近一次更新时间"
+
+    orgInfosBiz:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "机构Id"
+        pWid:
+          type: string
+          description: "父机构Id"
+        name:
+          type: string
+          description: "机构名称"
+        code:
+          type: string
+          description: "机构代码"
+        childList:
+          type: array
+          description: "子机构树信息"
+          items:
+            $ref: "#/components/schemas/orgInfosBiz"
+
+    fieldGroupBiz:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "Id"
+        pwid:
+          type: string
+          description: "父节点WID"
+        name:
+          type: string
+          description: "名称"
+        orderIndex:
+          type: integer
+          description: "排序字段 数字小的在前面"
+        type:
+          type: string
+          description: "用户组树节点类型 0 根节点（XXX大学） 1 一级用户分类 2 原始组织机构 3 未分配组织架构 4 自定义节点 5 自定义组织机构 6 二级分类 7 业务域 8 用户组"
+        childList:
+          type: array
+          description: "子信息"
+          items:
+            $ref: "#/components/schemas/fieldGroupBiz"
+    userInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "人员主键wid"
+        personWid:
+          type: string
+          description: "人员表中的WID"
+        categoryWid:
+          type: string
+          description: "人员表中的WID"
+        categoryName:
+          type: string
+          description: "用户分类名称"
+        userAccount:
+          type: string
+          description: "用户名(账户工号)"
+        userName:
+          type: string
+          description: "姓名"
+        userAlias:
+          type: string
+          description: "别名"
+        enterSchoolDate:
+          type: string
+          description: "入校年份"
+        certTypeWid:
+          type: string
+          description: "身份证件类型代码 0:居民身份证,1:护照,2:港澳台居民身份证,4:旅行证据,5:其他"
+        certCode:
+          type: string
+          description: "身份证件号"
+        phone:
+          type: string
+          description: "手机号"
+        email:
+          type: string
+          description: "邮箱"
+        userStatus:
+          type: string
+          description: "用户状态 0 未激活 1 正常 2 冻结 3 锁定 4 禁用"
+        lifeCycle:
+          type: string
+          description: "生命周期 0 未入校 1 在校 2 已离校"
+        lifeCycleExpire:
+          type: string
+          description: "生命周期阶段到期时间"
+        deptWid:
+          type: string
+          description: "部门WID"
+        deptName:
+          type: string
+          description: "所在部门名称多级使用-分割"
+        sexCode:
+          type: string
+          description: "性别代码 0 男 1 女"
+        birthday:
+          type: string
+          description: "出生日期"
+        isPrimary:
+          type: string
+          description: "是否是主帐号 1 是 0 否"
+        userIcon:
+          type: string
+          description: "用户头像的Base64编码"
+        preferredLanguage:
+          type: string
+          description: "首选语言"
+        userTag:
+          type: string
+          description: "人员标签"
+        orgs:
+          type: array
+          description: "所属机构"
+          items:
+            $ref: "#/components/schemas/dubboOrgBeanInfo"
+        groups:
+          type: array
+          description: "所属用户组"
+          items:
+            $ref: "#/components/schemas/dubboGroupBeanInfo"
+
+    dubboOrgBeanInfo:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键id"
+        code:
+          type: "string"
+          description: "编码"
+        name:
+          type: "string"
+          description: "名称"
+        pWid:
+          type: "string"
+          description: "父级id"
+        categoryWid:
+          type: "string"
+          description: "分类wid"
+        orderIndex:
+          type: "integer"
+          description: "排序"
+        type:
+          type: "string"
+          description: "类型"
+        shortName:
+          type: "string"
+          description: "简洁名称"
+        isVisible:
+          type: "string"
+          description: "是否可见"
+
+    dubboGroupBeanInfo:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键id"
+        name:
+          type: "string"
+          description: "用户组名称"
+        groupId:
+          type: "string"
+          description: "用户组id"
+        groupType:
+          type: "string"
+          description: "用户组类型"
+        domainWid:
+          type: "string"
+          description: ""
+        orderIndex:
+          type: "integer"
+          description: "排序"
+
+    dubboGroupInfo:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键id"
+        name:
+          type: "string"
+          description: "用户组名称"
+        groupId:
+          type: "string"
+          description: "用户组id"
+        groupType:
+          type: "string"
+          description: "用户组类型"
+        categoryWid:
+          type: "string"
+          description: ""
+        dynamicSql:
+          type: "string"
+          description: ""
+        datasourceWid:
+          type: "string"
+          description: ""
+        datasourceDeleted:
+          type: "boolean"
+          description: ""
+        datasourceName:
+          type: "string"
+          description: ""
+        domainWid:
+          type: "string"
+          description: ""
+        peopleNumber:
+          type: "integer"
+          description: ""
+        orderIndex:
+          type: "integer"
+          description: ""
+        groupRemark:
+          type: "string"
+          description: ""
+        autoSyn:
+          type: "integer"
+          description: ""
+        syncPeriod:
+          type: "integer"
+          description: ""
+        syncPeriodUnit:
+          type: "string"
+          description: ""
+        firstSyncTime:
+          type: "string"
+          description: ""
+        lastSyncTime:
+          type: "string"
+          description: ""
+        containRefList:
+          type: "integer"
+          description: ""
+        ruleDesc:
+          type: "string"
+          description: ""
+        userRefList:
+          type: "array"
+          items:
+            type: string
+        ruleList:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/dubboGroupRule"
+
+
+    dubboGroupRule:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键id"
+        groupWid:
+          type: "string"
+          description: ""
+        ruleDicWid:
+          type: "string"
+          description: ""
+        orderIndex:
+          type: "integer"
+          description: ""
+        valueList:
+          type: "array"
+          items:
+            type: string
+
+    dubboExtInfoReq:
+      type: object
+      properties:
+        extKey:
+          type: "string"
+          description: ""
+        extValue:
+          type: "string"
+          description: ""
+
+
+    SupportProgrammeResp:
+      type: object
+      properties:
+        portalPC:
+          type: "boolean"
+          description: "是否支持PC端"
+        portalH5:
+          type: "boolean"
+        description: "是否支持移动端"
+
+    commonStringInfo:
+      type: object
+      properties:
+        dataInfo:
+          type: string
+          description: "统一String属性字段"
+
+    sidebarSequenceReq:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/sidebarSequenceReqObj"
+
+    copyOfPageInfoReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "页面主键id"
+        pageCode:
+          type: "string"
+          description: "页面code"
+
+    sidebarSequenceReqObj:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "侧边栏主键id"
+        orderNumber:
+          type: "integer"
+          description: "排序"
+
+    sidebarInfoResponse:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键wid"
+        columnName:
+          type: "string"
+          description: "栏目名称"
+        pageId:
+          type: string
+          description: "对应页面"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+        pageName:
+          type: string
+          description: "页面名称"
+        isSystem:
+          type: integer
+          description: "是否系统自带栏目（0：否；1：是）"
+        iconType:
+          type: integer
+          description: "栏目的图标类型（图标类型  0 字体图标  1 png图标）"
+        menuType:
+          type: "integer"
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        authType:
+          type: integer
+          description: "授权类别（0：游客可见；1：登录后可见；2：授权后可见）"
+        iconUrl:
+          type: "string"
+          description: "图片地址"
+        linkUrl:
+          type: "string"
+          description: "链接地址"
+        displayName:
+          type: string
+          description: "展示名称"
+        displayNameLangKey:
+          type: "string"
+          description: "侧边栏标题国际化id"
+        displayNameLang:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/menuNameLangBiz"
+        menuAuthInfo:
+          type: "array"
+          description: "授权范围"
+          items:
+            $ref: "#/components/schemas/menuAuthInfoBiz"
+
+    authScope:
+      type: object
+      properties:
+        groupId:
+          type: "string"
+          description: "分组/机构id"
+        groupType:
+          type: "integer"
+          description: "类型0机构1分组"
+        groupName:
+          type: "string"
+          description: "名称"
+
+    sidebarListReq:
+      type: object
+      properties:
+        programmeId:
+          type: "string"
+          description: "展示方案ID"
+        positionType:
+          type: "integer"
+          description: "方位0:(左侧),1:(右侧)"
+
+    sidebarObj:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键"
+        columnName:
+          type: "string"
+          description: "栏目名称"
+        enabledFlag:
+          type: "integer"
+          description: "是否启用（0：否；1：是）"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+        iconUrl:
+          type: "string"
+          description: "图片地址"
+        orderNumber:
+          type: "integer"
+          description: "排序"
+
+    previewPageReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        cardLayout:
+          type: "string"
+          description: "页面布局信息：例子单独发给前端人员"
+        cardConfig:
+          type: "array"
+          description: "卡片运行时配置"
+          items:
+            $ref: "#/components/schemas/cardConfigObj"
+    cardConfigObj:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        cardWid:
+          type: "string"
+          description: "页面ID"
+        pageWid:
+          type: "string"
+          description: "卡片运行时ID"
+        cardId:
+          type: "string"
+          description: "卡片ID"
+        cardConfig:
+          type: "string"
+          description: "卡片配置"
+
+    previewPageResponse:
+      type: object
+      properties:
+        resultHtml:
+          type: "string"
+          description: "html字符串"
+    sidebarStatusReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        enabledFlag:
+          type: "integer"
+          description: "0不启用1启用"
+
+    menuInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键wid"
+        menuName:
+          type: string
+          description: "菜单名称"
+        iconUrl:
+          type: string
+          description: "图标"
+        orderNumber:
+          type: integer
+          description: "排序"
+        authType:
+          type: integer
+          description: "0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见"
+        isEnabled:
+          type: integer
+          description: "是否启用 0:停用 1:启用"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+        linkUrl:
+          type: string
+          description: "菜单链接"
+        parentId:
+          type: string
+          description: "父级菜单ID"
+        programmeId:
+          type: string
+          description: "展示方案Id"
+        menuType:
+          type: integer
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        pageId:
+          type: string
+          description: "对应页面"
+        iconType:
+          type: integer
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        menuNameId:
+          type: string
+          description: "菜单名称国际化id"
+
+
+    pageInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键wid"
+        pageName:
+          type: string
+          description: "页面名称"
+        pageCode:
+          type: string
+          description: "页面代码"
+        platformType:
+          type: integer
+          description: "运行平台 0:PC 1:Mobile"
+        backgroundColor:
+          type: string
+          description: "背景底色"
+        backgroundImage:
+          type: string
+          description: "背景图片"
+        templateCode:
+          type: string
+          description: "模板代码"
+        cardLayout:
+          type: string
+          description: "卡片布局数据"
+        parentId:
+          type: string
+          description: "父级菜单ID"
+        pageTitle:
+          type: string
+          description: "页面标题"
+        programmeId:
+          type: string
+          description: "展示方案id"
+        pageType:
+          type: integer
+          description: "页面类型0：功能页1：自由页"
+        pageTitleId:
+          type: string
+          description: "页面标题国际化id"
+
+    sidebarInfo:
+      type: object
+      properties:
+        wid:
+          type: string
+          description: "主键wid"
+        columnCode:
+          type: string
+          description: "栏目编码,不可重复"
+        columnName:
+          type: string
+          description: "栏目名称"
+        isSystem:
+          type: integer
+          description: "是否系统自带栏目（0：否；1：是）"
+        iconType:
+          type: integer
+          description: "栏目的图标类型（图标类型  0 字体图标  1 png图标）"
+        authType:
+          type: integer
+          description: "授权类别（0：游客可见；1：登录后可见；2：授权后可见）"
+        enabledFlag:
+          type: integer
+          description: "是否启用（0：否；1：是）"
+        orderNumber:
+          type: integer
+          description: "排序"
+        linkUrl:
+          type: string
+          description: "栏目链接地址，非特定栏目有值"
+        iconUrl:
+          type: string
+          description: "栏目的图标样式名称"
+        displayName:
+          type: string
+          description: "展示名称"
+        positionType:
+          type: integer
+          description: "方位0:(左侧),1:(右侧)"
+        displayNameLangKey:
+          type: string
+          description: "页面标题国际化id"
+        programmeId:
+          type: string
+          description: "展示方案id"
+        menuType:
+          type: integer
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        pageId:
+          type: string
+          description: "对应页面"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+
+
+    programmeListReq:
+      type: object
+      properties:
+        platformType:
+          type: "integer"
+          description: "适配终端0：PC1：移动端"
+
+    programmeBiz:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        programmeName:
+          type: "string"
+          description: "展示方案名称"
+        platformType:
+          type: "integer"
+          description: "适配终端0：PC1：移动端"
+        templateId:
+          type: "string"
+          description: "模板id"
+        templateCode:
+          type: "string"
+          description: "模板code"
+        templateName:
+          type: "string"
+          description: "模板名称"
+        pageAmount:
+          type: "integer"
+          description: "页面数量"
+        pageStatus:
+          type: "integer"
+          description: "状态0：启用1：停用"
+        initializeFlag:
+          type: "integer"
+          description: "是否初始化方案（初始化展示方案隐藏）：0否  1是"
+        isShowPcService:
+          type: integer
+          description: "是否展示PC端服务 1:显示 0:隐藏"
+        updateTime:
+          type: "string"
+          description: "更新时间"
+        createTime:
+          type: "string"
+          description: "创建时间"
+
+
+    programmeInfo:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        programmeName:
+          type: "string"
+          description: "展示方案名称"
+        platformType:
+          type: "integer"
+          description: "适配终端0：PC1：移动端"
+        templateId:
+          type: "string"
+          description: "模板id"
+        pageAmount:
+          type: "integer"
+          description: "页面数量"
+        pageStatus:
+          type: "integer"
+          description: "状态0：启用1：停用"
+        logoUrl:
+          type: "string"
+          description: "校徽/LOGO地址"
+        templateConfig:
+          type: "string"
+          description: "模板配置"
+        updateTime:
+          type: "string"
+          description: "更新时间"
+        createTime:
+          type: "string"
+          description: "创建时间"
+        sideFlag:
+          type: "integer"
+          description: "是否展示左/右侧栏0都不展示 1只展示左侧栏2只展示右侧栏3、都展示"
+        isShowPcService:
+          type: integer
+          description: "是否展示PC端服务 1:显示 0:隐藏"
+
+    menuListRes:
+      type: object
+      properties:
+        programmeId:
+          type: "string"
+          description: "展示方案id"
+        parentId:
+          type: "string"
+          description: "父级菜单id"
+
+    menuBiz:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        menuName:
+          type: "string"
+          description: "菜单名称"
+        iconUrl:
+          type: "string"
+          description: "图标"
+        orderNumber:
+          type: "integer"
+          description: "排序"
+        authType:
+          type: "integer"
+          description: "0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见"
+        isEnabled:
+          type: "integer"
+          description: "是否启用 0:停用 1:启用"
+        openType:
+          type: "integer"
+          description: "打开方式  0:当前页 1:新开窗口"
+        linkUrl:
+          type: "string"
+          description: "菜单链接"
+        parentId:
+          type: "string"
+          description: "父级菜单ID"
+        programmeId:
+          type: "string"
+          description: "展示方案Id"
+        menuType:
+          type: "integer"
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        pageId:
+          type: "string"
+          description: "对应页面"
+        pageName:
+          type: "string"
+          description: "对应页面名称"
+        iconType:
+          type: "integer"
+          description: "图标类型0：png1：字体图标"
+        createTime:
+          type: "string"
+          description: "创建时间"
+        updateTime:
+          type: "string"
+          description: "修改时间"
+        menuNameLangKey:
+          type: "string"
+          description: "菜单名称国际化id"
+        menuNameLangKeys:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/menuNameLangBiz"
+        menuAuthInfo:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/menuAuthInfoBiz"
+        menu:
+          type: "array"
+          description: "子菜单信息"
+          items:
+            $ref: "#/components/schemas/menuBiz"
+
+    cardConfigBiz:
+      type: object
+      properties:
+        configHtml:
+          type: "string"
+          description: "卡片配置页面HTML，前端通过该HTML进行页面渲染"
+
+
+    menuInfoRes:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        menuName:
+          type: "string"
+          description: "菜单名称"
+        iconUrl:
+          type: "string"
+          description: "图标"
+        authType:
+          type: "integer"
+          description: "0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见"
+        openType:
+          type: "integer"
+          description: "打开方式  0:当前页 1:新开窗口"
+        linkUrl:
+          type: "string"
+          description: "菜单链接"
+        parentId:
+          type: "string"
+          description: "父级菜单ID"
+        programmeId:
+          type: "string"
+          description: "展示方案Id"
+        menuType:
+          type: "integer"
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        pageId:
+          type: "string"
+          description: "对应页面"
+        iconType:
+          type: "integer"
+          description: "图标类型0：png1：字体图标"
+        menuNameLangKey:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/menuNameLangBiz"
+        menuAuthInfo:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/menuAuthInfoBiz"
+
+    menuNameLangBiz:
+      type: object
+      properties:
+        sourceType:
+          type: string
+          description: "数据来源,0 系统 1 手工  默认值 0"
+        langCountry:
+          type: string
+          description: "语言类型（例zh_CN  、en_US等）"
+        langValue:
+          type: string
+          description: "属性值"
+
+    menuAuthInfoBiz:
+      type: object
+      properties:
+        menuId:
+          type: string
+          description: "菜单ID"
+        authRelWid:
+          type: string
+          description: "授权的其他类型id"
+        authRelName:
+          type: string
+          description: "授权的其他类型Name"
+        authType:
+          type: string
+          description: "授权类型  0:组织机构 1:用户 2:域及用户组"
+
+    pageInfoRes:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        pageName:
+          type: "string"
+          description: "页面名称"
+        pageCode:
+          type: "string"
+          description: "页面代码"
+        platformType:
+          type: "integer"
+          description: "运行平台 0:PC 1:Mobile"
+        templateCode:
+          type: "string"
+          description: "模板代码"
+        cardLayout:
+          type: "string"
+          description: "卡片布局数据"
+        parentId:
+          type: "string"
+          description: "父级页面ID"
+        pageTitle:
+          type: "string"
+          description: "页面标题"
+        pageTitleLangKey:
+          type: "string"
+          description: "页面标题国际化id"
+        pageTitleList:
+          type: "array"
+          description: "页面标题传输列表"
+          items:
+            $ref: "#/components/schemas/menuNameLangBiz"
+        programmeId:
+          type: "string"
+          description: "展示方案id"
+        pageType:
+          type: "string"
+          description: "页面类型0：功能页1：自由页"
+        pageConfig:
+          type: "string"
+          description: "页面配置"
+        cardConfig:
+          type: "array"
+          description: "卡片配置"
+          items:
+            $ref: "#/components/schemas/cardConfigObj"
+    pageListObj:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        pageName:
+          type: "string"
+          description: "页面名称"
+        pageCode:
+          type: "string"
+          description: "页面代码"
+        pageTitle:
+          type: "string"
+          description: "浏览器标题"
+        parentId:
+          type: "string"
+          description: "父级id"
+        flag:
+          type: "integer"
+          description: "是否可选0是 1否"
+        enabledFlag:
+          type: "integer"
+          description: "是否启用（0：否；1：是）"
+        pageType:
+          type: "integer"
+          description: "页面类型0：功能页1：自由页"
+        pageList:
+          type: "array"
+          description: "卡片配置"
+          items:
+            $ref: "#/components/schemas/pageListObj"
+
+    pageListEntity:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        pageName:
+          type: "string"
+          description: "页面名称"
+        pageCode:
+          type: "string"
+          description: "页面代码"
+        platformType:
+          type: "integer"
+          description: "运行平台 0:PC 1:Mobile"
+        backgroundColor:
+          type: "string"
+          description: "背景底色"
+        backgroundImage:
+          type: "string"
+          description: "背景图片"
+        templateCode:
+          type: "string"
+          description: "模板代码"
+        cardLayout:
+          type: "string"
+          description: "卡片布局数据"
+        pageTitle:
+          type: "string"
+          description: "浏览器标题"
+        parentId:
+          type: "string"
+          description: "父级id"
+        pageType:
+          type: "integer"
+          description: "页面类型0：功能页1：自由页"
+        pageTitleLangKey:
+          type: "string"
+          description: "页面标题国际化id"
+        pageConfig:
+          type: "string"
+          description: "页面配置"
+        cardConfig:
+          type: "array"
+          description: "卡片配置"
+        flag:
+          type: "integer"
+          description: "是否可选0是 1否"
+        enabledFlag:
+          type: "integer"
+          description: "是否启用（0：否；1：是）"
+        pageList:
+          type: "array"
+          description: "卡片配置"
+          items:
+            $ref: "#/components/schemas/pageListEntity"
+
+    programmeInfoRes:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键wid"
+        programmeName:
+          type: "string"
+          description: "展示方案名称"
+        platformType:
+          type: "integer"
+          description: "适配终端0：PC1：移动端"
+        templateId:
+          type: "string"
+          description: "模板id"
+        pageAmount:
+          type: "string"
+          description: "页面数量"
+        pageStatus:
+          type: "string"
+          description: "状态0：启用1：停用"
+        logoUrl:
+          type: "string"
+          description: "校徽&LOGO地址"
+        templateConfig:
+          type: "string"
+          description: "模板配置"
+        isShowPcService:
+          type: "string"
+          description: "是否展示PC端服务  1:显示  0:隐藏"
+        sideFlag:
+          type: "integer"
+          description: "是否展示左/右侧栏0都不展示 1只展示左侧栏2只展示右侧栏3、都展示"
+
+    sortInfo:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "菜单WID"
+        parentId:
+          type: "string"
+          description: "父菜单ID"
+        orderNum:
+          type: "string"
+          description: "排序号"
+        childMenu:
+          type: "array"
+          description: "子菜单"
+          items:
+            $ref: "#/components/schemas/sortInfo"
+
+    sidebarInfoBiz:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "菜单WID"
+        columnName:
+          type: string
+          description: "栏目名称"
+        programmeId:
+          type: string
+          description: "展示方案id"
+        positionType:
+          type: integer
+          description: "方位0:(左侧),1:(右侧)"
+        pageId:
+          type: string
+          description: "对应页面"
+        openType:
+          type: integer
+          description: "打开方式  0:当前页 1:新开窗口"
+        linkUrl:
+          type: string
+          description: "栏目链接地址，非特定栏目有值"
+        menuType:
+          type: integer
+          description: "菜单类型0：无链接1：内部页面2：第三方链接"
+        iconUrl:
+          type: string
+          description: "菜单图标URL"
+        iconType:
+          type: integer
+          description: "栏目的图标类型（图标类型  0 字体图标  1 png图标）"
+        authType:
+          type: "integer"
+          description: "0:游客可见 1:登录后可见  2:游客及登录后可见 3:授权后可见"
+        menuNameLangKey:
+          type: string
+          description: "国际化key"
+        menuNameLang:
+          type: "array"
+          description: "国际化信息"
+          items:
+            $ref: "#/components/schemas/menuNameLangBiz"
+        menuAuthInfo:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/menuAuthInfoBiz"
+
+    updateStatusReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        platformType:
+          type: "integer"
+          description: "适配终端0：PC1：移动端"
+
+    enabledReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        enabledFlag:
+          type: "integer"
+          description: "是否启用（0：否；1：是）"
+
+
+    parameters:
+      cardWid:
+        description: |
+          卡片运行时ID
+        in: path
+        required: true
+        name: cardWid
+        schema:
+          type: string
+      programmeId:
+        description: |
+          展示方案ID
+        in: path
+        required: true
+        name: programmeId
+        schema:
+        type: string
+
+    langVo:
+      type: object
+      properties:
+        langName:
+          type: "string"
+          description: "语言名称"
+        langCode:
+          type: "string"
+          description: "语言编码"
+        isDefault:
+          type: "boolean"
+          description: "是否默认"
+
+    versionInfo:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键"
+        versionNumber:
+          type: "string"
+          description: "版本号"
+        foreignKey:
+          type: "string"
+          description: "模板/卡片id"
+        updateTime:
+          type: "string"
+          description: "更新时间"
+
+    programmeReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"
+        platformType:
+          type: "integer"
+          description: "终端类型 0:PC 1:移动"
+    commonReq:
+      type: object
+      properties:
+        wid:
+          type: "string"
+          description: "主键Wid"

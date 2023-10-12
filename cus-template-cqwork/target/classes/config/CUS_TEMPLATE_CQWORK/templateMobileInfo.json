@@ -1,0 +1,42 @@
+[
+  {
+    "code":"home",
+    "name":"首页",
+    "iconUrl":"/CUS_TEMPLATE_CQWORK/home/image/mobileDemo.png",
+    "defaultPageConfig":"search.placeholder=randomServiceMatter\nheader.imgUrl=/CUS_TEMPLATE_CQWORK/home/image/mobileHeader.png\nbottom.isShowMenu=Y",
+    "defaultPageConfigDesc":"规则说明：\n【默认搜索词】 search.placeholder=***(\nrandomServiceMatter：随机服务事项名称；其他任意文本：固定搜索词)\n【是否展示底部菜单栏】bottom.isShowMenu=Y/N(Y表示展示底部菜单，N表示不展示)",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"common",
+    "name":"通用页",
+    "iconUrl":"/CUS_TEMPLATE_CQWORK/common/image/mobileDemo.png",
+    "defaultPageConfig":"header.title.zh_CN=融合门户\nheader.title.en=Integration Portal\nheader.subTitle.zh_CN=融合门户\nheader.subTitle.en=Integration Portal\nheader.imgUrl=/CUS_TEMPLATE_CQWORK/common/image/mobileHeader.png\nbottom.isShowMenu=Y",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【副标题】header.subTitle.zh_CN=***(此处填写任意文本)\n         header.subTitle.en=***(此处填写英文标题，格式以此类推)\n【是否展示底部菜单栏】bottom.isShowMenu=Y/N(Y表示展示底部菜单，N表示不展示)",
+    "isDefaultTemplate":true
+  },
+  {
+    "code":"detail",
+    "name":"详情页",
+    "iconUrl":"/CUS_TEMPLATE_CQWORK/detail/image/mobileDemo.png",
+    "defaultPageConfig":"header.imgUrl=/CUS_TEMPLATE_CQWORK/detail/image/mobileHeader.png\nbottom.isShowMenu=N",
+    "defaultPageConfigDesc":"规则说明：\n【是否展示底部菜单栏】bottom.isShowMenu=Y/N(Y表示展示底部菜单，N表示不展示)",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"blank",
+    "name":"空白页",
+    "iconUrl":"/CUS_TEMPLATE_CQWORK/blank/image/mobileDemo.png",
+    "defaultPageConfig":"bottom.isShowMenu=N",
+    "defaultPageConfigDesc":"规则说明：\n【是否展示底部菜单栏】bottom.isShowMenu=Y/N(Y表示展示底部菜单，N表示不展示)",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"personal",
+    "name":"个人页",
+    "iconUrl":"/CUS_TEMPLATE_CQWORK/personal/image/mobileDemo.png",
+    "defaultPageConfig":"bottom.isShowMenu=Y\nheader.imgUrl=/CUS_TEMPLATE_CQWORK/personal/image/mobileHeader.png",
+    "defaultPageConfigDesc":"规则说明：\n【是否展示底部菜单栏】bottom.isShowMenu=Y/N(Y表示展示底部菜单，N表示不展示)",
+    "isDefaultTemplate":false
+  }
+]

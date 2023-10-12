@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="jcx" id="t_amp_view_page_info-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_VIEW_PAGE_INFO"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_VIEW_PAGE_INFO" remarks="页面信息表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="PAGE_NAME" type="VARCHAR(64)" remarks="页面名称"/>
+            <column name="PAGE_CODE" type="VARCHAR(255)" remarks="页面代码"/>
+            <column name="PLATFORM_TYPE" type="NUMBER(2)" remarks="运行平台 0:PC 1:Mobile"/>
+            <column name="BACKGROUND_COLOR" type="VARCHAR(200)" remarks="背景底色"/>
+            <column name="BACKGROUND_IMAGE" type="VARCHAR(255)" remarks="背景图片"/>
+
+            <column name="TEMPLATE_CODE" type="VARCHAR(32)" remarks="模板代码"/>
+            <column name="CARD_LAYOUT" type="CLOB" remarks="卡片布局数据"/>
+            <column name="PARENT_ID" type="VARCHAR(64)" remarks="父级页面ID" defaultValue="0"/>
+            <column name="PAGE_TITLE" type="VARCHAR(64)" remarks="背景图片"/>
+            <column name="PROGRAMME_ID" type="VARCHAR(64)" remarks="展示方案id"/>
+            <column name="PAGE_TYPE" type="NUMBER(2)" remarks="页面类型0：功能页1：自由页" defaultValue="1"/>
+            <column name="PAGE_TITLE_LANG_KEY" type="VARCHAR(64)" remarks="页面标题国际化id"/>
+            <column name="ENABLED_FLAG" type="NUMBER(2)" remarks="是否启用（0：否；1：是）" defaultValue="1"/>
+            <column name="PAGE_CONFIG" type="CLOB" remarks="页面配置信息"/>
+            <column name="IS_DELETED" type="NUMBER(2)" remarks="是否已经删除 0:否 1:是" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

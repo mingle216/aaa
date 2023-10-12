@@ -1,0 +1,18 @@
+[
+  {
+    "code":"home",
+    "name":"首页",
+    "iconUrl":"/CUS_TEMPLATE_CQUPT/home/image/demo.png",
+    "defaultPageConfig":"search.history.display=Y\nsearch.placeholder=您可搜索应用、通知等内容\ntitle.imgUrl=",
+    "defaultPageConfigDesc":"规则说明：\n【搜索历史】search.history.display=Y/N(Y表示展示搜索历史，N表示不展示)\n【默认搜索词】 search.placeholder=***(\nrandomServiceMatter：随机服务事项名称；其他任意文本：固定搜索词)",
+    "isDefaultTemplate":false
+  },
+  {
+    "code":"common",
+    "name":"通用页",
+    "iconUrl":"/CUS_TEMPLATE_CQUPT/common/image/demo.png",
+    "defaultPageConfig":"header.title.zh_CN=\nheader.title.en=\nbreadcrumb.show=Y\ntitle.imgUrl=",
+    "defaultPageConfigDesc":"规则说明：\n【标题】header.title.zh_CN=***(此处填写任意文本)\n       header.title.en=***(此处填写英文标题，格式以此类推)\n【面包屑】breadcrumb.show=Y/N(Y表示展示面包屑，N表示不展示，通用页为一级时，该配置不生效)",
+    "isDefaultTemplate":true
+  }
+]

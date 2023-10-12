@@ -1,0 +1,65 @@
+[
+  {
+    "label":"服务事项列表图标",
+    "component": "radio",
+    "key": "iconShow",
+    "labelAlias": "name",
+    "datas": [
+      {"name":"显示","value":"1"},
+      {"name":"隐藏","value":"0"}
+    ],
+    "defaultValue":"1"
+  },
+  {
+    "component":"select",
+    "key":"columns",
+    "label": "列表展示总数",
+    "required": 0,
+    "min": 0,
+    "max": 1,
+    "multiple": 0,
+    "filterable": 0,
+    "defaultValue": "5",
+    "datas": [
+      {
+        "label": "1",
+        "value": "1"
+      },
+      {
+        "label": "2",
+        "value": "2"
+      },
+      {
+        "label": "3",
+        "value": "3"
+      },
+      {
+        "label": "4",
+        "value": "4"
+      }, {
+        "label": "5",
+        "value": "5"
+      },
+      {
+        "label": "6",
+        "value": "6"
+      },
+      {
+        "label": "7",
+        "value": "7"
+      },
+      {
+        "label": "8",
+        "value": "8"
+      },
+      {
+        "label": "9",
+        "value": "9"
+      },
+      {
+        "label": "10",
+        "value": "10"
+      }
+    ]
+  }
+]

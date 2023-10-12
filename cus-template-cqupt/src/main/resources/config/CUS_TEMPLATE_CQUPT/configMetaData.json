@@ -1,0 +1,142 @@
+[
+  {
+    "component": "configLogo",
+    "key": "configLogo",
+    "label": "LOGO",
+    "defaultValue": {
+      "logoUrl": "",
+      "whiteLogoUrl": ""
+    },
+    "value": {
+      "logoUrl": "",
+      "whiteLogoUrl": ""
+    },
+    "showLogos":[1,2],
+    "whiteLogoTips":{
+      "width":162,
+      "height":34,
+      "size":500,
+      "templates":["home","common"]
+    },
+    "logoTips":{
+      "width":184,
+      "height":84,
+      "size":500,
+      "templates":["chooseGroup"]
+    }
+  },
+  {
+    "label": "主题色",
+    "component": "themeColorSetting",
+    "key": "themeColorSetting",
+    "defaultValue": {
+      "portal-primary-color-lv1": "#2468F2",
+      "portal-primary-color-lv2": "#4F90FF",
+      "portal-primary-color-lv3": "#A1CAFF",
+      "portal-primary-color-lv4": "#144BCC",
+      "portal-primary-color-lv5": "#F0F7FF",
+      "portal-font-color-lv1": "#262626",
+      "portal-font-color-lv2": "#595959",
+      "portal-font-color-lv3": "#8C8C8C",
+      "portal-font-color-lv4": "#BFBFBF",
+      "portal-font-color-lv5": "#F5F5F5"
+    },
+    "value": {
+      "portal-primary-color-lv1": "#2468F2",
+      "portal-primary-color-lv2": "#4F90FF",
+      "portal-primary-color-lv3": "#A1CAFF",
+      "portal-primary-color-lv4": "#144BCC",
+      "portal-primary-color-lv5": "#F0F7FF",
+      "portal-font-color-lv1": "#262626",
+      "portal-font-color-lv2": "#595959",
+      "portal-font-color-lv3": "#8C8C8C",
+      "portal-font-color-lv4": "#BFBFBF",
+      "portal-font-color-lv5": "#F5F5F5"
+    }
+  },
+  {
+    "component": "radio",
+    "key": "isShowMsgCount",
+    "label": "是否展示消息未读数量",
+    "required": 0,
+    "defaultValue": "0",
+    "value": null,
+    "datas": [
+      {
+        "label": "显示",
+        "value": "0"
+      },
+      {
+        "label": "隐藏",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "component": "input",
+    "key": "messageListUrl",
+    "label": "消息中心跳转地址",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入以http://或https://开头的地址",
+    "showLimit": 1,
+    "maxlength": 512,
+    "defaultValue": "",
+    "value": "",
+    "type": "text"
+  },
+  {
+    "component": "select",
+    "key": "dataSourceConfig",
+    "label": "个人信息数据源配置",
+    "required": 1,
+    "placeholder": "请选择需要展示的个人信息数据源",
+    "labelAlias": "data",
+    "valueAlias": "wid",
+    "defaultValue": "",
+    "value": "",
+    "datas": [],
+    "widthType": 3
+  },
+  {
+    "component": "radio",
+    "key": "leftMenuAutoOpen",
+    "label": "左侧菜单是否默认展开",
+    "required": 0,
+    "defaultValue": "0",
+    "value": null,
+    "datas": [
+      {
+        "label": "展开",
+        "value": "0"
+      },
+      {
+        "label": "收起",
+        "value": "1"
+      }
+    ]
+  },
+  {
+    "component": "headerNavBar",
+    "label": "顶部导航",
+    "key": "headerNavBar",
+    "max": 4,
+    "defaultValue": {
+      "datas": []
+    },
+    "value": {
+      "datas": []
+    }
+  },
+  {
+    "component": "input",
+    "key": "footerConfig",
+    "type": "codemirror",
+    "label": "footer",
+    "isInternational": 1,
+    "showPreview": 1,
+    "showReset": 1,
+    "value":[{"langKey": "zh_CN", "langValue": "<div class=\"concise-footer portal-font-color-lv3\">\nCopyright ©2020 - 2022 江苏金智教育信息股份有限公司\n</div>"},{"langKey": "en", "langValue": "<div class=\"concise-footer portal-font-color-lv3\">\nCopyright Information©2020 - 2022 JiangSu Wisedu System Co.,Ltd\n</div>"}],
+    "defaultValue": [{"langKey": "zh_CN", "langValue": "<div class=\"concise-footer portal-font-color-lv3\">\nCopyright ©2020 - 2022 江苏金智教育信息股份有限公司\n</div>"},{"langKey": "en", "langValue": "<div class=\"concise-footer portal-font-color-lv3\">\nCopyright Information©2020 - 2022 JiangSu Wisedu System Co.,Ltd\n</div>"}]
+  }
+]

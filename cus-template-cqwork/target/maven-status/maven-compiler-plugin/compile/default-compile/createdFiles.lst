@@ -1,0 +1,14 @@
+com\wisedu\casp\portal\template\sys\cqwork\service\UserJsonACLInformationService.class
+com\wisedu\casp\portal\template\sys\cqwork\service\UserXmlACLInformationService.class
+com\wisedu\casp\portal\template\sys\cqwork\model\ClassifyBiz.class
+com\wisedu\casp\portal\template\sys\cqwork\plugin\WorkVariable.class
+com\wisedu\casp\portal\template\sys\cqwork\service\UserMailACLInformationService.class
+com\wisedu\casp\portal\template\sys\cqwork\service\UserCustomACLInformationService$1.class
+com\wisedu\casp\portal\template\sys\cqwork\model\PersonalDataInfo.class
+com\wisedu\casp\portal\template\sys\cqwork\model\ConfigResult.class
+com\wisedu\casp\portal\template\sys\cqwork\model\AllClassifyListRes.class
+com\wisedu\casp\portal\template\sys\cqwork\plugin\WorkPlugin.class
+com\wisedu\casp\portal\template\sys\cqwork\service\UserDbACLInformationService.class
+com\wisedu\casp\portal\template\sys\cqwork\util\SourceTypeUtil.class
+com\wisedu\casp\portal\template\sys\cqwork\model\AmpBaseResponse.class
+com\wisedu\casp\portal\template\sys\cqwork\service\UserCustomACLInformationService.class

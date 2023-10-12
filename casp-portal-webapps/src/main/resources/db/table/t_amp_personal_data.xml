@@ -1,0 +1,58 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="shx" id="t_amp_personal_data-1.0.0">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="T_AMP_PERSONAL_DATA"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="T_AMP_PERSONAL_DATA" remarks="个人数据配置表">
+            <column name="WID" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TITLE" type="VARCHAR2(64)" remarks="个人数据标题"/>
+            <column name="ICON_URL" type="VARCHAR2(512)" remarks="图标地址"/>
+            <column name="MAIN_INFO" type="VARCHAR2(255)" remarks="主要信息"/>
+            <column name="SUB_INFO" type="VARCHAR2(255)" remarks="次要信息"/>
+            <column name="SOURCE_TYPE" type="NUMBER(1)" remarks="数据来源方式（0：静态文字，1：JSON接口，2:MINOS数据源，3：邮箱）" defaultValue="0"/>
+            <column name="SOURCE_KEY" type="VARCHAR2(512)" remarks="数据来源信息（sourceType=1：接口地址，source_type=2：数据源ID）"/>
+            <column name="DATA_SQL" type="VARCHAR2(512)" remarks="获取数据的sql，sourceType=2时有效"/>
+            <column name="HTTP_METHOD" type="NUMBER(1)" remarks="HTTP请求方式，sourceType=1时有效（0：GET，1：POST）" defaultValue="0"/>
+            <column name="USER_KEY" type="VARCHAR2(255)" remarks="用户参数key值，sourceType=1时有效,当不配置时，不传输用户信息。当前的用户信息为“用户工号”"/>
+            <column name="LINK_URL" type="VARCHAR2(512)" remarks="跳转地址，sourceType为0,1,2时有效"/>
+            <column name="CACHE_TIMEOUT" type="NUMBER(12)" remarks="数据缓存时长，单位：秒" defaultValue="0"/>
+            <column name="ORDER_NUMBER" type="NUMBER(6)" remarks="排序" />
+            <column name="ENABLED" type="NUMBER(1)" remarks="0：停用，1：启用" defaultValue="0"/>
+            <column name="TITLE_LANG_KEY" type="VARCHAR2(200)" remarks="个人数据标题国际化id" />
+            <column name="MAIN_INFO_LANG_KEY" type="VARCHAR2(200)" remarks="主要信息国际化id" />
+            <column name="SUB_INFO_LANG_KEY" type="VARCHAR2(200)" remarks="次要信息国际化id" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="shx" id="t_amp_personal_data-1.0.3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists tableName="T_AMP_PERSONAL_DATA" columnName="AUTH_CONFIG" />
+            </not>
+        </preConditions>
+        <addColumn tableName="T_AMP_PERSONAL_DATA">
+            <column name="AUTH_CONFIG" remarks="认证相关配置信息，根据具体认证插件配置，json格式" type="CLOB" />
+        </addColumn>
+    </changeSet>
+    <changeSet author="jszhang" id="t_amp_personal_data-1.0.4">
+        <addColumn tableName="T_AMP_PERSONAL_DATA">
+            <column name="IS_DELETED" remarks="是否删除0:不删除，1：删除" type="NUMBER(2)" defaultValue="0"/>
+            <column name="UPDATE_TIME" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="CREATE_TIME" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="shx" id="t_amp_personal_data-3.3.2-20220105">
+        <modifyDataType tableName="T_AMP_PERSONAL_DATA" columnName="LINK_URL" newDataType="VARCHAR2(2048)" />
+    </changeSet>
+</databaseChangeLog>

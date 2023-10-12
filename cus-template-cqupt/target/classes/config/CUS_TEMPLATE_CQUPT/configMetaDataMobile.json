@@ -1,0 +1,71 @@
+[
+  {
+    "component": "configLogo",
+    "key": "configLogo",
+    "label": "LOGO:",
+    "defaultValue": {
+      "logoUrl": "",
+      "whiteLogoUrl": ""
+    },
+    "value": {
+      "logoUrl": "",
+      "whiteLogoUrl": ""
+    },
+    "showLogos":[1,2],
+    "logoTips":{
+      "width":220,
+      "height":48,
+      "size":500,
+      "templates":["home","common"]
+    },
+    "whiteLogoTips":{
+      "width":220,
+      "height":48,
+      "size":500,
+      "templates":["home","common"]
+    }
+  },
+  {
+    "label": "主题色:",
+    "component": "themeColorSetting",
+    "key": "themeColorSetting",
+    "defaultValue": {
+      "portal-primary-color-lv1": "#2468F2",
+      "portal-primary-color-lv2": "#4F90FF",
+      "portal-primary-color-lv3": "#A1CAFF",
+      "portal-primary-color-lv4": "#144BCC",
+      "portal-primary-color-lv5": "#F0F7FF",
+      "portal-font-color-lv1": "#121212",
+      "portal-font-color-lv2": "#969696",
+      "portal-font-color-lv3": "#969696",
+      "portal-font-color-lv4": "#C0C0C0",
+      "portal-font-color-lv5": "#F4F6F8"
+    },
+    "value": {
+      "portal-primary-color-lv1": "#2468F2",
+      "portal-primary-color-lv2": "#4F90FF",
+      "portal-primary-color-lv3": "#A1CAFF",
+      "portal-primary-color-lv4": "#144BCC",
+      "portal-primary-color-lv5": "#F0F7FF",
+      "portal-font-color-lv1": "#121212",
+      "portal-font-color-lv2": "#969696",
+      "portal-font-color-lv3": "#969696",
+      "portal-font-color-lv4": "#C0C0C0",
+      "portal-font-color-lv5": "#F4F6F8"
+    }
+  },
+  {
+    "component": "input",
+    "key": "messageUrl",
+    "label": "消息中心地址:",
+    "isInternational": 0,
+    "required": 0,
+    "placeholder": "请输入以http://或https://开头的地址",
+    "showLimit": 0,
+    "defaultValue": "",
+    "value": "",
+    "type": "url",
+    "tips":"输入地址则前台展示消息中心入口"
+  }
+
+]

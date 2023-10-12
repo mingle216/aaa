@@ -1,0 +1,768 @@
+
+<!--@formatter:off-->
+<script type="text/javascript">
+
+    $(function(){
+        let a = $('.portal-primary-color-lv1').css('color')
+        console.log(a)
+        console.log($('.toc-entry-${cardWid} > div.active'))
+        $('.active').css('color',a)
+        console.log($('.toc-entry-${cardWid} > div.active').text())
+
+        //计算底部留白高度，不足页面高度时补全为页面高度
+        // if(${SERVICE_ORG_RULES} == 1){
+        //     var lastHeight = calcLastHeight${cardWid}();
+        //     $('.list-${cardWid}').css('padding-bottom',lastHeight+'px');
+        // }
+
+        //初始化导航条的top高度
+        calcNavTop${cardWid}();
+
+        var $toc${cardWid} = $('.bd-toc-${cardWid}');
+        $toc${cardWid}.show();
+
+        //解决window.onscroll多个会相互覆盖
+        function addEvent(obj,type,fn){
+            if(obj.attachEvent){ //ie
+                obj.attachEvent('on'+type,function(){
+                    fn.call(obj);
+                })
+            }else{
+                obj.addEventListener(type,fn,false);
+            }
+        }
+        //监听页面滚动事件
+        var scrollTimeout${cardWid};
+        addEvent(window,'scroll',function(){
+            calcNavTop${cardWid}();
+
+            if (!scrollTimeout${cardWid}) {
+                scrollTimeout${cardWid} = setTimeout(function () {
+
+                    scrollTimeout${cardWid} = null;
+                    calcHighlightNav${cardWid}();
+
+                }, 300);
+            }
+        });
+
+
+        //监听页面横向滚动(宽度小于1180)
+        setInterval( scrollLeft${cardWid},100);
+
+        function scrollLeft${cardWid}(){
+            var $toc = $('.bd-toc-${cardWid}');
+            var $parentDiv = $('.content-container-${cardWid}');
+            if($parentDiv.length > 0){
+                var parentWidth = $parentDiv[0].offsetParent.clientWidth ;
+                var parentScrollLeft = $parentDiv[0].offsetParent.scrollLeft  ;
+                if(parentWidth < 1180){
+                    if(parentScrollLeft >= (1180-parentWidth )){
+                        $toc.show();
+                    }else{
+                        $toc.hide();
+                    }
+                }
+            }
+
+        }
+
+
+
+        initListener${cardWid}();
+
+        /**
+         * 搜索条件点击高亮事件
+         */
+        $('li.item-${cardWid}').off('click').on('click',function() {
+           //如果是全部，则去掉二级部门
+            if($(this).hasClass('item-all-${cardWid}')){
+
+                //移除本类别下已选中的一级部门样式
+                $(this).siblings('div').children('li.item-${cardWid}').children('ul').css('width','0');
+                $(this).siblings('div').children('li.item-${cardWid}').css('margin-bottom','10px')
+                $(this).siblings('div').children('li.item-${cardWid}').children('div').css('display','none')
+
+                //移除本类别下已选中的二级样式
+                $(this).siblings('div').children('li.item-${cardWid}').children('ul.card-secondMenu${cardWid}').children('li.item-second-${cardWid}').addClass('portal-font-color-lv2 portal-primary-color-hover-lv1');
+                $(this).siblings('div').children('li.item-${cardWid}').children('ul.card-secondMenu${cardWid}').children('li.item-second-${cardWid}').removeClass('portal-primary-color-lv1 second-active');
+            }
+            if(!$(this).hasClass('active')){
+                $(this).closest('ul').children('li').removeClass('active portal-primary-backgroundcolor-lv1');
+                $(this).closest('ul').children('div').children('.active').removeClass('active portal-primary-backgroundcolor-lv1');
+                $(this).addClass('active portal-primary-backgroundcolor-lv1');
+                //执行搜索
+                searchItem${cardWid}();
+            }
+        });
+
+        /**
+         * 责任部门展开 or 关闭全部
+         */
+        $('.show-subject-btn-${cardWid}').off('click').on('click',function() {
+            if($(this).children('i').attr('class') == 'iconfont icon-PutAway open-${cardWid}'){
+                //关闭
+                $(this).children('div').html('展开全部');
+                $('.hide-subject-${cardWid}').hide();
+                $(this).children('i').attr('class','iconfont icon-Unfold close-${cardWid}');
+                $(this).css("margin-top","");
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }else{
+
+                //打开
+                $(this).children('div').html('收起');
+                $('.hide-subject-${cardWid}').show();
+                $(this).children('i').attr('class','iconfont icon-PutAway open-${cardWid}');
+                //计算打开后高度
+                var topMargin = $('.search-subject-${cardWid}')[0].offsetHeight - 32;
+                $(this).css("margin-top",topMargin);
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }
+        });
+
+        $('.show-dept-btn-${cardWid}').off('click').on('click',function() {
+            if($(this).children('i').attr('class') == 'iconfont icon-PutAway open-${cardWid}'){
+                //关闭
+                $(this).children('div').html('展开全部');
+                $('.hide-dept-${cardWid}').hide();
+                $(this).children('i').attr('class','iconfont icon-Unfold close-${cardWid}');
+                $(this).css("margin-top","");
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }else{
+
+                //打开
+                $(this).children('div').html('收起');
+                $('.hide-dept-${cardWid}').show();
+                $(this).children('i').attr('class','iconfont icon-PutAway open-${cardWid}');
+                //计算打开后高度
+                var topMargin = $('.search-dept-${cardWid}')[0].offsetHeight - 32;
+                $(this).css("margin-top",topMargin);
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }
+        });
+
+        $('.show-serviceObject-btn-${cardWid}').off('click').on('click',function() {
+            if($(this).children('i').attr('class') == 'iconfont icon-PutAway open-${cardWid}'){
+                //关闭
+                $(this).children('div').html('展开全部');
+                $('.hide-serviceObject-${cardWid}').hide();
+                $(this).children('i').attr('class','iconfont icon-Unfold close-${cardWid}');
+                $(this).css("margin-top","");
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }else{
+
+                //打开
+                $(this).children('div').html('收起');
+                $('.hide-serviceObject-${cardWid}').show();
+                $(this).children('i').attr('class','iconfont icon-PutAway open-${cardWid}');
+                //计算打开后高度
+                var topMargin = $('.search-serviceObject-${cardWid}')[0].offsetHeight - 32;
+                $(this).css("margin-top",topMargin);
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }
+        });
+
+        $('.show-serviceDept-btn-${cardWid}').off('click').on('click',function() {
+            if($(this).children('i').attr('class') == 'iconfont icon-PutAway open-${cardWid}'){
+                //关闭
+                $(this).children('div').html('展开全部');
+                $('.hide-serviceDept-${cardWid}').hide();
+                $(this).children('i').attr('class','iconfont icon-Unfold close-${cardWid}');
+                $(this).css("margin-top","");
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}()
+            }else{
+
+                //打开
+                $(this).children('div').html('收起');
+                $('.hide-serviceDept-${cardWid}').show();
+                $(this).children('i').attr('class','iconfont icon-PutAway open-${cardWid}');
+                //计算打开后高度
+                var topMargin = $('.search-service-dept-${cardWid}')[0].offsetHeight - 32;
+                $(this).css("margin-top",topMargin);
+                calcNavTop${cardWid}();
+                calcHighlightNav${cardWid}();
+            }
+        });
+
+        /**
+         * 订阅服务事项收藏事件
+         */
+        subscribe('collectServiceItem','${cardWid}',function(param){
+            if(param.operate == 0){
+                $('[data-item-id='+param.serviceId+']').removeClass('favorite-${cardWid}');
+            }else{
+                $('[data-item-id='+param.serviceId+']').addClass('favorite-${cardWid}');
+            }
+        });
+
+        /**
+         * 计算右侧字母导航条高度位置
+         */
+        function calcNavTop${cardWid}() {
+            var $searchInput = $('.input-box-${cardWid}');
+            var $searchDiv = $('.tabs-${cardWid}');
+            var $container = $('.card-container-${cardWid}');
+
+            if($container.length == 1){
+
+                var topHeight =  0;//容器到顶部的高度
+                var boxHeight =  0;//容器的高度
+                if(isProd${cardWid}()){
+                    //正式环境div的高度就是容器，测试环境div外部还有div
+                    topHeight = $container[0].offsetTop || 0;
+                    boxHeight = $container[0].offsetHeight || 0;
+                }else{
+                    topHeight = $container[0].offsetParent.offsetTop || 0;
+                    boxHeight = $container[0].offsetParent.offsetHeight || 0;
+                }
+                //卡片外层容器跟顶部的高度[没有容器为0]
+
+                var containerHeight = $container[0].offsetHeight || 0;
+                var boxTitleHeight = boxHeight - containerHeight;
+
+                //搜索部分高度 ： 32为A-D距离顶部高度
+                var searchHeight = 32+6;
+                if($searchInput.length > 0){
+                    searchHeight += Math.abs($searchInput[0].offsetHeight) ;
+                }
+                if($searchDiv.length > 0){
+                    searchHeight += Math.abs($searchDiv[0].offsetHeight) ;
+                }
+
+                //底部div的高度
+
+                var newHeight = 0;
+
+                var $toc = $('.bd-toc-${cardWid}');
+                var $parentDiv = $('.content-container-${cardWid}');
+
+                var parentWidth = $parentDiv[0].offsetParent.clientWidth ;
+                if(parentWidth < 1180){
+                    $toc.css("margin-left",(parentWidth-60)+"px");
+                }else{
+                    $toc.show();
+                }
+                //滚动高度
+                var scrollTop =  $(document).scrollTop();
+                newHeight = topHeight+searchHeight;
+                //580=搜索条高度515+距离顶部高度50+底部预留高度15px
+                if((scrollTop + 580) >= boxHeight+topHeight){
+                    $toc.css("position","absolute");
+                    $toc.css("margin-top", (boxHeight-boxTitleHeight-580) +'px');
+                    $toc.css("margin-left", "1140px");
+                    $toc.css("top","");
+                }else if(scrollTop  >= newHeight ){
+
+                    $toc.css("position","fixed");
+                    $toc.css("top","50px");
+                    $toc.css("margin-top","0px");
+
+                }else{
+                    $toc.css("position","absolute");
+                    $toc.css("margin-top", searchHeight +'px');
+                    $toc.css("margin-left", "1140px");
+                    $toc.css("top","");
+                }
+            }
+
+        }
+
+
+
+
+
+        /**
+         *  计算右侧字母导航条要高亮的字母
+         */
+        function calcHighlightNav${cardWid}() {
+
+            //判断哪个ID的高度为0
+            var $A = $("#A-${cardWid}");
+            var $E = $("#E-${cardWid}");
+            var $I = $("#I-${cardWid}");
+            var $M = $("#M-${cardWid}");
+            var $Q = $("#Q-${cardWid}");
+            var $U = $("#U-${cardWid}");
+            var $Y = $("#Y-${cardWid}");
+            var $other = $("#other-${cardWid}");
+
+            $('.toc-entry-${cardWid} > div.active').css('color','black')
+
+            //移除所有字母高亮 给指定字母添加高亮
+            //如果当前是滚动范围内的字母，不添加高亮【B高亮中，滚动不到E-H前，B一直高亮】
+            if($other.length > 0 && calcHeight${cardWid}($other)   ){
+                if(isNotNearly( $($('[link='+$other.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$other.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$other.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($Y.length > 0 && calcHeight${cardWid}($Y)   ){
+                if(isNotNearly(  $($('[link='+$Y.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$Y.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$Y.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($U.length > 0 && calcHeight${cardWid}($U)  ){
+                if(isNotNearly(  $($('[link='+$U.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$U.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$U.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($Q.length > 0 && calcHeight${cardWid}($Q)  ){
+                if(isNotNearly( $($('[link='+$Q.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$Q.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$Q.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($M.length > 0 && calcHeight${cardWid}($M)   ){
+                if(isNotNearly( $($('[link='+$M.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$M.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$M.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($I.length > 0 && calcHeight${cardWid}($I)   ){
+                if(isNotNearly( $($('[link='+$I.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$I.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$I.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($E.length > 0 && calcHeight${cardWid}($E)   ){
+                if(isNotNearly( $($('[link='+$E.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                    $($('[link='+$E.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$E.attr('id')+']')[0]).addClass("active");
+                }
+            }else if($A.length > 0 && calcHeight${cardWid}($A)   ){
+                if(isNotNearly( $($('[link='+$A.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+
+                    $($('[link='+$A.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$A.attr('id')+']')[0]).addClass("active");
+
+                }
+            }else{
+                if(isNotNearly( $($('[link='+$A.attr('id')+']')[0]) )){
+                    $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                    $('.toc-entry-${cardWid} > div.active').removeClass('active');
+
+                    $($('[link='+$A.attr('id')+']')[0]).removeClass("normal");
+                    $($('[link='+$A.attr('id')+']')[0]).addClass("active");
+
+                }
+            }
+            let a = $('.portal-primary-color-lv1').css('color')
+            $('.toc-entry-${cardWid} > div.active').css('color',a)
+        };
+
+        /**
+         * 判断要高亮的字母是否是在当前高亮字母的范围内
+         */
+        function isNotNearly($div) {
+            //获取当前高亮的连接
+            var href1 = $('.toc-entry-${cardWid} > div.active').attr('link');
+            //获取div的链接
+            var href2 = $div.attr('link');
+            //对比：不同的话返回true
+            if(href1 == undefined || href1 != href2){
+                return true;
+            }
+            return false;
+        };
+
+        //计算字母div高度
+        function calcHeight${cardWid}($div) {
+            /**
+             * 卡片外层容器跟顶部的高度[没有容器为0]
+             */
+            var topHeight = 1;
+            if(isProd${cardWid}()){
+                //topHeight = $('.card-container-${cardWid}')[0].offsetTop || 0;
+                if(($div[0].offsetTop)-$(document).scrollTop()-1  <= 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                topHeight = $('.card-container-${cardWid}')[0].offsetParent.offsetTop || 0;
+                if(($div[0].offsetTop+topHeight)-$(document).scrollTop()  <= 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+            //console.log($div.attr('id') + " "+ $div[0].offsetTop + "  " + topHeight + "   " +$(document).scrollTop() );
+            //div高度-以滚动高度 >
+
+        };
+
+        function isProd${cardWid}(){
+            if($('#card-container-${cardWid}')[0].offsetParent == undefined ||
+                $('#card-container-${cardWid}')[0].offsetParent == $('body')[0]){
+                return true;
+            }
+            return false;
+        }
+
+
+
+        //二级部门点击事件
+        $('li#item-second-${cardWid}').off('click').on('click',function() {
+            var e = window.event || e;
+            if (e.stopPropagation){
+                e.stopPropagation();
+            }  else {
+                e.cancelBubble = true;
+            }
+            //移除上次选中部门
+            $(this).closest('div').children('li.item-${cardWid}').children('ul').children('li.item-second-${cardWid}').addClass('portal-font-color-lv2 portal-primary-color-hover-lv1');
+            $(this).closest('div').children('li.item-${cardWid}').children('ul').children('li.item-second-${cardWid}').removeClass('portal-primary-color-lv1 second-active');
+
+            //选中本次选择部门
+            $(this).removeClass('portal-font-color-lv2 portal-primary-color-hover-lv1');
+            $(this).addClass('portal-primary-color-lv1 second-active');
+            //执行搜索
+            searchItem${cardWid}();
+        });
+
+
+        // 一级部门点击事件[部门点击事件]
+
+        $('.service-labels-${cardWid}').on('click','li.item-${cardWid}',function(e){
+
+            //移除本类别下已选中的一级部门样式
+            $(this).parent('div').children('li.item-${cardWid}').children('ul').css('width','0');
+            $(this).parent('div').children('li.item-${cardWid}').css('margin-bottom','10px')
+            $(this).parent('div').children('li.item-${cardWid}').children('div').css('display','none')
+
+            //移除本类别下已选中的二级样式
+            $(this).parent('div').children('li.item-${cardWid}').children('ul.card-secondMenu${cardWid}').children('li.item-second-${cardWid}').addClass('portal-font-color-lv2 portal-primary-color-hover-lv1');
+            $(this).parent('div').children('li.item-${cardWid}').children('ul.card-secondMenu${cardWid}').children('li.item-second-${cardWid}').removeClass('portal-primary-color-lv1 second-active');
+
+
+            //执行选中样式的添加。。。
+            $(this).children('ul').css('width','940px');
+            let Height = $(this).children('ul').outerHeight();
+            //设置li下外边距撑开。二级菜单高度+箭头的高度-箭头margin上移距离6
+            $(this).css('margin-bottom',(Height+14)+'px')
+            //获取li相对外层div的高度,每个li标签上外边距2下外边距10高20，so=32,加上箭头图标的高度
+            let relativeHeight= $(this).position().top;
+            $(this).children('ul').css('top',(relativeHeight+32)+'px');
+            //获取每个li标签相对宽度，调整箭头位置据中
+            let relativeLeft= $(this).position().left;
+            let liWidth = $(this).innerWidth();
+            $(this).children('div').css('left',(relativeLeft+Math.round(liWidth/2))+'px');//
+            // 缓存
+            //小箭头控制是否显示
+            $(this).children('div').css('display','block');
+            //重新计算收起更多的位置
+            recalcMore${cardWid}();
+            //重新计算导航条位置
+            calcNavTop${cardWid}();
+            calcHighlightNav${cardWid}();
+        });
+
+        function recalcMore${cardWid}(){
+
+            if($('.show-subject-btn-${cardWid}').children('div').text() == "收起" ){
+                var topMargin = $('.search-subject-${cardWid}')[0].offsetHeight - 32;
+                $('.show-subject-btn-${cardWid}').css("margin-top",topMargin);
+            }
+
+            if( $('.show-dept-btn-${cardWid}').children('div').text() == "收起" ){
+                var topMargin = $('.search-dept-${cardWid}')[0].offsetHeight - 32;
+                $('.show-dept-btn-${cardWid}').css("margin-top",topMargin);
+            }
+
+            if( $('.show-serviceObject-btn-${cardWid}').children('div').text() == "收起" ){
+                var topMargin = $('.search-object-${cardWid}')[0].offsetHeight - 32;
+                $('.show-serviceObject-btn-${cardWid}').css("margin-top",topMargin);
+            }
+
+            if( $('.show-serviceDept-btn-${cardWid}').children('div').text() == "收起" ){
+                var topMargin = $('.search-service-dept-${cardWid}')[0].offsetHeight - 32;
+                $('.show-serviceDept-btn-${cardWid}').css("margin-top",topMargin);
+            }
+
+
+
+        }
+
+    });
+    /**
+     * 计算最后一个结果的高度，如果小于可视高度，则需要加padding-bottom到指定高度
+     */
+    function calcLastHeight${cardWid}() {
+        var pb = 10;
+        if($('.listEver-${cardWid}:last').length > 0){
+            var contentHeight = $('.listEver-${cardWid}:last')[0].offsetHeight ;
+            var visibleHeight = getClientHeight${cardWid}();
+
+            if(contentHeight < visibleHeight){
+                pb += visibleHeight-contentHeight;
+            }
+        }
+
+        return pb;
+    }
+    /**
+     * 获取窗口可视高度
+     */
+    function getClientHeight${cardWid}() {
+        var clientHeight=0;
+        if(document.body.clientHeight&&document.documentElement.clientHeight){
+            clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+        }else{
+            clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
+        }
+        return clientHeight;
+    }
+
+    //图片加载失败时加载默认图片
+    function imgerrorfun${cardWid}(){
+        var img= event.srcElement;
+        img.src="${ctxInternalPath}/CUS_CARD_MYSERVICE/img/default-app.png";
+        img.onerror=null;
+    }
+
+    //执行搜索
+    function toSearchItem${cardWid}(e){
+        if (e.keyCode === 13){
+            searchItem${cardWid}();
+            $("#searchInput${cardWid}").blur();
+        }
+    }
+
+
+    function searchItem${cardWid}(){
+        var searchParam = {},key = "";
+        var searchKey = $("#searchInput${cardWid}").val();
+        if(isNotEmpty(searchKey)){
+            searchParam["searchKey"] = searchKey.replace(/(^\s*)|(\s*$)/g, "");
+        }
+
+        var $condition1 = $('.search-subject-${cardWid}');
+        var $condition2 = $('.search-dept-${cardWid}');
+        var $condition3 = $('.search-object-${cardWid}');
+        var $condition4 = $('.search-item-${cardWid}');
+        var $condition5 = $('.search-service-dept-${cardWid}');
+
+        if($condition1.length > 0){
+            key = $condition1.children('ul').find('li.active').attr('data');
+            //如果有二级服务主题，则尝试获取选中的二级服务主题
+            var secondKey = $condition1.children('ul').find('li.active').children('ul').find('li.second-active').attr('data');
+            if(secondKey != undefined && secondKey !="" && secondKey != null){
+                key = secondKey;
+            }
+            if(isNotEmpty(key)){
+                searchParam["subject"] = key;
+            }
+        }
+
+        if($condition2.length > 0){
+            key = $condition2.children('ul').find('li.active').attr('data');
+            //如果有二级部门，则尝试获取选中的二级部门
+            var secondKey = $condition2.children('ul').find('li.active').children('ul').find('li.second-active').attr('data');
+            if(secondKey != undefined && secondKey !="" && secondKey != null){
+                key = secondKey;
+            }
+            if(isNotEmpty(key)){
+                searchParam["dept"] = key;
+            }
+        }
+
+        if($condition3.length > 0){
+            key = $condition3.children('ul').find('li.active').attr('data');
+            if(isNotEmpty(key)){
+                searchParam["object"] = key;
+            }
+        }
+
+        if($condition4.length > 0){
+            key = $condition4.children('ul').find('li.active').attr('data');
+            if(isNotEmpty(key)){
+                searchParam["item"] = key;
+            }
+        }
+
+        if($condition5.length > 0){
+            key = $condition5.children('ul').find('li.active').attr('data');
+            //如果有二级部门，则尝试获取选中的二级部门
+            var secondKey = $condition5.children('ul').find('li.active').children('ul').find('li.second-active').attr('data');
+            if(secondKey != undefined && secondKey !="" && secondKey != null){
+                key = secondKey;
+            }
+            if(isNotEmpty(key)){
+                searchParam["serviceDept"] = key;
+            }
+        }
+
+        //重新渲染结果页
+        execCardMethod('${cardId}','${cardWid}',null,'searchServiceItem',searchParam,function(data){
+            $('.bd-toc-${cardWid}').html(data.data.nav);
+            $('.list-${cardWid}').html(data.data.content);
+
+            if(data.data && data.data.nav && data.data.nav.length > 24){
+                $('.bd-toc-${cardWid}').css('height','515px');
+                var lastHeight = calcLastHeight${cardWid}();
+                $('.list-${cardWid}').css('padding-bottom',lastHeight+'px');
+            }else{
+                $('.bd-toc-${cardWid}').css('height','0px');
+                $('.list-${cardWid}').css('padding-bottom','200px');
+            }
+
+            initListener${cardWid}();
+            $('.toc-entry-${cardWid} > div').mouseenter(function () {
+                $(this).addClass('portal-primary-color-lv1')
+            }).mouseleave(function () {
+                $(this).removeClass('portal-primary-color-lv1')
+            })
+        });
+    }
+
+    function isNotEmpty(str){
+        if(undefined == str || str == null || str == ""){
+            return false;
+        }
+        return true;
+    }
+
+    //执行收藏
+    function favoriteItem${cardWid}(item){
+
+        var oprate = 1,operateCn = "收藏";//收藏
+        var itemId = $(item).attr('data-item-id');
+        if($(item).hasClass('favorite-${cardWid}')){
+            oprate = 0;
+            operateCn = "取消收藏";
+        }
+
+        execCardMethod('${cardId}','${cardWid}',null,'collectServiceItem',{serviceId:itemId,operate:oprate},function(data){
+            console.log("favoriteServiceItem" + JSON.stringify(data));
+            if (200 === data.errcode && '0' === data.data.errcode) {
+                if(this.isIE11_${cardWid}()){
+                    popupTips_${cardWid}(operateCn+'成功！','35%');
+                }else {
+                    popupTips_${cardWid}(operateCn+'成功！',null);
+                }
+
+                publish('collectServiceItem',{
+                    'serviceId':itemId,
+                    'operate':oprate
+                });
+            }else{
+                if(this.isIE11_${cardWid}()){
+                    popupTips_${cardWid}(operateCn+'失败！','35%');
+                }else {
+                    popupTips_${cardWid}(operateCn+'失败！',null);
+                }
+            }
+        });
+    }
+
+    function initListener${cardWid}(){
+        //tooltip事件
+        $('[data-toggle="tooltip"]').mouseenter(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        /**
+         * 字母点击高亮事件
+         */
+        $('.toc-entry-${cardWid} > div').off('click').on('click',function() {
+
+            var $parentDiv = $('.content-container-${cardWid}');
+            if( $(this).hasClass('normal')){
+                $('.toc-entry-${cardWid} > div.active').css('color','black')
+                //高亮点击字母
+                $('.toc-entry-${cardWid} > div.active').addClass('normal');
+                $('.toc-entry-${cardWid} > div.active').removeClass('active');
+                $(this).addClass('active');
+                let a = $('.portal-primary-color-lv1').css('color')
+                $('.toc-entry-${cardWid} > div.active').css('color',a)
+                //页面滚动
+                var target = document.getElementById($(this).attr('link'));
+                target.scrollIntoView();
+                var parentWidth = $parentDiv[0].offsetParent.clientWidth ;
+                var parentScrollWidth = $parentDiv[0].offsetParent.scrollWidth  ;
+
+                $parentDiv[0].offsetParent.scrollLeft = parentScrollWidth-parentWidth;
+
+            }
+        });
+
+        /**
+         * 收藏事件
+         */
+        $('.favorite-click-${cardWid}').off('click').on('click',function(e) {
+            var e = window.event || e;
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }else {
+                e.cancelBubble = true;
+            }
+            favoriteItem${cardWid}($(this));
+        });
+
+        /**
+         * 查看详情
+         */
+        $('.go-to-item-${cardWid}').off('click').on('click',function() {
+            var setrviceId = $(this).attr('data-wid');
+            var param = {id:setrviceId,type:"serviceItem"};
+            openPage("${ctxPath}/portal/itemDetail?wid="+setrviceId,1,param)
+        });
+    }
+
+
+    //提示弹窗
+    function popupTips_${cardWid}(text,mg) {
+        if(null == mg){
+            mg = 0+'px';
+        }
+        $(".global-header").prepend(
+            "<div id='alert-${cardWid}' style='position: fixed;z-index: 999999;margin-left:"+ mg +"'>"+
+            "<div class=\"alert alert-success fade show \" role=\"alert\">\n" +
+            "    <span> "+ text +"</span>\n" +
+            "</div>"+
+            "</div>"
+        );
+        window.setTimeout(function () {
+            $('#alert-${cardWid}').remove();
+        },1000);
+    }
+
+    //判断是否是IE11浏览器
+    function isIE11_${cardWid}() {
+        var flagIE = false;
+        var u = window.navigator.userAgent.toLocaleLowerCase(),
+            ie11 = /(trident)\/([\d.]+)/,
+            style = u.match(ie11);
+        if(null != style){
+            flagIE =  true;
+        }
+        return flagIE;
+    }
+    $('.toc-entry-${cardWid} > div').mouseenter(function () {
+        $(this).addClass('portal-primary-color-lv1')
+    }).mouseleave(function () {
+        $(this).removeClass('portal-primary-color-lv1')
+    })
+
+</script>
+<!--@formatter:off-->

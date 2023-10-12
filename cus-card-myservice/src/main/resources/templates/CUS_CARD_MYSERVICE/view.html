@@ -1,0 +1,238 @@
+
+<% include("css.html",{cardWid:cardWid,cardId:cardId}){} %>
+<div id="card-container-${cardWid}" class="card-container-${cardWid} row flex-xl-nowrap">
+    <%
+    SERVICE_ITEM_SEARCH_BOX = config.SERVICE_ITEM_SEARCH_BOX;
+    FILTER_ITEM_DISPLAY_INFO = config.FILTER_ITEM_DISPLAY_INFO;
+    SINGLE_ITEM_DISPLAY_INFO = config.SINGLE_ITEM_DISPLAY_INFO;
+    SERVICE_ORG_RULES = config.SERVICE_ORG_RULES;
+    %>
+
+    <!-- 右侧首字母 -->
+    <nav class="bd-toc-${cardWid}">
+        <% include("nav.html",{navList:navList,cardWid:cardWid,cardId:cardId,SERVICE_ORG_RULES:SERVICE_ORG_RULES}){} %>
+    </nav>
+
+    <div class="content-container-${cardWid} bd-content">
+        <!-- 搜索框 -->
+
+        <% if(SERVICE_ITEM_SEARCH_BOX == "1"){ %>
+        <div class="input-group   input-box-${cardWid}">
+            <input aria-describedby="searchBtn${cardWid}" aria-label="在“全部服务事项”中搜索" class="search-input-${cardWid}"
+                   id="searchInput${cardWid}" maxlength="100"
+                   onkeydown="toSearchItem${cardWid}(event)" placeholder="在“全部服务事项”中搜索" type="text">
+
+            <button class="input-btn-${cardWid} portal-primary-backgroundcolor-lv1" id="searchBtn${cardWid}" onclick="searchItem${cardWid}()"
+                    type="button">搜索
+            </button>
+
+        </div>
+        <% } %>
+
+        <!-- 搜索条件 -->
+
+        <div class="tabs-${cardWid}  portal-font-color-lv1">
+
+            <% if(strutil.contain(FILTER_ITEM_DISPLAY_INFO,"001")){ %>
+            <div class="tab-service-labels-${cardWid} search-subject-${cardWid}">
+                <div class="labels-service-name-${cardWid}">服务主题:</div>
+
+                <ul class="row service-labels-${cardWid}">
+                    <li class="item-all-${cardWid} item-${cardWid} active portal-primary-backgroundcolor-lv1" data="">全部</li>
+                    <div style="width: 940px">
+                        <% for(var i=0;i<subject.~size;i++){
+                        if(i < subjectShowSize){ %>
+                        <li class="item-${cardWid}" data="${subject[i].subjectWid,xss}">${subject[i].subjectName,xss}
+                            <% if(isNotEmpty(subject[i].children)){ %>
+                            <div class="icon-arrowHead${cardWid}"></div>
+                            <ul id="item-${cardWid}-ul" class="card-secondMenu${cardWid}">
+                                <% for(item3 in subject[i].children){ %>
+                                <li id="item-second-${cardWid}"
+                                    class="item-second-${cardWid} portal-font-color-lv2 portal-primary-color-hover-lv1"
+                                    data="${item3.subjectWid}">${item3.subjectName,xss}
+                                </li>
+                                <% } %>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } else{%>
+                        <li class="item-${cardWid} hide-subject-${cardWid}" data="${subject[i].subjectWid}">${subject[i].subjectName,xss}
+                            <% if(isNotEmpty(subject[i].children)){ %>
+                            <div class="icon-arrowHead${cardWid}"></div>
+                            <ul id="item-${cardWid}-ul" class="card-secondMenu${cardWid}">
+                                <% for(item3 in subject[i].children){ %>
+                                <li id="item-second-${cardWid}"
+                                    class="item-second-${cardWid} portal-font-color-lv2 portal-primary-color-hover-lv1"
+                                    data="${item3.subjectWid}">${item3.subjectName,xss}
+                                </li>
+                                <% } %>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } } %>
+                    </div>
+                </ul>
+                <% if(subject.~size > subjectShowSize){%>
+                <div class="show-subject-btn-${cardWid} mouse-hover-${cardWid} portal-primary-color-lv1">
+                    <div style="width: 56px;">展开全部</div>
+                    <i class="iconfont icon-Unfold close-${cardWid}" style="font-size: 14px;"></i>
+                </div>
+                <% }%>
+            </div>
+            <%} %>
+            <% if(strutil.contain(FILTER_ITEM_DISPLAY_INFO,"002")){ %>
+            <div class="tab-service-labels-${cardWid} search-dept-${cardWid}">
+                <div class="labels-service-name-${cardWid}">责任部门:</div>
+
+                <ul class="row service-labels-${cardWid}">
+                    <li class="item-all-${cardWid} item-${cardWid} active portal-primary-backgroundcolor-lv1" data="">全部</li>
+                    <div style="width: 940px;">
+                        <% for(var i=0;i<dept.~size;i++){
+                        if(i < deptShowSize){ %>
+                        <li class="item-${cardWid}" data="${dept[i].deptWid}">${dept[i].deptName,xss}
+                            <% if(isNotEmpty(dept[i].children)){ %>
+                            <div class="icon-arrowHead${cardWid}"></div>
+                            <ul id="item-${cardWid}-ul" class="card-secondMenu${cardWid}">
+                                <% for(item3 in dept[i].children){ %>
+                                <li id="item-second-${cardWid}"
+                                    class="item-second-${cardWid} portal-font-color-lv2 portal-primary-color-hover-lv1"
+                                    data="${item3.deptWid}"
+                                >${item3.deptName,xss}  </li>
+                                <% } %>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } else{%>
+                        <li class="item-${cardWid} hide-dept-${cardWid}" data="${dept[i].deptWid}">${dept[i].deptName,xss}
+                            <% if(isNotEmpty(dept[i].children)){ %>
+                            <div class="icon-arrowHead${cardWid}"></div>
+                            <ul id="item-${cardWid}-ul" class="card-secondMenu${cardWid}">
+                                <% for(item3 in dept[i].children){ %>
+                                <li id="item-second-${cardWid}"
+                                    class="item-second-${cardWid} portal-font-color-lv2 portal-primary-color-hover-lv1"
+                                    data="${item3.deptWid}"
+                                >${item3.deptName,xss}  </li>
+                                <% } %>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } } %>
+                    </div>
+                </ul>
+                <% if(dept.~size > deptShowSize){%>
+                <div class="show-dept-btn-${cardWid} mouse-hover-${cardWid} portal-primary-color-lv1">
+                    <div style="width: 56px;">展开全部</div>
+                    <i class="iconfont icon-Unfold close-${cardWid}" style="font-size: 14px;"></i>
+                </div>
+                <% }%>
+            </div>
+            <% } %>
+
+            <% if(strutil.contain(FILTER_ITEM_DISPLAY_INFO,"003")){ %>
+            <div class="tab-service-labels-${cardWid} search-object-${cardWid}">
+                <div class="labels-service-name-${cardWid}">服务对象:</div>
+
+                <ul class="row service-labels-${cardWid}">
+                    <li class="item-all-${cardWid} item-${cardWid} active portal-primary-backgroundcolor-lv1" data="">全部</li>
+                    <div style="width: 940px">
+                        <% for(var i=0;i<serviceObject.~size;i++){
+                        if(i < serviceObjectShowSize){ %>
+                        <li class="item-${cardWid}" data="${serviceObject[i].roleWid}">${serviceObject[i].roleName,xss}</li>
+                        <% } else{%>
+                        <li class="item-${cardWid} hide-serviceObject-${cardWid}" data="${serviceObject[i].roleWid}">${serviceObject[i].roleName,xss}</li>
+                        <% } } %>
+                    </div>
+                </ul>
+                <% if(serviceObject.~size > serviceObjectShowSize){%>
+                <div class="show-serviceObject-btn-${cardWid} mouse-hover-${cardWid} portal-primary-color-lv1">
+                    <div style="width: 56px;">展开全部</div>
+                    <i class="iconfont icon-Unfold close-${cardWid}" style="font-size: 14px;"></i>
+                </div>
+                <% }%>
+            </div>
+            <% } %>
+            <!--20201119版本暂时去除 -->
+<!--            <% if(strutil.contain(FILTER_ITEM_DISPLAY_INFO,"004")){ %>-->
+<!--            <div class="tab-service-labels-${cardWid} search-item-${cardWid}">-->
+<!--                <div class="labels-service-name-${cardWid}">事项类型:</div>-->
+
+<!--                <ul class="row service-labels-${cardWid}">-->
+<!--                    <li class="item-all-${cardWid} item-${cardWid} active portal-primary-backgroundcolor-lv1" data="">全部</li>-->
+<!--                    <div style="width: 940px">-->
+<!--                        <% for(item4 in serviceItem){ %>-->
+<!--                        <li class="item-${cardWid}" data="${item4.id}">${item4.name}</li>-->
+<!--                        <% } %>-->
+<!--                    </div>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <% } %>-->
+
+            <% if(strutil.contain(FILTER_ITEM_DISPLAY_INFO,"005")){ %>
+            <div class="tab-service-labels-${cardWid} search-service-dept-${cardWid} ">
+                <div class="labels-service-name-${cardWid}">服务部门:</div>
+
+                <ul class="row service-labels-${cardWid}">
+                    <li class="item-all-${cardWid} item-${cardWid} active portal-primary-backgroundcolor-lv1" data="">全部</li>
+                    <div style="width: 940px">
+
+
+                        <% for(var i=0;i<serviceDept.~size;i++){
+                        if(i < serviceDeptShowSize){ %>
+                        <li class="item-${cardWid}" data="${serviceDept[i].deptWid}">${serviceDept[i].deptName,xss}
+                            <% if(isNotEmpty(serviceDept[i].children)){ %>
+                            <div class="icon-arrowHead${cardWid}"></div>
+                            <ul id="item-${cardWid}-ul" class="card-secondMenu${cardWid}">
+                                <% for(item3 in serviceDept[i].children){ %>
+                                <li id="item-second-${cardWid}"
+                                    class="item-second-${cardWid} portal-font-color-lv2 portal-primary-color-hover-lv1"
+                                    data="${item3.deptWid}"
+                                >${item3.deptName,xss}  </li>
+                                <% } %>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } else{%>
+                        <li class="item-${cardWid} hide-serviceDept-${cardWid}" data="${serviceDept[i].deptWid}">${serviceDept[i].deptName,xss}
+                            <% if(isNotEmpty(serviceDept[i].children)){ %>
+                            <div class="icon-arrowHead${cardWid}"></div>
+                            <ul id="item-${cardWid}-ul" class="card-secondMenu${cardWid}">
+                                <% for(item3 in serviceDept[i].children){ %>
+                                <li id="item-second-${cardWid}"
+                                    class="item-second-${cardWid} portal-font-color-lv2 portal-primary-color-hover-lv1"
+                                    data="${item3.deptWid}"
+                                >${item3.deptName,xss}  </li>
+                                <% } %>
+                            </ul>
+                            <% } %>
+                        </li>
+                        <% } } %>
+                    </div>
+                </ul>
+                <% if(serviceDept.~size > serviceDeptShowSize){%>
+                <div class="show-serviceDept-btn-${cardWid} mouse-hover-${cardWid} portal-primary-color-lv1">
+                    <div style="width: 56px;">展开全部</div>
+                    <i class="iconfont icon-Unfold close-${cardWid}" style="font-size: 14px;"></i>
+                </div>
+                <% }%>
+            </div>
+            <% }%>
+        </div>
+        <!-- 结果页 -->
+        <div class="list-${cardWid}">
+            <% include("content.html",{serviceItemList:serviceItemList,cardWid:cardWid,cardId:cardId,SINGLE_ITEM_DISPLAY_INFO:SINGLE_ITEM_DISPLAY_INFO,SERVICE_ORG_RULES:SERVICE_ORG_RULES}){} %>
+        </div>
+
+    </div>
+    <div class="bottom-${cardWid}" data="${navList.~size > 0}"></div>
+</div>
+
+<% include("js.html",{
+    serviceItemList:serviceItemList,
+    cardWid:cardWid,
+    cardId:cardId,
+    SINGLE_ITEM_DISPLAY_INFO:SINGLE_ITEM_DISPLAY_INFO,
+    SERVICE_ORG_RULES:SERVICE_ORG_RULES,
+    SERVICE_ITEM_SEARCH_BOX:SERVICE_ITEM_SEARCH_BOX,
+    FILTER_ITEM_DISPLAY_INFO:FILTER_ITEM_DISPLAY_INFO
+
+}){} %>

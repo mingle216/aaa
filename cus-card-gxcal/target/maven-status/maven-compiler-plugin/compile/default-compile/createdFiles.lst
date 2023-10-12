@@ -1,0 +1,5 @@
+com\wisedu\amp\card\sys\gxcal\enums\QueryModelEnum.class
+com\wisedu\amp\card\sys\gxcal\enums\CalendarConsoleDto.class
+com\wisedu\amp\card\sys\gxcal\plugin\CalendarCard.class
+com\wisedu\amp\card\sys\gxcal\dto\CalendarDtoV2.class
+com\wisedu\amp\card\sys\gxcal\dto\CalendarDto.class

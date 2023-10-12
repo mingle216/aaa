@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="sltang" id="t_amp_view_site_auth.3.1.Beta2_001">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="t_amp_view_site_auth"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="t_amp_view_site_auth" remarks="站点授权表">
+            <column name="wid" type="VARCHAR(64)" remarks="主键">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="site_wid" type="VARCHAR(64)" remarks="站点wid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="auth_rel_wid" type="VARCHAR(64)" remarks="授权关联对象wid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="auth_type" type="TINYINT(2)" remarks="	授权类型 0 组织机构 1 个人 2 域及用户组">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(2)" remarks="是否已经删除 0:非删除 1:删除" defaultValue="0"/>
+            <column name="operator" type="VARCHAR(100)" remarks="操作人"/>
+            <column name="update_time" type="TIMESTAMP" remarks="更新时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="create_time" type="TIMESTAMP" remarks="创建时间" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

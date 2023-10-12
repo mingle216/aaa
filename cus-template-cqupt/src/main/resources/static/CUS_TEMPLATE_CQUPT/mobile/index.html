@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="zh" id="main-content"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="format-detection" content="telephone=yes"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>master</title><script>var setRootFontSize=function(){
+      var w_width=window.screen.availWidth;
+      var h_height=window.screen.availHeight;
+      // 横屏
+      if (window.orientation == 90 || window.orientation == -90) {
+        if (navigator.userAgent.match(/Android/i)) {
+          document.getElementById('main-content').style.fontSize =  w_width/10+'px';
+        } else {
+          document.getElementById('main-content').style.fontSize =  h_height/10 +'px';
+        }
+      } else {
+        document.getElementById('main-content').style.fontSize =  (w_width/375)*37.5+'px';
+      }
+    }
+    window.onresize=setRootFontSize;
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", setRootFontSize, false)
+    setRootFontSize();</script><link href="css/app.7e15a37d.css" rel="preload" as="style"><link href="js/app.96d00640.js" rel="preload" as="script"><link href="css/app.7e15a37d.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but master doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="./js/vue.min.js"></script><script src="./js/wed.mobile.js"></script><script src="./js/vue-i18n.min.js"></script><script src="./langulages/zh_CN.js"></script><script src="./langulages/en_US.js"></script><script src="js/app.96d00640.js"></script></body></html>
